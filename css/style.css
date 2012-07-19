@@ -1,0 +1,9 @@
+.boldlinks a { font-weight: bold; }
+b { font-weight: bold; }
+tt, code { font-family: monospace; }
+.right { text-align: right; }
+.left { text-align: left; }
+.center { text-align: center; }
+span.bttu { font-weight: bold; font-family: monospace; text-decoration: underline; ;}
+em.tns { display: none; }
+.gray { color: #777; }
