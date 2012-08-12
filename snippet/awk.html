@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Hey Rod!</title>
+  <title>2 awk snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -38,10 +38,8 @@
           
             
             
-              
-            
-            <li class="active" >
-              <a class="active" href="/">Home</a>
+            <li class="" >
+              <a class="" href="/">Home</a>
             </li>
           
             
@@ -52,8 +50,10 @@
           
             
             
-            <li class="" >
-              <a class="" href="/snippet">Snippets</a>
+              
+            
+            <li class="active" >
+              <a class="active" href="/snippet">Snippets</a>
             </li>
           
         </ul>
@@ -82,30 +82,64 @@
       
 
       
+        <div class="thirteen columns">
+          <div id="page-header" class="half-bottom mtop">
+            <h1 class=" remove-bottom">2 awk snippets</h1>
+            <div class="page-class remove-bottom">
+              
+                  <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
+                
+            </div>
+          </div>
+          <hr class="half-bottom remove-top"/>
+        </div>
+      
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="thirteen columns clearfix">
-  <div class="six columns alpha">
-    <h2 class="mtop align-center remove-bottom">About Rod</h2>
-    <hr class="half-bottom remove-top"/>
-    <div class="align-both">
-      <p>Rod Waldhoff has been working in various technology and digital product development roles for about 15 years. He is currently the director of technology strategy at a large professional member association.</p>
-      <p>He lives in Alexandria Virginia (near Washington DC) with his three children, two cats and one wife.</p>
-      
-    </div>
-  </div>
-  <div class="six columns omega offset-by-one">
-    <h2 class="mtop align-center remove-bottom">About this Site</h2>
-    <hr class="half-bottom remove-top"/>
-    <div class="align-both">
-      <b>HeyRod.com</b> is a little website maintained by <b class="nobr">Rod Waldhoff</b> as a personal and informal web presence.  
-      Currently you can find <!-- <a href="/blog">a blog</a>, -->
-      some <a href="/project">stuff I've been working on</a> and <a href="/snippet">various notes I've collected</a>.
-    </div>
-  </div>
+        
+  <div class="snippet">
+    <h2 class="half-bottom">Strip characters from a field in awk</h2>
+    <div>
+      <p>E.g., the following command strips alpha characters from the second (tab delimited) field.</p>
+
+<div class="highlight"><pre><code class="bash">awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;{gsub(/[A-Za-z]/,&quot;&quot;,$2); print $2 }&#39;</span>
+</code></pre>
 </div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/linux.html">linux</a>, <a href="/snippet/text-processing.html">text-processing</a>, <a href="/snippet/awk.html">awk</a> and <a href="/snippet/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <hr/>
+
+  <div class="snippet">
+    <h2 class="half-bottom">Some `awk` basics</h2>
+    <div>
+      <p>Extract tab delimited fields from a file:</p>
+
+<div class="highlight"><pre><code class="bash">awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;{print &quot;field one=&quot; $1 &quot;; field two=&quot; $2 }&#39;</span> file
+</code></pre>
+</div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/linux.html">linux</a>, <a href="/snippet/text-processing.html">text-processing</a>, <a href="/snippet/awk.html">awk</a> and <a href="/snippet/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <hr/>
+
+
 
       </div>
 
