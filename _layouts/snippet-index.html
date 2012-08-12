@@ -1,0 +1,30 @@
+---
+layout: layout
+section: snippet
+class: snippet
+meta:
+ description: Index of code samples and other small bits of text.
+---
+<div class="container">
+  <div class="four columns">
+    <ul class="disc">
+      {% for tag in page.tags-one %}
+        <li><a href="/snippet/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="four columns">
+    <ul class="disc">
+      {% for tag in page.tags-two %}
+        <li><a href="/snippet/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="four columns">
+    <ul class="disc">
+      {% for tag in page.tags-three %}
+        <li><a href="/snippet/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+---
+layout: layout
+section: snippet
+class: snippet
+---
+{% for snippet in page.snippets %}
+  <div class="snippet">
+    {% if snippet.title %}<h2 class="half-bottom">{{ snippet.title }}</h2>{% endif %}
+    <div>
+      {{ snippet.content }}
+    </div>
+    <div class="align-right">
+      <small>Tags: {% for tag in snippet.tags %}{% if forloop.last and forloop.first == false %} and {% endif %}{% if forloop.last == false and forloop.first == false %}, {% endif %}<a href="/snippet/{{tag.id}}.html">{{tag.label}}</a>{% endfor %}.</small>
+    </div>    
+    {% if snippet.credit %}<div class="align-right"><small>Credit: {{ snippet.credit }}</small></div>{% endif %}
+  </div>
+  <hr/>
+{% endfor %}
+

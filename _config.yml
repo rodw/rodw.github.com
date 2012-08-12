@@ -1,0 +1,28 @@
+auto: true
+markdown: rdiscount
+rdiscount:
+  extensions: [smart]
+pygments: true
+lsi: false
+
+permalink: /blog/:year-:month/:title
+
+snippet:
+  source:
+    dir: _snippets
+    glob: "*.md"
+  dest:
+    dir: snippet
+
+primarynav:
+- text: Home
+  url: /
+  section: home
+- text: Projects
+  url: /project
+  section: project
+- text: Snippets
+  url: /snippet
+  section: snippet
+
+
