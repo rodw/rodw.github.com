@@ -2,6 +2,8 @@
 layout: layout
 section: snippet
 class: snippet
+tweaks:
+  notitlehr: true
 ---
 {% for snippet in page.snippets %}
   <div class="snippet">
@@ -14,6 +16,6 @@ class: snippet
     </div>    
     {% if snippet.credit %}<div class="align-right"><small>Credit: {{ snippet.credit }}</small></div>{% endif %}
   </div>
-  <hr/>
+  <!-- <hr/> -->
 {% endfor %}
 

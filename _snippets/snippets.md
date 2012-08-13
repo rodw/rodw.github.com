@@ -1,6 +1,290 @@
 ######################################################################
+tags: [linux]
+title: Find duplicate files on Linux.
+credit: Found at <a href="http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash">commmandlinefoo.com</a>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Find files that have the same size and MD5 hash (and hence are likely to be exact duplicates):
+
+{% highlight console linenos %}
+$ find -not -empty -type f -printf "%s\n" | \
+> sort -rn | \
+> uniq -d | \
+> xargs -I{} -n1 find -type f -size {}c -print0 | \
+> xargs -0 md5sum | \
+> sort | \
+> uniq -w32 --all-repeated=separate | \
+> cut -d" " -f3-
+{% endhighlight %}
+
+You probably want to pipe that to a file as it runs slowly. 
+
+If I understand this correctly:
+
+1. Line 1 enumerates the real files non-empty by size.
+2. Line 2 sorts the sizes (as numbers of descending size).
+3. Line 3 strips out the lines (sizes) that only appear once.
+4. For each remaining size, line 4 finds all the files of that size.
+5. Line 5 computes the MD5 hash for all the files found in line 4, outputing the MD5 hash and filename. (This is repeated for each set of files of a given size.)
+6. Line 6 sorts that list for easy comparison.
+7. Line 7 compares the first 32 characters of each line (the MD5 hash) to find duplicates.
+8. Line 8 spits out the filename and path part of the matching linese.
+
+Some alternative approaches can be found at [the original source](http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash).
+
+######################################################################
+tags: [linux]
+title: Generate a random list of words with `shuf`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`shuf` is (in my experience) a little known GNU utility that selects random lines (or bytes) from a file.
+
+For instance, the command:
+
+{% highlight console %}
+$ shuf -n 3 /usr/share/dict/words
+{% endhighlight %}
+
+selects three words at random from the `words` dictionary.
+
+######################################################################
+tags: [git]
+title: Bundle up a git repository (as a backup).
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From within a Git repository's working directory, run
+
+{% highlight console %}
+$ git bundle create FILENAME --all
+{% endhighlight %}
+
+to create a single-file backup of the entire repository.
+
+
+######################################################################
+tags: [linux]
+title: Restore Ctrl+Alt+Backspace as a way to kill X on Linux.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Modern Debian and Ubuntu distributions have this disabled by default.
+
+{% highlight console %}
+$ setxkbmap -option terminate:ctrl_alt_backspace
+{% endhighlight %}
+
+
+######################################################################
+tags: [css]
+title: Some useful CSS mix-ins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+## Presentational Classes
+
+These are the opposite of semantic markup, but I find them useful:
+
+{% highlight css %}
+.align-both   { text-align: justify; }
+.align-center { text-align: center; }
+.align-left   { text-align: left; }
+.align-right  { text-align: right; }
+.float-left   { float: left; }
+.float-right  { float: right; }
+.nobr         { white-space: nowrap; }
+.small        { font-size: 80%; } /* should really sync with the <small> tag rules */
+{% endhighlight %}
+
+## "Fixing" resets
+
+CSS reset frameworks often strip out *all* formatting. These CSS rules contain some re-resets:
+
+{% highlight css %}
+/* I understand the theory behing replacing <i> and <b> with <em> and <strong>, but c'mon, really? */
+i                        { font-style: italic; }
+b                        { font-weight: bold; }
+small                    { font-size: 80%; }
+
+/* Make superscripts and subscripts actually do something: */
+sup, sub                 { height: 0; line-height: 1; vertical-align: baseline; _vertical-align: bottom; position: relative; }
+sup                      {	bottom: 1ex; }
+sub                      {	top: .5ex; }
+
+/* Monospaced types. */
+pre, code, kbd, samp, tt { font-family: 'droid sans mono slashed', 'droid sans mono dotted', 'droid sans mono', monospace, monospace; }
+{% endhighlight %}
+
+
+######################################################################
+tags: [linux]
+title: Backup an SD card on Linux using dd
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight bash %}
+#!/bin/bash
+if [ -b "/dev/$1" ]
+then
+  outfile="sdcard-backup-`date +"%s"`.dd"
+  echo "cloning /dev/$1 to $outfile"
+  dd if=/dev/$1 of=$outfile
+  echo "tgz-ing $outfile"
+  tar zcvf $outfile.tgz $outfile
+  echo "done."
+else 
+  echo "Usage: $0 /dev/<device>"
+fi
+echo "to restore, unmount(?), then use:"
+echo "tar Ozxf <file> | dd of=<device>"
+{% endhighlight %}
+
+######################################################################
+tags: [linux,bash]
+title: Find large files on Linux.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight console %}
+$ du -h * | grep "^[0-9.]*M" | sort -n
+{% endhighlight %}
+
+(This finds files at least 1 MB in size and then sorts them by size.  Change `M` to `G` for files at least 1 GB in size.)
+
+######################################################################
+tags: [emacs]
+title: Spell checking cheat-sheet for emacs.
+credit: Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* `M-$` - `ispell-word` or `ispell-region` (depending on whether something is selected)
+* `[SPACE]` - Skip this word—continue to consider it incorrect, but don't change it here. 
+* `r newword [RETURN]` - Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.) 
+* `R new [RETURN]` - Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.) 
+* `a` - Accept the incorrect word—treat it as correct, but only in this editing session. 
+* `A` - Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer. 
+* `i` - Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions. 
+* `m` - Like `i`, but you can also specify dictionary completion information. 
+* `u` - Insert the lower-case version of this word in your private dictionary file. 
+* `l word [RETURN]` - Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use `*` in word as a wildcard. 
+* `C-g X` - Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with `C-u M-$`. 
+* `x` - Quit interactive spell checking and move point back to where it was when you started spell checking. 
+* `q` - Quit interactive spell checking and kill the spell-checker subprocess. 
+* `?` - Help
+
+
+######################################################################
+tags: [emacs]
+title: Using (quoted-insert), or how to enter a newline character in the emacs minibuffer.
+credit: Via <a href="http://jeremy.zawodny.com/blog/archives/008872.html">jwz</a>.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To insert a newline character in the mini-buffer, use `(quoted-insert)`:
+
+{% highlight text %}
+C-q C-j
+{% endhighlight %}
+
+######################################################################
+tags: [emacs]
+title: dos2unix in emacs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Replace `^M` with nothing:
+
+{% highlight text %}
+M-% C-q C-m [RETURN] [RETURN]
+{% endhighlight %}
+
+`M-%` is bound to `(query-replace)`. `C-q` is bound to `(quoted-insert)`, which allows `C-m` to insert the control character `^M`.
+
+######################################################################
+tags: [emacs]
+title: Case insensitive `sort-lines` in emacs.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight text %}
+M-x set-variable [RETURN] sort-fold-case [RETURN] t [RETURN]
+M-x sort-lines
+{% endhighlight %}
+
+
+######################################################################
+tags: [pygments,jekyll]
+title: Shortlist of language names recognized by pygments.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`pygments` language identifiers I use or have had to look up at one time or another.
+
+* Antlr-Ruby - `antlr-ruby`/`antlr-rb`
+* awk - `awk`/`gawk`/`mawk`/`nawk`
+* Bash - `bash`/`sh`/`ksh` for shell scripts, `console` for interactive session captures
+* Clojure - `clj`/`closure`
+* CoffeeScript - `coffee-script`/`coffeescript`
+* CSS - `css`
+* diff output - `diff`/ `udiff`
+* Haml/Sass/Scss - `haml`, `sass`, `scss`
+* HTML - `html`
+* HTTP transcripts - `http`
+* JavaScript - `js`/`javascript`
+* JSON - `json`
+* Lisp - `cl`/`common-lisp`
+* make - `make`/`makefile`/`mf`, `cmake`, `basemake`, `bsdmake`
+* nginx configuration files - `ngnix`
+* Postscript - `postscript`
+* Ruby - `ruby` for .rb files, `irb` for interactive console captures
+* Scheme - `scm`/`scheme`
+* SQL - `sql`, `mysql`, `psql`, `postgresql-console`/`postgres-console`, `sqlite3`
+* TeX/LaTeX - `tex`, `latex`
+* Text - `text` (the no-op highlighter)
+* XML/XSLT/XQuery - `xml`, `xslt`, `xquery`
+* Yaml - `yaml`
+
+Also see [the list of languages supported by Pygments](http://pygments.org/languages/) and [the list of lexers included with Pygments](http://pygments.org/docs/lexers/).
+
+
+######################################################################
+tags: [emacs,javascript]
+title: Using js-mode's indent logic in js2-mode.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Steve Yegge's [js2-mode](http://code.google.com/p/js2-mode/) is a sweet major mode for working with JavaScript in Emacs, but its auto-indentation logic is [notoriously frustrating](http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely). 
+
+Here's a a somewhat hack-y workaround: switch to `javascript-mode` before calling `indent-region` and then switch back.
+
+{% highlight cl %}
+;; use js-mode's indent logic, by pressing C-M-| (C-M-S-\)
+(defun rlw/js-indent-region () (interactive) (js-mode) (indent-region (region-beginning) (region-end)) (js2-mode) )
+(define-key js2-mode-map (kbd "C-M-|") 'rlw/js-indent-region)
+{% endhighlight %}
+
+PS: I haven't yet had a chance to sort these out, but there are at least four or five JavaScript modes:
+
+ * [mooz's fork of js2-mode](https://github.com/mooz/js2-mode)
+ * [thomblake's js3-mode](https://github.com/thomblake/js3-mode)
+ * I think the defunct [espresso-mode](http://www.nongnu.org/espresso/) is now the built-in `js-mode`.
+ * I'm not sure where that leaves `javascript-mode`.  Also defunct I think.
+ * Steve Yegge's [js2-mode](http://code.google.com/p/js2-mode/) 
+ 
+The first two are supposed to address js2-mode's indentation problems (among other enhancements).
+
+######################################################################
+tags: [linux,xrandr]
+title: Set monitor resolution with xrandr
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight console %}
+$ cvt 1600 900
+# 1600x900 59.95 Hz (CVT 1.44M9) hsync: 55.99 kHz; pclk: 118.25 MHz
+Modeline "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+$ xrandr --newmode "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+$ xrandr --addmode VGA1 "1600x900_60.00"
+$ xrandr --output VGA1 --mode "1600x900_60.00"
+{% endhighlight %}
+
+Also handy:
+
+{% highlight console %}
+$ xrandr --output LVDS1 --off --output VGA1 --auto
+{% endhighlight %}
+
+######################################################################
 tags: [html,css]
-title: Vertical centering block elements in HTML/CSS.
+title: Vertically centering block elements with CSS.
 credit: via <a href="http://phrogz.net/css/vertical-align/index.html">phrogz.net</a>.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -48,7 +332,7 @@ title: Using Ruby arrays as stacks and queues.
  * `array.shift` removes (and returns) the first element in the array.  
  * Hence `array.shift` "pops" an element in a queue-like way--first in, first out.  `array.first` (and `array[1]`) allow one to "peek" at this element.
 
-{% highlight ruby %}
+{% highlight irb %}
 > a = [ 1, 2, 3 ]         # => [1, 2, 3]
 > a.push 4                # => [1, 2, 3, 4]
 > a.pop                   # => 4
@@ -107,7 +391,7 @@ tags: [linux,text-processing,sed,cli]
 title: Strip characters from a string or file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-{% highlight bash %}
+{% highlight console %}
 $ echo "A1B2C3" | sed 's/[A-Z]//g'
 123
 {% endhighlight %}
@@ -119,7 +403,7 @@ title: Strip characters from a field in awk
 
 E.g., the following command strips alpha characters from the second (tab delimited) field.
 
-{% highlight bash %}
+{% highlight awk %}
 awk -F"\t" '{gsub(/[A-Za-z]/,"",$2); print $2 }'
 {% endhighlight %}
 
@@ -130,7 +414,7 @@ title: Some `awk` basics
 
 Extract tab delimited fields from a file:
 
-{% highlight bash %}
+{% highlight awk %}
 awk -F"\t" '{print "field one=" $1 "; field two=" $2 }' file
 {% endhighlight %}
 
@@ -144,14 +428,14 @@ title: Skip the first N lines in file
 
 To skip the first line of a file (and start piping data at the second line):
 
-{% highlight bash %}
-tail -n +2 filename
+{% highlight console %}
+$ tail -n +2 FILENAME
 {% endhighlight %}
 
 More generally:
 
-{% highlight bash %}
-tail -n +M filename
+{% highlight console %}
+$ tail -n +M FILENAME
 {% endhighlight %}
 
 where **`M`** is the number of the first line you want to see (i.e., the number of lines to skip plus one).
@@ -160,14 +444,14 @@ where **`M`** is the number of the first line you want to see (i.e., the number 
 
 To skip the first line of a file (and start piping data at the second line):
 
-{% highlight bash %}
-sed 1d filename
+{% highlight console %}
+$ sed 1d FILENAME
 {% endhighlight %}
 
 More generally:
 
-{% highlight bash %}
-tail A,Bd filename
+{% highlight console %}
+$ tail A,Bd filename
 {% endhighlight %}
 
 when you want to exclude lines **`A`** through **`B`** from the output.
@@ -182,13 +466,14 @@ tags: [ruby,idiom]
 title: Split a Ruby array into two halves.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To split a Ruby array in two two equally-sized (+/-1) parts:
+
 {% highlight ruby %}
 left,right = a.each_slice( (a.size/2.0).round ).to_a
 {% endhighlight %}
 
 For example:
 
-{% highlight ruby %}
+{% highlight irb %}
 a = [1,2,3,4,5]
 => [1, 2, 3, 4, 5]
 a.each_slice( (a.size/2.0).round ).to_a
@@ -200,13 +485,14 @@ tags: [ruby,idiom]
 title: Split a Ruby array into N equally-sized parts.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To split a Ruby array `a` into `n` equally-sized parts:
+
 {% highlight ruby %}
 a.each_slice( (a.size/n.to_f).round ).to_a
 {% endhighlight %}
 
 For example:
 
-{% highlight ruby %}
+{% highlight irb %}
 a = [1,2,3,4,5]; n = 3
 => 3
 a.each_slice( (a.size/n.to_f).round ).to_a
@@ -245,7 +531,7 @@ Why limit yourself to asking, "What would Jesus do?" (WWJD?) when you can not on
 tags: [bash,linux]
 title: Append to ~/.bash_history "immediately"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-{% highlight bash %}
+{% highlight console %}
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 {% endhighlight %}
 
