@@ -1,3 +1,4 @@
+exclude: Gemfile Gemfile.lock
 auto: true
 markdown: rdiscount
 rdiscount:
