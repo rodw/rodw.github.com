@@ -1,5 +1,5 @@
 require 'yaml'
-DEBUG = false
+DEBUG = true
 VERBOSE = DEBUG && false
 
 module Jekyll
@@ -100,10 +100,14 @@ module Jekyll
       DEBUG && puts("about to render #{snippets.size} snippets")
       self.data = {}
       snippets.each { |snippet| 
-        DEBUG && puts("rendering snippet #{snippet}")
-        self.content = snippet.body
-        self.render({},{})
-        snippet.content = self.output        
+        if(snippet.content) 
+          DEBUG && puts("snippet #{snippet} was already rendered")
+        else
+          DEBUG && puts("rendering snippet #{snippet}")
+          self.content = snippet.body
+          self.render({},{})
+          snippet.content = self.output
+        end
       }       
       DEBUG && puts("rendered.")
 
