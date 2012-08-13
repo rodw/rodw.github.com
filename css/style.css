@@ -42,7 +42,7 @@ a:hover, #footer a:hover, #footer .pointer:hover { color:#50a6fe; text-decoratio
 
 
 body { background:#c3d0ff; }
-
+.snippet  { border: solid 1px #ccc; padding: 14px; margin-top: 14px; margin-bottom: 14px; background:#fafafa; }
 
 #main { padding-bottom: 56px; background:#fff; width:100%; }
 

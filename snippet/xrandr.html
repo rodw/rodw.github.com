@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>2 idiom snippets</title>
+  <title>1 xrandr snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -84,7 +84,7 @@
       
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
-            <h1 class=" remove-bottom">2 idiom snippets</h1>
+            <h1 class=" remove-bottom">1 xrandr snippets</h1>
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -100,21 +100,23 @@
       <div class="thirteen columns bulleted">
         
   <div class="snippet">
-    <h2 class="half-bottom">Split a Ruby array into two halves.</h2>
+    <h2 class="half-bottom">Set monitor resolution with xrandr</h2>
     <div>
-      <p>To split a Ruby array in two two equally-sized (+/-1) parts:</p>
+      
 
-<div class="highlight"><pre><code class="ruby"><span class="n">left</span><span class="p">,</span><span class="n">right</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">each_slice</span><span class="p">(</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">round</span> <span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cvt 1600 900
+<span class="gp">#</span> 1600x900 59.95 Hz <span class="o">(</span>CVT 1.44M9<span class="o">)</span> hsync: 55.99 kHz; pclk: 118.25 MHz
+<span class="go">Modeline &quot;1600x900_60.00&quot;  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync</span>
+<span class="gp">$</span> xrandr --newmode <span class="s2">&quot;1600x900_60.00&quot;</span>  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+<span class="gp">$</span> xrandr --addmode VGA1 <span class="s2">&quot;1600x900_60.00&quot;</span>
+<span class="gp">$</span> xrandr --output VGA1 --mode <span class="s2">&quot;1600x900_60.00&quot;</span>
 </code></pre>
 </div>
 
 
-<p>For example:</p>
+<p>Also handy:</p>
 
-<div class="highlight"><pre><code class="irb"><span class="go">a = [1,2,3,4,5]</span>
-<span class="go">=&gt; [1, 2, 3, 4, 5]</span>
-<span class="go">a.each_slice( (a.size/2.0).round ).to_a</span>
-<span class="go">=&gt; [[1, 2, 3], [4, 5]]</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> xrandr --output LVDS1 --off --output VGA1 --auto
 </code></pre>
 </div>
 
@@ -123,37 +125,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/ruby.html">ruby</a> and <a href="/snippet/idiom.html">idiom</a>.</small>
-    </div>    
-    
-  </div>
-  <!-- <hr/> -->
-
-  <div class="snippet">
-    <h2 class="half-bottom">Split a Ruby array into N equally-sized parts.</h2>
-    <div>
-      <p>To split a Ruby array <code>a</code> into <code>n</code> equally-sized parts:</p>
-
-<div class="highlight"><pre><code class="ruby"><span class="n">a</span><span class="o">.</span><span class="n">each_slice</span><span class="p">(</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="n">n</span><span class="o">.</span><span class="n">to_f</span><span class="p">)</span><span class="o">.</span><span class="n">round</span> <span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
-</code></pre>
-</div>
-
-
-<p>For example:</p>
-
-<div class="highlight"><pre><code class="irb"><span class="go">a = [1,2,3,4,5]; n = 3</span>
-<span class="go">=&gt; 3</span>
-<span class="go">a.each_slice( (a.size/n.to_f).round ).to_a</span>
-<span class="go">=&gt; [[1, 2], [3, 4], [5]]</span>
-</code></pre>
-</div>
-
-
-
-
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/ruby.html">ruby</a> and <a href="/snippet/idiom.html">idiom</a>.</small>
+      <small>Tags: <a href="/snippet/linux.html">linux</a> and <a href="/snippet/xrandr.html">xrandr</a>.</small>
     </div>    
     
   </div>
