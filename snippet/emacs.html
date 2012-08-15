@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>5 emacs snippets</title>
+  <title>6 emacs snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -84,7 +84,7 @@
       
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
-            <h1 class=" remove-bottom">5 emacs snippets</h1>
+            <h1 class=" remove-bottom">6 emacs snippets</h1>
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -99,6 +99,27 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    <h2 class="half-bottom">Simple emacs mode for .gitignore files.</h2>
+    <div>
+      <p>Through the power of <a href="http://emacswiki.org/emacs/GenericMode">generic-mode</a>, adding the following lines to your <code>.emacs</code> file will add syntax-coloring support for <code>.gitignore</code>, <code>.svnignore</code>, etc. files.  And by &ldquo;syntax-coloring&rdquo; I mean that lines that start with a <code>#</code> will be marked as comments.</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;generic-x</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;auto-mode-alist</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;\\..*ignore$&quot;</span> <span class="o">.</span> <span class="nv">hosts-generic-mode</span><span class="p">))</span>
+</code></pre>
+</div>
+
+
+<p>Actually, any text after an un-escaped <code>#</code> will be marked as a comment, which isn&rsquo;t the way Git and SVN interpret those files. (TODO: it would be pretty simple to add a dot-ignore-generic-mode that handles this correctly.)</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/emacs.html">emacs</a> and <a href="/snippet/todo.html">todo</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     <h2 class="half-bottom">Spell checking cheat-sheet for emacs.</h2>
     <div>
@@ -252,14 +273,13 @@ M-x sort-lines
         <div id="caveator" class="off">
           <p class="smallprint">
             Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
-            The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated. My wife probably disagrees with me too. I can't even promise that <i>I</i> believe with anything you read here.
-            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  8:36 PM on 12 August 2012. Tempus fugit.
+            The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated. My wife probably disagrees with me too. I can't even promise that <i>I</i> agree with anything you read here.
+            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at 12:38 AM on 15 August 2012. Tempus fugit.
           </p>
         </div>
       </div>
     </div>
   </div>
-
 </body>
 </html>
 
