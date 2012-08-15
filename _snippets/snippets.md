@@ -1,4 +1,129 @@
 ######################################################################
+tags: [css]
+title: Multi-browser CSS transitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight css %}
+.foo { 
+  transition:         opacity .25s ease-in-out; 
+  -webkit-transition: opacity .25s ease-in-out; 
+  -moz-transition:    opacity .25s ease-in-out; 
+  -o-transition:      opacity .25s ease-in-out; 
+}
+{% endhighlight %}
+
+Where the right-hand side has the general form: 
+
+{% highlight text %}
+PROPERTY DURATION [TIMING-FUNCTION] [TRANSITION-DELAY]
+{% endhighlight %}
+
+Transitions can chained:
+
+{% highlight css %}
+transition: opacity .25s ease-in-out, height 1s linear 
+{% endhighlight %}
+
+### Transition timing functions
+
+ * `linear` - constant rate of change between states. 
+   
+   `cubic-bezier(0.0, 0.0, 1.0, 1.0)`
+   
+ * `ease` -  (the default) slow acceleration, then faster, before rapidly slowing again at the end. 
+ 
+   `cubic-bezier(0.25, 0.1, 0.25, 1.0)`
+   
+ * `ease-in-out` - like ease but accelerating/decelerating more rapidly (with a shorter transition between acceleration and deceleration).
+ 
+   `cubic-bezier(0.42, 0, 0.58, 1.0)`
+      
+ * `ease-in` - equivalent to the first half of ease-in-out; rapid accelerating then transitioning to a constant rate of change at the end. 
+ 
+   `cubic-bezier(0.42, 0, 1, 1.0)`
+      
+ * `ease-out` - equivalent to the second half of ease-in-out; a constant rate of change transitioning rapid deceleration at the end. 
+ 
+   `cubic-bezier(0.42, 0, 0.58, 1.0)`
+   
+ * `cubic-bezier(x1,y1,x2,y2)` - follows [cubic Bézier curve](http://en.wikipedia.org/wiki/B%C3%A9zier_curve) using the control points (0,0), (x1,y1), (x2,y2) and (1,1).
+ 
+ * `steps( n, [start|end] )` - stepwise function with *n* steps
+
+### How to read `cubic-bezier` functions
+
+Imagine the transition as a stepwise function starting at (0,0) and ending at (1,1) and with two steps in between.  The `cubic-bezier(x1,y1,x2,y2)` function specifies the points in the middle. In other words, *x1* and *x2* are the times at which the second and third steps happen, respectively (expressed as a fraction of the total transition duration) and *y1* and *y2* are how far along the transition is at *x1* and *x2*, respectively (expressed as a fraction of the total transition "distance").  Very loosely, the cubic-bezier function "smooths" those steps.
+
+These are nicely demonstrated [here](http://www.the-art-of-web.com/css/timing-function/).
+
+######################################################################
+tags: [emacs,todo]
+title: Simple emacs mode for .gitignore files.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Through the power of [generic-mode](http://emacswiki.org/emacs/GenericMode), adding the following lines to your `.emacs` file will add syntax-coloring support for `.gitignore`, `.svnignore`, etc. files.  And by "syntax-coloring" I mean that lines that start with a `#` will be marked as comments.
+
+{% highlight cl %}
+(require 'generic-x)
+(add-to-list 'auto-mode-alist '("\\..*ignore$" . hosts-generic-mode))
+{% endhighlight %}
+
+Actually, any text after an un-escaped `#` will be marked as a comment, which isn't the way Git and SVN interpret those files. (TODO: it would be pretty simple to add a dot-ignore-generic-mode that handles this correctly.)
+
+######################################################################
+tags: [git,gitignore,coffeescript]
+title: .gitignore boilerplate for CoffeeScript/Node.JS projects.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight squid %}
+# node.js / coffeescript
+#--------------------------------------------------------------------
+docs/*.html
+docs/docco
+lib-cov
+lib/*.js
+node_modules
+README.html
+test/*.js
+{% endhighlight %}
+
+######################################################################
+tags: [git,gitignore]
+title: .gitignore boilerplate for common temporary files.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A list of patterns for the names of common temporary and noise files, to be used as boilerplate in `.gitignore`, `.hgignore`, `.svnignore` etc.
+
+{% highlight squid %}
+# various tmp and noise files
+#---------------------------------------------------------------------$RECYCLE.BIN/
+*.*~
+*.log
+*.pid
+*.un~
+*~
+.*.sw[a-z]
+.\#*
+._*
+.directory
+.DS_Store
+.elc
+.Spotlight-V100
+.Trashes
+/.emacs.desktop
+/.emacs.desktop.lock
+\#*\#
+auto-save-list
+Desktop.ini
+log
+logs
+Session.vim
+temp
+Thumbs.db 
+tmp
+tramp
+{% endhighlight %}
+
+######################################################################
 tags: [linux]
 title: Find duplicate files on Linux.
 credit: Found at <a href="http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash">commmandlinefoo.com</a>
@@ -25,10 +150,10 @@ If I understand this correctly:
 2. Line 2 sorts the sizes (as numbers of descending size).
 3. Line 3 strips out the lines (sizes) that only appear once.
 4. For each remaining size, line 4 finds all the files of that size.
-5. Line 5 computes the MD5 hash for all the files found in line 4, outputing the MD5 hash and filename. (This is repeated for each set of files of a given size.)
+5. Line 5 computes the MD5 hash for all the files found in line 4, outputting the MD5 hash and file name. (This is repeated for each set of files of a given size.)
 6. Line 6 sorts that list for easy comparison.
 7. Line 7 compares the first 32 characters of each line (the MD5 hash) to find duplicates.
-8. Line 8 spits out the filename and path part of the matching linese.
+8. Line 8 spits out the file name and path part of the matching lines.
 
 Some alternative approaches can be found at [the original source](http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash).
 
@@ -49,7 +174,7 @@ selects three words at random from the `words` dictionary.
 
 ######################################################################
 tags: [git]
-title: Bundle up a git repository (as a backup).
+title: Backup a git repository (via git bundle).
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 From within a Git repository's working directory, run
@@ -98,17 +223,17 @@ These are the opposite of semantic markup, but I find them useful:
 CSS reset frameworks often strip out *all* formatting. These CSS rules contain some re-resets:
 
 {% highlight css %}
-/* I understand the theory behing replacing <i> and <b> with <em> and <strong>, but c'mon, really? */
-i                        { font-style: italic; }
-b                        { font-weight: bold; }
-small                    { font-size: 80%; }
+/* I understand the theory behind replacing <i> and <b> with <em> and <strong>, but c'mon, really? */
+i     { font-style: italic; }
+b     { font-weight: bold; }
+small { font-size: 80%; }
 
 /* Make superscripts and subscripts actually do something: */
-sup, sub                 { height: 0; line-height: 1; vertical-align: baseline; _vertical-align: bottom; position: relative; }
-sup                      {	bottom: 1ex; }
-sub                      {	top: .5ex; }
+sup, sub { height: 0; line-height: 1; vertical-align: baseline; _vertical-align: bottom; position: relative; }
+sup      {	bottom: 1ex; }
+sub      {	top: .5ex; }
 
-/* Monospaced types. */
+/* Mono-spaced types. */
 pre, code, kbd, samp, tt { font-family: 'droid sans mono slashed', 'droid sans mono dotted', 'droid sans mono', monospace, monospace; }
 {% endhighlight %}
 
@@ -268,12 +393,12 @@ title: Set monitor resolution with xrandr
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight console %}
-$ cvt 1600 900
-# 1600x900 59.95 Hz (CVT 1.44M9) hsync: 55.99 kHz; pclk: 118.25 MHz
-Modeline "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
-$ xrandr --newmode "1600x900_60.00"  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
-$ xrandr --addmode VGA1 "1600x900_60.00"
-$ xrandr --output VGA1 --mode "1600x900_60.00"
+$ cvt -r -v 1920 1080
+# 1920x1080 59.93 Hz (CVT 2.07M9-R) hsync: 66.59 kHz; pclk: 138.50 MHz
+Modeline "1920x1080R"  138.50  1920 1968 2000 2080  1080 1083 1088 1111 +hsync -vsync
+$ xrandr --newmode "1920x1080R"  138.50  1920 1968 2000 2080  1080 1083 1088 1111 +hsync -vsync
+$ xrandr --addmode VGA1 "1920x1080R"
+$ xrandr --output VGA1 --mode "1920x1080R"
 {% endhighlight %}
 
 Also handy:
@@ -353,7 +478,7 @@ title: Reading from input files or STDIN in Ruby using ARGF.
 
 Recall that `ARGV` array contains the arguments passed to your Ruby script on the command line.
 
-`ARGF` assumes that any elements that remain in `ARGV` represent files.  Methods like `ARGF.each` (accepting a block) and `ARGF.readlines` (returning an array) operate on the concatentation of all files found in `ARGV`.  If `ARGV` is empty, then `ARGF` operates on STDIN instead.
+`ARGF` assumes that any elements that remain in `ARGV` represent files.  Methods like `ARGF.each` (accepting a block) and `ARGF.readlines` (returning an array) operate on the concatenation of all files found in `ARGV`.  If `ARGV` is empty, then `ARGF` operates on STDIN instead.
 
 For example, a `cat`-like program could be implemented in Ruby as:
 
