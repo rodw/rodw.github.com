@@ -16,21 +16,38 @@ module Jekyll
     def write_snippet_pages
       DEBUG && puts("writing snippet pages")
       snippet_source_glob = File.join( self.source, self.config['snippet']['source']['dir'], self.config['snippet']['source']['glob']  )
-      snippet_dest_dir = self.config['snippet']['dest']['dir']
+      snippet_index_dest_dir = self.config['snippet']['dest']['index']['dir']
+      snippet_tag_dest_dir = self.config['snippet']['dest']['tag']['dir']
+      snippet_page_dest_dir = self.config['snippet']['dest']['page']['dir']
       list = []
       Dir.glob(snippet_source_glob) do |file|
         process_snippet_file( list, file )
       end
+
+      DEBUG && puts("writing snippet tag pages")
       by_tag = organize_snippets_by_tag(list)
       # write each tag page
       by_tag.each_pair { |tag,snippets| 
-        snippet_page = SnippetPage.new(self, self.source, snippet_dest_dir, tag, snippets)
+        snippet_page = SnippetTagPage.new(self, self.source, snippet_tag_dest_dir, tag, snippets)
         snippet_page.render(self.layouts, site_payload)
         snippet_page.write(self.dest)
         self.pages << snippet_page
       }
+
+      DEBUG && puts("writing individual snippet pages")
+      # write each snippet page
+      list.each { |snippet| 
+        if(snippet.slug) 
+          snippet_page = SnippetPage.new(self, self.source, snippet_page_dest_dir, snippet)
+          snippet_page.render(self.layouts, site_payload)
+          snippet_page.write(self.dest)
+          self.pages << snippet_page
+        end
+      }
+
+      DEBUG && puts("writing overall index page")
       # write overall index page
-      index_page = SnippetIndexPage.new(self, self.source, snippet_dest_dir, by_tag)
+      index_page = SnippetIndexPage.new(self, self.source, snippet_index_dest_dir, by_tag)
       index_page.render(self.layouts, site_payload)
       index_page.write(self.dest)
       self.pages << index_page
@@ -47,7 +64,7 @@ module Jekyll
         if SNIPPET_DELIM =~ line 
           last_bodycontent = buffer
           fm = YAML.parse(last_frontmatter).to_ruby unless last_frontmatter.nil? || last_frontmatter.empty?
-          container.push( Snippet.new(fm, last_bodycontent) ) unless last_bodycontent.nil? || last_bodycontent.empty?
+          container.push( Snippet.new(fm, last_bodycontent) ) unless last_bodycontent.nil? || last_bodycontent.empty?  || (!fm.nil? && fm['draft'])
 
           buffer = nil
           last_frontmatter = nil
@@ -69,7 +86,7 @@ module Jekyll
       unless buffer.nil? || buffer.empty?
         last_bodycontent = buffer
         fm = YAML.parse(last_frontmatter).to_ruby unless last_frontmatter.nil? || last_frontmatter.empty?
-        container.push( Snippet.new(fm, last_bodycontent) ) unless last_bodycontent.nil? || last_bodycontent.empty?
+        container.push( Snippet.new(fm, last_bodycontent) ) unless last_bodycontent.nil? || last_bodycontent.empty? || (!fm.nil? && fm['draft'])
       end
       DEBUG && puts("done processing snippet datafile #{filename}")
     end
@@ -89,8 +106,39 @@ module Jekyll
   end
 
   class SnippetPage < Page
+    def initialize(site, base, snippet_dir, snippet)
+      DEBUG && puts("Initializing SnippetPage for #{snippet.title}.")
+      @base = base
+      @site = site
+      @dir  = snippet_dir
+      @name = snippet.slug.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase + ".md" 
+
+      self.process(@name)
+
+      if(snippet.content) 
+        DEBUG && puts("snippet #{snippet.title} was already rendered")
+      else
+        DEBUG && puts("rendering snippet #{snippet.title}")
+        self.content = snippet.body
+        self.render({},{})
+        snippet.content = self.output
+      end
+      self.data = {}
+
+      self.data['title'] = snippet.title
+      #self.data['description'] = ""
+      self.data['layout'] = 'snippet-page'
+      self.data['snippet'] = snippet
+      DEBUG && puts("done initializing snippetpage.")
+    end
+  end
+
+  SNIPPET_DELIM = /^####*\s*$/
+  SNIPPET_YAML_DELIM = /^\^\^\^\^*\s*$/
+
+  class SnippetTagPage < Page
     def initialize(site, base, snippet_dir, tag, snippets)
-      DEBUG && puts("Initializing SnippetPage for #{tag}.")
+      DEBUG && puts("Initializing SnippetTagPage for #{tag}.")
       @base = base
       @site = site
       @dir  = snippet_dir
@@ -114,15 +162,12 @@ module Jekyll
       self.data = {}
       self.data['title'] = "#{snippets.size} #{tag.label} snippets"
       self.data['description'] = "Snippets tagged #{tag.label}"
-      self.data['layout'] = 'snippet'
+      self.data['layout'] = 'snippet-tag'
       self.data['snippets'] = snippets
       self.data['snippet-count'] = snippets.size
       DEBUG && puts("done initializing page.")
     end
   end
-
-  SNIPPET_DELIM = /^####*\s*$/
-  SNIPPET_YAML_DELIM = /^\^\^\^\^*\s*$/
 
 
   class SnippetIndexPage < Page
@@ -192,19 +237,23 @@ module Jekyll
 
   class Snippet
 
-    attr_reader :tags, :body
+    attr_reader :tags, :body, :title, :slug
     attr_accessor :content
   
     def initialize(frontmatter,bodycontent)
       @frontmatter = frontmatter
       @tags = []
       @body = bodycontent
-      unless(@frontmatter.nil? || @frontmatter['tags'].nil?)
-        raw = @frontmatter.to_a
-        @frontmatter['tags'].to_a.each { |tag| 
-          @tags.push(SnippetTag.new(tag)) unless tag.to_s.strip.length == 0
-        }
-      end
+      unless(@frontmatter.nil?) 
+        @slug = @frontmatter['slug']
+        @title = @frontmatter['title']
+        unless(@frontmatter['tags'].nil?)
+          raw = @frontmatter.to_a
+          @frontmatter['tags'].to_a.each { |tag| 
+            @tags.push(SnippetTag.new(tag)) unless tag.to_s.strip.length == 0
+          }
+        end
+      end 
     end
 
     def to_liquid

@@ -1,6 +1,18 @@
 ######################################################################
+tags: [multimedia,sources,links]
+title: Short list of sources for Creative Commons images and media.
+slug: test-slug
+draft: true
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* [Search for Creative Commons content via cc.org](http://search.creativecommons.org/)
+* [Search for Creative Commons content on Flickr](http://www.flickr.com/search/?q=kitten&l=commderiv) or use this [alternative interface from PhotoPin](http://photopin.com/search/kitten).
+* [Search for Creative Commons content via Google](https://www.google.com/search?q=kitten&tbs=sur:f&tbm=isch)
+
+######################################################################
 tags: [css]
-title: Multi-browser CSS transitions
+title: Cross-browser CSS transitions
+slug: cross-browser-css-transitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight css %}
@@ -59,6 +71,7 @@ These are nicely demonstrated [here](http://www.the-art-of-web.com/css/timing-fu
 ######################################################################
 tags: [emacs,todo]
 title: Simple emacs mode for .gitignore files.
+slug: gitignore-mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Through the power of [generic-mode](http://emacswiki.org/emacs/GenericMode), adding the following lines to your `.emacs` file will add syntax-coloring support for `.gitignore`, `.svnignore`, etc. files.  And by "syntax-coloring" I mean that lines that start with a `#` will be marked as comments.
@@ -71,8 +84,10 @@ Through the power of [generic-mode](http://emacswiki.org/emacs/GenericMode), add
 Actually, any text after an un-escaped `#` will be marked as a comment, which isn't the way Git and SVN interpret those files. (TODO: it would be pretty simple to add a dot-ignore-generic-mode that handles this correctly.)
 
 ######################################################################
-tags: [git,gitignore,coffeescript]
+futuretags: [coffeescript]
+tags: [git,gitignore]
 title: .gitignore boilerplate for CoffeeScript/Node.JS projects.
+slug: gitignore-for-coffee
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight squid %}
@@ -90,35 +105,37 @@ test/*.js
 ######################################################################
 tags: [git,gitignore]
 title: .gitignore boilerplate for common temporary files.
+slug: gitignore-boilerplate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A list of patterns for the names of common temporary and noise files, to be used as boilerplate in `.gitignore`, `.hgignore`, `.svnignore` etc.
 
 {% highlight squid %}
 # various tmp and noise files
-#---------------------------------------------------------------------$RECYCLE.BIN/
+#---------------------------------------------------------------------
+$RECYCLE.BIN/
 *.*~
 *.log
 *.pid
 *.un~
 *~
 .*.sw[a-z]
+.DS_Store
+.Spotlight-V100
+.Trashes
 .\#*
 ._*
 .directory
-.DS_Store
 .elc
-.Spotlight-V100
-.Trashes
 /.emacs.desktop
 /.emacs.desktop.lock
+Desktop.ini
+Session.vim
+Thumbs.db 
 \#*\#
 auto-save-list
-Desktop.ini
 log
 logs
-Session.vim
 temp
-Thumbs.db 
 tmp
 tramp
 {% endhighlight %}
@@ -127,6 +144,7 @@ tramp
 tags: [linux]
 title: Find duplicate files on Linux.
 credit: Found at <a href="http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash">commmandlinefoo.com</a>
+slug: find-duplicates-on-linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Find files that have the same size and MD5 hash (and hence are likely to be exact duplicates):
@@ -160,6 +178,7 @@ Some alternative approaches can be found at [the original source](http://www.com
 ######################################################################
 tags: [linux]
 title: Generate a random list of words with `shuf`
+slug: shuf-usr-share-dict-words
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `shuf` is (in my experience) a little known GNU utility that selects random lines (or bytes) from a file.
@@ -175,6 +194,7 @@ selects three words at random from the `words` dictionary.
 ######################################################################
 tags: [git]
 title: Backup a git repository (via git bundle).
+slug: git-repo-backup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 From within a Git repository's working directory, run
@@ -189,6 +209,7 @@ to create a single-file backup of the entire repository.
 ######################################################################
 tags: [linux]
 title: Restore Ctrl+Alt+Backspace as a way to kill X on Linux.
+slug: re-enable-ctrl-alt-backspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Modern Debian and Ubuntu distributions have this disabled by default.
@@ -201,6 +222,7 @@ $ setxkbmap -option terminate:ctrl_alt_backspace
 ######################################################################
 tags: [css]
 title: Some useful CSS mix-ins
+slug: some-css-mixins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ## Presentational Classes
@@ -241,6 +263,7 @@ pre, code, kbd, samp, tt { font-family: 'droid sans mono slashed', 'droid sans m
 ######################################################################
 tags: [linux]
 title: Backup an SD card on Linux using dd
+slug: how-to-backup-an-sd-card
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight bash %}
@@ -263,6 +286,7 @@ echo "tar Ozxf <file> | dd of=<device>"
 ######################################################################
 tags: [linux,bash]
 title: Find large files on Linux.
+slug: find-large-files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight console %}
@@ -275,6 +299,7 @@ $ du -h * | grep "^[0-9.]*M" | sort -n
 tags: [emacs]
 title: Spell checking cheat-sheet for emacs.
 credit: Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.
+slug: emacs-spell-keys
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * `M-$` - `ispell-word` or `ispell-region` (depending on whether something is selected)
@@ -297,6 +322,7 @@ credit: Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Sp
 tags: [emacs]
 title: Using (quoted-insert), or how to enter a newline character in the emacs minibuffer.
 credit: Via <a href="http://jeremy.zawodny.com/blog/archives/008872.html">jwz</a>.
+slug: insert-newline-into-emacs-minibuffer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To insert a newline character in the mini-buffer, use `(quoted-insert)`:
@@ -308,6 +334,7 @@ C-q C-j
 ######################################################################
 tags: [emacs]
 title: dos2unix in emacs
+slug: emacs-dos2unix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Replace `^M` with nothing:
@@ -321,6 +348,7 @@ M-% C-q C-m [RETURN] [RETURN]
 ######################################################################
 tags: [emacs]
 title: Case insensitive `sort-lines` in emacs.
+slug: emacs-case-insensitive-sort
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight text %}
@@ -330,8 +358,9 @@ M-x sort-lines
 
 
 ######################################################################
-tags: [pygments,jekyll]
+tags: [pygments,jekyll,markdown]
 title: Shortlist of language names recognized by pygments.
+slug: pygments-language-identifiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `pygments` language identifiers I use or have had to look up at one time or another.
@@ -364,8 +393,10 @@ Also see [the list of languages supported by Pygments](http://pygments.org/langu
 
 
 ######################################################################
-tags: [emacs,javascript]
+futuretags: [javascript]
+tags: [emacs]
 title: Using js-mode's indent logic in js2-mode.
+slug: fix-j2s-mode-indent-via-js-mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Steve Yegge's [js2-mode](http://code.google.com/p/js2-mode/) is a sweet major mode for working with JavaScript in Emacs, but its auto-indentation logic is [notoriously frustrating](http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely). 
 
@@ -388,8 +419,9 @@ PS: I haven't yet had a chance to sort these out, but there are at least four or
 The first two are supposed to address js2-mode's indentation problems (among other enhancements).
 
 ######################################################################
-tags: [linux,xrandr]
+tags: [linux]
 title: Set monitor resolution with xrandr
+slug: using-xrandr
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight console %}
@@ -408,9 +440,10 @@ $ xrandr --output LVDS1 --off --output VGA1 --auto
 {% endhighlight %}
 
 ######################################################################
-tags: [html,css]
+tags: [css]
 title: Vertically centering block elements with CSS.
 credit: via <a href="http://phrogz.net/css/vertical-align/index.html">phrogz.net</a>.
+slug: vertical-center-css
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight html %}
@@ -430,6 +463,7 @@ credit: via <a href="http://phrogz.net/css/vertical-align/index.html">phrogz.net
 ######################################################################
 tags: [ruby,rudimentary]
 title: Sorting a Ruby hash by key or value.
+slug: ruby-hash-sort
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ### by key
@@ -449,6 +483,7 @@ Note both forms return an array of key-value pairs (i.e., an array of arrays).
 ######################################################################
 tags: [ruby,rudimentary]
 title: Using Ruby arrays as stacks and queues.
+slug: ruby-stack-queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
  * `array.push` appends an element to the array.  
@@ -472,6 +507,7 @@ title: Using Ruby arrays as stacks and queues.
 ######################################################################
 tags: [ruby,cli,rudimentary]
 title: Reading from input files or STDIN in Ruby using ARGF.
+slug: ruby-argf-basics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `ARGF` makes it easy for a Ruby script to read from STDIN, a file specified on the command-line argument or multiple files specified on the command line, all through the same interface.
@@ -497,11 +533,11 @@ opt_parser = OptionParser.new do |opt|
   opt.separator  ""
   opt.separator  "OPTIONS"
 
-  opt.on("-h","--heading HEADING","a heading to display.") do |pattern|
-    options[:tagpattern] = pattern
+  opt.on("-h","--heading HEADING","a heading to display.") do |heading|
+    options[:heading] = heading
   end
 
-  opt.on("-v","--verbose","be more chatty") do |pattern|
+  opt.on("-v","--verbose","be more chatty") do
     options[:verbose] = true
   end
 end
@@ -514,6 +550,7 @@ ARGF.each_line { |line| puts line }
 ######################################################################
 tags: [linux,text-processing,sed,cli]
 title: Strip characters from a string or file
+slug: strip-chars-with-sed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight console %}
@@ -535,6 +572,7 @@ awk -F"\t" '{gsub(/[A-Za-z]/,"",$2); print $2 }'
 ######################################################################
 tags: [linux,text-processing,awk,cli]
 title: Some `awk` basics
+slug: some-awk-basics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Extract tab delimited fields from a file:
@@ -547,6 +585,7 @@ awk -F"\t" '{print "field one=" $1 "; field two=" $2 }' file
 ######################################################################
 tags: [linux,text-processing,sed,cli]
 title: Skip the first N lines in file
+slug: skip-n-lines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ### using `tail`
@@ -582,13 +621,16 @@ $ tail A,Bd filename
 when you want to exclude lines **`A`** through **`B`** from the output.
 
 ######################################################################
+title: List Availble Fonts
 tags: [linux,rudimentary]
+slug: list-fonts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To view a list of available fonts, use `fc-list`.
 
 ######################################################################
 tags: [ruby,idiom]
 title: Split a Ruby array into two halves.
+slug: split-ruby-array-in-half
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To split a Ruby array in two two equally-sized (+/-1) parts:
 
@@ -608,6 +650,7 @@ a.each_slice( (a.size/2.0).round ).to_a
 ######################################################################
 tags: [ruby,idiom]
 title: Split a Ruby array into N equally-sized parts.
+slug: split-ruby-array-equally
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To split a Ruby array `a` into `n` equally-sized parts:
 
@@ -627,6 +670,7 @@ a.each_slice( (a.size/n.to_f).round ).to_a
 ######################################################################
 tags: [mind hack]
 title: Begin with the end in mind.
+slug: begin-with-the-end-in-mind
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Intuitive thinkers work best when they understand the big picture. 
 
@@ -635,6 +679,7 @@ Try to articulate *why* this task is important,
 ######################################################################
 tags: [mind hack]
 title: The first step is to assume success.
+slug: assume-success
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Imagine the work is complete and wildly successful. what does that look like? what did you do to get there?
 
@@ -642,6 +687,7 @@ Imagine the work is complete and wildly successful. what does that look like? wh
 tags: [mind hack]
 title: Channel Someone
 credit: I'm pretty sure I cribbed this from something, but I can remember what.
+slug: channel-someone-else
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Why limit yourself to asking, "What would Jesus do?" (WWJD?) when you can not only ask "WWBD?" ("What would Buddha do?") or "WWMD?" ("What would Mohammed do?"), but also:
 
@@ -655,6 +701,7 @@ Why limit yourself to asking, "What would Jesus do?" (WWJD?) when you can not on
 ######################################################################
 tags: [bash,linux]
 title: Append to ~/.bash_history "immediately"
+slug: always-append-bash-history
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 {% highlight console %}
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"

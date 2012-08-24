@@ -13,7 +13,12 @@ snippet:
     dir: _snippets
     glob: "*.md"
   dest:
-    dir: snippet
+    index:
+      dir: snippet
+    tag:
+      dir: snippet/t
+    page:
+      dir: snippet/s
 
 primarynav:
 - text: Home

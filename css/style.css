@@ -39,7 +39,7 @@ pre, code, kbd, samp, tt { font-family: 'droid sans mono slashed', 'droid sans m
 a { color:#3f4c6b; }
 a:visited { color:#5f4c6b; }
 a:hover, #footer a:hover, #footer .pointer:hover { color:#50a6fe; text-decoration:underline;}
-
+a.permalink {text-decoration:none;}
 
 body { background:#c3d0ff; }
 .snippet  { border: solid 1px #ccc; padding: 14px; margin-top: 14px; margin-bottom: 14px; background:#fafafa; }

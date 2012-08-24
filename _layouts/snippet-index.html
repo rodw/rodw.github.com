@@ -9,21 +9,21 @@ meta:
   <div class="four columns">
     <ul class="disc">
       {% for tag in page.tags-one %}
-        <li><a href="/snippet/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
+        <li><a href="/snippet/t/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
       {% endfor %}
     </ul>
   </div>
   <div class="four columns">
     <ul class="disc">
       {% for tag in page.tags-two %}
-        <li><a href="/snippet/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
+        <li><a href="/snippet/t/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
       {% endfor %}
     </ul>
   </div>
   <div class="four columns">
     <ul class="disc">
       {% for tag in page.tags-three %}
-        <li><a href="/snippet/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
+        <li><a href="/snippet/t/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
       {% endfor %}
     </ul>
   </div>
