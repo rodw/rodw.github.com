@@ -708,3 +708,19 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 {% endhighlight %}
 
 ######################################################################
+tags: [markdown,pygments]
+title: Syntax coloring of code blocks in various flavors of Markdown. 
+slug: markdown-syntax-coloring
+draft: true
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In [strict Markdown](http://daringfireball.net/projects/markdown/), code blocks are indicated by lines indented by 4 (or more) spaces.  At render-time, the first four columns are stripped and the remainder is wrapped in an HTML `<PRE>` element.
+
+E.g., the block:
+
+             111111111122222222223
+    123456789012345678901234567890
+    
+        This is an example.
+
+######################################################################
