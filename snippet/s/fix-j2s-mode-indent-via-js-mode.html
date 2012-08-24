@@ -6,8 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Snippets</title>
-	<meta name="description" content="Index of code samples and other small bits of text.">
+  <title>Using js-mode's indent logic in js2-mode.</title>
+	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/css/skeleton-all-min.css">
@@ -85,74 +85,54 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">Snippets</h1>
-            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
                 
             </div>
           </div>
-          <hr class="half-bottom remove-top"/>
+          
         </div>
       
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="container">
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/awk.html">awk</a> (2)</li>
-      
-        <li><a href="/snippet/t/bash.html">bash</a> (2)</li>
-      
-        <li><a href="/snippet/t/cli.html">cli</a> (5)</li>
-      
-        <li><a href="/snippet/t/css.html">css</a> (3)</li>
-      
-        <li><a href="/snippet/t/emacs.html">emacs</a> (6)</li>
-      
-        <li><a href="/snippet/t/git.html">git</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/gitignore.html">gitignore</a> (2)</li>
-      
-        <li><a href="/snippet/t/idiom.html">idiom</a> (2)</li>
-      
-        <li><a href="/snippet/t/jekyll.html">jekyll</a> (1)</li>
-      
-        <li><a href="/snippet/t/linux.html">linux</a> (12)</li>
-      
-        <li><a href="/snippet/t/markdown.html">markdown</a> (1)</li>
-      
-        <li><a href="/snippet/t/mind-hack.html">mind hack</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/pygments.html">pygments</a> (1)</li>
-      
-        <li><a href="/snippet/t/ruby.html">ruby</a> (5)</li>
-      
-        <li><a href="/snippet/t/rudimentary.html">rudimentary</a> (4)</li>
-      
-        <li><a href="/snippet/t/sed.html">sed</a> (2)</li>
-      
-        <li><a href="/snippet/t/text-processing.html">text-processing</a> (4)</li>
-      
-        <li><a href="/snippet/t/todo.html">todo</a> (1)</li>
-      
-    </ul>
-  </div>
+        <div class="snippet">
+  <h2 class="half-bottom">Using js-mode's indent logic in js2-mode.</h2>
+  <div>
+    <p>Steve Yegge&rsquo;s <a href="http://code.google.com/p/js2-mode/">js2-mode</a> is a sweet major mode for working with JavaScript in Emacs, but its auto-indentation logic is <a href="http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely">notoriously frustrating</a>.</p>
+
+<p>Here&rsquo;s a a somewhat hack-y workaround: switch to <code>javascript-mode</code> before calling <code>indent-region</code> and then switch back.</p>
+
+<div class="highlight"><pre><code class="cl"><span class="c1">;; use js-mode&#39;s indent logic, by pressing C-M-| (C-M-S-\)</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">rlw/js-indent-region</span> <span class="p">()</span> <span class="p">(</span><span class="nv">interactive</span><span class="p">)</span> <span class="p">(</span><span class="nv">js-mode</span><span class="p">)</span> <span class="p">(</span><span class="nv">indent-region</span> <span class="p">(</span><span class="nv">region-beginning</span><span class="p">)</span> <span class="p">(</span><span class="nv">region-end</span><span class="p">))</span> <span class="p">(</span><span class="nv">js2-mode</span><span class="p">)</span> <span class="p">)</span>
+<span class="p">(</span><span class="nv">define-key</span> <span class="nv">js2-mode-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&quot;C-M-|&quot;</span><span class="p">)</span> <span class="ss">&#39;rlw/js-indent-region</span><span class="p">)</span>
+</code></pre>
 </div>
+
+
+<p>PS: I haven&rsquo;t yet had a chance to sort these out, but there are at least four or five JavaScript modes:</p>
+
+<ul>
+<li><a href="https://github.com/mooz/js2-mode">mooz&rsquo;s fork of js2-mode</a></li>
+<li><a href="https://github.com/thomblake/js3-mode">thomblake&rsquo;s js3-mode</a></li>
+<li>I think the defunct <a href="http://www.nongnu.org/espresso/">espresso-mode</a> is now the built-in <code>js-mode</code>.</li>
+<li>I&rsquo;m not sure where that leaves <code>javascript-mode</code>.  Also defunct I think.</li>
+<li>Steve Yegge&rsquo;s <a href="http://code.google.com/p/js2-mode/">js2-mode</a></li>
+</ul>
+
+
+<p>The first two are supposed to address js2-mode&rsquo;s indentation problems (among other enhancements).</p>
+
+  </div>
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
+
 
       </div>
 

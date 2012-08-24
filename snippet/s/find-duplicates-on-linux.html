@@ -6,8 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Snippets</title>
-	<meta name="description" content="Index of code samples and other small bits of text.">
+  <title>Find duplicate files on Linux.</title>
+	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/css/skeleton-all-min.css">
@@ -85,74 +85,62 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">Snippets</h1>
-            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
                 
             </div>
           </div>
-          <hr class="half-bottom remove-top"/>
+          
         </div>
       
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="container">
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/awk.html">awk</a> (2)</li>
-      
-        <li><a href="/snippet/t/bash.html">bash</a> (2)</li>
-      
-        <li><a href="/snippet/t/cli.html">cli</a> (5)</li>
-      
-        <li><a href="/snippet/t/css.html">css</a> (3)</li>
-      
-        <li><a href="/snippet/t/emacs.html">emacs</a> (6)</li>
-      
-        <li><a href="/snippet/t/git.html">git</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/gitignore.html">gitignore</a> (2)</li>
-      
-        <li><a href="/snippet/t/idiom.html">idiom</a> (2)</li>
-      
-        <li><a href="/snippet/t/jekyll.html">jekyll</a> (1)</li>
-      
-        <li><a href="/snippet/t/linux.html">linux</a> (12)</li>
-      
-        <li><a href="/snippet/t/markdown.html">markdown</a> (1)</li>
-      
-        <li><a href="/snippet/t/mind-hack.html">mind hack</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/pygments.html">pygments</a> (1)</li>
-      
-        <li><a href="/snippet/t/ruby.html">ruby</a> (5)</li>
-      
-        <li><a href="/snippet/t/rudimentary.html">rudimentary</a> (4)</li>
-      
-        <li><a href="/snippet/t/sed.html">sed</a> (2)</li>
-      
-        <li><a href="/snippet/t/text-processing.html">text-processing</a> (4)</li>
-      
-        <li><a href="/snippet/t/todo.html">todo</a> (1)</li>
-      
-    </ul>
-  </div>
+        <div class="snippet">
+  <h2 class="half-bottom">Find duplicate files on Linux.</h2>
+  <div>
+    <p>Find files that have the same size and MD5 hash (and hence are likely to be exact duplicates):</p>
+
+<div class="highlight"><pre><code class="console"><span class="lineno">1</span> <span class="gp">$</span> find -not -empty -type f -printf <span class="s2">&quot;%s\n&quot;</span> | <span class="se">\</span>
+<span class="lineno">2</span> <span class="gp">&gt;</span> sort -rn | <span class="se">\</span>
+<span class="lineno">3</span> <span class="gp">&gt;</span> uniq -d | <span class="se">\</span>
+<span class="lineno">4</span> <span class="gp">&gt;</span> xargs -I<span class="o">{}</span> -n1 find -type f -size <span class="o">{}</span>c -print0 | <span class="se">\</span>
+<span class="lineno">5</span> <span class="gp">&gt;</span> xargs -0 md5sum | <span class="se">\</span>
+<span class="lineno">6</span> <span class="gp">&gt;</span> sort | <span class="se">\</span>
+<span class="lineno">7</span> <span class="gp">&gt;</span> uniq -w32 --all-repeated<span class="o">=</span>separate | <span class="se">\</span>
+<span class="lineno">8</span> <span class="gp">&gt;</span> cut -d<span class="s2">&quot; &quot;</span> -f3-
+</code></pre>
 </div>
+
+
+<p>You probably want to pipe that to a file as it runs slowly.</p>
+
+<p>If I understand this correctly:</p>
+
+<ol>
+<li>Line 1 enumerates the real files non-empty by size.</li>
+<li>Line 2 sorts the sizes (as numbers of descending size).</li>
+<li>Line 3 strips out the lines (sizes) that only appear once.</li>
+<li>For each remaining size, line 4 finds all the files of that size.</li>
+<li>Line 5 computes the MD5 hash for all the files found in line 4, outputting the MD5 hash and file name. (This is repeated for each set of files of a given size.)</li>
+<li>Line 6 sorts that list for easy comparison.</li>
+<li>Line 7 compares the first 32 characters of each line (the MD5 hash) to find duplicates.</li>
+<li>Line 8 spits out the file name and path part of the matching lines.</li>
+</ol>
+
+
+<p>Some alternative approaches can be found at <a href="http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash">the original source</a>.</p>
+
+  </div>
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/linux.html">linux</a>.</small>
+  </div>    
+  <div class="align-right"><small>Credit: Found at <a href="http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash">commmandlinefoo.com</a></small></div>
+</div>
+<!-- <hr/> -->
+
 
       </div>
 

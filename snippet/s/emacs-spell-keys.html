@@ -6,8 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Snippets</title>
-	<meta name="description" content="Index of code samples and other small bits of text.">
+  <title>Spell checking cheat-sheet for emacs.</title>
+	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/css/skeleton-all-min.css">
@@ -85,74 +85,48 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">Snippets</h1>
-            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
                 
             </div>
           </div>
-          <hr class="half-bottom remove-top"/>
+          
         </div>
       
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="container">
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/awk.html">awk</a> (2)</li>
-      
-        <li><a href="/snippet/t/bash.html">bash</a> (2)</li>
-      
-        <li><a href="/snippet/t/cli.html">cli</a> (5)</li>
-      
-        <li><a href="/snippet/t/css.html">css</a> (3)</li>
-      
-        <li><a href="/snippet/t/emacs.html">emacs</a> (6)</li>
-      
-        <li><a href="/snippet/t/git.html">git</a> (3)</li>
-      
-    </ul>
+        <div class="snippet">
+  <h2 class="half-bottom">Spell checking cheat-sheet for emacs.</h2>
+  <div>
+    <ul>
+<li><code>M-$</code> &ndash; <code>ispell-word</code> or <code>ispell-region</code> (depending on whether something is selected)</li>
+<li><code>[SPACE]</code> &ndash; Skip this word—continue to consider it incorrect, but don&rsquo;t change it here.</li>
+<li><code>r newword [RETURN]</code> &ndash; Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.)</li>
+<li><code>R new [RETURN]</code> &ndash; Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.)</li>
+<li><code>a</code> &ndash; Accept the incorrect word—treat it as correct, but only in this editing session.</li>
+<li><code>A</code> &ndash; Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer.</li>
+<li><code>i</code> &ndash; Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions.</li>
+<li><code>m</code> &ndash; Like <code>i</code>, but you can also specify dictionary completion information.</li>
+<li><code>u</code> &ndash; Insert the lower-case version of this word in your private dictionary file.</li>
+<li><code>l word [RETURN]</code> &ndash; Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use <code>*</code> in word as a wildcard.</li>
+<li><code>C-g X</code> &ndash; Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with <code>C-u M-$</code>.</li>
+<li><code>x</code> &ndash; Quit interactive spell checking and move point back to where it was when you started spell checking.</li>
+<li><code>q</code> &ndash; Quit interactive spell checking and kill the spell-checker subprocess.</li>
+<li><code>?</code> &ndash; Help</li>
+</ul>
+
+
   </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/gitignore.html">gitignore</a> (2)</li>
-      
-        <li><a href="/snippet/t/idiom.html">idiom</a> (2)</li>
-      
-        <li><a href="/snippet/t/jekyll.html">jekyll</a> (1)</li>
-      
-        <li><a href="/snippet/t/linux.html">linux</a> (12)</li>
-      
-        <li><a href="/snippet/t/markdown.html">markdown</a> (1)</li>
-      
-        <li><a href="/snippet/t/mind-hack.html">mind hack</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/pygments.html">pygments</a> (1)</li>
-      
-        <li><a href="/snippet/t/ruby.html">ruby</a> (5)</li>
-      
-        <li><a href="/snippet/t/rudimentary.html">rudimentary</a> (4)</li>
-      
-        <li><a href="/snippet/t/sed.html">sed</a> (2)</li>
-      
-        <li><a href="/snippet/t/text-processing.html">text-processing</a> (4)</li>
-      
-        <li><a href="/snippet/t/todo.html">todo</a> (1)</li>
-      
-    </ul>
-  </div>
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>.</small>
+  </div>    
+  <div class="align-right"><small>Credit: Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.</small></div>
 </div>
+<!-- <hr/> -->
+
 
       </div>
 

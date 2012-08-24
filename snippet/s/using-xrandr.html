@@ -6,8 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Snippets</title>
-	<meta name="description" content="Index of code samples and other small bits of text.">
+  <title>Set monitor resolution with xrandr</title>
+	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/css/skeleton-all-min.css">
@@ -85,74 +85,51 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">Snippets</h1>
-            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
                 
             </div>
           </div>
-          <hr class="half-bottom remove-top"/>
+          
         </div>
       
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="container">
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/awk.html">awk</a> (2)</li>
-      
-        <li><a href="/snippet/t/bash.html">bash</a> (2)</li>
-      
-        <li><a href="/snippet/t/cli.html">cli</a> (5)</li>
-      
-        <li><a href="/snippet/t/css.html">css</a> (3)</li>
-      
-        <li><a href="/snippet/t/emacs.html">emacs</a> (6)</li>
-      
-        <li><a href="/snippet/t/git.html">git</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/gitignore.html">gitignore</a> (2)</li>
-      
-        <li><a href="/snippet/t/idiom.html">idiom</a> (2)</li>
-      
-        <li><a href="/snippet/t/jekyll.html">jekyll</a> (1)</li>
-      
-        <li><a href="/snippet/t/linux.html">linux</a> (12)</li>
-      
-        <li><a href="/snippet/t/markdown.html">markdown</a> (1)</li>
-      
-        <li><a href="/snippet/t/mind-hack.html">mind hack</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/pygments.html">pygments</a> (1)</li>
-      
-        <li><a href="/snippet/t/ruby.html">ruby</a> (5)</li>
-      
-        <li><a href="/snippet/t/rudimentary.html">rudimentary</a> (4)</li>
-      
-        <li><a href="/snippet/t/sed.html">sed</a> (2)</li>
-      
-        <li><a href="/snippet/t/text-processing.html">text-processing</a> (4)</li>
-      
-        <li><a href="/snippet/t/todo.html">todo</a> (1)</li>
-      
-    </ul>
-  </div>
+        <div class="snippet">
+  <h2 class="half-bottom">Set monitor resolution with xrandr</h2>
+  <div>
+    
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cvt -r -v 1920 1080
+<span class="gp">#</span> 1920x1080 59.93 Hz <span class="o">(</span>CVT 2.07M9-R<span class="o">)</span> hsync: 66.59 kHz; pclk: 138.50 MHz
+<span class="go">Modeline &quot;1920x1080R&quot;  138.50  1920 1968 2000 2080  1080 1083 1088 1111 +hsync -vsync</span>
+<span class="gp">$</span> xrandr --newmode <span class="s2">&quot;1920x1080R&quot;</span>  138.50  1920 1968 2000 2080  1080 1083 1088 1111 +hsync -vsync
+<span class="gp">$</span> xrandr --addmode VGA1 <span class="s2">&quot;1920x1080R&quot;</span>
+<span class="gp">$</span> xrandr --output VGA1 --mode <span class="s2">&quot;1920x1080R&quot;</span>
+</code></pre>
 </div>
+
+
+<p>Also handy:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> xrandr --output LVDS1 --off --output VGA1 --auto
+</code></pre>
+</div>
+
+
+
+
+  </div>
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/linux.html">linux</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
+
 
       </div>
 

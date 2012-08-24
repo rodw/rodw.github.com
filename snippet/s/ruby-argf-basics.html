@@ -6,8 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Snippets</title>
-	<meta name="description" content="Index of code samples and other small bits of text.">
+  <title>Reading from input files or STDIN in Ruby using ARGF.</title>
+	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/css/skeleton-all-min.css">
@@ -85,74 +85,71 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">Snippets</h1>
-            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
                 
             </div>
           </div>
-          <hr class="half-bottom remove-top"/>
+          
         </div>
       
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="container">
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/awk.html">awk</a> (2)</li>
-      
-        <li><a href="/snippet/t/bash.html">bash</a> (2)</li>
-      
-        <li><a href="/snippet/t/cli.html">cli</a> (5)</li>
-      
-        <li><a href="/snippet/t/css.html">css</a> (3)</li>
-      
-        <li><a href="/snippet/t/emacs.html">emacs</a> (6)</li>
-      
-        <li><a href="/snippet/t/git.html">git</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/gitignore.html">gitignore</a> (2)</li>
-      
-        <li><a href="/snippet/t/idiom.html">idiom</a> (2)</li>
-      
-        <li><a href="/snippet/t/jekyll.html">jekyll</a> (1)</li>
-      
-        <li><a href="/snippet/t/linux.html">linux</a> (12)</li>
-      
-        <li><a href="/snippet/t/markdown.html">markdown</a> (1)</li>
-      
-        <li><a href="/snippet/t/mind-hack.html">mind hack</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/pygments.html">pygments</a> (1)</li>
-      
-        <li><a href="/snippet/t/ruby.html">ruby</a> (5)</li>
-      
-        <li><a href="/snippet/t/rudimentary.html">rudimentary</a> (4)</li>
-      
-        <li><a href="/snippet/t/sed.html">sed</a> (2)</li>
-      
-        <li><a href="/snippet/t/text-processing.html">text-processing</a> (4)</li>
-      
-        <li><a href="/snippet/t/todo.html">todo</a> (1)</li>
-      
-    </ul>
-  </div>
+        <div class="snippet">
+  <h2 class="half-bottom">Reading from input files or STDIN in Ruby using ARGF.</h2>
+  <div>
+    <p><code>ARGF</code> makes it easy for a Ruby script to read from STDIN, a file specified on the command-line argument or multiple files specified on the command line, all through the same interface.</p>
+
+<p>Recall that <code>ARGV</code> array contains the arguments passed to your Ruby script on the command line.</p>
+
+<p><code>ARGF</code> assumes that any elements that remain in <code>ARGV</code> represent files.  Methods like <code>ARGF.each</code> (accepting a block) and <code>ARGF.readlines</code> (returning an array) operate on the concatenation of all files found in <code>ARGV</code>.  If <code>ARGV</code> is empty, then <code>ARGF</code> operates on STDIN instead.</p>
+
+<p>For example, a <code>cat</code>-like program could be implemented in Ruby as:</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="no">ARGF</span><span class="o">.</span><span class="n">each_line</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">line</span> <span class="p">}</span>
+</code></pre>
 </div>
+
+
+<p>When working with <code>optparse</code>, use the <code>parse!</code> method to strip recognized &ldquo;flag&rdquo; parameters from <code>ARGV</code>, leaving only the files you want to operate so that <code>ARGF</code> works just like you want it to. For example:</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">&#39;optparse&#39;</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span>
+<span class="n">opt_parser</span> <span class="o">=</span> <span class="no">OptionParser</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">opt</span><span class="o">|</span>
+  <span class="n">opt</span><span class="o">.</span><span class="n">banner</span> <span class="o">=</span> <span class="s2">&quot;Usage: </span><span class="si">#{</span><span class="vg">$0</span><span class="si">}</span><span class="s2"> [OPTIONS]&quot;</span>
+  <span class="n">opt</span><span class="o">.</span><span class="n">separator</span>  <span class="s2">&quot;&quot;</span>
+  <span class="n">opt</span><span class="o">.</span><span class="n">separator</span>  <span class="s2">&quot;OPTIONS&quot;</span>
+
+  <span class="n">opt</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">,</span><span class="s2">&quot;--heading HEADING&quot;</span><span class="p">,</span><span class="s2">&quot;a heading to display.&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">heading</span><span class="o">|</span>
+    <span class="n">options</span><span class="o">[</span><span class="ss">:heading</span><span class="o">]</span> <span class="o">=</span> <span class="n">heading</span>
+  <span class="k">end</span>
+
+  <span class="n">opt</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;-v&quot;</span><span class="p">,</span><span class="s2">&quot;--verbose&quot;</span><span class="p">,</span><span class="s2">&quot;be more chatty&quot;</span><span class="p">)</span> <span class="k">do</span>
+    <span class="n">options</span><span class="o">[</span><span class="ss">:verbose</span><span class="o">]</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">opt_parser</span><span class="o">.</span><span class="n">parse!</span>
+
+<span class="nb">puts</span> <span class="n">options</span><span class="o">[</span><span class="ss">:heading</span><span class="o">]</span> <span class="k">unless</span> <span class="n">options</span><span class="o">[</span><span class="ss">:heading</span><span class="o">].</span><span class="n">nil?</span>
+<span class="no">ARGF</span><span class="o">.</span><span class="n">each_line</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">line</span> <span class="p">}</span>
+</code></pre>
+</div>
+
+
+
+
+  </div>
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/ruby.html">ruby</a>, <a href="/snippet/t/cli.html">cli</a> and <a href="/snippet/t/rudimentary.html">rudimentary</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
+
 
       </div>
 

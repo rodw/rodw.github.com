@@ -6,8 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Snippets</title>
-	<meta name="description" content="Index of code samples and other small bits of text.">
+  <title>2 awk snippets</title>
+	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/css/skeleton-all-min.css">
@@ -85,7 +85,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">Snippets</h1>
+              <h1 class=" remove-bottom">2 awk snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -93,66 +93,63 @@
                 
             </div>
           </div>
-          <hr class="half-bottom remove-top"/>
+          
         </div>
       
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="container">
-  <div class="four columns">
-    <ul class="disc">
+        
+  <div class="snippet">
+    
       
-        <li><a href="/snippet/t/awk.html">awk</a> (2)</li>
+        <h2 class="half-bottom">Strip characters from a field in awk</h2>
       
-        <li><a href="/snippet/t/bash.html">bash</a> (2)</li>
-      
-        <li><a href="/snippet/t/cli.html">cli</a> (5)</li>
-      
-        <li><a href="/snippet/t/css.html">css</a> (3)</li>
-      
-        <li><a href="/snippet/t/emacs.html">emacs</a> (6)</li>
-      
-        <li><a href="/snippet/t/git.html">git</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/gitignore.html">gitignore</a> (2)</li>
-      
-        <li><a href="/snippet/t/idiom.html">idiom</a> (2)</li>
-      
-        <li><a href="/snippet/t/jekyll.html">jekyll</a> (1)</li>
-      
-        <li><a href="/snippet/t/linux.html">linux</a> (12)</li>
-      
-        <li><a href="/snippet/t/markdown.html">markdown</a> (1)</li>
-      
-        <li><a href="/snippet/t/mind-hack.html">mind hack</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/pygments.html">pygments</a> (1)</li>
-      
-        <li><a href="/snippet/t/ruby.html">ruby</a> (5)</li>
-      
-        <li><a href="/snippet/t/rudimentary.html">rudimentary</a> (4)</li>
-      
-        <li><a href="/snippet/t/sed.html">sed</a> (2)</li>
-      
-        <li><a href="/snippet/t/text-processing.html">text-processing</a> (4)</li>
-      
-        <li><a href="/snippet/t/todo.html">todo</a> (1)</li>
-      
-    </ul>
-  </div>
+    
+    <div>
+      <p>E.g., the following command strips alpha characters from the second (tab delimited) field.</p>
+
+<div class="highlight"><pre><code class="awk"><span class="nx">awk</span> <span class="o">-</span><span class="nx">F</span><span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;{gsub(/[A-Za-z]/,&quot;&quot;,$2); print $2 }&#39;</span>
+</code></pre>
 </div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/text-processing.html">text-processing</a>, <a href="/snippet/t/awk.html">awk</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/some-awk-basics.html">
+        <h2 class="half-bottom">Some `awk` basics</h2>
+      </a>
+    
+    <div>
+      <p>Extract tab delimited fields from a file:</p>
+
+<div class="highlight"><pre><code class="awk"><span class="nx">awk</span> <span class="o">-</span><span class="nx">F</span><span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;{print &quot;field one=&quot; $1 &quot;; field two=&quot; $2 }&#39;</span> <span class="nx">file</span>
+</code></pre>
+</div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/text-processing.html">text-processing</a>, <a href="/snippet/t/awk.html">awk</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+
 
       </div>
 

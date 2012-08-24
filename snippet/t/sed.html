@@ -6,8 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Snippets</title>
-	<meta name="description" content="Index of code samples and other small bits of text.">
+  <title>2 sed snippets</title>
+	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="/css/skeleton-all-min.css">
@@ -85,7 +85,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">Snippets</h1>
+              <h1 class=" remove-bottom">2 sed snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -93,66 +93,91 @@
                 
             </div>
           </div>
-          <hr class="half-bottom remove-top"/>
+          
         </div>
       
 
       
 
       <div class="thirteen columns bulleted">
-        <div class="container">
-  <div class="four columns">
-    <ul class="disc">
+        
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/strip-chars-with-sed.html">
+        <h2 class="half-bottom">Strip characters from a string or file</h2>
+      </a>
+    
+    <div>
       
-        <li><a href="/snippet/t/awk.html">awk</a> (2)</li>
-      
-        <li><a href="/snippet/t/bash.html">bash</a> (2)</li>
-      
-        <li><a href="/snippet/t/cli.html">cli</a> (5)</li>
-      
-        <li><a href="/snippet/t/css.html">css</a> (3)</li>
-      
-        <li><a href="/snippet/t/emacs.html">emacs</a> (6)</li>
-      
-        <li><a href="/snippet/t/git.html">git</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/gitignore.html">gitignore</a> (2)</li>
-      
-        <li><a href="/snippet/t/idiom.html">idiom</a> (2)</li>
-      
-        <li><a href="/snippet/t/jekyll.html">jekyll</a> (1)</li>
-      
-        <li><a href="/snippet/t/linux.html">linux</a> (12)</li>
-      
-        <li><a href="/snippet/t/markdown.html">markdown</a> (1)</li>
-      
-        <li><a href="/snippet/t/mind-hack.html">mind hack</a> (3)</li>
-      
-    </ul>
-  </div>
-  <div class="four columns">
-    <ul class="disc">
-      
-        <li><a href="/snippet/t/pygments.html">pygments</a> (1)</li>
-      
-        <li><a href="/snippet/t/ruby.html">ruby</a> (5)</li>
-      
-        <li><a href="/snippet/t/rudimentary.html">rudimentary</a> (4)</li>
-      
-        <li><a href="/snippet/t/sed.html">sed</a> (2)</li>
-      
-        <li><a href="/snippet/t/text-processing.html">text-processing</a> (4)</li>
-      
-        <li><a href="/snippet/t/todo.html">todo</a> (1)</li>
-      
-    </ul>
-  </div>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;A1B2C3&quot;</span> | sed <span class="s1">&#39;s/[A-Z]//g&#39;</span>
+<span class="go">123</span>
+</code></pre>
 </div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/text-processing.html">text-processing</a>, <a href="/snippet/t/sed.html">sed</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/skip-n-lines.html">
+        <h2 class="half-bottom">Skip the first N lines in file</h2>
+      </a>
+    
+    <div>
+      <h3>using <code>tail</code></h3>
+
+<p>To skip the first line of a file (and start piping data at the second line):</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> tail -n +2 FILENAME
+</code></pre>
+</div>
+
+
+<p>More generally:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> tail -n +M FILENAME
+</code></pre>
+</div>
+
+
+<p>where <strong><code>M</code></strong> is the number of the first line you want to see (i.e., the number of lines to skip plus one).</p>
+
+<h3>using <code>sed</code></h3>
+
+<p>To skip the first line of a file (and start piping data at the second line):</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> sed 1d FILENAME
+</code></pre>
+</div>
+
+
+<p>More generally:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> tail A,Bd filename
+</code></pre>
+</div>
+
+
+<p>when you want to exclude lines <strong><code>A</code></strong> through <strong><code>B</code></strong> from the output.</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/text-processing.html">text-processing</a>, <a href="/snippet/t/sed.html">sed</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+
 
       </div>
 
