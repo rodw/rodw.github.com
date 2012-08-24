@@ -359,7 +359,7 @@ M-x sort-lines
 
 ######################################################################
 tags: [pygments,jekyll,markdown]
-title: Shortlist of language names recognized by pygments.
+title: Short list of language names recognized by pygments.
 slug: pygments-language-identifiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
