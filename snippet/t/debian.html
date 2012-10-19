@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+  <title>2 debian snippets</title>
+	
+	<meta name="author" content="rod">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="/css/skeleton-all-min.css">
+	<link rel="stylesheet" href="/css/style.css">
+  
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+  
+  <link rel="icon" type="image/svg+xml" href="img/braindump-mod.svg"/>
+	<link rel="alternate shortcut icon" href="img/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="img/braindump-57x57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/braindump-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/braindump-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/braindump-144x144.png">
+  <link rel="apple-touch-startup-image" sizes="320x460" href="img/startup-320x460.png">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34329491-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</head>
+
+<body>
+    
+  
+
+  <nav id="primary">
+    <div class="container">
+      <div class="fourteen columns offset-by-two">
+        <ul>
+          
+            
+            
+            <li class="" >
+              <a class="" href="/">Home</a>
+            </li>
+          
+            
+            
+            <li class="" >
+              <a class="" href="/project">Projects</a>
+            </li>
+          
+            
+            
+              
+            
+            <li class="active" >
+              <a class="active" href="/snippet">Snippets</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+
+  <div id="main">
+    <div class="container">
+
+      
+
+      <div class="three columns align-center">
+        <div style="margin-top:50px;"><a href="/"><img src="/img/braindump-64x64.png" height="64" width="64"></a></div>
+        <div class="mtop"><a href="/" class="nobr nou" style="color:#555;"><b>Rodney Waldhoff</b></a></div>
+        <ul class="mtop">
+          <li><a class="flatbutton" href="https://github.com/rodw"><img style="vertical-align:middle; float:left;" src="/img/octocat-24x24.png" height="24" width="24"><span class="float-right">GitHub</span></a></li>
+          <li><a class="flatbutton" href="http://www.linkedin.com/in/rwald"><img style="vertical-align:middle; float:left;" src="/img/linkedin-24x24.png" height="24" width="24"><span class="float-right">LinkedIn</span></a></a></li>
+        </ul>
+      </div>
+
+      
+
+      
+
+      
+        <div class="thirteen columns">
+          <div id="page-header" class="half-bottom mtop">
+            
+              <h1 class=" remove-bottom">2 debian snippets</h1>
+            
+            <div class="page-class remove-bottom">
+              
+                  <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
+                
+            </div>
+          </div>
+          
+        </div>
+      
+
+      
+
+      <div class="thirteen columns bulleted">
+        
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/linux-run-level-cheatsheet.html">
+        <h2 class="half-bottom">Cheat Sheet for Linux Run Levels</h2>
+      </a>
+    
+    <div>
+      <p>&ldquo;Standard&rdquo; Linux uses the following run levels:</p>
+
+<ul>
+<li><strong><em>Run Level 0</em></strong> is halt (shutdown).</li>
+<li><strong><em>Run Level 1</em></strong> is single-user mode.</li>
+<li><strong><em>Run Level 2</em></strong> is multi-user mode (without networking)</li>
+<li><strong><em>Run Level 3</em></strong> is multi-user mode (with networking). This is the normal &ldquo;terminal&rdquo; mode. (I.e., before the display manager is run).</li>
+<li><strong><em>Run Level 4</em></strong> is undefined.</li>
+<li><strong><em>Run Level 5</em></strong> is multi-usermode with a GUI display manager (X11).</li>
+<li><strong><em>Run Level 6</em></strong> is reboot.</li>
+</ul>
+
+
+<p>In Debian and its derivatives run levels 2 thru 5 are the same: multi-user mode with networking, and with a display manager if available.</p>
+
+<ul>
+<li><strong><em>Run Level 0</em></strong> is halt (shutdown).</li>
+<li><strong><em>Run Level 1</em></strong> is single-user mode.</li>
+<li><strong><em>Run Level 2-5</em></strong> is multi-user mode with networking and a GUI display manager when available.</li>
+<li><strong><em>Run Level 6</em></strong> is reboot.</li>
+</ul>
+
+
+<p>Debian also adds <strong><em>Run Level S</em></strong>, which is executed when the system first boots.</p>
+
+<p>Also see <a href="http://en.wikipedia.org/wiki/Runlevel">Wikipedia&rsquo;s article on run levels</a>.</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/debian.html">debian</a> and <a href="/snippet/t/reference.html">reference</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/disable-services-in-linux.html">
+        <h2 class="half-bottom">How to disable services in Debian/Linux</h2>
+      </a>
+    
+    <div>
+      <p>The easy way is to install <code>sysv-rc-conf</code>:</p>
+
+<div class="highlight"><pre><code class="console"><span class="go">aptitude install sysv-rc-conf</span>
+<span class="go">sysv-rc-conf</span>
+</code></pre>
+</div>
+
+
+<p>Manually, use <code>update-rc.d</code> and specify the run levels, like so:</p>
+
+<div class="highlight"><pre><code class="console"><span class="go">update-rc.d SERVICE_NAME stop 0 1 6 3 . start 2 4 5 .</span>
+</code></pre>
+</div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/linux.html">linux</a> and <a href="/snippet/t/debian.html">debian</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+  
+
+  <div id="footer">
+    <div class="container">
+      <div class="sixteen columns align-center">
+        <p class="half-bottom">
+          <span class="nobr">rw&#97;ldho<script language="javascript">(function(){var f=function(c) { document.write(String.fromCharCode(c)); }; f(0146); f(0x66); f(0100); })();</script>g&#109;ail&#46;com</span>
+          &nbsp;|&nbsp;
+          <span class="nobr">(&#55;03) 5&#51;5-6<script language="javascript">document.write("0"); document.write((4-3+1)+"");</script>6</span>
+        </p>
+        <p class="half-bottom">
+          <span class="nobr"><a href="/">heyrod.com</a></span>
+          &nbsp;|&nbsp;
+          <span class="nobr"><a class="pointer" onclick="(function(){document.getElementById('caveator').className = (document.getElementById('caveator').className == 'off') ? 'on' : 'off';})(); return false">small print</a></span>
+          &nbsp;|&nbsp;
+          <span class="nobr"><a href="/page/colophon.html">credits</a></span>
+        </p>
+        <p class="half-bottom">&copy; Copyright 2012 Rodney Waldhoff.</p>
+        <div id="caveator" class="off">
+          <p class="smallprint">
+            Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
+            The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated. My wife probably disagrees with me too. I can't even promise that <i>I</i> agree with anything you read here.
+            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  9:31 PM on 18 October 2012. Tempus fugit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

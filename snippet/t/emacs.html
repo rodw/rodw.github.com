@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>6 emacs snippets</title>
+  <title>11 emacs snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,7 +97,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">6 emacs snippets</h1>
+              <h1 class=" remove-bottom">11 emacs snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -113,6 +113,193 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/emacs-change-case.html">
+        <h2 class="half-bottom">Change Case in Emacs</h2>
+      </a>
+    
+    <div>
+      <p>To change the letter case in Emacs:</p>
+
+<ul>
+<li><p><code>M-u</code> &ndash; <code>(upcase-word)</code> &ndash; will convert following word to UPPER case (or the rest of the current word).</p></li>
+<li><p><code>M-l</code> &ndash; <code>(downcase-word)</code> &ndash; will convert following word to lower case (or the rest of the current word).</p></li>
+<li><p><code>M-c</code> &ndash; <code>(capitalize-word)</code> &ndash; will Capitalize the following word (or the rest of the current word).</p></li>
+</ul>
+
+
+<p>For example, consider the text <code>The quick brown fox jumped.</code></p>
+
+<p>If you position the cursor on the <code>q</code> (fifth column), then <code>M-u</code> changes <code>quick</code> to <code>QUICK</code>, <code>M-c</code> changes <code>quick</code> to <code>Quick</code>, etc.</p>
+
+<p>If you position the cursor on the <code>u</code> (sixth column), then <code>M-u</code> changes <code>quick</code> to <code>qUICK</code>, <code>M-c</code> changes <code>quick</code> to <code>qUick</code>, etc.</p>
+
+<p>One could probably write an elisp function based on <code>(capitalize-word)</code> and some heurstics or dictionary lookups to create a true title case function (e.g., not capitalize <code>a</code>, <code>an</code>, <code>the</code> in the middle of a phrase), but <code>M-c</code> is a quick and easy approximation.</p>
+
+<p>Also, note that there is a version of upcase and downcase that work on the selection (region) instead of the next word.</p>
+
+<ul>
+<li><p><code>C-x C-u</code> &ndash; <code>(upcase-region)</code></p></li>
+<li><p><code>C-x C-l</code> &ndash; <code>(downcase-region)</code></p></li>
+</ul>
+
+
+<p>Of course, if you&rsquo;re using &ldquo;CUA Keys&rdquo;, you can&rsquo;t easily type <code>C-x</code> without invoking &ldquo;cut&rdquo;.</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/ess-for-r-in-emacs.html">
+        <h2 class="half-bottom">Working with R in emacs</h2>
+      </a>
+    
+    <div>
+      <p>1) <a href="http://www.r-project.org/">Install R</a>.</p>
+
+<p>2) <a href="http://ess.r-project.org/">Install ESS</a>:</p>
+
+<div class="highlight"><pre><code class="console"><span class="go">sudo aptitude install ess=12.09-1</span>
+</code></pre>
+</div>
+
+
+<p>3) Require <code>ess-site</code>:</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&quot;/usr/share/emacs/site-lisp/&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;ess-site</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<p>4) Load R within emacs via <code>M-x R</code>.</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>, <a href="/snippet/t/ess.html">ess</a> and <a href="/snippet/t/r.html">R</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/emacsclient-daemon-default-font.html">
+        <h2 class="half-bottom">Default fonts with emacsclient/emacs --daemon</h2>
+      </a>
+    
+    <div>
+      <p>I&rsquo;ve been using <code>set-default-font</code> in my <code>.emacs</code> file to configure emacs to use my favorite programming font.</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span> <span class="c1">;;; set default font</span>
+</code></pre>
+</div>
+
+
+<p>I use <code>emacs --daemon</code> to keep an instance of emacs running as a background process on my development machine so that I can run <code>emacsclient</code> to call up an emacs window (frame) instantaneously (and keep the same session running even after a close the emacs frame).</p>
+
+<p>Suddenly (after an <code>aptitude safe-upgrade</code>, I think, but I&rsquo;m not sure what triggered this change), emacs frames that are created by <code>emacsclient</code> connecting to the <code>emacs --daemon</code> instance no longer used my default font when initially opened. The default font worked properly for stand-alone emacs instances (opened with <code>emacs</code>), and for <code>emacsclient</code>, executing <code>(set-default-font)</code> after startup worked fine, but it no longer worked automatically.</p>
+
+<p>To fix this, I had to set up a <code>default-frame-alist</code>, which I believe defines commands to execute whenever a new frame is opened.</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span> <span class="c1">;;; set default font</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">default-frame-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">font</span> <span class="o">.</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)))</span> <span class="c1">;;; set default font for emacs --daemon / emacsclient</span>
+</code></pre>
+</div>
+
+
+<p>By the way, I also discovered the <code>describe-font</code> elisp function while trying to diagnose this issue.</p>
+
+<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">describe-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span>
+<span class="c1">;; or M-x describe-font &lt;RETURN&gt; Droid Sans Mono Slashed-10 &lt;RETURN&gt;</span>
+</code></pre>
+</div>
+
+
+<p>which opens a <code>*Help*</code> buffer containing:</p>
+
+<div class="highlight"><pre><code class="text">name (opened by): -unknown-Droid Sans Mono Slashed-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1
+       full name: Droid Sans Mono Slashed:pixelsize=13:foundry=unknown:weight=normal:slant=normal:width=normal:spacing=100:scalable=true
+            size: 13
+          height: 17
+ baseline-offset:  0
+relative-compose:  0
+</code></pre>
+</div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/various-emacs-shortcuts.html">
+        <h2 class="half-bottom">various emacs shortcuts</h2>
+      </a>
+    
+    <div>
+      <ul>
+<li>In org-mode, <code>&lt;s[tab]</code> inserts a BEGIN_SRC/END_SRC block. (Think &ldquo;insert source&rdquo;.)</li>
+<li>Bookmarks
+
+<ul>
+<li><code>C-x r b</code> &ndash; jump to bookmark</li>
+<li><code>C-x r m</code> &ndash; create (make) bookmark</li>
+</ul>
+</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a> and <a href="/snippet/t/shortcut.html">shortcut</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/number-lines-emacs.html">
+        <h2 class="half-bottom">Numbering lines in emacs</h2>
+      </a>
+    
+    <div>
+      <p>A few ways to add line numbers in emacs:</p>
+
+<ul>
+<li><p><code>M-x linum-mode &lt;RET&gt;</code> will annotate the buffer with line numbers. (These numbers are decoration, in the &ldquo;fringe&rdquo; rather than part of the buffer text.)  Also see <a href="http://emacser.com/linum-plus.htm">Linum Plus</a>.</p></li>
+<li><p><code>C-x r N</code> will <em>insert</em> line numbers into the selected region. (These numbers are content, they are added to the text of the buffer.)</p></li>
+<li><p><code>M-x line-number-mode &lt;RET&gt;</code> show the line number of the current line in the modeline.</p></li>
+<li><p><code>C-x l</code> will report (in the minibuffer) the total number of lines in the current buffer as well as the number of lines before and after the cursor</p></li>
+<li><p><code>M-x what-line &lt;RET&gt;</code> will report (in the minibuffer) the current line number</p></li>
+</ul>
+
+
+<p>Also see <a href="http://www.emacswiki.org/LineNumbers">emacswiki.org/LineNumbers</a>.</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a> and <a href="/snippet/t/shortcut.html">shortcut</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/gitignore-mode.html">
@@ -312,7 +499,7 @@ M-x sort-lines
           <p class="smallprint">
             Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
             The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated. My wife probably disagrees with me too. I can't even promise that <i>I</i> agree with anything you read here.
-            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  5:28 PM on 24 August 2012. Tempus fugit.
+            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  9:31 PM on 18 October 2012. Tempus fugit.
           </p>
         </div>
       </div>

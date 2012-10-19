@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>5 ruby snippets</title>
+  <title>6 ruby snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,7 +97,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">5 ruby snippets</h1>
+              <h1 class=" remove-bottom">6 ruby snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -113,6 +113,96 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/argf-for-nodejs.html">
+        <h2 class="half-bottom">Ruby-like ARGF for Node.js</h2>
+      </a>
+    
+    <div>
+      <p>tokuhirom&rsquo;s <a href="https://github.com/tokuhirom/node-argf">node-argf</a> module offers a Ruby-like ARGF for Node.js.</p>
+
+<p>Install via:</p>
+
+<div class="highlight"><pre><code class="console"><span class="go">npm install argf</span>
+</code></pre>
+</div>
+
+
+<p>or by adding</p>
+
+<div class="highlight"><pre><code class="json"><span class="p">{</span> 
+  <span class="err">...</span>
+  <span class="nt">&quot;dependencies&quot;</span> <span class="p">:</span> <span class="p">{</span> 
+    <span class="err">...</span>
+    <span class="nt">&quot;argf&quot;</span> <span class="p">:</span> <span class="s2">&quot;latest&quot;</span> 
+  <span class="p">}</span>
+  <span class="err">...</span> 
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+<p>to your <code>package.json</code> file.</p>
+
+<p>Use ARGF like this:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">ARGF</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;argf&#39;</span><span class="p">);</span>
+<span class="nx">argf</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ARGF</span><span class="p">();</span>  <span class="c1">// create argf based on current </span>
+                    <span class="c1">// command line parameters or </span>
+                    <span class="c1">// input streams.</span>
+                  
+<span class="c1">// register a callback for when all input data has been read</span>
+<span class="nx">argf</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;finished&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Done processing all inputs.&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// process the input(s)</span>
+<span class="nx">argf</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Read:&quot;</span><span class="p">,</span><span class="nx">line</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;From source:&quot;</span><span class="p">,</span><span class="nx">argv</span><span class="p">.</span><span class="nx">stream</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+<p>Like Ruby&rsquo;s <code>ARGF</code>, the module assumes any elements in <code>process.argv</code> represent files to process (and uses the input stream if no files are provided.</p>
+
+<p>You can also pass an array to <code>new ARGF()</code> to provide the list of files, which is handy if you&rsquo;re using something like <a href="https://github.com/substack/node-optimist">node-optimist</a>.  (Note that in node-optimist you can use <code>argv._</code> to get the remaining parameters after parising.)  For example:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">optimist</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;optimist&#39;</span><span class="p">);</span>
+<span class="nx">ARGF</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;argf&#39;</span><span class="p">);</span>
+
+<span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="err">#</span> <span class="p">...</span>
+<span class="p">}</span>
+<span class="nx">argv</span> <span class="o">=</span> <span class="nx">optimist</span><span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;Usage: $0 ...&#39;</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">argv</span><span class="p">;</span>
+
+<span class="nx">argf</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ARGF</span><span class="p">(</span><span class="nx">argv</span><span class="p">.</span><span class="nx">_</span><span class="p">);</span>
+
+<span class="nx">argf</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;finished&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Done processing all inputs.&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// process the input(s)</span>
+<span class="nx">argf</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Read:&quot;</span><span class="p">,</span><span class="nx">line</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;From source:&quot;</span><span class="p">,</span><span class="nx">argv</span><span class="p">.</span><span class="nx">stream</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a> and <a href="/snippet/t/ruby.html">ruby</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/ruby-hash-sort.html">
@@ -336,7 +426,7 @@
           <p class="smallprint">
             Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
             The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated. My wife probably disagrees with me too. I can't even promise that <i>I</i> agree with anything you read here.
-            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  5:28 PM on 24 August 2012. Tempus fugit.
+            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  9:31 PM on 18 October 2012. Tempus fugit.
           </p>
         </div>
       </div>
