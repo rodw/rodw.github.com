@@ -6,7 +6,7 @@ rdiscount:
 pygments: true
 lsi: false
 
-permalink: /blog/:year-:month/:title
+permalink: /blog/:year-:month-:title
 
 snippet:
   source:

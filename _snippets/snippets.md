@@ -1,4 +1,395 @@
 ######################################################################
+tags: [node.js,javascript,coffeescript,node-optimist]
+title: In node-optimist, `argv._` is an array of the "extra" parameters
+slug: argv-underscore-in-optimist
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In substack's [node-optimist](https://github.com/substack/node-optimist), you can use `argv._` to fetch any parameters remaining after optimist has done it's parsing.
+
+For example (in CoffeeScript):
+
+{% highlight coffeescript %}
+# file: example.coffee
+optimist = require 'optimist'
+options = {
+  'help' : { description:'Show this message and exit.", boolean:true , alias:'h' }
+}
+argv = optimist.usage('Usage: $0 [--help]', options).argv
+
+# Now argv._ contains an array "extra" parameters, if any
+console.log argv._
+{% endhighlight %}
+
+For example
+
+{% highlight console %}
+coffee example.coffee --help
+{% endhighlight %}
+
+yields
+
+{% highlight javascript %}
+[ ]
+{% endhighlight %}
+
+but either of 
+
+{% highlight console %}
+coffee example.coffee --help foo.txt bar.png
+{% endhighlight %}
+
+or
+
+{% highlight console %}
+coffee example.coffee foo.txt bar.png
+{% endhighlight %}
+
+yield
+
+{% highlight javascript %}
+[ 'foo.txt', 'bar.png' ]
+{% endhighlight %}
+
+######################################################################
+tags: [node.js,javascript,coffeescript,ruby]
+title: Ruby-like ARGF for Node.js
+slug: argf-for-nodejs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tokuhirom's [node-argf](https://github.com/tokuhirom/node-argf) module offers a Ruby-like ARGF for Node.js.
+
+Install via:
+
+{% highlight console %}
+npm install argf
+{% endhighlight %}
+
+or by adding
+
+{% highlight json %}
+{ 
+  ...
+  "dependencies" : { 
+    ...
+    "argf" : "latest" 
+  }
+  ... 
+}
+{% endhighlight %}
+
+to your `package.json` file.
+
+Use ARGF like this:
+
+{% highlight javascript %}
+ARGF = require('argf');
+argf = new ARGF();  // create argf based on current 
+                    // command line parameters or 
+                    // input streams.
+                  
+// register a callback for when all input data has been read
+argf.on('finished', function() {
+  console.log("Done processing all inputs.");
+});
+
+// process the input(s)
+argf.forEach( function(line) {
+  console.log("Read:",line);
+  console.log("From source:",argv.stream.path);
+}
+{% endhighlight %}
+
+Like Ruby's `ARGF`, the module assumes any elements in `process.argv` represent files to process (and uses the input stream if no files are provided.
+
+You can also pass an array to `new ARGF()` to provide the list of files, which is handy if you're using something like [node-optimist](https://github.com/substack/node-optimist).  (Note that in node-optimist you can use `argv._` to get the remaining parameters after parising.)  For example:
+
+{% highlight javascript %}
+optimist = require('optimist');
+ARGF = require('argf');
+
+options = {
+  # ...
+}
+argv = optimist.usage('Usage: $0 ...', options).argv;
+
+argf = new ARGF(argv._);
+
+argf.on('finished', function() {
+  console.log("Done processing all inputs.");
+});
+
+// process the input(s)
+argf.forEach( function(line) {
+  console.log("Read:",line);
+  console.log("From source:",argv.stream.path);
+}
+{% endhighlight %}
+
+######################################################################
+tags: [tips,chromium/google chrome]
+title: Ctrl-Back opens the referring page in a new tab in Chrome
+slug: chrome-go-back-in-new-tab
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+### TIL you can press the ctrl-click on the back button to "go back" in a new tab.
+
+In Chromium/Google Chrome, holding down the `Ctrl` button while clicking on the back button will open a new tab with the appropriate page (`history.go(-1)`) in a new tab.  
+
+I don't know how long this has been a feature, but I accidentally stumbed across this today.  Very useful for me. I often open many links from a single page (a directory page or SERP for example). When I fail to Ctrl-click, I need to go back, and ctrl-click the link, which is tedious when it results in two spurious page loads (loading the new page, re-loading the list page and then re-loading the new page again).
+
+######################################################################
+tags: [emacs]
+title: Change Case in Emacs 
+slug: emacs-change-case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To change the letter case in Emacs:
+
+ * `M-u` - `(upcase-word)` - will convert following word to UPPER case (or the rest of the current word).
+
+ * `M-l` - `(downcase-word)` - will convert following word to lower case (or the rest of the current word).
+
+ * `M-c` - `(capitalize-word)` - will Capitalize the following word (or the rest of the current word).
+ 
+For example, consider the text `The quick brown fox jumped.`
+
+If you position the cursor on the `q` (fifth column), then `M-u` changes `quick` to `QUICK`, `M-c` changes `quick` to `Quick`, etc.
+
+If you position the cursor on the `u` (sixth column), then `M-u` changes `quick` to `qUICK`, `M-c` changes `quick` to `qUick`, etc.
+
+One could probably write an elisp function based on `(capitalize-word)` and some heurstics or dictionary lookups to create a true title case function (e.g., not capitalize `a`, `an`, `the` in the middle of a phrase), but `M-c` is a quick and easy approximation.
+
+Also, note that there is a version of upcase and downcase that work on the selection (region) instead of the next word.
+
+ * `C-x C-u` - `(upcase-region)`
+ 
+ * `C-x C-l` - `(downcase-region)`
+
+Of course, if you're using "CUA Keys", you can't easily type `C-x` without invoking "cut".
+
+######################################################################
+tags: [emacs,ess,R]
+title: Working with R in emacs
+slug: ess-for-r-in-emacs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1) [Install R](http://www.r-project.org/).
+
+2) [Install ESS](http://ess.r-project.org/):
+
+{% highlight console %}
+sudo aptitude install ess=12.09-1
+{% endhighlight %}
+
+3) Require `ess-site`:
+
+{% highlight cl %}
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/")
+(require 'ess-site)
+{% endhighlight %}
+
+4) Load R within emacs via `M-x R`.
+
+######################################################################
+tags: [linux,debian,reference]
+title: Cheat Sheet for Linux Run Levels
+slug: linux-run-level-cheatsheet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+"Standard" Linux uses the following run levels:
+
+ * ***Run Level 0*** is halt (shutdown).
+ * ***Run Level 1*** is single-user mode.
+ * ***Run Level 2*** is multi-user mode (without networking)
+ * ***Run Level 3*** is multi-user mode (with networking). This is the normal "terminal" mode. (I.e., before the display manager is run).
+ * ***Run Level 4*** is undefined.
+ * ***Run Level 5*** is multi-usermode with a GUI display manager (X11).
+ * ***Run Level 6*** is reboot.
+ 
+In Debian and its derivatives run levels 2 thru 5 are the same: multi-user mode with networking, and with a display manager if available.
+
+ * ***Run Level 0*** is halt (shutdown).
+ * ***Run Level 1*** is single-user mode.
+ * ***Run Level 2-5*** is multi-user mode with networking and a GUI display manager when available.
+ * ***Run Level 6*** is reboot.
+
+Debian also adds ***Run Level S***, which is executed when the system first boots.
+
+Also see [Wikipedia's article on run levels](http://en.wikipedia.org/wiki/Runlevel).
+
+######################################################################
+tags: [linux,debian]
+title: How to disable services in Debian/Linux
+slug: disable-services-in-linux
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The easy way is to install `sysv-rc-conf`:
+
+{% highlight console %}
+aptitude install sysv-rc-conf
+sysv-rc-conf
+{% endhighlight %}
+
+Manually, use `update-rc.d` and specify the run levels, like so:
+
+{% highlight console %}
+update-rc.d SERVICE_NAME stop 0 1 6 3 . start 2 4 5 .
+{% endhighlight %}
+
+######################################################################
+tags: [bash,bash-prompt,linux]
+title: How to right-align text in your bash prompt
+slug: how-to-right-align-bash-prompt
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+### Right aligning text by padding with spaces
+
+To have text in your bash prompt (`$PS1`) hug the right side of the terminal:
+
+{% highlight console %}
+PS1="`printf "%${COLUMNS}s\n" "${TEXT}"`$PS1"
+{% endhighlight %}
+
+(This assumes you want the right-aligned text to appear before the rest of your prompt, if any.  Move the `$PS1` bit to the left side of the string to have the right-aligned text appear after the rest of your prompt.)
+
+The `${COLUMNS}` variable contains the number of columns in the current terminal (it should change if you resize the terminal).  The `${TEXT}` variable is a placeholder for the text you want to right-align.
+
+The trick here is to use `printf` to left-pad the string to given width.  `printf "%ns" "text"` will left-pad the given string (here, `text`) with spaces until the entire string is *n* characters wide.  
+
+### Right aligning text by padding with something other than space.
+
+Say you want to pad with `-` instead of space.  Try:
+
+{% highlight console %}
+PS1="`printf -vch "%${COLUMNS}s" "${TEXT}"; printf "%s" "${ch// /-}"`$PS1"
+{% endhighlight %}
+
+This will left-pad the `${TEXT}` with spaces, as above, and then replace any spaces with `#`.
+
+If you have any spaces in `${TEXT}` you want to preserve, one hacky work-around is to mark spaces in `$TEXT` with some other character, say `_`, and then replace `_` with ` ` *after* the other substitution:
+
+{% highlight console %}
+PS1="$PS1`printf -vch "%${COLUMNS}s" "${TEXT}"; printf -vch "%s" "${ch// /-}"; printf "%s\n" "${ch//_/ }"`"
+{% endhighlight %}
+
+### Drawing a line to the end of the line
+
+I recently added a line containing the date and time to my bash prompt (so I can tell when a given command completed) and wanted to draw a line across the rest of the screen to make it visually easier to tell where a new prompt is displayed.  Something like this:
+
+{% highlight text %}
+-- Tue 02-Oct-2012 05:19 PM --------------------------------
+{% endhighlight %}
+
+(Assuming the terminal is 60 characters wide.)
+
+Here's how I did it.
+
+Within my `$PROMPT_COMMAND` I execute the following:
+
+{% highlight text %}
+line="`printf -vch "%${COLUMNS}s" ""; printf "%s" "${ch// /-}"`"
+dts="`date +"-- %a %d-%b-%Y %I:%M %p "`"
+PS1="$PS1\e[1m\e[32m${dts}${line:${#dts}}"
+{% endhighlight %}
+
+The first line creates a variable (`$line`) with `${COLUMNS}` dashes (`-`).  This line would span the length of the terminal.
+
+The second line creates a variable (`$dts`) with my date and time format of choice (prefixed with `--` just for kicks).
+
+The `${dts}${line:${#dts}}` bit in the third line displays my date and time string (`$dts`) and then a substring of `$line`, starting at the length of my date and time string (`${#dts}`).  (In this particular case `${dts}` is always exactly 28 characters long, so that value could be hard-coded but this way it works in the general case too.)
+
+If you are curious, the `\e[1m\e[32m` bit makes the text bold (`\e[1m`) and green (`\e[32m`).
+
+######################################################################
+tags: [emacs]
+title: Default fonts with emacsclient/emacs --daemon
+slug: emacsclient-daemon-default-font
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+I've been using `set-default-font` in my `.emacs` file to configure emacs to use my favorite programming font.
+
+{% highlight cl %}
+(set-default-font "Droid Sans Mono Slashed-10") ;;; set default font
+{% endhighlight %}
+
+I use `emacs --daemon` to keep an instance of emacs running as a background process on my development machine so that I can run `emacsclient` to call up an emacs window (frame) instantaneously (and keep the same session running even after a close the emacs frame).  
+
+Suddenly (after an `aptitude safe-upgrade`, I think, but I'm not sure what triggered this change), emacs frames that are created by `emacsclient` connecting to the `emacs --daemon` instance no longer used my default font when initially opened. The default font worked properly for stand-alone emacs instances (opened with `emacs`), and for `emacsclient`, executing `(set-default-font)` after startup worked fine, but it no longer worked automatically.
+
+To fix this, I had to set up a `default-frame-alist`, which I believe defines commands to execute whenever a new frame is opened.
+
+{% highlight cl %}
+(set-default-font "Droid Sans Mono Slashed-10") ;;; set default font
+(setq default-frame-alist '((font . "Droid Sans Mono Slashed-10"))) ;;; set default font for emacs --daemon / emacsclient
+{% endhighlight %}
+
+By the way, I also discovered the `describe-font` elisp function while trying to diagnose this issue.
+
+{% highlight cl %}
+(describe-font "Droid Sans Mono Slashed-10")
+;; or M-x describe-font <RETURN> Droid Sans Mono Slashed-10 <RETURN>
+{% endhighlight %}
+
+which opens a `*Help*` buffer containing:
+
+{% highlight text %}
+name (opened by): -unknown-Droid Sans Mono Slashed-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1
+       full name: Droid Sans Mono Slashed:pixelsize=13:foundry=unknown:weight=normal:slant=normal:width=normal:spacing=100:scalable=true
+            size: 13
+          height: 17
+ baseline-offset:  0
+relative-compose:  0
+{% endhighlight %}
+
+######################################################################
+tags: [emacs,shortcut]
+title: various emacs shortcuts
+slug: various-emacs-shortcuts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ * In org-mode, `<s[tab]` inserts a BEGIN_SRC/END_SRC block. (Think "insert source".)
+ * Bookmarks
+    * `C-x r b` - jump to bookmark
+    * `C-x r m` - create (make) bookmark
+
+######################################################################
+tags: [emacs,shortcut]
+title: Numbering lines in emacs
+slug: number-lines-emacs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A few ways to add line numbers in emacs:
+
+* `M-x linum-mode <RET>` will annotate the buffer with line numbers. (These numbers are decoration, in the "fringe" rather than part of the buffer text.)  Also see [Linum Plus](http://emacser.com/linum-plus.htm).
+
+* `C-x r N` will *insert* line numbers into the selected region. (These numbers are content, they are added to the text of the buffer.)
+
+* `M-x line-number-mode <RET>` show the line number of the current line in the modeline.
+
+* `C-x l` will report (in the minibuffer) the total number of lines in the current buffer as well as the number of lines before and after the cursor 
+
+* `M-x what-line <RET>` will report (in the minibuffer) the current line number 
+
+Also see [emacswiki.org/LineNumbers](http://www.emacswiki.org/LineNumbers).
+
+######################################################################
+tags: [javascript,code,algorithm]
+title: How to determine if two rectangles overlap.
+slug: rectangles-intersect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight js %}
+// Assuming that x1,y1 and x2,y2 give the upper left and lower right coordinates of the rectangles (respectively).
+function rectangles_dont_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
+  return (Ax1 < Bx2) && (Ax2 > Bx1) && (Ay1 < By1) && (Ay2 > By2);
+}
+
+function rectangles_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
+  return !rectangles_dont_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2);
+}
+{% endhighlight %}
+
+    
+######################################################################
 tags: [multimedia,sources,links]
 title: Short list of sources for Creative Commons images and media.
 slug: test-slug
@@ -293,7 +684,17 @@ slug: find-large-files
 $ du -h * | grep "^[0-9.]*M" | sort -n
 {% endhighlight %}
 
-(This finds files at least 1 MB in size and then sorts them by size.  Change `M` to `G` for files at least 1 GB in size.)
+This finds files at least 1 MB in size and then sorts them by size.  Change `M` to `G` for files at least 1 GB in size.
+
+(Caveat: files 1 GB or larger will be missed by the MB version.  You can use:
+
+{% highlight console %}
+$ du -h * | egrep "^[0-9.]*(M|G)"
+{% endhighlight %}
+
+to get both, but then the `sort -n` doesn't work quite the way we'd like.)
+
+Of course, you could use `du` without the `-h` to get file sizes by the default block size rather than the human-readable 12.4M or 16K, etc.
 
 ######################################################################
 tags: [emacs]
@@ -703,9 +1104,18 @@ tags: [bash,linux]
 title: Append to ~/.bash_history "immediately"
 slug: always-append-bash-history
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Bash normally waits until a session (terminal) is closed before it writes commands to the history.  
+
+You can add a call to `history -a` to `PROMPT_COMMAND` to make bash to append your history to `~/.bash_history` every time it displays your prompt.
+
 {% highlight console %}
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 {% endhighlight %}
+
+The environment variable `PROMPT_COMMAND` is executed when bash is about to display your prompt.  
+
+The command `history -a` appends the current history to `~/.bash_history`.
 
 ######################################################################
 tags: [markdown,pygments]

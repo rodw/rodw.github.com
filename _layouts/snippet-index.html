@@ -5,8 +5,8 @@ class: snippet
 meta:
  description: Index of code samples and other small bits of text.
 ---
-<div class="container">
-  <div class="four columns">
+<div class="twelve columns clearfix">
+  <div class="four columns alpha">
     <ul class="disc">
       {% for tag in page.tags-one %}
         <li><a href="/snippet/t/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
@@ -20,7 +20,7 @@ meta:
       {% endfor %}
     </ul>
   </div>
-  <div class="four columns">
+  <div class="four columns omega">
     <ul class="disc">
       {% for tag in page.tags-three %}
         <li><a href="/snippet/t/{{tag.label | escape_slug}}.html">{{tag.label}}</a> ({{tag.count}})</li>
