@@ -1,10 +1,115 @@
 ######################################################################
+tags: [emacs]
+title: Change font size in emacs
+slug: emacs-font-size
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To change the font size in the current buffer:
+
+ * `C-x C-+` - increase font size
+
+ * `C-x C--` - descrease font size
+
+Follow either with `+`, `-` or `0` for continued adjustment.
+
+To change the font size in all buffers:
+
+{% highlight cl %}
+(set-face-attribute 'default nil :height 120) ;; where `height` is 10x point size 
+{% endhighlight %}
+
+######################################################################
+tags: [bash,linux]
+title: Toggle line-wrapping in terminal with `tput rmam` and `tput sram`
+slug: toggle-line-wrapping-in-terminal
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The command:
+
+{% highlight console %}
+tput rmam
+{% endhighlight %}
+
+will disable line wrapping so that long lines are truncated to width of the terminal (`$COLUMNS`).  
+
+The command:
+
+{% highlight console %}
+tput smam
+{% endhighlight %}
+
+will re-enable it. 
+
+This seems to known as "automatic margin" mode, hence `smam` is `enter_am_mode` and `rmam` is `exit_am_mode`.
+
+Some terminals may not support this functionality.
+
+######################################################################
+tags: [bash,linux]
+title: Use `less -S` for horizontal scrolling
+slug: less-chop-long-lines
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The flag `-S` (or `--chop-long-lines`) will cause `less` to truncate lines at the screen (terminal) boundary, rather than wrapping as it does by default.  You can then scroll horizonally (with the arrow keys, for example) to view the full lines when needed.
+
+{% highlight console %}
+cat some_file_with_very_long_lines | less -S
+{% endhighlight %}
+
+######################################################################
+tags: [node.js,javascript,coffeescript,cli]
+title: Check `require.main` to test if a Node.js is run directly
+slug: nodejs-require-main
+credit: Via <a href="http://nodejs.org/docs/v0.4.8/api/all.html#accessing_the_main_module">the nodejs.org docs</a>.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In Node, when a file is run directly from the command line, `require.main` is set to its `module`. Hence `require.main === module` tells you whether or not your script was invoked directly or required by another file.
+
+A JavaScript "main" idiom:
+
+{% highlight javascript %}
+#!/usr/bin/env node
+# file: example.js
+
+function main() {
+  // ...
+}
+
+if(require.main === module) {
+  main();
+}
+{% endhighlight %}
+
+The `main` method will run if `example.js` is invoked via `node example.js` or `./example.js` but not when required within another script (via `require('./example')`, for example).
+
+A CoffeeScript "main" idiom (using classes, although it doesn't have to):
+
+{% highlight coffeescript %}
+#!/usr/bin/env coffee
+# file: example.coffee
+class Example
+  main:()->
+    # ...
+
+if require.main == module
+  (new Example()).main()
+{% endhighlight %}
+
+The `main` method will run if `example.coffee` is invoked via `coffee example.coffee` or `./example.coffee` but not when required within another script (via `require('./example')`, for example).
+
+######################################################################
+tags: [emacs]
+title: Use `M-y` to yank (paste) into the emacs i-search prompt
+slug: paste-in-isearch-with-m-y
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    C-s M-y
+
+######################################################################
 tags: [node.js,javascript,coffeescript,node-optimist]
 title: In node-optimist, `argv._` is an array of the "extra" parameters
 slug: argv-underscore-in-optimist
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In substack's [node-optimist](https://github.com/substack/node-optimist), you can use `argv._` to fetch any parameters remaining after optimist has done it's parsing.
+In substack's [node-optimist](https://github.com/substack/node-optimist), you can use `argv._` to fetch any parameters remaining after optimist has done its parsing.
 
 For example (in CoffeeScript):
 
