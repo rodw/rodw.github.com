@@ -2,7 +2,7 @@
 ######################################################################
 tags: [node.js,javascript,coffeescript]
 title: gracefully closing node.js applications via signal handling
-slug: process-on-sigint
+slug: node-js-process-on-sigint
 note: 2013-01-08
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -186,7 +186,7 @@ class Example
   main:()->
     # ...
 
-if require.main == module
+if require.main is module
   (new Example()).main()
 {% endhighlight %}
 
@@ -574,13 +574,14 @@ A few ways to add line numbers in emacs:
 Also see [emacswiki.org/LineNumbers](http://www.emacswiki.org/LineNumbers).
 
 ######################################################################
-tags: [javascript,code,algorithm]
+tags: [javascript,algorithm]
 title: How to determine if two rectangles overlap.
 slug: rectangles-intersect
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight js %}
-// Assuming that x1,y1 and x2,y2 give the upper left and lower right coordinates of the rectangles (respectively).
+// Assuming that x1,y1 and x2,y2 give the upper left and
+// lower right coordinates of the rectangles (respectively).
 function rectangles_dont_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
   return (Ax1 < Bx2) && (Ax2 > Bx1) && (Ay1 < By1) && (Ay2 > By2);
 }
