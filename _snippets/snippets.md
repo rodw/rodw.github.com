@@ -1,3 +1,100 @@
+
+######################################################################
+tags: [node.js,javascript,coffeescript]
+title: gracefully closing node.js applications via signal handling
+slug: process-on-sigint
+note: 2013-01-08
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To make your node.js application gracefully respond to shutdown signals, use `process.on(SIGNAL,HANDLER)`.
+
+For example, to respond to `SIGINT` (typically *Ctrl-c*), you can use:
+
+{% highlight javascript %}
+process.on( "SIGINT", function() {
+  console.log('CLOSING [SIGINT]');
+  process.exit();
+} );
+{% endhighlight %}
+
+Note that without the `process.exit()`, the program will not be shutdown.  (This is you chance to override or "trap" the signal.)
+
+Some common examples (in CoffeeScript):
+
+{% highlight coffeescript %}
+process.on 'SIGHUP',  ()->console.log('CLOSING [SIGHUP]');  process.exit()
+process.on 'SIGINT',  ()->console.log('CLOSING [SIGINT]');  process.exit()
+process.on 'SIGQUIT', ()->console.log('CLOSING [SIGQUIT]'); process.exit()
+process.on 'SIGABRT', ()->console.log('CLOSING [SIGABRT]'); process.exit()
+process.on 'SIGTERM', ()->console.log('CLOSING [SIGTERM]'); process.exit()
+{% endhighlight %}
+
+PS: On Linux (and similiar) you can enter `kill -l` on the command line to see a list of possible signals, and `kill -N PID` to send signal *N* to the process with process ID *PID*.
+
+
+######################################################################
+tags: [html,latex]
+title: breaking non-space (zero-width space)
+slug: zero-width-space-char
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To insert a zero-width space character (as a hint to the layout engine that it *could* insert a line break here) in HTML:
+
+{% highlight html %}
+&#x200B;
+{% endhighlight %}
+
+Or in Latex:
+
+{% highlight latex %}
+\hspace{0pt}
+{% endhighlight %}
+
+
+######################################################################
+tags: [emacs]
+title: M-x occur
+slug: emacs-m-x-occur
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`M-x occur` is nifty.
+
+######################################################################
+tags: [emacs]
+title: C-x C-x to toggle between positions
+slug: emacs-c-x-c-x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For example:  Use `C-s foo` to search for something.  Maybe use `C-s` again to step thru. Now use `C-x C-x` to flip back to the point where you started (and `C-x C-x` again to return).
+
+######################################################################
+tags: [javascript,coffescript,regexp]
+title: Cheat Sheet for JavaScript Regular Expressions
+slug: js-regexp-cheat-sheet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+### flags
+ * `/pattern/g` - global
+ * `/pattern/i` - case-insensitive
+ * `/pattern/m` - multi-line
+
+### patterns
+
+ * `\s` - any whitespace character (`[\f\n\r\t\v\u00A0\u2028\u2029]`)
+ * `\S` - any non-whitespace character (`[^\f\n\r\t\v\u00A0\u2028\u2029]`)
+ * `[\s\S]` - commonly used for "anything including newlines (alternative `[^]`)
+ * `\S` - any non-whitespace character (`[^\f\n\r\t\v\u00A0\u2028\u2029]`)
+
+ * `\w` - any word character (alpha, numeric or underscore) (`[a-zA-Z0-9_]`)
+ * `\W` - any non-word character (`[^a-zA-Z0-9_]`)
+ * `\d` - any digit (`[0-9]`)
+ * `\D` - any non-digit (`[^0-9]`)
+ * `\cX`- control character X (e.g. `\cM` matches `control-M` (`^M`))
+ * `\b` - word boundary (the position between a word char and whitespace)
+ * `\B` - not a word boundary (`[^\b]`).
+ * `\xhh` - the character with hex code `hh`
+ * `\uhhhh` - the character with hex code `hhhh`
+
 ######################################################################
 tags: [emacs]
 title: Change font size in emacs
@@ -15,7 +112,7 @@ Follow either with `+`, `-` or `0` for continued adjustment.
 To change the font size in all buffers:
 
 {% highlight cl %}
-(set-face-attribute 'default nil :height 120) ;; where `height` is 10x point size 
+(set-face-attribute 'default nil :height 120) ;; where `height` is 10x point size
 {% endhighlight %}
 
 ######################################################################
@@ -29,7 +126,7 @@ The command:
 tput rmam
 {% endhighlight %}
 
-will disable line wrapping so that long lines are truncated to width of the terminal (`$COLUMNS`).  
+will disable line wrapping so that long lines are truncated to width of the terminal (`$COLUMNS`).
 
 The command:
 
@@ -37,7 +134,7 @@ The command:
 tput smam
 {% endhighlight %}
 
-will re-enable it. 
+will re-enable it.
 
 This seems to known as "automatic margin" mode, hence `smam` is `enter_am_mode` and `rmam` is `exit_am_mode`.
 
@@ -137,7 +234,7 @@ yields
 [ ]
 {% endhighlight %}
 
-but either of 
+but either of
 
 {% highlight console %}
 coffee example.coffee --help foo.txt bar.png
@@ -172,13 +269,13 @@ npm install argf
 or by adding
 
 {% highlight json %}
-{ 
+{
   ...
-  "dependencies" : { 
+  "dependencies" : {
     ...
-    "argf" : "latest" 
+    "argf" : "latest"
   }
-  ... 
+  ...
 }
 {% endhighlight %}
 
@@ -188,10 +285,10 @@ Use ARGF like this:
 
 {% highlight javascript %}
 ARGF = require('argf');
-argf = new ARGF();  // create argf based on current 
-                    // command line parameters or 
+argf = new ARGF();  // create argf based on current
+                    // command line parameters or
                     // input streams.
-                  
+
 // register a callback for when all input data has been read
 argf.on('finished', function() {
   console.log("Done processing all inputs.");
@@ -238,13 +335,13 @@ slug: chrome-go-back-in-new-tab
 
 ### TIL you can press the ctrl-click on the back button to "go back" in a new tab.
 
-In Chromium/Google Chrome, holding down the `Ctrl` button while clicking on the back button will open a new tab with the appropriate page (`history.go(-1)`) in a new tab.  
+In Chromium/Google Chrome, holding down the `Ctrl` button while clicking on the back button will open a new tab with the appropriate page (`history.go(-1)`) in a new tab.
 
 I don't know how long this has been a feature, but I accidentally stumbed across this today.  Very useful for me. I often open many links from a single page (a directory page or SERP for example). When I fail to Ctrl-click, I need to go back, and ctrl-click the link, which is tedious when it results in two spurious page loads (loading the new page, re-loading the list page and then re-loading the new page again).
 
 ######################################################################
 tags: [emacs]
-title: Change Case in Emacs 
+title: Change Case in Emacs
 slug: emacs-change-case
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -255,7 +352,7 @@ To change the letter case in Emacs:
  * `M-l` - `(downcase-word)` - will convert following word to lower case (or the rest of the current word).
 
  * `M-c` - `(capitalize-word)` - will Capitalize the following word (or the rest of the current word).
- 
+
 For example, consider the text `The quick brown fox jumped.`
 
 If you position the cursor on the `q` (fifth column), then `M-u` changes `quick` to `QUICK`, `M-c` changes `quick` to `Quick`, etc.
@@ -267,7 +364,7 @@ One could probably write an elisp function based on `(capitalize-word)` and some
 Also, note that there is a version of upcase and downcase that work on the selection (region) instead of the next word.
 
  * `C-x C-u` - `(upcase-region)`
- 
+
  * `C-x C-l` - `(downcase-region)`
 
 Of course, if you're using "CUA Keys", you can't easily type `C-x` without invoking "cut".
@@ -310,7 +407,7 @@ slug: linux-run-level-cheatsheet
  * ***Run Level 4*** is undefined.
  * ***Run Level 5*** is multi-usermode with a GUI display manager (X11).
  * ***Run Level 6*** is reboot.
- 
+
 In Debian and its derivatives run levels 2 thru 5 are the same: multi-user mode with networking, and with a display manager if available.
 
  * ***Run Level 0*** is halt (shutdown).
@@ -359,7 +456,7 @@ PS1="`printf "%${COLUMNS}s\n" "${TEXT}"`$PS1"
 
 The `${COLUMNS}` variable contains the number of columns in the current terminal (it should change if you resize the terminal).  The `${TEXT}` variable is a placeholder for the text you want to right-align.
 
-The trick here is to use `printf` to left-pad the string to given width.  `printf "%ns" "text"` will left-pad the given string (here, `text`) with spaces until the entire string is *n* characters wide.  
+The trick here is to use `printf` to left-pad the string to given width.  `printf "%ns" "text"` will left-pad the given string (here, `text`) with spaces until the entire string is *n* characters wide.
 
 ### Right aligning text by padding with something other than space.
 
@@ -417,7 +514,7 @@ I've been using `set-default-font` in my `.emacs` file to configure emacs to use
 (set-default-font "Droid Sans Mono Slashed-10") ;;; set default font
 {% endhighlight %}
 
-I use `emacs --daemon` to keep an instance of emacs running as a background process on my development machine so that I can run `emacsclient` to call up an emacs window (frame) instantaneously (and keep the same session running even after a close the emacs frame).  
+I use `emacs --daemon` to keep an instance of emacs running as a background process on my development machine so that I can run `emacsclient` to call up an emacs window (frame) instantaneously (and keep the same session running even after a close the emacs frame).
 
 Suddenly (after an `aptitude safe-upgrade`, I think, but I'm not sure what triggered this change), emacs frames that are created by `emacsclient` connecting to the `emacs --daemon` instance no longer used my default font when initially opened. The default font worked properly for stand-alone emacs instances (opened with `emacs`), and for `emacsclient`, executing `(set-default-font)` after startup worked fine, but it no longer worked automatically.
 
@@ -470,9 +567,9 @@ A few ways to add line numbers in emacs:
 
 * `M-x line-number-mode <RET>` show the line number of the current line in the modeline.
 
-* `C-x l` will report (in the minibuffer) the total number of lines in the current buffer as well as the number of lines before and after the cursor 
+* `C-x l` will report (in the minibuffer) the total number of lines in the current buffer as well as the number of lines before and after the cursor
 
-* `M-x what-line <RET>` will report (in the minibuffer) the current line number 
+* `M-x what-line <RET>` will report (in the minibuffer) the current line number
 
 Also see [emacswiki.org/LineNumbers](http://www.emacswiki.org/LineNumbers).
 
@@ -493,7 +590,7 @@ function rectangles_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
 }
 {% endhighlight %}
 
-    
+
 ######################################################################
 tags: [multimedia,sources,links]
 title: Short list of sources for Creative Commons images and media.
@@ -512,15 +609,15 @@ slug: cross-browser-css-transitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {% highlight css %}
-.foo { 
-  transition:         opacity .25s ease-in-out; 
-  -webkit-transition: opacity .25s ease-in-out; 
-  -moz-transition:    opacity .25s ease-in-out; 
-  -o-transition:      opacity .25s ease-in-out; 
+.foo {
+  transition:         opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  -moz-transition:    opacity .25s ease-in-out;
+  -o-transition:      opacity .25s ease-in-out;
 }
 {% endhighlight %}
 
-Where the right-hand side has the general form: 
+Where the right-hand side has the general form:
 
 {% highlight text %}
 PROPERTY DURATION [TIMING-FUNCTION] [TRANSITION-DELAY]
@@ -529,33 +626,33 @@ PROPERTY DURATION [TIMING-FUNCTION] [TRANSITION-DELAY]
 Transitions can chained:
 
 {% highlight css %}
-transition: opacity .25s ease-in-out, height 1s linear 
+transition: opacity .25s ease-in-out, height 1s linear
 {% endhighlight %}
 
 ### Transition timing functions
 
- * `linear` - constant rate of change between states. 
-   
+ * `linear` - constant rate of change between states.
+
    `cubic-bezier(0.0, 0.0, 1.0, 1.0)`
-   
- * `ease` -  (the default) slow acceleration, then faster, before rapidly slowing again at the end. 
- 
+
+ * `ease` -  (the default) slow acceleration, then faster, before rapidly slowing again at the end.
+
    `cubic-bezier(0.25, 0.1, 0.25, 1.0)`
-   
+
  * `ease-in-out` - like ease but accelerating/decelerating more rapidly (with a shorter transition between acceleration and deceleration).
- 
+
    `cubic-bezier(0.42, 0, 0.58, 1.0)`
-      
- * `ease-in` - equivalent to the first half of ease-in-out; rapid accelerating then transitioning to a constant rate of change at the end. 
- 
+
+ * `ease-in` - equivalent to the first half of ease-in-out; rapid accelerating then transitioning to a constant rate of change at the end.
+
    `cubic-bezier(0.42, 0, 1, 1.0)`
-      
- * `ease-out` - equivalent to the second half of ease-in-out; a constant rate of change transitioning rapid deceleration at the end. 
- 
+
+ * `ease-out` - equivalent to the second half of ease-in-out; a constant rate of change transitioning rapid deceleration at the end.
+
    `cubic-bezier(0.42, 0, 0.58, 1.0)`
-   
+
  * `cubic-bezier(x1,y1,x2,y2)` - follows [cubic Bézier curve](http://en.wikipedia.org/wiki/B%C3%A9zier_curve) using the control points (0,0), (x1,y1), (x2,y2) and (1,1).
- 
+
  * `steps( n, [start|end] )` - stepwise function with *n* steps
 
 ### How to read `cubic-bezier` functions
@@ -626,7 +723,7 @@ $RECYCLE.BIN/
 /.emacs.desktop.lock
 Desktop.ini
 Session.vim
-Thumbs.db 
+Thumbs.db
 \#*\#
 auto-save-list
 log
@@ -656,7 +753,7 @@ $ find -not -empty -type f -printf "%s\n" | \
 > cut -d" " -f3-
 {% endhighlight %}
 
-You probably want to pipe that to a file as it runs slowly. 
+You probably want to pipe that to a file as it runs slowly.
 
 If I understand this correctly:
 
@@ -772,7 +869,7 @@ then
   echo "tgz-ing $outfile"
   tar zcvf $outfile.tgz $outfile
   echo "done."
-else 
+else
   echo "Usage: $0 /dev/<device>"
 fi
 echo "to restore, unmount(?), then use:"
@@ -809,18 +906,18 @@ slug: emacs-spell-keys
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * `M-$` - `ispell-word` or `ispell-region` (depending on whether something is selected)
-* `[SPACE]` - Skip this word—continue to consider it incorrect, but don't change it here. 
-* `r newword [RETURN]` - Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.) 
-* `R new [RETURN]` - Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.) 
-* `a` - Accept the incorrect word—treat it as correct, but only in this editing session. 
-* `A` - Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer. 
-* `i` - Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions. 
-* `m` - Like `i`, but you can also specify dictionary completion information. 
-* `u` - Insert the lower-case version of this word in your private dictionary file. 
-* `l word [RETURN]` - Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use `*` in word as a wildcard. 
-* `C-g X` - Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with `C-u M-$`. 
-* `x` - Quit interactive spell checking and move point back to where it was when you started spell checking. 
-* `q` - Quit interactive spell checking and kill the spell-checker subprocess. 
+* `[SPACE]` - Skip this word—continue to consider it incorrect, but don't change it here.
+* `r newword [RETURN]` - Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.)
+* `R new [RETURN]` - Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.)
+* `a` - Accept the incorrect word—treat it as correct, but only in this editing session.
+* `A` - Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer.
+* `i` - Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions.
+* `m` - Like `i`, but you can also specify dictionary completion information.
+* `u` - Insert the lower-case version of this word in your private dictionary file.
+* `l word [RETURN]` - Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use `*` in word as a wildcard.
+* `C-g X` - Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with `C-u M-$`.
+* `x` - Quit interactive spell checking and move point back to where it was when you started spell checking.
+* `q` - Quit interactive spell checking and kill the spell-checker subprocess.
 * `?` - Help
 
 
@@ -904,7 +1001,7 @@ tags: [emacs]
 title: Using js-mode's indent logic in js2-mode.
 slug: fix-j2s-mode-indent-via-js-mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Steve Yegge's [js2-mode](http://code.google.com/p/js2-mode/) is a sweet major mode for working with JavaScript in Emacs, but its auto-indentation logic is [notoriously frustrating](http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely). 
+Steve Yegge's [js2-mode](http://code.google.com/p/js2-mode/) is a sweet major mode for working with JavaScript in Emacs, but its auto-indentation logic is [notoriously frustrating](http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely).
 
 Here's a a somewhat hack-y workaround: switch to `javascript-mode` before calling `indent-region` and then switch back.
 
@@ -920,8 +1017,8 @@ PS: I haven't yet had a chance to sort these out, but there are at least four or
  * [thomblake's js3-mode](https://github.com/thomblake/js3-mode)
  * I think the defunct [espresso-mode](http://www.nongnu.org/espresso/) is now the built-in `js-mode`.
  * I'm not sure where that leaves `javascript-mode`.  Also defunct I think.
- * Steve Yegge's [js2-mode](http://code.google.com/p/js2-mode/) 
- 
+ * Steve Yegge's [js2-mode](http://code.google.com/p/js2-mode/)
+
 The first two are supposed to address js2-mode's indentation problems (among other enhancements).
 
 ######################################################################
@@ -992,10 +1089,10 @@ title: Using Ruby arrays as stacks and queues.
 slug: ruby-stack-queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
- * `array.push` appends an element to the array.  
+ * `array.push` appends an element to the array.
  * `array.pop` removes (and returns) the last element in the array.
  * Hence `array.last` (and `array[-1]`) operates like `array.peek` would if it existed--it returns (but does not remove) the item on the top of the stack.
- * `array.shift` removes (and returns) the first element in the array.  
+ * `array.shift` removes (and returns) the first element in the array.
  * Hence `array.shift` "pops" an element in a queue-like way--first in, first out.  `array.first` (and `array[1]`) allow one to "peek" at this element.
 
 {% highlight irb %}
@@ -1178,7 +1275,7 @@ tags: [mind hack]
 title: Begin with the end in mind.
 slug: begin-with-the-end-in-mind
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Intuitive thinkers work best when they understand the big picture. 
+Intuitive thinkers work best when they understand the big picture.
 
 Try to articulate *why* this task is important,
 
@@ -1210,7 +1307,7 @@ title: Append to ~/.bash_history "immediately"
 slug: always-append-bash-history
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Bash normally waits until a session (terminal) is closed before it writes commands to the history.  
+Bash normally waits until a session (terminal) is closed before it writes commands to the history.
 
 You can add a call to `history -a` to `PROMPT_COMMAND` to make bash to append your history to `~/.bash_history` every time it displays your prompt.
 
@@ -1218,13 +1315,13 @@ You can add a call to `history -a` to `PROMPT_COMMAND` to make bash to append yo
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 {% endhighlight %}
 
-The environment variable `PROMPT_COMMAND` is executed when bash is about to display your prompt.  
+The environment variable `PROMPT_COMMAND` is executed when bash is about to display your prompt.
 
 The command `history -a` appends the current history to `~/.bash_history`.
 
 ######################################################################
 tags: [markdown,pygments]
-title: Syntax coloring of code blocks in various flavors of Markdown. 
+title: Syntax coloring of code blocks in various flavors of Markdown.
 slug: markdown-syntax-coloring
 draft: true
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1235,7 +1332,7 @@ E.g., the block:
 
              111111111122222222223
     123456789012345678901234567890
-    
+
         This is an example.
 
 ######################################################################
