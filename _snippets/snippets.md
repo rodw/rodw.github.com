@@ -68,7 +68,7 @@ slug: emacs-c-x-c-x
 For example:  Use `C-s foo` to search for something.  Maybe use `C-s` again to step thru. Now use `C-x C-x` to flip back to the point where you started (and `C-x C-x` again to return).
 
 ######################################################################
-tags: [javascript,coffescript,regexp]
+tags: [javascript,coffeescript,regexp]
 title: Cheat Sheet for JavaScript Regular Expressions
 slug: js-regexp-cheat-sheet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
