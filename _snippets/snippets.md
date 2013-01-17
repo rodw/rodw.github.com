@@ -552,6 +552,18 @@ slug: various-emacs-shortcuts
  * Bookmarks
     * `C-x r b` - jump to bookmark
     * `C-x r m` - create (make) bookmark
+ * `M-o M-s` / `M-o M-S` - center line / center paragraph
+ * `M-<Home>`, `M-<Page Up>`, etc. - move in other window/frame (without losing focus on the current window/frame)
+ * cursor movement
+    * `C-a` / `C-e` - beginning of line / end of line
+    * `M-a` / `M-e` - beginning of sentence / end of sentence
+    * `C-b` / `C-f` - backward one character / forward one character
+    * `C-p` / `C-n` - previous line / next line
+
+ * `C-l` - recenter top/bottom
+ * `C-j` - newline and indent
+ * `C-c h` - hide lines matching
+ * `C-h e` - shoe echo area messages
 
 ######################################################################
 tags: [emacs,shortcut]
