@@ -1,5 +1,70 @@
 
 ######################################################################
+tags: [emacs,calendar]
+title: emacs calendar functions
+slug: emacs-calendar
+note: 2013-04-15
+credit: Also see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Calendar_002fDiary.html">the emacs manual</a>.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Open the calendar:
+
+    M-x calendar
+
+(close the calendar with `q`, which invokes `(calendar-exit)`.
+
+Movement:
+
+  * `C-f` or arrow-right is `(calendar-forward-day)` and `C-b` or arrow-left is `(calendar-backward-day)`.
+  * `C-n` or arrow-down is `(calendar-foward-week)` and `C-p` or arrow-up is `(calendar-backward-week)`.
+  * `M-}` or `>` is `(calendar-forward-month)` and `M-{` or `<` is `(calendar-backward-month)`
+  * `C-x ]` is `(calendar-foward-year)` and `C-x [` is `(calendar-backward-year)`
+  * Use the `M-<n>` prefix to move a multiple of the above.  E.g. `M-90 C-f` (or `M-90 <right-arrow>`) moves forward 90 days.  (In calendar mode, the meta key is optional, simply `90 <right-arrow>` will move forward 90 days, `16 <down-arrow>` will move forward 16 weeks, etc.)
+  * `o` will let you interactively select a date.
+  * `.` will return to today
+
+Other:
+  * (Right-click on the calendar will generally open up a context-menu about these.)
+  * `p d` is (calendar-print-day-of-year)
+  *  Type`C-<space>`, move to another date and type `M-=` to invoke `(calendar-count-days-region)` (show the number of days between the dates (including the endpoints).
+  * Type `H m` or `H y` to generate an html-format calendar (month and year, respectively).  (`t <something>` generates a number of interesting calendars in TeX, if you are so inclined.)
+  * Type `h` to see known holidays for the selected date, or `a` to see all holidays for the three month period that is displayed. Use `M-x list-holidays` for even more.  Use `M` to see a list of lunar phases. Use `S` to see sunrise/sunset information.
+
+ *
+
+{% highlight cl %}
+(set-face-attribute 'default nil :height 120) ;; where `height` is 10x point size
+{% endhighlight %}
+
+{% highlight coffeescript %}
+flatten_array = (a)->
+  unless a?
+    return null
+  else if a.length is 0
+    return []
+  else
+    return ( a.reduce (l,r)->l.concat(r) )
+{% endhighlight %}
+
+
+######################################################################
+tags: [node.js,javascript,coffeescript]
+title: flatten an array in coffeescript
+slug: coffeescript-flatten-array
+note: 2013-01-23
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight coffeescript %}
+flatten_array = (a)->
+  unless a?
+    return null
+  else if a.length is 0
+    return []
+  else
+    return ( a.reduce (l,r)->l.concat(r) )
+{% endhighlight %}
+
+######################################################################
 tags: [node.js,javascript,coffeescript]
 title: gracefully closing node.js applications via signal handling
 slug: node-js-process-on-sigint
@@ -563,7 +628,7 @@ slug: various-emacs-shortcuts
  * `C-l` - recenter top/bottom
  * `C-j` - newline and indent
  * `C-c h` - hide lines matching
- * `C-h e` - shoe echo area messages
+ * `C-h e` - show echo area messages
 
 ######################################################################
 tags: [emacs,shortcut]
