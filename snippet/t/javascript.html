@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>6 javascript snippets</title>
+  <title>7 javascript snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    
+
   
 
   <nav id="primary">
@@ -56,12 +56,6 @@
           
             
             
-            <li class="" >
-              <a class="" href="/project">Projects</a>
-            </li>
-          
-            
-            
               
             
             <li class="active" >
@@ -72,7 +66,7 @@
       </div>
     </div>
   </nav>
-  
+
   
 
   <div id="main">
@@ -97,7 +91,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">6 javascript snippets</h1>
+              <h1 class=" remove-bottom">7 javascript snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -115,7 +109,37 @@
         
   <div class="snippet">
     
-      <a class="permalink" href="/snippet/s/process-on-sigint.html">
+      <a class="permalink" href="/snippet/s/coffeescript-flatten-array.html">
+        <h2 class="half-bottom">flatten an array in coffeescript</h2>
+      </a>
+    
+    <div>
+      
+
+<div class="highlight"><pre><code class="coffeescript"><span class="nv">flatten_array = </span><span class="nf">(a)-&gt;</span>
+  <span class="nx">unless</span> <span class="nx">a</span><span class="o">?</span>
+    <span class="k">return</span> <span class="kc">null</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="p">[]</span>
+  <span class="k">else</span>
+    <span class="k">return</span> <span class="p">(</span> <span class="nx">a</span><span class="p">.</span><span class="nx">reduce</span> <span class="nf">(l,r)-&gt;</span><span class="nx">l</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">)</span>
+</code></pre>
+</div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/coffeescript.html">coffeescript</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/node-js-process-on-sigint.html">
         <h2 class="half-bottom">gracefully closing node.js applications via signal handling</h2>
       </a>
     
@@ -192,7 +216,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffescript.html">coffescript</a> and <a href="/snippet/t/regexp.html">regexp</a>.</small>
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a> and <a href="/snippet/t/regexp.html">regexp</a>.</small>
     </div>    
     
   </div>
@@ -233,7 +257,7 @@
   <span class="nx">main</span><span class="o">:</span><span class="nf">()-&gt;</span>
     <span class="c1"># ...</span>
 
-<span class="k">if</span> <span class="nx">require</span><span class="p">.</span><span class="nx">main</span> <span class="o">==</span> <span class="nx">module</span>
+<span class="k">if</span> <span class="nx">require</span><span class="p">.</span><span class="nx">main</span> <span class="o">is</span> <span class="nx">module</span>
   <span class="p">(</span><span class="k">new</span> <span class="nx">Example</span><span class="p">()).</span><span class="nx">main</span><span class="p">()</span>
 </code></pre>
 </div>
@@ -417,7 +441,8 @@
     <div>
       
 
-<div class="highlight"><pre><code class="js"><span class="c1">// Assuming that x1,y1 and x2,y2 give the upper left and lower right coordinates of the rectangles (respectively).</span>
+<div class="highlight"><pre><code class="js"><span class="c1">// Assuming that x1,y1 and x2,y2 give the upper left and</span>
+<span class="c1">// lower right coordinates of the rectangles (respectively).</span>
 <span class="kd">function</span> <span class="nx">rectangles_dont_intersect</span><span class="p">(</span><span class="nx">Ax1</span><span class="p">,</span><span class="nx">Ay1</span><span class="p">,</span><span class="nx">Ax2</span><span class="p">,</span><span class="nx">Ay2</span><span class="p">,</span><span class="nx">Bx1</span><span class="p">,</span><span class="nx">By1</span><span class="p">,</span><span class="nx">Bx2</span><span class="p">,</span><span class="nx">By2</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span><span class="nx">Ax1</span> <span class="o">&lt;</span> <span class="nx">Bx2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">Ax2</span> <span class="o">&gt;</span> <span class="nx">Bx1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">Ay1</span> <span class="o">&lt;</span> <span class="nx">By1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">Ay2</span> <span class="o">&gt;</span> <span class="nx">By2</span><span class="p">);</span>
 <span class="p">}</span>
@@ -433,7 +458,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/code.html">code</a> and <a href="/snippet/t/algorithm.html">algorithm</a>.</small>
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/algorithm.html">algorithm</a>.</small>
     </div>    
     
   </div>
@@ -463,12 +488,12 @@
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
         <div id="caveator" class="off">
           <p class="smallprint">
-            Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
-            The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated. My wife probably disagrees with me too. I can't even promise that <i>I</i> agree with anything you read here.
-            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  4:47 PM on 08 January 2013. Tempus fugit.
+            <!-- Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
+            The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated.
+            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. --> This page was generated at 11:44 PM on 15 April 2013. <!-- Tempus fugit. -->
           </p>
         </div>
       </div>
@@ -476,4 +501,3 @@
   </div>
 </body>
 </html>
-

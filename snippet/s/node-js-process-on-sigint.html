@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>1 reference snippets</title>
+  <title>gracefully closing node.js applications via signal handling</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -91,8 +91,6 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">1 reference snippets</h1>
-            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -106,49 +104,43 @@
       
 
       <div class="thirteen columns bulleted">
-        
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/linux-run-level-cheatsheet.html">
-        <h2 class="half-bottom">Cheat Sheet for Linux Run Levels</h2>
-      </a>
-    
-    <div>
-      <p>&ldquo;Standard&rdquo; Linux uses the following run levels:</p>
+        <div class="snippet">
+  <h2 class="half-bottom">gracefully closing node.js applications via signal handling</h2>
+  <div>
+    <p>To make your node.js application gracefully respond to shutdown signals, use <code>process.on(SIGNAL,HANDLER)</code>.</p>
 
-<ul>
-<li><strong><em>Run Level 0</em></strong> is halt (shutdown).</li>
-<li><strong><em>Run Level 1</em></strong> is single-user mode.</li>
-<li><strong><em>Run Level 2</em></strong> is multi-user mode (without networking)</li>
-<li><strong><em>Run Level 3</em></strong> is multi-user mode (with networking). This is the normal &ldquo;terminal&rdquo; mode. (I.e., before the display manager is run).</li>
-<li><strong><em>Run Level 4</em></strong> is undefined.</li>
-<li><strong><em>Run Level 5</em></strong> is multi-usermode with a GUI display manager (X11).</li>
-<li><strong><em>Run Level 6</em></strong> is reboot.</li>
-</ul>
+<p>For example, to respond to <code>SIGINT</code> (typically <em>Ctrl-c</em>), you can use:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="s2">&quot;SIGINT&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;CLOSING [SIGINT]&#39;</span><span class="p">);</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+<span class="p">}</span> <span class="p">);</span>
+</code></pre>
+</div>
 
 
-<p>In Debian and its derivatives run levels 2 thru 5 are the same: multi-user mode with networking, and with a display manager if available.</p>
+<p>Note that without the <code>process.exit()</code>, the program will not be shutdown.  (This is you chance to override or &ldquo;trap&rdquo; the signal.)</p>
 
-<ul>
-<li><strong><em>Run Level 0</em></strong> is halt (shutdown).</li>
-<li><strong><em>Run Level 1</em></strong> is single-user mode.</li>
-<li><strong><em>Run Level 2-5</em></strong> is multi-user mode with networking and a GUI display manager when available.</li>
-<li><strong><em>Run Level 6</em></strong> is reboot.</li>
-</ul>
+<p>Some common examples (in CoffeeScript):</p>
+
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGHUP&#39;</span><span class="p">,</span>  <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGHUP]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGINT&#39;</span><span class="p">,</span>  <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGINT]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGQUIT&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGQUIT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGABRT&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGABRT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGTERM&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGTERM]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+</code></pre>
+</div>
 
 
-<p>Debian also adds <strong><em>Run Level S</em></strong>, which is executed when the system first boots.</p>
+<p>PS: On Linux (and similiar) you can enter <code>kill -l</code> on the command line to see a list of possible signals, and <code>kill -N PID</code> to send signal <em>N</em> to the process with process ID <em>PID</em>.</p>
 
-<p>Also see <a href="http://en.wikipedia.org/wiki/Runlevel">Wikipedia&rsquo;s article on run levels</a>.</p>
-
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/debian.html">debian</a> and <a href="/snippet/t/reference.html">reference</a>.</small>
-    </div>    
-    
   </div>
-  <!-- <hr/> -->
-
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/coffeescript.html">coffeescript</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
 
 
       </div>

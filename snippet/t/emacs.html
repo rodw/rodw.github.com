@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>15 emacs snippets</title>
+  <title>16 emacs snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    
+
   
 
   <nav id="primary">
@@ -56,12 +56,6 @@
           
             
             
-            <li class="" >
-              <a class="" href="/project">Projects</a>
-            </li>
-          
-            
-            
               
             
             <li class="active" >
@@ -72,7 +66,7 @@
       </div>
     </div>
   </nav>
-  
+
   
 
   <div id="main">
@@ -97,7 +91,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">15 emacs snippets</h1>
+              <h1 class=" remove-bottom">16 emacs snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -113,6 +107,48 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/emacs-calendar.html">
+        <h2 class="half-bottom">emacs calendar functions</h2>
+      </a>
+    
+    <div>
+      <p>Open the calendar:</p>
+
+<pre><code>M-x calendar
+</code></pre>
+
+<p>(You can close the calendar with <code>q</code>, which invokes <code>(calendar-exit)</code>.</p>
+
+<p>Movement:</p>
+
+<ul>
+<li><code>C-f</code> or arrow-right is <code>(calendar-forward-day)</code> and <code>C-b</code> or arrow-left is <code>(calendar-backward-day)</code>.</li>
+<li><code>C-n</code> or arrow-down is <code>(calendar-foward-week)</code> and <code>C-p</code> or arrow-up is <code>(calendar-backward-week)</code>.</li>
+<li><code>M-}</code> or <code>&gt;</code> is <code>(calendar-forward-month)</code> and <code>M-{</code> or <code>&lt;</code> is <code>(calendar-backward-month)</code></li>
+<li><code>C-x ]</code> is <code>(calendar-foward-year)</code> and <code>C-x [</code> is <code>(calendar-backward-year)</code></li>
+<li>Use the <code>M-&lt;n&gt;</code> prefix to move a multiple of the above.  E.g. <code>M-90 C-f</code> (or <code>M-90 &lt;right-arrow&gt;</code>) moves forward 90 days.  (In calendar mode, the meta key is optional, simply <code>90 &lt;right-arrow&gt;</code> will move forward 90 days, <code>16 &lt;down-arrow&gt;</code> will move forward 16 weeks, etc.)</li>
+<li><code>o</code> will let you interactively select a date.</li>
+<li><code>.</code> will return to today</li>
+</ul>
+
+
+<p>Other:
+  * (Right-click on the calendar will generally open up a context-menu about these.)
+  * <code>p d</code> is (calendar-print-day-of-year)
+  *  Type<code>C-&lt;space&gt;</code>, move to another date and type <code>M-=</code> to invoke <code>(calendar-count-days-region)</code> (show the number of days between the dates (including the endpoints).
+  * Type <code>H m</code> or <code>H y</code> to generate an html-format calendar (month and year, respectively).  (<code>t &lt;something&gt;</code> generates a number of interesting calendars in TeX, if you are so inclined.)
+  * Type <code>h</code> to see known holidays for the selected date, or <code>a</code> to see all holidays for the three month period that is displayed. Use <code>M-x list-holidays</code> for even more.  Use <code>M</code> to see a list of lunar phases. Use <code>S</code> to see sunrise/sunset information.</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a> and <a href="/snippet/t/calendar.html">calendar</a>.</small>
+    </div>    
+    <div class="align-right"><small>Credit: Also see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Calendar_002fDiary.html">the emacs manual</a>.</small></div>
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/emacs-m-x-occur.html">
@@ -347,6 +383,21 @@ relative-compose:  0
 <li><code>C-x r m</code> &ndash; create (make) bookmark</li>
 </ul>
 </li>
+<li><code>M-o M-s</code> / <code>M-o M-S</code> &ndash; center line / center paragraph</li>
+<li><code>M-&lt;Home&gt;</code>, <code>M-&lt;Page Up&gt;</code>, etc. &ndash; move in other window/frame (without losing focus on the current window/frame)</li>
+<li><p>cursor movement</p>
+
+<ul>
+<li><code>C-a</code> / <code>C-e</code> &ndash; beginning of line / end of line</li>
+<li><code>M-a</code> / <code>M-e</code> &ndash; beginning of sentence / end of sentence</li>
+<li><code>C-b</code> / <code>C-f</code> &ndash; backward one character / forward one character</li>
+<li><code>C-p</code> / <code>C-n</code> &ndash; previous line / next line</li>
+</ul>
+</li>
+<li><p><code>C-l</code> &ndash; recenter top/bottom</p></li>
+<li><code>C-j</code> &ndash; newline and indent</li>
+<li><code>C-c h</code> &ndash; hide lines matching</li>
+<li><code>C-h e</code> &ndash; show echo area messages</li>
 </ul>
 
 
@@ -580,12 +631,12 @@ M-x sort-lines
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
         <div id="caveator" class="off">
           <p class="smallprint">
-            Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
-            The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated. My wife probably disagrees with me too. I can't even promise that <i>I</i> agree with anything you read here.
-            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. This page was generated at  4:47 PM on 08 January 2013. Tempus fugit.
+            <!-- Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
+            The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated.
+            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. --> This page was generated at 11:44 PM on 15 April 2013. <!-- Tempus fugit. -->
           </p>
         </div>
       </div>
@@ -593,4 +644,3 @@ M-x sort-lines
   </div>
 </body>
 </html>
-
