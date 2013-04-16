@@ -11,7 +11,8 @@ Open the calendar:
 
     M-x calendar
 
-(close the calendar with `q`, which invokes `(calendar-exit)`.
+
+(You can close the calendar with `q`, which invokes `(calendar-exit)`.
 
 Movement:
 
@@ -29,23 +30,6 @@ Other:
   *  Type`C-<space>`, move to another date and type `M-=` to invoke `(calendar-count-days-region)` (show the number of days between the dates (including the endpoints).
   * Type `H m` or `H y` to generate an html-format calendar (month and year, respectively).  (`t <something>` generates a number of interesting calendars in TeX, if you are so inclined.)
   * Type `h` to see known holidays for the selected date, or `a` to see all holidays for the three month period that is displayed. Use `M-x list-holidays` for even more.  Use `M` to see a list of lunar phases. Use `S` to see sunrise/sunset information.
-
- *
-
-{% highlight cl %}
-(set-face-attribute 'default nil :height 120) ;; where `height` is 10x point size
-{% endhighlight %}
-
-{% highlight coffeescript %}
-flatten_array = (a)->
-  unless a?
-    return null
-  else if a.length is 0
-    return []
-  else
-    return ( a.reduce (l,r)->l.concat(r) )
-{% endhighlight %}
-
 
 ######################################################################
 tags: [node.js,javascript,coffeescript]

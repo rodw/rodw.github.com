@@ -24,11 +24,9 @@ primarynav:
 - text: Home
   url: /
   section: home
-- text: Projects
-  url: /project
-  section: project
+# - text: Projects
+#   url: /project
+#   section: project
 - text: Snippets
   url: /snippet
   section: snippet
-
-
