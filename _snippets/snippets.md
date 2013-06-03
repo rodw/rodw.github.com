@@ -942,7 +942,18 @@ echo "tar Ozxf <file> | dd of=<device>"
 tags: [linux,bash]
 title: Find large files on Linux.
 slug: find-large-files
+credit: Thanks to Luc Pionchon for pointing me to `sort -h`.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**UPDATE:** Reader Luc Pionchon points out that `sort` supports a `-h` parameter that sorts by "human" numbers, hence:
+
+{% highlight console %}
+$ du -h * | sort -h | tail
+{% endhighlight %}
+
+is probably a better alternative than any of the following.
+
+<strike>
 
 {% highlight console %}
 $ du -h * | grep "^[0-9.]*M" | sort -n
@@ -959,6 +970,7 @@ $ du -h * | egrep "^[0-9.]*(M|G)"
 to get both, but then the `sort -n` doesn't work quite the way we'd like.)
 
 Of course, you could use `du` without the `-h` to get file sizes by the default block size rather than the human-readable 12.4M or 16K, etc.
+</strike>
 
 ######################################################################
 tags: [emacs]
