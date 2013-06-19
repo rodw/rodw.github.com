@@ -847,18 +847,25 @@ $ shuf -n 3 /usr/share/dict/words
 selects three words at random from the `words` dictionary.
 
 ######################################################################
-tags: [git]
-title: Backup a git repository (via git bundle).
-slug: git-repo-backup
+tags: [git,backup]
+title: backup a git repository with `git bundle`
+slug: git-bundle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-From within a Git repository's working directory, run
+Run:
 
 {% highlight console %}
-$ git bundle create FILENAME --all
+$ cd REPOSITORY_WORKING_DIRECTORY
+$ git bundle create PATH_TO_BUNDLE.git --all
 {% endhighlight %}
 
 to create a single-file backup of the entire repository.
+
+Note that the bundle file is functional Git repository:
+
+{% highlight console %}
+$ git clone PATH_TO_BUNDLE.git MY_PROJECT
+{% endhighlight %}
 
 
 ######################################################################
