@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>gracefully closing node.js applications via signal handling</title>
+  <title>1 backup snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,6 +97,8 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
+              <h1 class=" remove-bottom">1 backup snippets</h1>
+            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -110,43 +112,41 @@
       
 
       <div class="thirteen columns bulleted">
-        <div class="snippet">
-  <h2 class="half-bottom">gracefully closing node.js applications via signal handling</h2>
-  <div>
-    <p>To make your node.js application gracefully respond to shutdown signals, use <code>process.on(SIGNAL,HANDLER)</code>.</p>
+        
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/git-bundle.html">
+        <h2 class="half-bottom">backup a git repository with `git bundle`</h2>
+      </a>
+    
+    <div>
+      <p>Run:</p>
 
-<p>For example, to respond to <code>SIGINT</code> (typically <em>Ctrl-c</em>), you can use:</p>
-
-<div class="highlight"><pre><code class="javascript"><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="s2">&quot;SIGINT&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;CLOSING [SIGINT]&#39;</span><span class="p">);</span>
-  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
-<span class="p">}</span> <span class="p">);</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">cd </span>REPOSITORY_WORKING_DIRECTORY
+<span class="gp">$</span> git bundle create PATH_TO_BUNDLE.git --all
 </code></pre>
 </div>
 
 
-<p>Note that without the <code>process.exit()</code>, the program will not be shutdown.  (This is you chance to override or &ldquo;trap&rdquo; the signal.)</p>
+<p>to create a single-file backup of the entire repository.</p>
 
-<p>Some common examples (in CoffeeScript):</p>
+<p>Note that the bundle file is functional Git repository:</p>
 
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGHUP&#39;</span><span class="p">,</span>  <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGHUP]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGINT&#39;</span><span class="p">,</span>  <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGINT]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGQUIT&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGQUIT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGABRT&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGABRT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGTERM&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGTERM]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> git clone PATH_TO_BUNDLE.git MY_PROJECT
 </code></pre>
 </div>
 
 
-<p>PS: On Linux (and similiar) you can enter <code>kill -l</code> on the command line to see a list of possible signals, and <code>kill -N PID</code> to send signal <em>N</em> to the process with process ID <em>PID</em>.</p>
 
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/git.html">git</a> and <a href="/snippet/t/backup.html">backup</a>.</small>
+    </div>    
+    
   </div>
-  <div class="align-right">
-    <small>Tags: <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/coffeescript.html">coffeescript</a>.</small>
-  </div>    
-  
-</div>
-<!-- <hr/> -->
+  <!-- <hr/> -->
+
 
 
       </div>
