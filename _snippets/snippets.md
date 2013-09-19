@@ -1,3 +1,27 @@
+######################################################################
+tags: [regexp,javascript,coffeescript]
+title: escape a string for use in a regular expression
+slug: escape-for-regexp
+note: 2013-06-19
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following function converts reserved characters into backslash-escaped patterns.  This allows a literal string to be used within a regular expression.
+
+{% highlight coffeescript %}
+escape_for_regexp=(str)->
+  return str.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1")
+{% endhighlight %}
+
+For example:
+
+{% highlight javascript %}
+var literal = "Who said that?";
+var escaped = escape_for_regexp(literal); // yields "Who said that\?"
+var regexp = new RegExp(escaped);
+console.log(regexp);                      // yields /Who said that\?/
+{% endhighlight %}
+
 
 ######################################################################
 tags: [emacs,calendar]
@@ -17,9 +41,9 @@ Open the calendar:
 Movement:
 
   * `C-f` or arrow-right is `(calendar-forward-day)` and `C-b` or arrow-left is `(calendar-backward-day)`.
-  * `C-n` or arrow-down is `(calendar-foward-week)` and `C-p` or arrow-up is `(calendar-backward-week)`.
+  * `C-n` or arrow-down is `(calendar-forward-week)` and `C-p` or arrow-up is `(calendar-backward-week)`.
   * `M-}` or `>` is `(calendar-forward-month)` and `M-{` or `<` is `(calendar-backward-month)`
-  * `C-x ]` is `(calendar-foward-year)` and `C-x [` is `(calendar-backward-year)`
+  * `C-x ]` is `(calendar-forward-year)` and `C-x [` is `(calendar-backward-year)`
   * Use the `M-<n>` prefix to move a multiple of the above.  E.g. `M-90 C-f` (or `M-90 <right-arrow>`) moves forward 90 days.  (In calendar mode, the meta key is optional, simply `90 <right-arrow>` will move forward 90 days, `16 <down-arrow>` will move forward 16 weeks, etc.)
   * `o` will let you interactively select a date.
   * `.` will return to today
@@ -78,7 +102,7 @@ process.on 'SIGABRT', ()->console.log('CLOSING [SIGABRT]'); process.exit()
 process.on 'SIGTERM', ()->console.log('CLOSING [SIGTERM]'); process.exit()
 {% endhighlight %}
 
-PS: On Linux (and similiar) you can enter `kill -l` on the command line to see a list of possible signals, and `kill -N PID` to send signal *N* to the process with process ID *PID*.
+PS: On Linux (and similar) you can enter `kill -l` on the command line to see a list of possible signals, and `kill -N PID` to send signal *N* to the process with process ID *PID*.
 
 
 ######################################################################
@@ -154,7 +178,7 @@ To change the font size in the current buffer:
 
  * `C-x C-+` - increase font size
 
- * `C-x C--` - descrease font size
+ * `C-x C--` - decrease font size
 
 Follow either with `+`, `-` or `0` for continued adjustment.
 
@@ -194,7 +218,7 @@ tags: [bash,linux]
 title: Use `less -S` for horizontal scrolling
 slug: less-chop-long-lines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The flag `-S` (or `--chop-long-lines`) will cause `less` to truncate lines at the screen (terminal) boundary, rather than wrapping as it does by default.  You can then scroll horizonally (with the arrow keys, for example) to view the full lines when needed.
+The flag `-S` (or `--chop-long-lines`) will cause `less` to truncate lines at the screen (terminal) boundary, rather than wrapping as it does by default.  You can then scroll horizontally (with the arrow keys, for example) to view the full lines when needed.
 
 {% highlight console %}
 cat some_file_with_very_long_lines | less -S
@@ -352,7 +376,7 @@ argf.forEach( function(line) {
 
 Like Ruby's `ARGF`, the module assumes any elements in `process.argv` represent files to process (and uses the input stream if no files are provided.
 
-You can also pass an array to `new ARGF()` to provide the list of files, which is handy if you're using something like [node-optimist](https://github.com/substack/node-optimist).  (Note that in node-optimist you can use `argv._` to get the remaining parameters after parising.)  For example:
+You can also pass an array to `new ARGF()` to provide the list of files, which is handy if you're using something like [node-optimist](https://github.com/substack/node-optimist).  (Note that in node-optimist you can use `argv._` to get the remaining parameters after parsing.)  For example:
 
 {% highlight javascript %}
 optimist = require('optimist');
@@ -386,7 +410,7 @@ slug: chrome-go-back-in-new-tab
 
 In Chromium/Google Chrome, holding down the `Ctrl` button while clicking on the back button will open a new tab with the appropriate page (`history.go(-1)`) in a new tab.
 
-I don't know how long this has been a feature, but I accidentally stumbed across this today.  Very useful for me. I often open many links from a single page (a directory page or SERP for example). When I fail to Ctrl-click, I need to go back, and ctrl-click the link, which is tedious when it results in two spurious page loads (loading the new page, re-loading the list page and then re-loading the new page again).
+I don't know how long this has been a feature, but I accidentally stumbled across this today.  Very useful for me. I often open many links from a single page (a directory page or SERP for example). When I fail to Ctrl-click, I need to go back, and ctrl-click the link, which is tedious when it results in two spurious page loads (loading the new page, re-loading the list page and then re-loading the new page again).
 
 ######################################################################
 tags: [emacs]
@@ -408,7 +432,7 @@ If you position the cursor on the `q` (fifth column), then `M-u` changes `quick`
 
 If you position the cursor on the `u` (sixth column), then `M-u` changes `quick` to `qUICK`, `M-c` changes `quick` to `qUick`, etc.
 
-One could probably write an elisp function based on `(capitalize-word)` and some heurstics or dictionary lookups to create a true title case function (e.g., not capitalize `a`, `an`, `the` in the middle of a phrase), but `M-c` is a quick and easy approximation.
+One could probably write an elisp function based on `(capitalize-word)` and some heuristics or dictionary look-ups to create a true title case function (e.g., not capitalize `a`, `an`, `the` in the middle of a phrase), but `M-c` is a quick and easy approximation.
 
 Also, note that there is a version of upcase and downcase that work on the selection (region) instead of the next word.
 
@@ -1305,7 +1329,7 @@ $ tail A,Bd filename
 when you want to exclude lines **`A`** through **`B`** from the output.
 
 ######################################################################
-title: List Availble Fonts
+title: List Available Fonts
 tags: [linux,rudimentary]
 slug: list-fonts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
