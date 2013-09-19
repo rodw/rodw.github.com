@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>1 latex snippets</title>
+  <title>escape a string for use in a regular expression</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,8 +97,6 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">1 latex snippets</h1>
-            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -112,38 +110,36 @@
       
 
       <div class="thirteen columns bulleted">
-        
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/zero-width-space-char.html">
-        <h2 class="half-bottom">breaking non-space (zero-width space)</h2>
-      </a>
-    
-    <div>
-      <p>To insert a zero-width space character (as a hint to the layout engine that it <em>could</em> insert a line break here) in HTML:</p>
+        <div class="snippet">
+  <h2 class="half-bottom">escape a string for use in a regular expression</h2>
+  <div>
+    <p>The following function converts reserved characters into backslash-escaped patterns.  This allows a literal string to be used within a regular expression.</p>
 
-<div class="highlight"><pre><code class="html"><span class="ni">&amp;#x200B;</span>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">escape_for_regexp</span><span class="o">=</span><span class="nf">(str)-&gt;</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/([.?*+^$[\]\\(){}|-])/g</span><span class="p">,</span> <span class="s">&quot;\\$1&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
 
 
-<p>Or in Latex:</p>
+<p>For example:</p>
 
-<div class="highlight"><pre><code class="latex"><span class="k">\hspace</span><span class="nb">{</span>0pt<span class="nb">}</span>
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">literal</span> <span class="o">=</span> <span class="s2">&quot;Who said that?&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">escaped</span> <span class="o">=</span> <span class="nx">escape_for_regexp</span><span class="p">(</span><span class="nx">literal</span><span class="p">);</span> <span class="c1">// yields &quot;Who said that\?&quot;</span>
+<span class="kd">var</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">escaped</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">regexp</span><span class="p">);</span>                      <span class="c1">// yields /Who said that\?/</span>
 </code></pre>
 </div>
 
 
 
 
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/html.html">html</a> and <a href="/snippet/t/latex.html">latex</a>.</small>
-    </div>    
-    
   </div>
-  <!-- <hr/> -->
-
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/regexp.html">regexp</a>, <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/coffeescript.html">coffeescript</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
 
 
       </div>

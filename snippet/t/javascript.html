@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>7 javascript snippets</title>
+  <title>8 javascript snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,7 +97,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">7 javascript snippets</h1>
+              <h1 class=" remove-bottom">8 javascript snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -113,6 +113,41 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/escape-for-regexp.html">
+        <h2 class="half-bottom">escape a string for use in a regular expression</h2>
+      </a>
+    
+    <div>
+      <p>The following function converts reserved characters into backslash-escaped patterns.  This allows a literal string to be used within a regular expression.</p>
+
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">escape_for_regexp</span><span class="o">=</span><span class="nf">(str)-&gt;</span>
+  <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/([.?*+^$[\]\\(){}|-])/g</span><span class="p">,</span> <span class="s">&quot;\\$1&quot;</span><span class="p">)</span>
+</code></pre>
+</div>
+
+
+<p>For example:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">literal</span> <span class="o">=</span> <span class="s2">&quot;Who said that?&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">escaped</span> <span class="o">=</span> <span class="nx">escape_for_regexp</span><span class="p">(</span><span class="nx">literal</span><span class="p">);</span> <span class="c1">// yields &quot;Who said that\?&quot;</span>
+<span class="kd">var</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">escaped</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">regexp</span><span class="p">);</span>                      <span class="c1">// yields /Who said that\?/</span>
+</code></pre>
+</div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/regexp.html">regexp</a>, <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/coffeescript.html">coffeescript</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/coffeescript-flatten-array.html">
@@ -175,7 +210,7 @@
 </div>
 
 
-<p>PS: On Linux (and similiar) you can enter <code>kill -l</code> on the command line to see a list of possible signals, and <code>kill -N PID</code> to send signal <em>N</em> to the process with process ID <em>PID</em>.</p>
+<p>PS: On Linux (and similar) you can enter <code>kill -l</code> on the command line to see a list of possible signals, and <code>kill -N PID</code> to send signal <em>N</em> to the process with process ID <em>PID</em>.</p>
 
     </div>
     <div class="align-right">
@@ -403,7 +438,7 @@
 
 <p>Like Ruby&rsquo;s <code>ARGF</code>, the module assumes any elements in <code>process.argv</code> represent files to process (and uses the input stream if no files are provided.</p>
 
-<p>You can also pass an array to <code>new ARGF()</code> to provide the list of files, which is handy if you&rsquo;re using something like <a href="https://github.com/substack/node-optimist">node-optimist</a>.  (Note that in node-optimist you can use <code>argv._</code> to get the remaining parameters after parising.)  For example:</p>
+<p>You can also pass an array to <code>new ARGF()</code> to provide the list of files, which is handy if you&rsquo;re using something like <a href="https://github.com/substack/node-optimist">node-optimist</a>.  (Note that in node-optimist you can use <code>argv._</code> to get the remaining parameters after parsing.)  For example:</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="nx">optimist</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;optimist&#39;</span><span class="p">);</span>
 <span class="nx">ARGF</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;argf&#39;</span><span class="p">);</span>
@@ -499,7 +534,7 @@
           <p class="smallprint">
             <!-- Except for content that belongs to someone else. Then the copyright belongs to whomever it belongs to.
             The views expressed here are solely my own. They do not reflect in any way those of any institution, organization or group with which I am affiliated.
-            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. --> This page was generated at  2:04 PM on 19 June 2013. <!-- Tempus fugit. -->
+            Also, I'm not a doctor or a lawyer or really qualified to be giving any advice at all. Ipso facto caveat emptor inter alia. --> This page was generated at  7:59 PM on 18 September 2013. <!-- Tempus fugit. -->
           </p>
         </div>
       </div>
