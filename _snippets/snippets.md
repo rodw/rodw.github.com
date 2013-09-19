@@ -22,7 +22,6 @@ var regexp = new RegExp(escaped);
 console.log(regexp);                      // yields /Who said that\?/
 {% endhighlight %}
 
-
 ######################################################################
 tags: [emacs,calendar]
 title: emacs calendar functions
