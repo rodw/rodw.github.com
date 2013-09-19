@@ -1,4 +1,35 @@
 ######################################################################
+tags: [sql,sqlite,database,cheatsheet]
+title: A Cheat Sheet for SQLite
+slug: sqlite-cheat-sheet
+note: 2013-09-18
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+### General
+
+ * Most of the SQLite "meta" commands begin with a dot.  When in doubt, try `.help`
+ * Use `Ctrl-d` or  `.exit` or `.quit` to exit (and `Ctrl-c` to terminiate a long-running SQL query).
+ * Enter `.show` to see current settings.
+
+### Meta-data
+
+ * Enter `.databases` to see a list of mounted databases.
+ * Enter `.tables` to see a list of table names.
+ * Enter `.index` to see a list of index names.
+ * Enter `.schema TABLENAME` to see the create table statement for a given table.
+
+### Import and Export
+
+ * Enter `.output FILENAME` to pipe output to the specified file.  (Use `.output stdout` to return to the default behavior or printing results to the console.)
+ * Enter `.mode [csv|column|html|insert|line|list|tabs|tcl]` to change the way in which query results are printed.
+ * Enter `.separator DELIM` to change the delimiter used in  (`list`-mode) exports and imports. (Defaults to `|`.)
+ * Enter `.dump [TABLEPATTERN]` to create a collection of SQL statements for recreating the database (or just those tables with naames matching the optional TABLEPATTERN).
+ * Enter `.read FILENAME` to execute the specified file as a SQL script.
+
+
+
+######################################################################
 tags: [regexp,javascript,coffeescript]
 title: escape a string for use in a regular expression
 slug: escape-for-regexp
