@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Vertically centering block elements with CSS.</title>
+  <title>1 cheatsheet snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,6 +97,8 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
+              <h1 class=" remove-bottom">1 cheatsheet snippets</h1>
+            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -110,35 +112,52 @@
       
 
       <div class="thirteen columns bulleted">
-        <div class="snippet">
-  <h2 class="half-bottom">Vertically centering block elements with CSS.</h2>
-  <div>
+        
+  <div class="snippet">
     
+      <a class="permalink" href="/snippet/s/sqlite-cheat-sheet.html">
+        <h2 class="half-bottom">A Cheat Sheet for SQLite</h2>
+      </a>
+    
+    <div>
+      <h3>General</h3>
 
-<div class="highlight"><pre><code class="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
-    <span class="nf">#wrapper</span> <span class="p">{</span> <span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span> <span class="p">}</span> <span class="c">/* position:absolute is also ok */</span>
-    <span class="nf">#wrapped</span> <span class="p">{</span> <span class="k">position</span><span class="o">:</span><span class="k">absolute</span><span class="p">;</span> <span class="k">top</span><span class="o">:</span><span class="m">50</span><span class="o">%</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span><span class="m">10em</span><span class="p">;</span> <span class="k">margin-top</span><span class="o">:-</span><span class="m">5em</span><span class="p">;</span> <span class="p">}</span>  <span class="c">/* margin-top = -1 * height/2 */</span>
-<span class="nt">&lt;/style&gt;</span>
-...
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;wrapper&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;wrapped&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Block content.<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;p&gt;</span>But still vertically centered.<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
+<ul>
+<li>Most of the SQLite &ldquo;meta&rdquo; commands begin with a dot.  When in doubt, try <code>.help</code></li>
+<li>Use <code>Ctrl-d</code> or  <code>.exit</code> or <code>.quit</code> to exit (and <code>Ctrl-c</code> to terminiate a long-running SQL query).</li>
+<li>Enter <code>.show</code> to see current settings.</li>
+</ul>
 
 
+<h3>Meta-data</h3>
+
+<ul>
+<li>Enter <code>.databases</code> to see a list of mounted databases.</li>
+<li>Enter <code>.tables</code> to see a list of table names.</li>
+<li>Enter <code>.index</code> to see a list of index names.</li>
+<li>Enter <code>.schema TABLENAME</code> to see the create table statement for a given table.</li>
+</ul>
 
 
+<h3>Import and Export</h3>
+
+<ul>
+<li>Enter <code>.output FILENAME</code> to pipe output to the specified file.  (Use <code>.output stdout</code> to return to the default behavior or printing results to the console.)</li>
+<li>Enter <code>.mode [csv|column|html|insert|line|list|tabs|tcl]</code> to change the way in which query results are printed.</li>
+<li>Enter <code>.separator DELIM</code> to change the delimiter used in  (<code>list</code>-mode) exports and imports. (Defaults to <code>|</code>.)</li>
+<li>Enter <code>.dump [TABLEPATTERN]</code> to create a collection of SQL statements for recreating the database (or just those tables with naames matching the optional TABLEPATTERN).</li>
+<li>Enter <code>.read FILENAME</code> to execute the specified file as a SQL script.</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/sql.html">sql</a>, <a href="/snippet/t/sqlite.html">sqlite</a>, <a href="/snippet/t/database.html">database</a> and <a href="/snippet/t/cheatsheet.html">cheatsheet</a>.</small>
+    </div>    
+    
   </div>
-  <div class="align-right">
-    <small>Tags: <a href="/snippet/t/css.html">css</a>.</small>
-  </div>    
-  <div class="align-right"><small>Credit: via <a href="http://phrogz.net/css/vertical-align/index.html">phrogz.net</a>.</small></div>
-</div>
-<!-- <hr/> -->
+  <!-- <hr/> -->
+
 
 
       </div>
