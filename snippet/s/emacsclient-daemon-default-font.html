@@ -114,8 +114,7 @@
     <p>I&rsquo;ve been using <code>set-default-font</code> in my <code>.emacs</code> file to configure emacs to use my favorite programming font.</p>
 
 <div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span> <span class="c1">;;; set default font</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>I use <code>emacs --daemon</code> to keep an instance of emacs running as a background process on my development machine so that I can run <code>emacsclient</code> to call up an emacs window (frame) instantaneously (and keep the same session running even after a close the emacs frame).</p>
@@ -126,16 +125,14 @@
 
 <div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span> <span class="c1">;;; set default font</span>
 <span class="p">(</span><span class="k">setq</span> <span class="nv">default-frame-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">font</span> <span class="o">.</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)))</span> <span class="c1">;;; set default font for emacs --daemon / emacsclient</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>By the way, I also discovered the <code>describe-font</code> elisp function while trying to diagnose this issue.</p>
 
 <div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">describe-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span>
 <span class="c1">;; or M-x describe-font &lt;RETURN&gt; Droid Sans Mono Slashed-10 &lt;RETURN&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>which opens a <code>*Help*</code> buffer containing:</p>
@@ -146,8 +143,7 @@
           height: 17
  baseline-offset:  0
 relative-compose:  0
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -181,9 +177,9 @@ relative-compose:  0
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:57 PM on 09 October 2013</p>
+          <p class="smallprint">This page was generated at  1:28 PM on 08 December 2013</p>
         </div>
       </div>
     </div>

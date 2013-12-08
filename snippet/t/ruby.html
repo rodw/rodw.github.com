@@ -123,8 +123,7 @@
 <p>Install via:</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">npm install argf</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>or by adding</p>
@@ -137,8 +136,7 @@
   <span class="p">}</span>
   <span class="err">...</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>to your <code>package.json</code> file.</p>
@@ -160,8 +158,7 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Read:&quot;</span><span class="p">,</span><span class="nx">line</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;From source:&quot;</span><span class="p">,</span><span class="nx">argv</span><span class="p">.</span><span class="nx">stream</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Like Ruby&rsquo;s <code>ARGF</code>, the module assumes any elements in <code>process.argv</code> represent files to process (and uses the input stream if no files are provided.</p>
@@ -187,8 +184,7 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Read:&quot;</span><span class="p">,</span><span class="nx">line</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;From source:&quot;</span><span class="p">,</span><span class="nx">argv</span><span class="p">.</span><span class="nx">stream</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -211,15 +207,13 @@
       <h3>by key</h3>
 
 <div class="highlight"><pre><code class="ruby"><span class="n">h</span><span class="o">.</span><span class="n">sort</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>by value</h3>
 
 <div class="highlight"><pre><code class="ruby"><span class="n">h</span><span class="o">.</span><span class="n">sort_by</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="n">v</span><span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Note both forms return an array of key-value pairs (i.e., an array of arrays).</p>
@@ -242,9 +236,9 @@
       <ul>
 <li><code>array.push</code> appends an element to the array.</li>
 <li><code>array.pop</code> removes (and returns) the last element in the array.</li>
-<li>Hence <code>array.last</code> (and <code>array[-1]</code>) operates like <code>array.peek</code> would if it existed&mdash;it returns (but does not remove) the item on the top of the stack.</li>
+<li>Hence <code>array.last</code> (and <code>array[-1]</code>) operates like <code>array.peek</code> would if it existed&ndash;it returns (but does not remove) the item on the top of the stack.</li>
 <li><code>array.shift</code> removes (and returns) the first element in the array.</li>
-<li>Hence <code>array.shift</code> &ldquo;pops&rdquo; an element in a queue-like way&mdash;first in, first out.  <code>array.first</code> (and <code>array[1]</code>) allow one to &ldquo;peek&rdquo; at this element.</li>
+<li>Hence <code>array.shift</code> &ldquo;pops&rdquo; an element in a queue-like way&ndash;first in, first out.  <code>array.first</code> (and <code>array[1]</code>) allow one to &ldquo;peek&rdquo; at this element.</li>
 </ul>
 
 
@@ -257,8 +251,7 @@
 <span class="go">&gt; a.shift                 # =&gt; 1</span>
 <span class="go">&gt; a                       # =&gt; [2, 3]</span>
 <span class="go">&gt; a.first                 # =&gt; 2</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -287,8 +280,7 @@
 <p>For example, a <code>cat</code>-like program could be implemented in Ruby as:</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="no">ARGF</span><span class="o">.</span><span class="n">each_line</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">line</span> <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>When working with <code>optparse</code>, use the <code>parse!</code> method to strip recognized &ldquo;flag&rdquo; parameters from <code>ARGV</code>, leaving only the files you want to operate so that <code>ARGF</code> works just like you want it to. For example:</p>
@@ -313,8 +305,7 @@
 
 <span class="nb">puts</span> <span class="n">options</span><span class="o">[</span><span class="ss">:heading</span><span class="o">]</span> <span class="k">unless</span> <span class="n">options</span><span class="o">[</span><span class="ss">:heading</span><span class="o">].</span><span class="n">nil?</span>
 <span class="no">ARGF</span><span class="o">.</span><span class="n">each_line</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">line</span> <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -337,8 +328,7 @@
       <p>To split a Ruby array in two two equally-sized (+/-1) parts:</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="n">left</span><span class="p">,</span><span class="n">right</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">each_slice</span><span class="p">(</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">round</span> <span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>For example:</p>
@@ -347,8 +337,7 @@
 <span class="go">=&gt; [1, 2, 3, 4, 5]</span>
 <span class="go">a.each_slice( (a.size/2.0).round ).to_a</span>
 <span class="go">=&gt; [[1, 2, 3], [4, 5]]</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -371,8 +360,7 @@
       <p>To split a Ruby array <code>a</code> into <code>n</code> equally-sized parts:</p>
 
 <div class="highlight"><pre><code class="ruby"><span class="n">a</span><span class="o">.</span><span class="n">each_slice</span><span class="p">(</span> <span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="n">n</span><span class="o">.</span><span class="n">to_f</span><span class="p">)</span><span class="o">.</span><span class="n">round</span> <span class="p">)</span><span class="o">.</span><span class="n">to_a</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>For example:</p>
@@ -381,8 +369,7 @@
 <span class="go">=&gt; 3</span>
 <span class="go">a.each_slice( (a.size/n.to_f).round ).to_a</span>
 <span class="go">=&gt; [[1, 2], [3, 4], [5]]</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -417,9 +404,9 @@
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:57 PM on 09 October 2013</p>
+          <p class="smallprint">This page was generated at  1:28 PM on 08 December 2013</p>
         </div>
       </div>
     </div>

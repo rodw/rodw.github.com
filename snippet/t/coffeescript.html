@@ -122,8 +122,7 @@
 
 <div class="highlight"><pre><code class="coffeescript"><span class="nx">escape_for_regexp</span><span class="o">=</span><span class="nf">(str)-&gt;</span>
   <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/([.?*+^$[\]\\(){}|-])/g</span><span class="p">,</span> <span class="s">&quot;\\$1&quot;</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>For example:</p>
@@ -132,8 +131,7 @@
 <span class="kd">var</span> <span class="nx">escaped</span> <span class="o">=</span> <span class="nx">escape_for_regexp</span><span class="p">(</span><span class="nx">literal</span><span class="p">);</span> <span class="c1">// yields &quot;Who said that\?&quot;</span>
 <span class="kd">var</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">escaped</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">regexp</span><span class="p">);</span>                      <span class="c1">// yields /Who said that\?/</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -156,14 +154,13 @@
       
 
 <div class="highlight"><pre><code class="coffeescript"><span class="nv">flatten_array = </span><span class="nf">(a)-&gt;</span>
-  <span class="nx">unless</span> <span class="nx">a</span><span class="o">?</span>
+  <span class="k">unless</span> <span class="nx">a</span><span class="o">?</span>
     <span class="k">return</span> <span class="kc">null</span>
   <span class="k">else</span> <span class="k">if</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="p">[]</span>
   <span class="k">else</span>
     <span class="k">return</span> <span class="p">(</span> <span class="nx">a</span><span class="p">.</span><span class="nx">reduce</span> <span class="nf">(l,r)-&gt;</span><span class="nx">l</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span> <span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -191,21 +188,19 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;CLOSING [SIGINT]&#39;</span><span class="p">);</span>
   <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
 <span class="p">}</span> <span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Note that without the <code>process.exit()</code>, the program will not be shutdown.  (This is you chance to override or &ldquo;trap&rdquo; the signal.)</p>
 
 <p>Some common examples (in CoffeeScript):</p>
 
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGHUP&#39;</span><span class="p">,</span>  <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGHUP]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGINT&#39;</span><span class="p">,</span>  <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGINT]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGQUIT&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGQUIT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGABRT&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGABRT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-<span class="nx">process</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;SIGTERM&#39;</span><span class="p">,</span> <span class="nf">()-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGTERM]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">process</span><span class="p">.</span><span class="nx">on</span> <span class="s">&#39;SIGHUP&#39;</span><span class="p">,</span>  <span class="p">()</span><span class="nf">-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGHUP]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">on</span> <span class="s">&#39;SIGINT&#39;</span><span class="p">,</span>  <span class="p">()</span><span class="nf">-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGINT]&#39;</span><span class="p">);</span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">on</span> <span class="s">&#39;SIGQUIT&#39;</span><span class="p">,</span> <span class="p">()</span><span class="nf">-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGQUIT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">on</span> <span class="s">&#39;SIGABRT&#39;</span><span class="p">,</span> <span class="p">()</span><span class="nf">-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGABRT]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">on</span> <span class="s">&#39;SIGTERM&#39;</span><span class="p">,</span> <span class="p">()</span><span class="nf">-&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s">&#39;CLOSING [SIGTERM]&#39;</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+</code></pre></div>
 
 
 <p>PS: On Linux (and similar) you can enter <code>kill -l</code> on the command line to see a list of possible signals, and <code>kill -N PID</code> to send signal <em>N</em> to the process with process ID <em>PID</em>.</p>
@@ -228,28 +223,28 @@
       <h3>flags</h3>
 
 <ul>
-<li><code>/pattern/g</code> &ndash; global</li>
-<li><code>/pattern/i</code> &ndash; case-insensitive</li>
-<li><code>/pattern/m</code> &ndash; multi-line</li>
+<li><code>/pattern/g</code> - global</li>
+<li><code>/pattern/i</code> - case-insensitive</li>
+<li><code>/pattern/m</code> - multi-line</li>
 </ul>
 
 
 <h3>patterns</h3>
 
 <ul>
-<li><code>\s</code> &ndash; any whitespace character (<code>[\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
-<li><code>\S</code> &ndash; any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
-<li><code>[\s\S]</code> &ndash; commonly used for &ldquo;anything including newlines (alternative <code>[^]</code>)</li>
-<li><p><code>\S</code> &ndash; any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</p></li>
-<li><p><code>\w</code> &ndash; any word character (alpha, numeric or underscore) (<code>[a-zA-Z0-9_]</code>)</p></li>
-<li><code>\W</code> &ndash; any non-word character (<code>[^a-zA-Z0-9_]</code>)</li>
-<li><code>\d</code> &ndash; any digit (<code>[0-9]</code>)</li>
-<li><code>\D</code> &ndash; any non-digit (<code>[^0-9]</code>)</li>
-<li><code>\cX</code>&ndash; control character X (e.g. <code>\cM</code> matches <code>control-M</code> (<code>^M</code>))</li>
-<li><code>\b</code> &ndash; word boundary (the position between a word char and whitespace)</li>
-<li><code>\B</code> &ndash; not a word boundary (<code>[^\b]</code>).</li>
-<li><code>\xhh</code> &ndash; the character with hex code <code>hh</code></li>
-<li><code>\uhhhh</code> &ndash; the character with hex code <code>hhhh</code></li>
+<li><code>\s</code> - any whitespace character (<code>[\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>[\s\S]</code> - commonly used for &ldquo;anything including newlines (alternative <code>[^]</code>)</li>
+<li><p><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</p></li>
+<li><p><code>\w</code> - any word character (alpha, numeric or underscore) (<code>[a-zA-Z0-9_]</code>)</p></li>
+<li><code>\W</code> - any non-word character (<code>[^a-zA-Z0-9_]</code>)</li>
+<li><code>\d</code> - any digit (<code>[0-9]</code>)</li>
+<li><code>\D</code> - any non-digit (<code>[^0-9]</code>)</li>
+<li><code>\cX</code>- control character X (e.g. <code>\cM</code> matches <code>control-M</code> (<code>^M</code>))</li>
+<li><code>\b</code> - word boundary (the position between a word char and whitespace)</li>
+<li><code>\B</code> - not a word boundary (<code>[^\b]</code>).</li>
+<li><code>\xhh</code> - the character with hex code <code>hh</code></li>
+<li><code>\uhhhh</code> - the character with hex code <code>hhhh</code></li>
 </ul>
 
 
@@ -282,8 +277,7 @@
 <span class="k">if</span><span class="p">(</span><span class="nx">require</span><span class="p">.</span><span class="nx">main</span> <span class="o">===</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">main</span><span class="p">();</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The <code>main</code> method will run if <code>example.js</code> is invoked via <code>node example.js</code> or <code>./example.js</code> but not when required within another script (via <code>require('./example')</code>, for example).</p>
@@ -293,13 +287,12 @@
 <div class="highlight"><pre><code class="coffeescript"><span class="c1">#!/usr/bin/env coffee</span>
 <span class="c1"># file: example.coffee</span>
 <span class="k">class</span> <span class="nx">Example</span>
-  <span class="nx">main</span><span class="o">:</span><span class="nf">()-&gt;</span>
+  <span class="nx">main</span><span class="o">:</span><span class="p">()</span><span class="nf">-&gt;</span>
     <span class="c1"># ...</span>
 
 <span class="k">if</span> <span class="nx">require</span><span class="p">.</span><span class="nx">main</span> <span class="o">is</span> <span class="nx">module</span>
   <span class="p">(</span><span class="k">new</span> <span class="nx">Example</span><span class="p">()).</span><span class="nx">main</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The <code>main</code> method will run if <code>example.coffee</code> is invoked via <code>coffee example.coffee</code> or <code>./example.coffee</code> but not when required within another script (via <code>require('./example')</code>, for example).</p>
@@ -332,43 +325,37 @@
 
 <span class="s"># Now argv._ contains an array &quot;extra&quot; parameters, if any</span>
 <span class="s">console.log argv._</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>For example</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">coffee example.coffee --help</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>yields</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="p">[</span> <span class="p">]</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>but either of</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">coffee example.coffee --help foo.txt bar.png</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>or</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">coffee example.coffee foo.txt bar.png</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>yield</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="p">[</span> <span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;bar.png&#39;</span> <span class="p">]</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -393,8 +380,7 @@
 <p>Install via:</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">npm install argf</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>or by adding</p>
@@ -407,8 +393,7 @@
   <span class="p">}</span>
   <span class="err">...</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>to your <code>package.json</code> file.</p>
@@ -430,8 +415,7 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Read:&quot;</span><span class="p">,</span><span class="nx">line</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;From source:&quot;</span><span class="p">,</span><span class="nx">argv</span><span class="p">.</span><span class="nx">stream</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Like Ruby&rsquo;s <code>ARGF</code>, the module assumes any elements in <code>process.argv</code> represent files to process (and uses the input stream if no files are provided.</p>
@@ -457,8 +441,7 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Read:&quot;</span><span class="p">,</span><span class="nx">line</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;From source:&quot;</span><span class="p">,</span><span class="nx">argv</span><span class="p">.</span><span class="nx">stream</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -493,9 +476,9 @@
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:57 PM on 09 October 2013</p>
+          <p class="smallprint">This page was generated at  1:28 PM on 08 December 2013</p>
         </div>
       </div>
     </div>

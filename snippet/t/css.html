@@ -124,46 +124,43 @@
   <span class="n">transition</span><span class="o">:</span>         <span class="k">opacity</span> <span class="m">.25s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
   <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="k">opacity</span> <span class="m">.25s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
   <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span>    <span class="k">opacity</span> <span class="m">.25s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
-  <span class="o">-</span><span class="err">o</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span>      <span class="k">opacity</span> <span class="m">.25s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span>      <span class="k">opacity</span> <span class="m">.25s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Where the right-hand side has the general form:</p>
 
 <div class="highlight"><pre><code class="text">PROPERTY DURATION [TIMING-FUNCTION] [TRANSITION-DELAY]
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Transitions can chained:</p>
 
 <div class="highlight"><pre><code class="css"><span class="nt">transition</span><span class="o">:</span> <span class="nt">opacity</span> <span class="nc">.25s</span> <span class="nt">ease-in-out</span><span class="o">,</span> <span class="nt">height</span> <span class="nt">1s</span> <span class="nt">linear</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>Transition timing functions</h3>
 
 <ul>
-<li><p><code>linear</code> &ndash; constant rate of change between states.</p>
+<li><p><code>linear</code> - constant rate of change between states.</p>
 
 <p><code>cubic-bezier(0.0, 0.0, 1.0, 1.0)</code></p></li>
-<li><p><code>ease</code> &ndash;  (the default) slow acceleration, then faster, before rapidly slowing again at the end.</p>
+<li><p><code>ease</code> -  (the default) slow acceleration, then faster, before rapidly slowing again at the end.</p>
 
 <p><code>cubic-bezier(0.25, 0.1, 0.25, 1.0)</code></p></li>
-<li><p><code>ease-in-out</code> &ndash; like ease but accelerating/decelerating more rapidly (with a shorter transition between acceleration and deceleration).</p>
+<li><p><code>ease-in-out</code> - like ease but accelerating/decelerating more rapidly (with a shorter transition between acceleration and deceleration).</p>
 
 <p><code>cubic-bezier(0.42, 0, 0.58, 1.0)</code></p></li>
-<li><p><code>ease-in</code> &ndash; equivalent to the first half of ease-in-out; rapid accelerating then transitioning to a constant rate of change at the end.</p>
+<li><p><code>ease-in</code> - equivalent to the first half of ease-in-out; rapid accelerating then transitioning to a constant rate of change at the end.</p>
 
 <p><code>cubic-bezier(0.42, 0, 1, 1.0)</code></p></li>
-<li><p><code>ease-out</code> &ndash; equivalent to the second half of ease-in-out; a constant rate of change transitioning rapid deceleration at the end.</p>
+<li><p><code>ease-out</code> - equivalent to the second half of ease-in-out; a constant rate of change transitioning rapid deceleration at the end.</p>
 
 <p><code>cubic-bezier(0.42, 0, 0.58, 1.0)</code></p></li>
-<li><p><code>cubic-bezier(x1,y1,x2,y2)</code> &ndash; follows <a href="http://en.wikipedia.org/wiki/B%C3%A9zier_curve">cubic Bézier curve</a> using the control points (0,0), (x1,y1), (x2,y2) and (1,1).</p></li>
-<li><p><code>steps( n, [start|end] )</code> &ndash; stepwise function with <em>n</em> steps</p></li>
+<li><p><code>cubic-bezier(x1,y1,x2,y2)</code> - follows <a href="http://en.wikipedia.org/wiki/B%C3%A9zier_curve">cubic Bézier curve</a> using the control points (0,0), (x1,y1), (x2,y2) and (1,1).</p></li>
+<li><p><code>steps( n, [start|end] )</code> - stepwise function with <em>n</em> steps</p></li>
 </ul>
 
 
@@ -200,8 +197,7 @@
 <span class="nc">.float-right</span>  <span class="p">{</span> <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span> <span class="p">}</span>
 <span class="nc">.nobr</span>         <span class="p">{</span> <span class="k">white-space</span><span class="o">:</span> <span class="k">nowrap</span><span class="p">;</span> <span class="p">}</span>
 <span class="nc">.small</span>        <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">80</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span> <span class="c">/* should really sync with the &lt;small&gt; tag rules */</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>&ldquo;Fixing&rdquo; resets</h2>
@@ -220,8 +216,7 @@
 
 <span class="c">/* Mono-spaced types. */</span>
 <span class="nt">pre</span><span class="o">,</span> <span class="nt">code</span><span class="o">,</span> <span class="nt">kbd</span><span class="o">,</span> <span class="nt">samp</span><span class="o">,</span> <span class="nt">tt</span> <span class="p">{</span> <span class="k">font-family</span><span class="o">:</span> <span class="s1">&#39;droid sans mono slashed&#39;</span><span class="o">,</span> <span class="s1">&#39;droid sans mono dotted&#39;</span><span class="o">,</span> <span class="s1">&#39;droid sans mono&#39;</span><span class="o">,</span> <span class="k">monospace</span><span class="o">,</span> <span class="k">monospace</span><span class="p">;</span> <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -254,8 +249,7 @@
         <span class="nt">&lt;p&gt;</span>But still vertically centered.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -290,9 +284,9 @@
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:57 PM on 09 October 2013</p>
+          <p class="smallprint">This page was generated at  1:28 PM on 08 December 2013</p>
         </div>
       </div>
     </div>

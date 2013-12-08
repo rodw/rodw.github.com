@@ -121,8 +121,7 @@
       <p>The command:</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">tput rmam</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>will disable line wrapping so that long lines are truncated to width of the terminal (<code>$COLUMNS</code>).</p>
@@ -130,8 +129,7 @@
 <p>The command:</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">tput smam</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>will re-enable it.</p>
@@ -158,8 +156,7 @@
       <p>The flag <code>-S</code> (or <code>--chop-long-lines</code>) will cause <code>less</code> to truncate lines at the screen (terminal) boundary, rather than wrapping as it does by default.  You can then scroll horizontally (with the arrow keys, for example) to view the full lines when needed.</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">cat some_file_with_very_long_lines | less -S</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -184,8 +181,7 @@
 <p>To have text in your bash prompt (<code>$PS1</code>) hug the right side of the terminal:</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;`printf &quot;%${COLUMNS}s\n&quot; &quot;${TEXT}&quot;`$PS1&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>(This assumes you want the right-aligned text to appear before the rest of your prompt, if any.  Move the <code>$PS1</code> bit to the left side of the string to have the right-aligned text appear after the rest of your prompt.)</p>
@@ -199,8 +195,7 @@
 <p>Say you want to pad with <code>-</code> instead of space.  Try:</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;`printf -vch &quot;%${COLUMNS}s&quot; &quot;${TEXT}&quot;; printf &quot;%s&quot; &quot;${ch// /-}&quot;`$PS1&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>This will left-pad the <code>${TEXT}</code> with spaces, as above, and then replace any spaces with <code>#</code>.</p>
@@ -208,8 +203,7 @@
 <p>If you have any spaces in <code>${TEXT}</code> you want to preserve, one hacky work-around is to mark spaces in <code>$TEXT</code> with some other character, say <code>_</code>, and then replace <code>_</code> with <code></code> <em>after</em> the other substitution:</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;$PS1`printf -vch &quot;%${COLUMNS}s&quot; &quot;${TEXT}&quot;; printf -vch &quot;%s&quot; &quot;${ch// /-}&quot;; printf &quot;%s\n&quot; &quot;${ch//_/ }&quot;`&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>Drawing a line to the end of the line</h3>
@@ -217,8 +211,7 @@
 <p>I recently added a line containing the date and time to my bash prompt (so I can tell when a given command completed) and wanted to draw a line across the rest of the screen to make it visually easier to tell where a new prompt is displayed.  Something like this:</p>
 
 <div class="highlight"><pre><code class="text">-- Tue 02-Oct-2012 05:19 PM --------------------------------
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>(Assuming the terminal is 60 characters wide.)</p>
@@ -230,8 +223,7 @@
 <div class="highlight"><pre><code class="text">line=&quot;`printf -vch &quot;%${COLUMNS}s&quot; &quot;&quot;; printf &quot;%s&quot; &quot;${ch// /-}&quot;`&quot;
 dts=&quot;`date +&quot;-- %a %d-%b-%Y %I:%M %p &quot;`&quot;
 PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The first line creates a variable (<code>$line</code>) with <code>${COLUMNS}</code> dashes (<code>-</code>).  This line would span the length of the terminal.</p>
@@ -259,27 +251,24 @@ PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
     <div>
       <p><strong>UPDATE:</strong> Reader Luc Pionchon points out that <code>sort</code> supports a <code>-h</code> parameter that sorts by &ldquo;human&rdquo; numbers, hence:</p>
 
-<div class="highlight"><pre><code class="console"><span class="gp">$</span> du -h * | sort -h | tail
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> du -h * <span class="p">|</span> sort -h <span class="p">|</span> tail
+</code></pre></div>
 
 
 <p>is probably a better alternative than any of the following.</p>
 
 <p><strike></p>
 
-<div class="highlight"><pre><code class="console"><span class="gp">$</span> du -h * | grep <span class="s2">&quot;^[0-9.]*M&quot;</span> | sort -n
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> du -h * <span class="p">|</span> grep <span class="s2">&quot;^[0-9.]*M&quot;</span> <span class="p">|</span> sort -n
+</code></pre></div>
 
 
 <p>This finds files at least 1 MB in size and then sorts them by size.  Change <code>M</code> to <code>G</code> for files at least 1 GB in size.</p>
 
 <p>(Caveat: files 1 GB or larger will be missed by the MB version.  You can use:</p>
 
-<div class="highlight"><pre><code class="console"><span class="gp">$</span> du -h * | egrep <span class="s2">&quot;^[0-9.]*(M|G)&quot;</span>
-</code></pre>
-</div>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> du -h * <span class="p">|</span> egrep <span class="s2">&quot;^[0-9.]*(M|G)&quot;</span>
+</code></pre></div>
 
 
 <p>to get both, but then the <code>sort -n</code> doesn&rsquo;t work quite the way we&rsquo;d like.)</p>
@@ -307,8 +296,7 @@ PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
 <p>You can add a call to <code>history -a</code> to <code>PROMPT_COMMAND</code> to make bash to append your history to <code>~/.bash_history</code> every time it displays your prompt.</p>
 
 <div class="highlight"><pre><code class="console"><span class="go">PROMPT_COMMAND=&quot;history -a; $PROMPT_COMMAND&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The environment variable <code>PROMPT_COMMAND</code> is executed when bash is about to display your prompt.</p>
@@ -345,9 +333,9 @@ PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:57 PM on 09 October 2013</p>
+          <p class="smallprint">This page was generated at  1:28 PM on 08 December 2013</p>
         </div>
       </div>
     </div>

@@ -113,16 +113,15 @@
   <div>
     <p>Find files that have the same size and MD5 hash (and hence are likely to be exact duplicates):</p>
 
-<div class="highlight"><pre><code class="console"><span class="lineno">1</span> <span class="gp">$</span> find -not -empty -type f -printf <span class="s2">&quot;%s\n&quot;</span> | <span class="se">\</span>
-<span class="lineno">2</span> <span class="gp">&gt;</span> sort -rn | <span class="se">\</span>
-<span class="lineno">3</span> <span class="gp">&gt;</span> uniq -d | <span class="se">\</span>
-<span class="lineno">4</span> <span class="gp">&gt;</span> xargs -I<span class="o">{}</span> -n1 find -type f -size <span class="o">{}</span>c -print0 | <span class="se">\</span>
-<span class="lineno">5</span> <span class="gp">&gt;</span> xargs -0 md5sum | <span class="se">\</span>
-<span class="lineno">6</span> <span class="gp">&gt;</span> sort | <span class="se">\</span>
-<span class="lineno">7</span> <span class="gp">&gt;</span> uniq -w32 --all-repeated<span class="o">=</span>separate | <span class="se">\</span>
+<div class="highlight"><pre><code class="console"><span class="lineno">1</span> <span class="gp">$</span> find -not -empty -type f -printf <span class="s2">&quot;%s\n&quot;</span> <span class="p">|</span> <span class="se">\</span>
+<span class="lineno">2</span> <span class="gp">&gt;</span> sort -rn <span class="p">|</span> <span class="se">\</span>
+<span class="lineno">3</span> <span class="gp">&gt;</span> uniq -d <span class="p">|</span> <span class="se">\</span>
+<span class="lineno">4</span> <span class="gp">&gt;</span> xargs -I<span class="o">{}</span> -n1 find -type f -size <span class="o">{}</span>c -print0 <span class="p">|</span> <span class="se">\</span>
+<span class="lineno">5</span> <span class="gp">&gt;</span> xargs -0 md5sum <span class="p">|</span> <span class="se">\</span>
+<span class="lineno">6</span> <span class="gp">&gt;</span> sort <span class="p">|</span> <span class="se">\</span>
+<span class="lineno">7</span> <span class="gp">&gt;</span> uniq -w32 --all-repeated<span class="o">=</span>separate <span class="p">|</span> <span class="se">\</span>
 <span class="lineno">8</span> <span class="gp">&gt;</span> cut -d<span class="s2">&quot; &quot;</span> -f3-
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>You probably want to pipe that to a file as it runs slowly.</p>
@@ -172,9 +171,9 @@
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:57 PM on 09 October 2013</p>
+          <p class="smallprint">This page was generated at  1:28 PM on 08 December 2013</p>
         </div>
       </div>
     </div>

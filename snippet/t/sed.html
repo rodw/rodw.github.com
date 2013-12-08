@@ -120,10 +120,9 @@
     <div>
       
 
-<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;A1B2C3&quot;</span> | sed <span class="s1">&#39;s/[A-Z]//g&#39;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;A1B2C3&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;s/[A-Z]//g&#39;</span>
 <span class="go">123</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -148,15 +147,13 @@
 <p>To skip the first line of a file (and start piping data at the second line):</p>
 
 <div class="highlight"><pre><code class="console"><span class="gp">$</span> tail -n +2 FILENAME
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>More generally:</p>
 
 <div class="highlight"><pre><code class="console"><span class="gp">$</span> tail -n +M FILENAME
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>where <strong><code>M</code></strong> is the number of the first line you want to see (i.e., the number of lines to skip plus one).</p>
@@ -166,15 +163,13 @@
 <p>To skip the first line of a file (and start piping data at the second line):</p>
 
 <div class="highlight"><pre><code class="console"><span class="gp">$</span> sed 1d FILENAME
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>More generally:</p>
 
 <div class="highlight"><pre><code class="console"><span class="gp">$</span> tail A,Bd filename
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>when you want to exclude lines <strong><code>A</code></strong> through <strong><code>B</code></strong> from the output.</p>
@@ -209,9 +204,9 @@
           &nbsp;|&nbsp;
           <span class="nobr"><a href="/page/colophon.html">credits</a></span>
         </p>
-        <p class="half-bottom">&copy; Copyright 2012-2013 Rodney Waldhoff.</p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:57 PM on 09 October 2013</p>
+          <p class="smallprint">This page was generated at  1:28 PM on 08 December 2013</p>
         </div>
       </div>
     </div>
