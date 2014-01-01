@@ -22,7 +22,6 @@ sub {	top: .5ex; }
 pre, code, kbd, samp, tt { font-family: 'droid sans mono slashed', 'droid sans mono dotted', 'droid sans mono', monospace, monospace; }
 
 
-
 /* skeleton-related
  ********************************************************************/
 .mtop { margin-top: 14px; }
@@ -105,15 +104,16 @@ a.flatbutton { -webkit-transition:all .25s ease-in-out;-moz-transition:all .25s 
 /* `PRE` AND `CODE`
  ********************************************************************/
 code { padding:2px; background: #f5f5ff; border:1px solid #e5e5ee; font-size:0.9em; white-space:nowrap; } /* github/docco style inline `code` highlighting */
-pre code { border: none; white-space:pre; color:#fdce93; background-color:#303030 }                       /* except within `pre` blocks" */
-pre { padding:2px; color:#fdce93; background-color:#303030; border:1px solid #444; }                      /* terminal-esque `pre` formatting */
+pre code { border: none; white-space:pre; color:#fdce93; background-color:#303030 !important; }                       /* except within `pre` blocks" */
+pre { padding:2px; color:#fdce93; background-color:#303030 !important; border:1px solid #444; }                      /* terminal-esque `pre` formatting */
 pre { overflow:hidden; text-overflow: ellipsis; }                                                         /* truncate extra-wide `pre` blocks with ellipsis */
 div.highlight { margin-bottom: 20px; }
-pre:hover { overflow:visible; width: auto; } 
+pre:hover { overflow:visible; width: auto; }
 pre:hover code {  background:#303030; }
 
 /* zenburn-like color theme for pygments syntax coloring; derived from <https://github.com/colinta/pygments-css/blob/807a550bc540372eafdfbc2214a45cb4bccbdf15/zenburn.css> */
-.highlight code, .highlight pre { color:#fdce93; background-color:#303030; }
+.gist, .gist .gist-file .gist-data, .highlight code, .highlight pre { color:#fdce93; background-color:#303030 !important; }
+.gist { font-size: 0.8em !important;}
 .highlight .hll { background-color:#222; }
 .highlight .bp  { color:#efef8f; }                              /* Name.Builtin.Pseudo */
 .highlight .c   { color:#7f9f7f; }                              /* Comment */
@@ -160,7 +160,7 @@ pre:hover code {  background:#303030; }
 .highlight .nn  { color:#8fbede; }                              /* Name.Namespace */
 .highlight .no  { color:#ccc; }                                 /* Name.Constant */
 .highlight .nt  { color:#9ac39f; }                              /* Name.Tag */
-.highlight .nv  { color:#dcdccc; }                              /* Name.Variable */
+.highlight .nv  { color:#ccc; }                                 /* Name.Variable */
 .highlight .nx  { color:#ccc; }                                 /* Name.Other */
 .highlight .o   { color:#f0efd0; }                              /* Operator */
 .highlight .ow  { color:#f0efd0; }                              /* Operator.Word */
