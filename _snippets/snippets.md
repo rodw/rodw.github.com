@@ -1,4 +1,38 @@
 ######################################################################
+tags: [graphviz,dot,linux]
+title: Quickly render DOT (Graphviz) graph
+slug: graphviz-txlib
+note: 2014-01-01
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On Linux (and probably OSX) the command:
+
+{% highlight console %}
+dot -Txlib mygraph.gv
+{% endhighlight %}
+
+will quickly launch a lightweight window containing a `dot` rendering of the graph in `mygraph.gv`.
+
+The rendering should automatically refresh when `mygraph.gv` is updated.  (I've occassionally run into small glitches with this that force me to re-launch the window, but they are rare and obvious.)
+
+The same `-Txlib` parameter works for the other Graphviz rendering engines, including `neato`, `twopi`, `fdp`, `sfdp`, `circo`, and `patchwork`.
+
+######################################################################
+tags: [git,github,backup]
+title: Complete backup of GitHub repository
+slug: github-backup
+note: 2014-01-01
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following shell script will back up an organization's GitHub repositories, including the all branches of the source tree and the GitHub wiki and issue list (if any).
+
+<script src="https://gist.github.com/rodw/3073987.js"></script>
+
+(Also at [rodw/backup-github.sh](https://gist.github.com/rodw/3073987).)
+
+######################################################################
 tags: [sql,sqlite,database,cheatsheet]
 title: A Cheat Sheet for SQLite
 slug: sqlite-cheat-sheet
@@ -977,7 +1011,7 @@ pre, code, kbd, samp, tt { font-family: 'droid sans mono slashed', 'droid sans m
 
 
 ######################################################################
-tags: [linux]
+tags: [linux,backup]
 title: Backup an SD card on Linux using dd
 slug: how-to-backup-an-sd-card
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
