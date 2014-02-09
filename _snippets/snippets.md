@@ -1,4 +1,192 @@
 ######################################################################
+tags: [linux,networking,iptables]
+title: Mapping port 80 to port 3000 using iptables
+slug: iptables-port-mapping
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Port numbers less that 1024 are considered "privileged" ports, and you generally must be `root` to bind a listener to them.
+
+Rather than running a network application as `root`, map the privileged port to a non-privileged one:
+
+{% highlight console %}
+$ sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+{% endhighlight %}
+
+Now requests to port 80 will be forwarded on to port 3000.
+
+######################################################################
+tags: [linux]
+title: Making CAPS-LOCK into a control key in X
+slug: xwindows-caps-lock-ctrl
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using `xmodmap`:
+
+{% highlight console %}
+$ cat ~/.xmodmap
+remove Lock = Caps_Lock
+keycode 0x42 = Control_L
+add Control = Control_L
+$ xmodmap ~/.xmodmap
+{% endhighlight %}
+
+######################################################################
+tags: [tex/latex]
+title: Tweaking letter spacing in TeX/LaTeX
+slug: latex-condensed-letter-spacing
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+{% highlight tex %}
+\usepackage{microtype}
+%% [...]
+Normal
+\textls[-40]{Condensed}
+\textls[140]{Expanded}
+{% endhighlight %}
+
+
+######################################################################
+tags: [tex/latex]
+title: Avoding naming collisions in TeX/LaTeX
+slug: latex-fix-name-collision
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Both the `pifont` and `marvosym` package define a macro named `cross`, so a simple `\usepackage` pair like:
+
+{% highlight tex %}
+\usepackage{pifont}
+\usepackage{marvosym}
+{% endhighlight %}
+
+generates an error.  The `savesym` package is here to save the day:
+
+{% highlight tex %}
+\usepackage{savesym}
+\usepackage{pifont}
+\savesymbol{cross}
+\usepackage{marvosym}
+\restoresymbol{PIF}{cross}
+{% endhighlight %}
+
+Now both packages are loaded safely (and the `pifont` `\cross` macro is now available under the name `\PIFcross`).
+
+######################################################################
+tags: [tex/latex]
+title: Setting page margins in TeX/LaTeX
+slug: latex-page-margins
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ladies and gentlemen, the `geometry` package:
+
+{% highlight tex %}
+\usepackage[top=0.75in,left=0.75in,right=0.75in,bottom=0.75in]{geometry}
+{% endhighlight %}
+
+######################################################################
+tags: [tex/latex]
+title: Tab-like alignment in TeX/LaTeX using \hfill
+slug: latex-tab-align-hfill
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To right-align text:
+
+{% highlight tex %}
+\null\hfill Lorem Ipsum
+{% endhighlight %}
+
+Left and right aligned text:
+
+{% highlight tex %}
+Lorem \hfill Ipsum
+{% endhighlight %}
+
+Multiple columns:
+
+{% highlight tex %}
+Left \hfill Center \hfill Right
+{% endhighlight %}
+
+or
+
+{% highlight tex %}
+Left \hfill Center-Left \hfill Center-Right \hfill Right
+{% endhighlight %}
+
+etc.
+
+######################################################################
+tags: [coffeescript,node.js,sql,mysql,html]
+title: A General Purpose SQL-to-HTML Routine for CoffeeScript/JavaScript/Node.js
+slug: nodejs-sql-to-html
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using [node-mysql](https://github.com/felixge/node-mysql) or similar, the following CoffeeScript routine will generate an HTML table containing the data in a SQL result set, including column headings:
+
+{% highlight coffeescript %}
+  sql_to_html:(connection,query,bindvars,callback)=>
+    connection.query query, bindvars, (err,rows,fields)=>
+      if err?
+         callback(err)
+      else
+        buffer = '<table border=1><tr>'
+        for field in fields
+          buffer += "<th>#{field.name}</th>"
+        buffer += '</tr>'
+        for row in rows
+          buffer += '<tr>'
+          for field in fields
+            buffer += "<td>#{row[field.name]}</td>"
+          buffer += '</tr>'
+        buffer += '</table>'
+        callback(null,buffer)
+{% endhighlight %}
+
+######################################################################
+tags: [tex/latex]
+title: TeX/LaTeX Font Sizes
+slug: latex-font-sizes
+note: 2014-02-08
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To change the font size of text in a TeX/LaTeX document, use:
+
+{% highlight tex %}
+{\size Text to change the size of.}
+{% endhighlight %}
+
+where `\size` is one of:
+
+{% highlight tex %}
+\tiny
+\scriptsize
+\footnotesize
+\small
+\normalsize
+\large
+\Large
+\LARGE
+\huge
+\Huge
+{% endhighlight %}
+
+Also see <http://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text> for font size metrics and other details.
+
+######################################################################
 tags: [graphviz,dot,linux]
 title: Quickly render DOT (Graphviz) graph
 slug: graphviz-txlib
@@ -187,14 +375,45 @@ Or in Latex:
 \hspace{0pt}
 {% endhighlight %}
 
-
 ######################################################################
-tags: [emacs]
-title: M-x occur
-slug: emacs-m-x-occur
+tags: [emacs,shortcut]
+title: emacs cursor movement shortcuts
+slug: emacs-cursor-movement-shortcuts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`M-x occur` is nifty.
+ * `M-g g <N>` or `M-g M-g <N>` -- go to line <N> (`goto-line`)
+ * `M-g c <N>` -- go to *character* <N> (`goto-char`)
+ * `M-g <TAB> <N>` -- go to column <N> in the current line
+
+ * `M-<` -- `beginning-of-buffer`
+ * `M->` -- `end-of-buffer`
+
+ * `C-a` or `<home>` -- `move-beginning-of-line`
+ * `C-e` or `<end>` -- `move-end-of-line`
+
+ * `C-f` or `<right>` -- forward one char (`forward-char`) or right one char (`right-char`).   (Note `right-char` moves *backward* when editing right-to-left text.)
+ * `M-f` or `M-<right>` or `C-<right>`  -- forward one word (`forward-word`) or right one word (`right-word`).
+ * `C-b` or `<left>` -- backward one char (`backward-char`) or left one char (`left-char`).   (Note `left-char` moves *forward* when editing right-to-left text.)
+ * `M-b` or `M-<left>` or `C-<left>`  -- back one word (`backward-word`) or left one word (`left-word`).
+
+ * `C-n` or `<down>` -- down one line (`next-line`)
+ * `C-v` or `<PageDown>` -- down one page (`scroll-up-command`)
+ * `C-p` or `<up>` -- up one line (`previous-line`)
+ * `M-v` or `<PageUp>` -- up one page (`scroll-down-command`)
+
+ * `C-x C-n` -- set current column as "goal" column for up/down movement
+ * `C-u C-x C-n` -- cancel current goal column
+
+
+######################################################################
+tags: [emacs,shortcuts]
+title: Searching in Emacs
+slug: emacs-searching
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ * `C-s` / `C-r` -- search / search backward in current buffer
+ * `M-s o` / `M-x occur` / `M-x ioccur` -- list lines in current buffer matching regexp
+ * `M-x rgrep` -- recursive grep (find in files)
 
 ######################################################################
 tags: [emacs]
@@ -949,7 +1168,7 @@ $ git bundle create PATH_TO_BUNDLE.git --all
 
 to create a single-file backup of the entire repository.
 
-Note that the bundle file is functional Git repository:
+Note that the bundle file is a functional Git repository:
 
 {% highlight console %}
 $ git clone PATH_TO_BUNDLE.git MY_PROJECT
