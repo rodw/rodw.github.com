@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+  <title>TeX/LaTeX Font Sizes</title>
+	
+	<meta name="author" content="rod">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+  
+  <link rel="icon" type="image/svg+xml" href="img/braindump-mod.svg"/>
+	<link rel="alternate shortcut icon" href="img/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="img/braindump-57x57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/braindump-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/braindump-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/braindump-144x144.png">
+  <link rel="apple-touch-startup-image" sizes="320x460" href="img/startup-320x460.png">
+
+	<link rel="stylesheet" href="/css/skeleton-all-min.css">
+	<link rel="stylesheet" href="/css/style.min.css">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34329491-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</head>
+
+<body>
+
+  
+
+  <nav id="primary">
+    <div class="container">
+      <div class="fourteen columns offset-by-two">
+        <ul>
+          
+            
+            
+            <li class="" >
+              <a class="" href="/">Home</a>
+            </li>
+          
+            
+            
+            <li class="" >
+              <a class="" href="/project">Projects</a>
+            </li>
+          
+            
+            
+              
+            
+            <li class="active" >
+              <a class="active" href="/snippet">Snippets</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <div id="main">
+    <div class="container">
+
+      
+
+      <div class="three columns align-center">
+        <div style="margin-top:50px;"><a href="/"><img src="/img/braindump-64x64.png" height="64" width="64"></a></div>
+        <div class="mtop"><a href="/" class="nobr nou" style="color:#555;"><b>Rodney Waldhoff</b></a></div>
+        <ul class="mtop">
+          <li><a class="flatbutton" title="github.com/rodw" href="https://github.com/rodw"><img style="vertical-align:middle; float:left;" src="/img/octocat-24x24.png" height="24" width="24"><span class="float-right">GitHub</span></a></li>
+          <li><a class="flatbutton" title="Rod @ LinkedIn" href="http://www.linkedin.com/in/rwald"><img style="vertical-align:middle; float:left;" src="/img/linkedin-24x24.png" height="24" width="24"><span class="float-right">LinkedIn</span></a></a></li>
+          <li><a class="flatbutton" title="Rod @ StackOverflow" href="http://stackoverflow.com/users/1225825/rod"><img style="vertical-align:middle; float:left;" src="/img/stackoverflow-24x24.png" height="24" width="24"><span class="float-right">SOflow</span></a></a></li>
+          <li><a class="flatbutton" title="Rod @ Math.StackExchange" href="http://math.stackexchange.com/users/116929/rod"><img style="vertical-align:middle; float:left;" src="/img/math-stackexchange-24x24.png" height="24" width="24"><span class="float-right">Math@SE</span></a></a></li>
+          <li><a class="flatbutton" title="Rod @ TeX.StackExchange" href="http://tex.stackexchange.com/users/37896/rod"><img style="vertical-align:middle; float:left;" src="/img/tex-stackexchange-24x24.png" height="24" width="24"><span class="float-right">TeX@SE</span></a></a></li>
+          <li><a class="flatbutton" title="The Graphviz Cookbook" href="http://noumlaut.com/graphviz-cookbook"><img style="vertical-align:middle; float:left;" src="/img/noumlaut-24x24.png" height="24" width="24"><span class="float-right">GV Book</span></a></a></li>
+        </ul>
+      </div>
+
+      
+
+      
+
+      
+        <div class="thirteen columns">
+          <div id="page-header" class="half-bottom mtop">
+            
+            <div class="page-class remove-bottom">
+              
+                  <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
+                
+            </div>
+          </div>
+          
+        </div>
+      
+
+      
+
+      <div class="thirteen columns bulleted">
+        <div class="snippet">
+  <h2 class="half-bottom">TeX/LaTeX Font Sizes</h2>
+  <div>
+    <p>To change the font size of text in a TeX/LaTeX document, use:</p>
+
+<div class="highlight"><pre><code class="tex"><span class="nb">{</span><span class="k">\size</span> Text to change the size of.<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>where <code>\size</code> is one of:</p>
+
+<div class="highlight"><pre><code class="tex"><span class="k">\tiny</span>
+<span class="k">\scriptsize</span>
+<span class="k">\footnotesize</span>
+<span class="k">\small</span>
+<span class="k">\normalsize</span>
+<span class="k">\large</span>
+<span class="k">\Large</span>
+<span class="k">\LARGE</span>
+<span class="k">\huge</span>
+<span class="k">\Huge</span>
+</code></pre></div>
+
+
+<p>Also see <a href="http://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text">http://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text</a> for font size metrics and other details.</p>
+
+  </div>
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/tex-latex.html">tex/latex</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
+
+
+      </div>
+
+    </div>
+  </div>
+
+  
+
+  <div id="footer">
+    <div class="container">
+      <div class="sixteen columns align-center">
+        <p class="half-bottom">
+          <span class="nobr">rw&#97;ldho<script language="javascript">(function(){var f=function(c) { document.write(String.fromCharCode(c)); }; f(0146); f(0x66); f(0100); })();</script>g&#109;ail&#46;com</span>
+          &nbsp;|&nbsp;
+          <span class="nobr">(&#55;03) 593-2<script language="javascript">document.write("3"); document.write((3-2+1)+"");</script>9</span>
+        </p>
+        <p class="half-bottom">
+          <span class="nobr"><a href="/">heyrod.com</a></span>
+          &nbsp;|&nbsp;
+          <span class="nobr"><a href="/page/colophon.html">credits</a></span>
+        </p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
+        <div id="caveator">
+          <p class="smallprint">This page was generated at 12:06 AM on 09 February 2014</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

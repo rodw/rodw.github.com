@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>5 node.js snippets</title>
+  <title>6 node.js snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,6 +23,9 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="img/braindump-114x114.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="img/braindump-144x144.png">
   <link rel="apple-touch-startup-image" sizes="320x460" href="img/startup-320x460.png">
+
+	<link rel="stylesheet" href="/css/skeleton-all-min.css">
+	<link rel="stylesheet" href="/css/style.min.css">
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -99,7 +102,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">5 node.js snippets</h1>
+              <h1 class=" remove-bottom">6 node.js snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -115,6 +118,44 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/nodejs-sql-to-html.html">
+        <h2 class="half-bottom">A General Purpose SQL-to-HTML Routine for CoffeeScript/JavaScript/Node.js</h2>
+      </a>
+    
+    <div>
+      <p>Using <a href="https://github.com/felixge/node-mysql">node-mysql</a> or similar, the following CoffeeScript routine will generate an HTML table containing the data in a SQL result set, including column headings:</p>
+
+<div class="highlight"><pre><code class="coffeescript">  <span class="nx">sql_to_html</span><span class="o">:</span><span class="nf">(connection,query,bindvars,callback)=&gt;</span>
+    <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span> <span class="nx">query</span><span class="p">,</span> <span class="nx">bindvars</span><span class="p">,</span> <span class="nf">(err,rows,fields)=&gt;</span>
+      <span class="k">if</span> <span class="nx">err</span><span class="o">?</span>
+         <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+      <span class="k">else</span>
+        <span class="nv">buffer = </span><span class="s">&#39;&lt;table border=1&gt;&lt;tr&gt;&#39;</span>
+        <span class="k">for</span> <span class="nx">field</span> <span class="k">in</span> <span class="nx">fields</span>
+          <span class="nx">buffer</span> <span class="o">+=</span> <span class="s">&quot;&lt;th&gt;</span><span class="si">#{</span><span class="nx">field</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="s">&lt;/th&gt;&quot;</span>
+        <span class="nx">buffer</span> <span class="o">+=</span> <span class="s">&#39;&lt;/tr&gt;&#39;</span>
+        <span class="k">for</span> <span class="nx">row</span> <span class="k">in</span> <span class="nx">rows</span>
+          <span class="nx">buffer</span> <span class="o">+=</span> <span class="s">&#39;&lt;tr&gt;&#39;</span>
+          <span class="k">for</span> <span class="nx">field</span> <span class="k">in</span> <span class="nx">fields</span>
+            <span class="nx">buffer</span> <span class="o">+=</span> <span class="s">&quot;&lt;td&gt;</span><span class="si">#{</span><span class="nx">row</span><span class="p">[</span><span class="nx">field</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span><span class="si">}</span><span class="s">&lt;/td&gt;&quot;</span>
+          <span class="nx">buffer</span> <span class="o">+=</span> <span class="s">&#39;&lt;/tr&gt;&#39;</span>
+        <span class="nx">buffer</span> <span class="o">+=</span> <span class="s">&#39;&lt;/table&gt;&#39;</span>
+        <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="nx">buffer</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/sql.html">sql</a>, <a href="/snippet/t/mysql.html">mysql</a> and <a href="/snippet/t/html.html">html</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/coffeescript-flatten-array.html">
@@ -397,7 +438,7 @@
         <p class="half-bottom">
           <span class="nobr">rw&#97;ldho<script language="javascript">(function(){var f=function(c) { document.write(String.fromCharCode(c)); }; f(0146); f(0x66); f(0100); })();</script>g&#109;ail&#46;com</span>
           &nbsp;|&nbsp;
-          <span class="nobr">(&#55;03) 5&#51;5-6<script language="javascript">document.write("0"); document.write((4-3+1)+"");</script>6</span>
+          <span class="nobr">(&#55;03) 593-2<script language="javascript">document.write("3"); document.write((3-2+1)+"");</script>9</span>
         </p>
         <p class="half-bottom">
           <span class="nobr"><a href="/">heyrod.com</a></span>
@@ -406,12 +447,10 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  4:08 PM on 01 January 2014</p>
+          <p class="smallprint">This page was generated at 12:06 AM on 09 February 2014</p>
         </div>
       </div>
     </div>
   </div>
-	<link rel="stylesheet" href="/css/skeleton-all-min.css">
-	<link rel="stylesheet" href="/css/style.min.css">
 </body>
 </html>

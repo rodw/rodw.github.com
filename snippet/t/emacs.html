@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>16 emacs snippets</title>
+  <title>17 emacs snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,6 +23,9 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="img/braindump-114x114.png">
 	<link rel="apple-touch-icon" sizes="144x144" href="img/braindump-144x144.png">
   <link rel="apple-touch-startup-image" sizes="320x460" href="img/startup-320x460.png">
+
+	<link rel="stylesheet" href="/css/skeleton-all-min.css">
+	<link rel="stylesheet" href="/css/style.min.css">
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -99,7 +102,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">16 emacs snippets</h1>
+              <h1 class=" remove-bottom">17 emacs snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -159,16 +162,57 @@
 
   <div class="snippet">
     
-      <a class="permalink" href="/snippet/s/emacs-m-x-occur.html">
-        <h2 class="half-bottom">M-x occur</h2>
+      <a class="permalink" href="/snippet/s/emacs-cursor-movement-shortcuts.html">
+        <h2 class="half-bottom">emacs cursor movement shortcuts</h2>
       </a>
     
     <div>
-      <p><code>M-x occur</code> is nifty.</p>
+      <ul>
+<li><code>M-g g &lt;N&gt;</code> or <code>M-g M-g &lt;N&gt;</code> &ndash; go to line <N> (<code>goto-line</code>)</li>
+<li><code>M-g c &lt;N&gt;</code> &ndash; go to <em>character</em> <N> (<code>goto-char</code>)</li>
+<li><p><code>M-g &lt;TAB&gt; &lt;N&gt;</code> &ndash; go to column <N> in the current line</p></li>
+<li><p><code>M-&lt;</code> &ndash; <code>beginning-of-buffer</code></p></li>
+<li><p><code>M-&gt;</code> &ndash; <code>end-of-buffer</code></p></li>
+<li><p><code>C-a</code> or <code>&lt;home&gt;</code> &ndash; <code>move-beginning-of-line</code></p></li>
+<li><p><code>C-e</code> or <code>&lt;end&gt;</code> &ndash; <code>move-end-of-line</code></p></li>
+<li><p><code>C-f</code> or <code>&lt;right&gt;</code> &ndash; forward one char (<code>forward-char</code>) or right one char (<code>right-char</code>).   (Note <code>right-char</code> moves <em>backward</em> when editing right-to-left text.)</p></li>
+<li><code>M-f</code> or <code>M-&lt;right&gt;</code> or <code>C-&lt;right&gt;</code>  &ndash; forward one word (<code>forward-word</code>) or right one word (<code>right-word</code>).</li>
+<li><code>C-b</code> or <code>&lt;left&gt;</code> &ndash; backward one char (<code>backward-char</code>) or left one char (<code>left-char</code>).   (Note <code>left-char</code> moves <em>forward</em> when editing right-to-left text.)</li>
+<li><p><code>M-b</code> or <code>M-&lt;left&gt;</code> or <code>C-&lt;left&gt;</code>  &ndash; back one word (<code>backward-word</code>) or left one word (<code>left-word</code>).</p></li>
+<li><p><code>C-n</code> or <code>&lt;down&gt;</code> &ndash; down one line (<code>next-line</code>)</p></li>
+<li><code>C-v</code> or <code>&lt;PageDown&gt;</code> &ndash; down one page (<code>scroll-up-command</code>)</li>
+<li><code>C-p</code> or <code>&lt;up&gt;</code> &ndash; up one line (<code>previous-line</code>)</li>
+<li><p><code>M-v</code> or <code>&lt;PageUp&gt;</code> &ndash; up one page (<code>scroll-down-command</code>)</p></li>
+<li><p><code>C-x C-n</code> &ndash; set current column as &ldquo;goal&rdquo; column for up/down movement</p></li>
+<li><code>C-u C-x C-n</code> &ndash; cancel current goal column</li>
+</ul>
+
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>.</small>
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a> and <a href="/snippet/t/shortcut.html">shortcut</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/emacs-searching.html">
+        <h2 class="half-bottom">Searching in Emacs</h2>
+      </a>
+    
+    <div>
+      <ul>
+<li><code>C-s</code> / <code>C-r</code> &ndash; search / search backward in current buffer</li>
+<li><code>M-s o</code> / <code>M-x occur</code> / <code>M-x ioccur</code> &ndash; list lines in current buffer matching regexp</li>
+<li><code>M-x rgrep</code> &ndash; recursive grep (find in files)</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a> and <a href="/snippet/t/shortcuts.html">shortcuts</a>.</small>
     </div>    
     
   </div>
@@ -618,7 +662,7 @@ M-x sort-lines
         <p class="half-bottom">
           <span class="nobr">rw&#97;ldho<script language="javascript">(function(){var f=function(c) { document.write(String.fromCharCode(c)); }; f(0146); f(0x66); f(0100); })();</script>g&#109;ail&#46;com</span>
           &nbsp;|&nbsp;
-          <span class="nobr">(&#55;03) 5&#51;5-6<script language="javascript">document.write("0"); document.write((4-3+1)+"");</script>6</span>
+          <span class="nobr">(&#55;03) 593-2<script language="javascript">document.write("3"); document.write((3-2+1)+"");</script>9</span>
         </p>
         <p class="half-bottom">
           <span class="nobr"><a href="/">heyrod.com</a></span>
@@ -627,12 +671,10 @@ M-x sort-lines
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  4:08 PM on 01 January 2014</p>
+          <p class="smallprint">This page was generated at 12:06 AM on 09 February 2014</p>
         </div>
       </div>
     </div>
   </div>
-	<link rel="stylesheet" href="/css/skeleton-all-min.css">
-	<link rel="stylesheet" href="/css/style.min.css">
 </body>
 </html>
