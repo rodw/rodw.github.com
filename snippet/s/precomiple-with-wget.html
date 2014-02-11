@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Default fonts with emacsclient/emacs --daemon</title>
+  <title>Precompile pages or load a web cache using wget</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -117,48 +117,29 @@
 
       <div class="thirteen columns bulleted">
         <div class="snippet">
-  <h2 class="half-bottom">Default fonts with emacsclient/emacs --daemon</h2>
+  <h2 class="half-bottom">Precompile pages or load a web cache using wget</h2>
   <div>
-    <p>I&rsquo;ve been using <code>set-default-font</code> in my <code>.emacs</code> file to configure emacs to use my favorite programming font.</p>
+    <p>Many web frameworks and templating engines will generate the HTML version of a document the first time it is accessed.  This can make the first hit on a given page significantly slower than subsequent hits.</p>
 
-<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span> <span class="c1">;;; set default font</span>
+<p>You can use <code>wget</code> to pre-cache web pages using a command such as:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> wget -r -l 3 -nd --delete-after URL
 </code></pre></div>
 
 
-<p>I use <code>emacs --daemon</code> to keep an instance of emacs running as a background process on my development machine so that I can run <code>emacsclient</code> to call up an emacs window (frame) instantaneously (and keep the same session running even after a close the emacs frame).</p>
+<p>Where:</p>
 
-<p>Suddenly (after an <code>aptitude safe-upgrade</code>, I think, but I&rsquo;m not sure what triggered this change), emacs frames that are created by <code>emacsclient</code> connecting to the <code>emacs --daemon</code> instance no longer used my default font when initially opened. The default font worked properly for stand-alone emacs instances (opened with <code>emacs</code>), and for <code>emacsclient</code>, executing <code>(set-default-font)</code> after startup worked fine, but it no longer worked automatically.</p>
-
-<p>To fix this, I had to set up a <code>default-frame-alist</code>, which I believe defines commands to execute whenever a new frame is opened.</p>
-
-<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">set-default-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span> <span class="c1">;;; set default font</span>
-<span class="p">(</span><span class="k">setq</span> <span class="nv">default-frame-alist</span> <span class="o">&#39;</span><span class="p">((</span><span class="nv">font</span> <span class="o">.</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)))</span> <span class="c1">;;; set default font for emacs --daemon / emacsclient</span>
-</code></pre></div>
-
-
-<p>By the way, I also discovered the <code>describe-font</code> elisp function while trying to diagnose this issue.</p>
-
-<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">describe-font</span> <span class="s">&quot;Droid Sans Mono Slashed-10&quot;</span><span class="p">)</span>
-<span class="c1">;; or M-x describe-font &lt;RETURN&gt; Droid Sans Mono Slashed-10 &lt;RETURN&gt;</span>
-</code></pre></div>
-
-
-<p>which opens a <code>*Help*</code> buffer containing:</p>
-
-<div class="highlight"><pre><code class="text">name (opened by): -unknown-Droid Sans Mono Slashed-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1
-       full name: Droid Sans Mono Slashed:pixelsize=13:foundry=unknown:weight=normal:slant=normal:width=normal:spacing=100:scalable=true
-            size: 13
-          height: 17
- baseline-offset:  0
-relative-compose:  0
-</code></pre></div>
-
-
+<ul>
+<li><code>-r</code> (or <code>--recursive</code>) will cause <code>wget</code> to recursively download files</li>
+<li><code>-l N</code> (or <code>--level=N</code>) will limit recursion to at most N levels below the root document (defaults to 5, use <code>inf</code> for infinite recursion)</li>
+<li><code>-nd</code> (or <code>--no-directories</code>) will prevent <code>wget</code> from creating local directories to match the server-side paths</li>
+<li><code>--delete-after</code> will cause <code>wget</code> to delete each file as soon as it is downloaded (so the commmand leaves no traces behind.)</li>
+</ul>
 
 
   </div>
   <div class="align-right">
-    <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>.</small>
+    <small>Tags: <a href="/snippet/t/wget.html">wget</a> and <a href="/snippet/t/http.html">http</a>.</small>
   </div>    
   
 </div>
