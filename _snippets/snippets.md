@@ -1,4 +1,54 @@
 ######################################################################
+tags: [wget,http]
+title: Backup or mirror a website using wget
+slug: wget-mirror
+note: 2014-02-10
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To create a local mirror or backup of a website with `wget`, run:
+
+{% highlight console %}
+$ wget  -r -l 5 -k -w 1 --random-wait URL
+{% endhighlight %}
+
+Where:
+
+ * `-r` (or `--recursive`) will cause `wget` to recursively download files
+ * `-l N` (or `--level=N`) will limit recursion to at most N levels below the root document (defaults to 5, use `inf` for infinite recursion)
+ * `-k` (or `--convert-links`) will cause `wget` to convert links in the downloaded documents so that the files can be viewed locally
+ * `-w` (or `--wait=N`) will cause `wget` to wait N seconds between requests
+ * `--random-wait` will cause `wget` to randomly vary the wait time to `0.5x` to `1.5x` the value specified by `--wait`
+
+Some additional notes:
+
+ * `--mirror` (or `-m`) can be used as a shortcut for `-r -N -l inf --no-remove-listing` which enables infinite recursion and preserves both the server timestamps and FTP directory listings.
+ * `-np` (`--no-parent`) can be used to limit `wget` to files below a specific "directory" (path).
+
+######################################################################
+tags: [wget,http]
+title: Precompile pages or load a web cache using wget
+slug: precomiple-with-wget
+note: 2014-02-10
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Many web frameworks and templating engines will generate the HTML version of a document the first time it is accessed.  This can make the first hit on a given page significantly slower than subsequent hits.
+
+You can use `wget` to pre-cache web pages using a command such as:
+
+{% highlight console %}
+$ wget -r -l 3 -nd --delete-after URL
+{% endhighlight %}
+
+Where:
+
+ * `-r` (or `--recursive`) will cause `wget` to recursively download files
+ * `-l N` (or `--level=N`) will limit recursion to at most N levels below the root document (defaults to 5, use `inf` for infinite recursion)
+ * `-nd` (or `--no-directories`) will prevent `wget` from creating local directories to match the server-side paths
+ * `--delete-after` will cause `wget` to delete each file as soon as it is downloaded (so the commmand leaves no traces behind.)
+
+######################################################################
 tags: [linux,networking,iptables]
 title: Mapping port 80 to port 3000 using iptables
 slug: iptables-port-mapping
