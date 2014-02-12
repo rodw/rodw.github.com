@@ -1,3 +1,18 @@
+
+######################################################################
+tags: [coffeescript,node.js,bash,gist]
+title: Shell script for service-like CoffeeScript/Node.js apps using forever
+slug: forever-service
+note: 2014-02-11
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is an example of a (bash) shell script that uses the forever module to start and stop a CoffeeScript application as if it were a service.
+
+<script src="https://gist.github.com/rodw/8947415.js"></script>
+
+(Also at [rodw/coffee-as-a-service-via-forever.sh](https://gist.github.com/rodw/8947415).)
+
 ######################################################################
 tags: [wget,http]
 title: Backup or mirror a website using wget
@@ -257,7 +272,7 @@ The rendering should automatically refresh when `mygraph.gv` is updated.  (I've 
 The same `-Txlib` parameter works for the other Graphviz rendering engines, including `neato`, `twopi`, `fdp`, `sfdp`, `circo`, and `patchwork`.
 
 ######################################################################
-tags: [git,github,backup]
+tags: [git,github,backup,gist]
 title: Complete backup of GitHub repository
 slug: github-backup
 note: 2014-01-01
@@ -529,7 +544,7 @@ slug: toggle-line-wrapping-in-terminal
 The command:
 
 {% highlight console %}
-tput rmam
+$ tput rmam
 {% endhighlight %}
 
 will disable line wrapping so that long lines are truncated to width of the terminal (`$COLUMNS`).
@@ -537,7 +552,7 @@ will disable line wrapping so that long lines are truncated to width of the term
 The command:
 
 {% highlight console %}
-tput smam
+$ tput smam
 {% endhighlight %}
 
 will re-enable it.
@@ -554,7 +569,7 @@ slug: less-chop-long-lines
 The flag `-S` (or `--chop-long-lines`) will cause `less` to truncate lines at the screen (terminal) boundary, rather than wrapping as it does by default.  You can then scroll horizontally (with the arrow keys, for example) to view the full lines when needed.
 
 {% highlight console %}
-cat some_file_with_very_long_lines | less -S
+$ cat some_file_with_very_long_lines | less -S
 {% endhighlight %}
 
 ######################################################################
@@ -834,14 +849,14 @@ slug: disable-services-in-linux
 The easy way is to install `sysv-rc-conf`:
 
 {% highlight console %}
-aptitude install sysv-rc-conf
-sysv-rc-conf
+$ aptitude install sysv-rc-conf
+$ sysv-rc-conf
 {% endhighlight %}
 
 Manually, use `update-rc.d` and specify the run levels, like so:
 
 {% highlight console %}
-update-rc.d SERVICE_NAME stop 0 1 6 3 . start 2 4 5 .
+$ update-rc.d SERVICE_NAME stop 0 1 6 3 . start 2 4 5 .
 {% endhighlight %}
 
 ######################################################################
@@ -855,7 +870,7 @@ slug: how-to-right-align-bash-prompt
 To have text in your bash prompt (`$PS1`) hug the right side of the terminal:
 
 {% highlight console %}
-PS1="`printf "%${COLUMNS}s\n" "${TEXT}"`$PS1"
+$ PS1="`printf "%${COLUMNS}s\n" "${TEXT}"`$PS1"
 {% endhighlight %}
 
 (This assumes you want the right-aligned text to appear before the rest of your prompt, if any.  Move the `$PS1` bit to the left side of the string to have the right-aligned text appear after the rest of your prompt.)
@@ -869,7 +884,7 @@ The trick here is to use `printf` to left-pad the string to given width.  `print
 Say you want to pad with `-` instead of space.  Try:
 
 {% highlight console %}
-PS1="`printf -vch "%${COLUMNS}s" "${TEXT}"; printf "%s" "${ch// /-}"`$PS1"
+$ PS1="`printf -vch "%${COLUMNS}s" "${TEXT}"; printf "%s" "${ch// /-}"`$PS1"
 {% endhighlight %}
 
 This will left-pad the `${TEXT}` with spaces, as above, and then replace any spaces with `#`.
@@ -877,7 +892,7 @@ This will left-pad the `${TEXT}` with spaces, as above, and then replace any spa
 If you have any spaces in `${TEXT}` you want to preserve, one hacky work-around is to mark spaces in `$TEXT` with some other character, say `_`, and then replace `_` with ` ` *after* the other substitution:
 
 {% highlight console %}
-PS1="$PS1`printf -vch "%${COLUMNS}s" "${TEXT}"; printf -vch "%s" "${ch// /-}"; printf "%s\n" "${ch//_/ }"`"
+$ PS1="$PS1`printf -vch "%${COLUMNS}s" "${TEXT}"; printf -vch "%s" "${ch// /-}"; printf "%s\n" "${ch//_/ }"`"
 {% endhighlight %}
 
 ### Drawing a line to the end of the line
@@ -1606,8 +1621,8 @@ title: Strip characters from a field in awk
 
 E.g., the following command strips alpha characters from the second (tab delimited) field.
 
-{% highlight awk %}
-awk -F"\t" '{gsub(/[A-Za-z]/,"",$2); print $2 }'
+{% highlight console %}
+$ awk -F"\t" '{gsub(/[A-Za-z]/,"",$2); print $2 }'
 {% endhighlight %}
 
 ######################################################################
@@ -1618,8 +1633,8 @@ slug: some-awk-basics
 
 Extract tab delimited fields from a file:
 
-{% highlight awk %}
-awk -F"\t" '{print "field one=" $1 "; field two=" $2 }' file
+{% highlight console %}
+$ awk -F"\t" '{print "field one=" $1 "; field two=" $2 }' file
 {% endhighlight %}
 
 
@@ -1656,7 +1671,7 @@ $ sed 1d FILENAME
 More generally:
 
 {% highlight console %}
-$ tail A,Bd filename
+$ sed A,Bd filename
 {% endhighlight %}
 
 when you want to exclude lines **`A`** through **`B`** from the output.
@@ -1750,7 +1765,7 @@ Bash normally waits until a session (terminal) is closed before it writes comman
 You can add a call to `history -a` to `PROMPT_COMMAND` to make bash to append your history to `~/.bash_history` every time it displays your prompt.
 
 {% highlight console %}
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+$ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 {% endhighlight %}
 
 The environment variable `PROMPT_COMMAND` is executed when bash is about to display your prompt.
