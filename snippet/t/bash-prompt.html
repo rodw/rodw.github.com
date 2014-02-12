@@ -130,7 +130,7 @@
 
 <p>To have text in your bash prompt (<code>$PS1</code>) hug the right side of the terminal:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;`printf &quot;%${COLUMNS}s\n&quot; &quot;${TEXT}&quot;`$PS1&quot;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;`printf &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="se">\n</span><span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">TEXT</span><span class="k">}</span><span class="s2">&quot;`$PS1&quot;</span>
 </code></pre></div>
 
 
@@ -144,7 +144,7 @@
 
 <p>Say you want to pad with <code>-</code> instead of space.  Try:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;`printf -vch &quot;%${COLUMNS}s&quot; &quot;${TEXT}&quot;; printf &quot;%s&quot; &quot;${ch// /-}&quot;`$PS1&quot;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;`printf -vch &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">TEXT</span><span class="k">}</span><span class="s2">&quot;; printf &quot;</span>%s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">// /-</span><span class="k">}</span><span class="s2">&quot;`$PS1&quot;</span>
 </code></pre></div>
 
 
@@ -152,7 +152,7 @@
 
 <p>If you have any spaces in <code>${TEXT}</code> you want to preserve, one hacky work-around is to mark spaces in <code>$TEXT</code> with some other character, say <code>_</code>, and then replace <code>_</code> with <code></code> <em>after</em> the other substitution:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;$PS1`printf -vch &quot;%${COLUMNS}s&quot; &quot;${TEXT}&quot;; printf -vch &quot;%s&quot; &quot;${ch// /-}&quot;; printf &quot;%s\n&quot; &quot;${ch//_/ }&quot;`&quot;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;$PS1`printf -vch &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">TEXT</span><span class="k">}</span><span class="s2">&quot;; printf -vch &quot;</span>%s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">// /-</span><span class="k">}</span><span class="s2">&quot;; printf &quot;</span>%s<span class="se">\n</span><span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">//_/ </span><span class="k">}</span><span class="s2">&quot;`&quot;</span>
 </code></pre></div>
 
 
@@ -216,7 +216,7 @@ PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at 10:19 PM on 10 February 2014</p>
+          <p class="smallprint">This page was generated at  7:32 PM on 11 February 2014</p>
         </div>
       </div>
     </div>

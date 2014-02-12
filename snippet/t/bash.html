@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>5 bash snippets</title>
+  <title>6 bash snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -103,7 +103,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">5 bash snippets</h1>
+              <h1 class=" remove-bottom">6 bash snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -121,6 +121,28 @@
         
   <div class="snippet">
     
+      <a class="permalink" href="/snippet/s/forever-service.html">
+        <h2 class="half-bottom">Shell script for service-like CoffeeScript/Node.js apps using forever</h2>
+      </a>
+    
+    <div>
+      <p>This is an example of a (bash) shell script that uses the forever module to start and stop a CoffeeScript application as if it were a service.</p>
+
+<script src="https://gist.github.com/rodw/8947415.js"></script>
+
+
+<p>(Also at <a href="https://gist.github.com/rodw/8947415">rodw/coffee-as-a-service-via-forever.sh</a>.)</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/bash.html">bash</a> and <a href="/snippet/t/gist.html">gist</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
       <a class="permalink" href="/snippet/s/toggle-line-wrapping-in-terminal.html">
         <h2 class="half-bottom">Toggle line-wrapping in terminal with `tput rmam` and `tput sram`</h2>
       </a>
@@ -128,7 +150,7 @@
     <div>
       <p>The command:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">tput rmam</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> tput rmam
 </code></pre></div>
 
 
@@ -136,7 +158,7 @@
 
 <p>The command:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">tput smam</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> tput smam
 </code></pre></div>
 
 
@@ -163,7 +185,7 @@
     <div>
       <p>The flag <code>-S</code> (or <code>--chop-long-lines</code>) will cause <code>less</code> to truncate lines at the screen (terminal) boundary, rather than wrapping as it does by default.  You can then scroll horizontally (with the arrow keys, for example) to view the full lines when needed.</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">cat some_file_with_very_long_lines | less -S</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cat some_file_with_very_long_lines <span class="p">|</span> less -S
 </code></pre></div>
 
 
@@ -188,7 +210,7 @@
 
 <p>To have text in your bash prompt (<code>$PS1</code>) hug the right side of the terminal:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;`printf &quot;%${COLUMNS}s\n&quot; &quot;${TEXT}&quot;`$PS1&quot;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;`printf &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="se">\n</span><span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">TEXT</span><span class="k">}</span><span class="s2">&quot;`$PS1&quot;</span>
 </code></pre></div>
 
 
@@ -202,7 +224,7 @@
 
 <p>Say you want to pad with <code>-</code> instead of space.  Try:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;`printf -vch &quot;%${COLUMNS}s&quot; &quot;${TEXT}&quot;; printf &quot;%s&quot; &quot;${ch// /-}&quot;`$PS1&quot;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;`printf -vch &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">TEXT</span><span class="k">}</span><span class="s2">&quot;; printf &quot;</span>%s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">// /-</span><span class="k">}</span><span class="s2">&quot;`$PS1&quot;</span>
 </code></pre></div>
 
 
@@ -210,7 +232,7 @@
 
 <p>If you have any spaces in <code>${TEXT}</code> you want to preserve, one hacky work-around is to mark spaces in <code>$TEXT</code> with some other character, say <code>_</code>, and then replace <code>_</code> with <code></code> <em>after</em> the other substitution:</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">PS1=&quot;$PS1`printf -vch &quot;%${COLUMNS}s&quot; &quot;${TEXT}&quot;; printf -vch &quot;%s&quot; &quot;${ch// /-}&quot;; printf &quot;%s\n&quot; &quot;${ch//_/ }&quot;`&quot;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;$PS1`printf -vch &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">TEXT</span><span class="k">}</span><span class="s2">&quot;; printf -vch &quot;</span>%s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">// /-</span><span class="k">}</span><span class="s2">&quot;; printf &quot;</span>%s<span class="se">\n</span><span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">//_/ </span><span class="k">}</span><span class="s2">&quot;`&quot;</span>
 </code></pre></div>
 
 
@@ -303,7 +325,7 @@ PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
 
 <p>You can add a call to <code>history -a</code> to <code>PROMPT_COMMAND</code> to make bash to append your history to <code>~/.bash_history</code> every time it displays your prompt.</p>
 
-<div class="highlight"><pre><code class="console"><span class="go">PROMPT_COMMAND=&quot;history -a; $PROMPT_COMMAND&quot;</span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PROMPT_COMMAND</span><span class="o">=</span><span class="s2">&quot;history -a; $PROMPT_COMMAND&quot;</span>
 </code></pre></div>
 
 
@@ -343,7 +365,7 @@ PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at 10:19 PM on 10 February 2014</p>
+          <p class="smallprint">This page was generated at  7:32 PM on 11 February 2014</p>
         </div>
       </div>
     </div>
