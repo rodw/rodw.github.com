@@ -63,6 +63,12 @@
           
             
             
+            <li class="" >
+              <a class="" href="/article/how-to-develop-a-sourcing-strategy.html">Articles</a>
+            </li>
+          
+            
+            
               
             
             <li class="active" >
@@ -85,13 +91,13 @@
         <div style="margin-top:50px;"><a href="/"><img src="/img/braindump-64x64.png" height="64" width="64"></a></div>
         <div class="mtop"><a href="/" class="nobr nou" style="color:#555;"><b>Rodney Waldhoff</b></a></div>
         <ul class="mtop">
-          <li><a class="flatbutton" title="Resume/CV for Rodney Waldhoff (PDF)" href="/img/Waldhoff-Rodney-resume-2014-02.pdf"><img style="vertical-align:middle; float:left;" src="/img/rod-photo-grayscale-24x24.png" height="24" width="24"><span class="float-right">Resume</span></a></li>
           <li><a class="flatbutton" title="github.com/rodw" href="https://github.com/rodw"><img style="vertical-align:middle; float:left;" src="/img/octocat-24x24.png" height="24" width="24"><span class="float-right">GitHub</span></a></li>
           <li><a class="flatbutton" title="Rod @ LinkedIn" href="http://www.linkedin.com/in/rwald"><img style="vertical-align:middle; float:left;" src="/img/linkedin-24x24.png" height="24" width="24"><span class="float-right">LinkedIn</span></a></a></li>
           <li><a class="flatbutton" title="Rod @ StackOverflow" href="http://stackoverflow.com/users/1225825/rod"><img style="vertical-align:middle; float:left;" src="/img/stackoverflow-24x24.png" height="24" width="24"><span class="float-right">SOflow</span></a></a></li>
           <li><a class="flatbutton" title="Rod @ Math.StackExchange" href="http://math.stackexchange.com/users/116929/rod"><img style="vertical-align:middle; float:left;" src="/img/math-stackexchange-24x24.png" height="24" width="24"><span class="float-right">Math@SE</span></a></a></li>
           <li><a class="flatbutton" title="Rod @ TeX.StackExchange" href="http://tex.stackexchange.com/users/37896/rod"><img style="vertical-align:middle; float:left;" src="/img/tex-stackexchange-24x24.png" height="24" width="24"><span class="float-right">TeX@SE</span></a></a></li>
           <li><a class="flatbutton" title="The Graphviz Cookbook" href="http://noumlaut.com/graphviz-cookbook"><img style="vertical-align:middle; float:left;" src="/img/noumlaut-24x24.png" height="24" width="24"><span class="float-right">GV Book</span></a></a></li>
+          <li><a class="flatbutton" title="Resume/CV for Rodney Waldhoff (PDF)" href="/img/Waldhoff-Rodney-resume-2014-02.pdf"><img style="vertical-align:middle; float:left;" src="/img/rod-photo-grayscale-24x24.png" height="24" width="24"><span class="float-right">Resume</span></a></li>
         </ul>
       </div>
 
@@ -357,9 +363,9 @@
 </code></pre></div>
 
 
-<p>This will left-pad the <code>${TEXT}</code> with spaces, as above, and then replace any spaces with <code>#</code>.</p>
+<p>This will left-pad the <code>${TEXT}</code> with spaces, as above, and then replace any spaces with <code>-</code>.</p>
 
-<p>If you have any spaces in <code>${TEXT}</code> you want to preserve, one hacky work-around is to mark spaces in <code>$TEXT</code> with some other character, say <code>_</code>, and then replace <code>_</code> with <code></code> <em>after</em> the other substitution:</p>
+<p>If you have any spaces in <code>${TEXT}</code> you want to preserve, one hacky work-around is to mark spaces in <code>$TEXT</code> with some other character, say <code>_</code>, and then replace <code>_</code> with a space (<code></code>) <em>after</em> the other substitution:</p>
 
 <div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;$PS1`printf -vch &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">TEXT</span><span class="k">}</span><span class="s2">&quot;; printf -vch &quot;</span>%s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">// /-</span><span class="k">}</span><span class="s2">&quot;; printf &quot;</span>%s<span class="se">\n</span><span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">//_/ </span><span class="k">}</span><span class="s2">&quot;`&quot;</span>
 </code></pre></div>
@@ -379,9 +385,9 @@
 
 <p>Within my <code>$PROMPT_COMMAND</code> I execute the following:</p>
 
-<div class="highlight"><pre><code class="text">line=&quot;`printf -vch &quot;%${COLUMNS}s&quot; &quot;&quot;; printf &quot;%s&quot; &quot;${ch// /-}&quot;`&quot;
-dts=&quot;`date +&quot;-- %a %d-%b-%Y %I:%M %p &quot;`&quot;
-PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
+<div class="highlight"><pre><code class="bash"><span class="nv">line</span><span class="o">=</span><span class="s2">&quot;`printf -vch &quot;</span>%<span class="k">${</span><span class="nv">COLUMNS</span><span class="k">}</span>s<span class="s2">&quot; &quot;&quot;; printf &quot;</span>%s<span class="s2">&quot; &quot;</span><span class="k">${</span><span class="nv">ch</span><span class="p">// /-</span><span class="k">}</span><span class="s2">&quot;`&quot;</span>
+<span class="nv">dts</span><span class="o">=</span><span class="s2">&quot;`date +&quot;</span>-- %a %d-%b-%Y %I:%M %p <span class="s2">&quot;`&quot;</span>
+<span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;</span>
 </code></pre></div>
 
 
@@ -792,7 +798,7 @@ PS1=&quot;$PS1\e[1m\e[32m${dts}${line:${#dts}}&quot;
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  7:32 PM on 11 February 2014</p>
+          <p class="smallprint">This page was generated at  3:59 PM on 13 February 2014</p>
         </div>
       </div>
     </div>
