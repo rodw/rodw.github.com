@@ -574,7 +574,7 @@ $ cat some_file_with_very_long_lines | less -S
 
 ######################################################################
 tags: [node.js,javascript,coffeescript,cli]
-title: Check `require.main` to test if a Node.js is run directly
+title: Check `require.main` to test if a Node.js file is run directly
 slug: nodejs-require-main
 credit: Via <a href="http://nodejs.org/docs/v0.4.8/api/all.html#accessing_the_main_module">the nodejs.org docs</a>.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -887,9 +887,9 @@ Say you want to pad with `-` instead of space.  Try:
 $ PS1="`printf -vch "%${COLUMNS}s" "${TEXT}"; printf "%s" "${ch// /-}"`$PS1"
 {% endhighlight %}
 
-This will left-pad the `${TEXT}` with spaces, as above, and then replace any spaces with `#`.
+This will left-pad the `${TEXT}` with spaces, as above, and then replace any spaces with `-`.
 
-If you have any spaces in `${TEXT}` you want to preserve, one hacky work-around is to mark spaces in `$TEXT` with some other character, say `_`, and then replace `_` with ` ` *after* the other substitution:
+If you have any spaces in `${TEXT}` you want to preserve, one hacky work-around is to mark spaces in `$TEXT` with some other character, say `_`, and then replace `_` with a space (` `) *after* the other substitution:
 
 {% highlight console %}
 $ PS1="$PS1`printf -vch "%${COLUMNS}s" "${TEXT}"; printf -vch "%s" "${ch// /-}"; printf "%s\n" "${ch//_/ }"`"
@@ -909,7 +909,7 @@ Here's how I did it.
 
 Within my `$PROMPT_COMMAND` I execute the following:
 
-{% highlight text %}
+{% highlight bash %}
 line="`printf -vch "%${COLUMNS}s" ""; printf "%s" "${ch// /-}"`"
 dts="`date +"-- %a %d-%b-%Y %I:%M %p "`"
 PS1="$PS1\e[1m\e[32m${dts}${line:${#dts}}"

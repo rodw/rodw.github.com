@@ -27,6 +27,9 @@ primarynav:
 - text: Projects
   url: /project
   section: project
+- text: Articles
+  url: /article/how-to-develop-a-sourcing-strategy.html
+  section: article
 - text: Snippets
   url: /snippet
   section: snippet
