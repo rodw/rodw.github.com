@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+  <title>In Defense of XML</title>
+	
+	<meta name="author" content="rod">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+  
+  <link rel="icon" type="image/svg+xml" href="img/braindump-mod.svg"/>
+	<link rel="alternate shortcut icon" href="img/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="img/braindump-57x57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/braindump-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/braindump-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/braindump-144x144.png">
+  <link rel="apple-touch-startup-image" sizes="320x460" href="img/startup-320x460.png">
+
+	<link rel="stylesheet" href="/css/skeleton-all-min.css">
+	<link rel="stylesheet" href="/css/style.min.css">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34329491-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</head>
+
+<body>
+
+  
+
+  <nav id="primary">
+    <div class="container">
+      <div class="fourteen columns offset-by-two">
+        <ul>
+          
+            
+            
+            <li class="" >
+              <a class="" href="/">Home</a>
+            </li>
+          
+            
+            
+            <li class="" >
+              <a class="" href="/project">Projects</a>
+            </li>
+          
+            
+            
+              
+            
+            <li class="active" >
+              <a class="active" href="/article">Articles</a>
+            </li>
+          
+            
+            
+            <li class="" >
+              <a class="" href="/snippet">Snippets</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+
+  <div id="main">
+    <div class="container">
+
+      
+
+      <div class="three columns align-center">
+        <div style="margin-top:50px;"><a href="/"><img src="/img/braindump-64x64.png" height="64" width="64"></a></div>
+        <div class="mtop"><a href="/" class="nobr nou" style="color:#555;"><b>Rodney Waldhoff</b></a></div>
+        <ul class="mtop">
+          <li><a class="flatbutton" title="github.com/rodw" href="https://github.com/rodw"><img style="vertical-align:middle; float:left;" src="/img/octocat-24x24.png" height="24" width="24"><span class="float-right">GitHub</span></a></li>
+          <li><a class="flatbutton" title="Rod @ LinkedIn" href="http://www.linkedin.com/in/rwald"><img style="vertical-align:middle; float:left;" src="/img/linkedin-24x24.png" height="24" width="24"><span class="float-right">LinkedIn</span></a></a></li>
+          <li><a class="flatbutton" title="Rod @ StackOverflow" href="http://stackoverflow.com/users/1225825/rod"><img style="vertical-align:middle; float:left;" src="/img/stackoverflow-24x24.png" height="24" width="24"><span class="float-right">SOflow</span></a></a></li>
+          <li><a class="flatbutton" title="Rod @ Math.StackExchange" href="http://math.stackexchange.com/users/116929/rod"><img style="vertical-align:middle; float:left;" src="/img/math-stackexchange-24x24.png" height="24" width="24"><span class="float-right">Math@SE</span></a></a></li>
+          <li><a class="flatbutton" title="Rod @ TeX.StackExchange" href="http://tex.stackexchange.com/users/37896/rod"><img style="vertical-align:middle; float:left;" src="/img/tex-stackexchange-24x24.png" height="24" width="24"><span class="float-right">TeX@SE</span></a></a></li>
+          <li><a class="flatbutton" title="The Graphviz Cookbook" href="http://noumlaut.com/graphviz-cookbook"><img style="vertical-align:middle; float:left;" src="/img/noumlaut-24x24.png" height="24" width="24"><span class="float-right">GV Book</span></a></a></li>
+          <li><a class="flatbutton" title="Resume/CV for Rodney Waldhoff (PDF)" href="/img/Waldhoff-Rodney-resume-2014-02.pdf"><img style="vertical-align:middle; float:left;" src="/img/rod-photo-grayscale-24x24.png" height="24" width="24"><span class="float-right">Resume</span></a></li>
+        </ul>
+      </div>
+
+      
+
+      
+
+      
+        <div class="thirteen columns">
+          <div id="page-header" class="half-bottom mtop">
+            
+              <h1 class=" remove-bottom">In Defense of XML</h1>
+            
+            <div class="page-class remove-bottom">
+              
+                  <!-- page class '' not matched. -->
+              
+            </div>
+          </div>
+          <hr class="half-bottom remove-top"/>
+        </div>
+      
+
+      
+
+      <div class="thirteen columns bulleted">
+        <div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/article/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Friday, 8 August 2003</b>
+<p>
+Recently I've read a number of comments (some <a href="http://www.toolshed.com/blog/News/LastArtima.html,v" title="/\ndy's Weblog: Forensic Analysis and Plain Text">old</a> and some <a href="http://www.freeroller.net/page/fate/20030801#as_stable_and_maintanable_as" title="Bile Blog: As stable and maintainable as jelly">new</a>) that take issue with the use of XML for one purpose or another (in the above examples, Ant and Jelly scripts, respectively).  In fact, it seems all the cool kids are <a href="http://www.google.com/search?q=xml+sucks" title="Google on &quot;xml sucks&quot;">XML detractors</a> these days, although the coolness may have peaked a few months ago, when even Tim Bray was <a href="http://www.tbray.org/ongoing/When/200x/2003/03/16/XML-Prog" title="ongoing: XML Is Too Hard For Programmers">admitting</a> that XML may not be as nifty as first thought.
+</p><p>
+Now, I'll certainly admit that XML has its drawbacks.  Is it overly verbose?  Often.  <a href="http://okmij.org/ftp/Scheme/xml.html#SXML-spec" title="XML and Scheme: SXML specification">An equivalent s-expression syntax</a> would be more concise and (for Lisp developers at least) more useful.  Is it hard to read? At times.  It's certainly better suited for documents where the ratio of text to tags is high.  Is XML often used for developer convenience at the expense of user convenience? Is there information that has no business being in an XML format, but that developers or vendors insist on making XML anyway? Yes, yes, of course.
+</p><p>
+(On a related note, if "executable XML" is such a bad idea, how does one explain the longevity of Lisp?)
+</p><p>
+Despite these limitations, there is some value in selecting XML over, say (as Andy Hunt suggested for Ant) some arbitrary context-free grammar.
+</p><p>
+Part of this value is the ease with which a developer can drop in an XML parser, but that's only an indirect source of value.  Part of this value is the comfort that users familiar with popular SGML applications (read "HTML") have with the angle bracket notation, but that may only explain the quick adoption.
+</p><p>
+The real value of XML is in the tool chain.
+</p><p>
+Suppose Ant had been based upon some custom, non-XML grammar.  What would we lose?
+</p><p>
+Well for one, nearly every programmer's editor has a syntax coloring, well-formedness-checking mode for XML (certainly emacs and vi, or at least vim, and nearly anything that calls itself an IDE).  Moreover, many editors support DTD or Schema validation as well, perhaps even tag and attribute completion.  Using an XML format means a host of editors can handle Ant scripts smartly.  The same would probably not have been true, at least initially, with some arbitrary grammar.
+</p><p>
+How does this come about?  Well in part because XML is a popular format, but also because of the ease with which a developer can drop in an XML parser and other libraries.
+</p><p>
+For another advantage, consider <a href="http://www.wdvl.com/Authoring/Languages/XML/XMLFamily/BigPicture/bigpix20a.html" title="Big Picture of the XML Family of Specifications">the plethora of XML-based or XML-extending specifications</a>.  Many commentators have looked at that dense diagram and scoffed: not everything is well suited for an XML representation.  Yet few would deny that at least some of those technologies do something truly useful.
+</p><p>
+Similarly, consider the number of tools, libraries and technologies that implement those specifications or provide other XML utilities.  Want a pretty printer?  There's a tool for that (indeed you're probably using one right now).  Want an API for processing arbitrary XML?  There's several, in nearly any language you can name.  Want portable validation?  Want to combine dialects?  Want to translate one schema to another?  Want simple macro support?  Want to embed or link sub-documents?  Want to generate hyperlinked documentation for a script or it's syntax?  There's a tool for that too.
+</p><p>
+Sometimes it's sufficient to be adequate and popular, when that means a strong tool chain comes along for the ride.  Sometimes <a href="http://www.ai.mit.edu/docs/articles/good-news/good-news.html" title="Richard P. Gabriel: Lisp: Good News, Bad News, How to Win Big">worse really is better</a>, or at least good enough.
+</p>
+
+      </div>
+
+    </div>
+  </div>
+
+  
+
+  <div id="footer">
+    <div class="container">
+      <div class="sixteen columns align-center">
+        <p class="half-bottom">
+          <span class="nobr">rw&#97;ldho<script language="javascript">(function(){var f=function(c) { document.write(String.fromCharCode(c)); }; f(0146); f(0x66); f(0100); })();</script>g&#109;ail&#46;com</span>
+          &nbsp;|&nbsp;
+          <span class="nobr">(&#55;03) 593-2<script language="javascript">document.write("3"); document.write((3-2+1)+"");</script>9</span>
+        </p>
+        <p class="half-bottom">
+          <span class="nobr"><a href="/">heyrod.com</a></span>
+          &nbsp;|&nbsp;
+          <span class="nobr"><a href="/page/colophon.html">credits</a></span>
+        </p>
+        <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
+        <div id="caveator">
+          <p class="smallprint">This page was generated at  8:27 PM on 13 February 2014</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
