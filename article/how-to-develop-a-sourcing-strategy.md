@@ -73,17 +73,17 @@ Before describing the process for creating a sourcing strategy, let's first set 
 
 When I first introduce this concept to an organization or team, someone inevitably jumps to the conclusion that "strategic sourcing" is a euphemism for "outsourcing".  Not at all.
 
-First, one of the most beneficial artifacts to comes from process this process is some form of ***capability development plan***, a roadmap that describes how to *hire new* or *train existing staff* to ensure the organization has the capabilities it will need in the future.
+First, one of the most beneficial artifacts that emerges from this process is some form of ***capability development plan***, a roadmap that describes how to *hire new* or *train existing staff* to ensure the organization has the capabilities it will need in the future.
 
 Second, the decision to outsource a capability or function is just the first of many.  We then need to determine *how* we want the capability supplied, *which* vendor, *what* our relationship to the vendor must be, etc.
 
-Consider the various ways your organization might obtain a given service or function:
+Consider the ways your organization might obtain a given service or function:
 
  - You could do it "in-house" (i.e., with employees).
  - You could hire external contractors that extend the in-house capabilities, but are managed very much like employees.
  - You could pay a firm to deliver the service (so you don't have to manage the work directly).
  - You could form a partnership with another organization that would share in the success or failure of the venture.
- - You could take go online and use your credit cart to sign up for a SaaS product without every directly talking to another person.
+ - You could take go online and use your credit card to sign up for a SaaS product without every directly talking to another person.
  - Etc.
 
 There are many different ways to acquire a product or service, and many different relationships you might have with the supplier. The question isn't "in or out?" but "how far in or how far out?"
@@ -112,7 +112,7 @@ Looking at a spectrum from "most intimate" to "least intimate", we might identif
 6. **Multi-Vendor** -- the service is provided by multiple suppliers, organized or coordinated by the firm itself.
 7. **Subcontracted** -- the service is provided by a "primary" supplier of some sort, who is in turn relying on subcontractors to do the work.
 8. **Multi-Client** -- the service is not customized for the individual firm, but provided by an "off-the-shelf" product of some sort. (E.g., something physically "installed" at the firm's location, or a SaaS-product that serves many clients.)
-9. **Business Process Outsourcing** -- an entire business function is delegated to a supplier. (E.g., payroll functions are often outsourced.)
+9. **Business Process Outsourcing** -- an entire business function is delegated to a supplier. (E.g., payroll functions are often outsourced in this way.)
 
 Note that moving up (left) on that spectrum (from "BPO" to "Internal Staff") we have an *increasing degree of control* over the service, but a *decreasing ability to scale* the service.  We can get staff or freelancers to build or provide *exactly* what we ask them to (for better or worse), but both the number of employees and the rate at which we can hire them are naturally constrained.
 
@@ -155,7 +155,7 @@ We can create a diagram of a given sourcing model by simply pinning each "functi
 ![](/img/strategic-sourcing-rainbow-gradient-with-functions-402x124.png)
 </div>
 
-At a (very) high level, a sourcing strategy might captured by a "current" and "desired" version of this diagram, and a plan for how we get from here to there.
+At a (very) high level, a sourcing strategy might be captured by a "current" and "desired" version of this diagram, and a plan for how we get from here to there.
 
 (We'll use a variation of this diagram when we build our sourcing strategy below.)
 
@@ -167,12 +167,12 @@ Developing a sourcing strategy doesn't need to be difficult.
 
 In this section we present a six step plan for creating a sourcing strategy:
 
-1. Enumerate the "things" you need to source (functions, services, resources, capabilities, etc.).
-2. Document your current sourcing model.
-3. Evaluate your desired sourcing model.
-4. Use the information gathered in steps 2 and 3 to visualize how well your current sourcing model matches your desired sourcing model.
-5. Determine what to do about the "deltas" that you discovered in step 4.
-6. Develop an execution plan for doing it.
+1. [Enumerate the "things" you need to source (functions, services, resources, capabilities, etc.).](#Enumerate-things-to-be-sourced)
+2. [Document your current sourcing model.](#Document-the-current-sourcing-model)
+3. [Determine your desired sourcing model.](#Determine-the-desired-sourcing-model)
+4. [Use the information gathered in steps 2 and 3 to visualize how well your current sourcing model matches your desired sourcing model.](#Create-a-visualization)
+5. [Determine what to do about the "deltas" that you discovered in step 4.](#Evaluate-the-model)
+6. [Develop an execution plan for doing it.](#Make-a-plan)
 
 At the end of this process you will have:
 
@@ -190,7 +190,7 @@ The following sections walk you through each step of the process.
 
 ### <a name="Enumerate-things-to-be-sourced"></a>Step 1: Enumerate the things to be sourced.
 
-We will need to create a list of the functions, services, resources, capabilities, etc. that we intend to include in our sourcing strategy.
+We need to create a list of the functions, services, resources, capabilities, etc. that we intend to include in our sourcing strategy.
 
 There are many ways to go about this. Two relatively straightforward ones are:
 
@@ -204,7 +204,7 @@ There are many ways to go about this. Two relatively straightforward ones are:
 
 (For the sake of convenience, we'll call the "things" we've chosen to include in the strategy "functions".)
 
-Run down the list of functions you identified in [step 1](#Enumerate-things-to-be-sourced).  For each item on the list we'll want to evaluate two questions:
+Review the functions you identified in [step 1](#Enumerate-things-to-be-sourced).  For each item on the list we'll want to answer two questions:
 
 1. On a scale of 1 to 10, how "intimate" is our relationship with the supplier of this function?  For example: If the supplier is an employee, we might rate this function a 10.  If the supplier is a mass-market SaaS website, we might rate this function a 1.
 
@@ -212,15 +212,15 @@ Run down the list of functions you identified in [step 1](#Enumerate-things-to-b
 
 We should end up with simple spreadsheet that looks something like this:
 
-<style>table.bordered, table.bordered th, table.bordered td { border-collapse:collapse; border: 1px solid black; padding: 2px; } </style>
+<style>th { font-weight:bold; } table.bordered, table.bordered th, table.bordered td { border-collapse:collapse; border: 1px solid black; padding: 2px; } </style>
 <div align="center">
 <table class="bordered" style="align:center">
   <tr><th>Function</th><th>Current Relationship</th><th>Investment</th></tr>
-  <tr><td>Staff Cafeteria</td><td align="right">8</td><td align="right">$13,235/mo</td></tr>
+  <tr><td>Staff Cafeteria</td><td align="right">8</td><td align="right">$13,235</td></tr>
   <tr><td>Water Service</td><td align="right">3</td><td align="right">$2,667</td></tr>
   <tr><td>Shark Food</td><td align="right">5</td><td align="right">$4,506</td></tr>
   <tr><td>Shark Trainers</td><td align="right">7</td><td align="right">$28,294</td></tr>
-  <tr><td>Laser Canon R&D</td><td align="right">10</td><td align="right">$9,873/mo</td></tr>
+  <tr><td>Laser Canon R&D</td><td align="right">10</td><td align="right">$9,873</td></tr>
 </table>
 </div>
 
@@ -228,7 +228,7 @@ We should end up with simple spreadsheet that looks something like this:
 
 ### <a name="Determine-the-desired-sourcing-model"></a>Step 3: Determine the desired sourcing model.
 
-Run down the list of functions you identified in [step 1](#Enumerate-things-to-be-sourced) again.  This time we'll answer these two questions:
+Run down the list of functions you identified in [step 1](#Enumerate-things-to-be-sourced) again.  This time we'll answer two more questions:
 
 1. On a scale of 1 to 10, how *critical* is this function to our business?  Is this something we could live without (a vending machine in the breakroom, perhaps) or something that without which we would cease to operate (electricity and phone-lines, for example)?  Does this function support our flagship product, or is it in service of some side-product we launched because it brought in a little extra revenue and we could do it?
 
@@ -239,11 +239,11 @@ Coupled with the data from [step 2](#Document-the-current-sourcing-model),  our 
 <div align="center">
 <table class="bordered" style="align:center">
 <tr><th>Function</th><th>Current Relationship</th><th>Criticality</th><th>Distinctiveness</th><th>Investment</th></tr>
-<tr><td>Staff Cafeteria</td><td align="right">8</td><td align="right">5</td><td align="right">4</td><td align="right">$13,235/mo</td></tr>
+<tr><td>Staff Cafeteria</td><td align="right">8</td><td align="right">5</td><td align="right">4</td><td align="right">$13,235</td></tr>
 <tr><td>Water Service</td><td align="right">3</td><td align="right">8</td><td align="right">3</td><td align="right">$2,667</td></tr>
 <tr><td>Shark Food</td><td align="right">5</td><td align="right">9</td><td align="right">6</td><td align="right">$4,506</td></tr>
 <tr><td>Shark Trainers</td><td align="right">7</td><td align="right">7</td><td align="right">8</td><td align="right">$28,294</td></tr>
-<tr><td>Laser Canon R&D</td><td align="right">10</td><td align="right">10</td><td align="right">10</td><td align="right">$9,873/mo</td></tr>
+<tr><td>Laser Canon R&D</td><td align="right">10</td><td align="right">10</td><td align="right">10</td><td align="right">$9,873</td></tr>
 </table>
 </div>
 
@@ -263,13 +263,13 @@ Imagine a two dimensional version of that:
 ![](/img/strategic-sourcing-rainbow-gradient-300x300.png)
 </div>
 
-Now we add an axis for the "critical" and "distinctive" dimensions we evaluated above:
+Now add axes for the "critical" and "distinctive" dimensions we evaluated above:
 
 <div align="center">
 ![](/img/strategic-sourcing-rainbow-gradient-with-axes-600x460.png)
 </div>
 
-We will plot our current and desired sourcing model on that chart, using the following rules:
+Now plot the current and desired sourcing model on that chart, using the following rules:
 
  - Each function will be represented by a "bubble" on the graph.
  - The *X* and *Y* coordinates for the *center* of each bubble are determined by the "Criticality" and "Distinctiveness" ratings identified in [step 3](#Determine-the-desired-sourcing-model).
@@ -282,7 +282,7 @@ For our example data above, that diagram looks something like this:
 ![](/img/strategic-sourcing-rainbow-gradient-with-bubbles-600x460.png)
 </div>
 
-Now we have a succinct visual representation of our current sourcing model. (We'll discuss how to interpret it in the next step.
+Now we have a succinct visual representation of our current and desired sourcing model. (We'll discuss how to interpret it in the next step.
 
 <div align="right"><small><a href="#toc">(click here to return to the table of contents)</a></small></div>
 
@@ -292,9 +292,9 @@ As garish as it might be, the bubble chart we created in [step 4](#Create-a-visu
 
 One of the most useful aspects, for our purposes here, is the contrast between the color of each function-bubble and the color of the background gradient at the same point.
 
-Where they are the same, or similar, colors there is a close alignment between our *current* method of sourcing that function and the *desired* method of sourcing, according to our strategy.
+Where the colors are the same (or similar), there is a close alignment between our *current* method of sourcing that function and the *desired* method of sourcing, according to our strategy.
 
-Where they are different, our current method of sourcing that function is different than what we'd like it to be.
+Where the colors are different, our current method of sourcing that function is different than what we'd like it to be.
 
 The larger the bubble, the more money we're investing in the supplier, so our attention should probably first turn to large, high-contrast bubbles.
 
@@ -302,7 +302,7 @@ The larger the bubble, the more money we're investing in the supplier, so our at
 
 #### Interpreting the chart
 
-Let's step back for a moment and think about what the bubbles on that chart really mean. Let's divide the chart into quadrants:
+Let's step back for a moment and think about what the bubbles on that chart really mean. We can divide the chart into quadrants:
 
 <div align="center">
 ![](/img/strategic-sourcing-rainbow-quadrants-400x303.png)
@@ -351,7 +351,7 @@ Let's look at some ways we might effect specific types of change:
 
     * Attempt to grow the revenue lines that this function supports, increasing our ROI on the activity.
 
-    * Look for new, possibly radical ways, to create new revenue lines from that function.  Are we good at web design? Maybe we should rent our designers out like an agency?  Do we run the world's largest online bookstore, and need excess capacity to handle the holiday rush?  Maybe we should rent out our processing power during off-peak periods.
+    * Look for new, possibly radical ways, to create new revenue lines from that function.  Are we good at web design? Maybe we should rent our designers out like an agency.  Do we run the world's largest online bookstore, and need excess capacity to handle the holiday rush?  Maybe we should rent out our processing power during off-peak periods.
 
     * Look for similar or complementary functions that we could diversify into (whether directly, or though a vendor or via a partnership).
 
@@ -424,16 +424,16 @@ Consider the function-bubbles in our example chart. We can readily identify some
       - look for ways to innovate in the delivery of this function, making it more a competitive advantage for us (moving the bubble up),
       - etc.
 
-4. The "Shark Food" function (Quadrant I) is important to use, yet we're using a relatively commodity supplier.  This might be OK, but its probably worth a look.  We might:
+4. The "Shark Food" function (Quadrant I) is important to use, yet we're using a relatively commodity supplier.  This might be OK, but it's probably worth a look.  We might:
       - try to find a cheaper supplier (making the bubble even smaller), or
-      - look for a supplier that that we can form a long term partnership with (making the bubble "redder"), or
+      - look for a supplier that we can form a long term partnership with (making the bubble "redder"), or
       - try to find a way to make our organization less dependent upon the supply of this function (moving the bubble to the left), or
       - try to "in-source" this function to a greater degree (making the bubble "redder"),
       - etc.
 
 5. The "Water" function (Quadrant II) is even more out of position--critical to our operation but we don't have a close relationship with the supplier. Though small, that's also worth a look.  We might:
       - find alternative suppliers to reduce our exposure to risk,
-      - look for a supplier that that we can form a long term partnership with (making the bubble "redder"), or
+      - look for a supplier that we can form a long term partnership with (making the bubble "redder"), or
       - try to find a way to make our organization less dependent upon the supply of this function (moving the bubble to the left),
       - etc.
 
@@ -457,7 +457,11 @@ Steps on this roadmap might include things like:
 
 ## <a name="Conclusion"></a>4) Conclusion
 
-That's the process. You should have:
+That's it. That's all there is to the process.
+
+There are of course much more robust ways to go about any step in this process, but this approach is likely to give you 80% of the value at 20% of the effort.
+
+You should now have:
 
 <ol style="list-style-type:upper-alpha">
 <li>A quantitative analysis of your sourcing needs.</li>
@@ -467,9 +471,7 @@ That's the process. You should have:
 <li>A garish diagram that might help you communicate all of these things.</li>
 </ol>
 
-There are of course much more robust ways to go about any step in this process, but this approach is likely to give you 80% of the value at 20% of the effort.
-
-The really hard work is still up to you, of course, but you now have a simple process to frame the work that you're doing.
+The really hard work is still up to you, of course, but now you have a simple process to frame the work that you're doing.
 
 That hard work is also the interesting work, however, so don't be afraid to have a little fun with it or look for creative solutions.
 
@@ -477,4 +479,4 @@ That hard work is also the interesting work, however, so don't be afraid to have
 
 <hr><b>If you found this write-up valuable, noticed glaring typos or other errors, have any comments, suggestions or feedback, or just want to say "Hi", you can find my contact information at the footer of every page on <a href="http://heyrod.com/">www.heyrod.com</a>.
 
-If you'd like to inquire about hiring me for short-term or long-term support, please feel free to contact me at your convenience. You can <a href="http://heyrod.com/img/Waldhoff-Rodney-resume-2014-02.pdf">review my resume/CV</a> for more information about my professional experience.</b><hr>
+If you'd like to inquire about hiring me for short-term or long-term support, please feel free to contact me. You can <a href="http://heyrod.com/img/Waldhoff-Rodney-resume-2014-02.pdf">review my resume/CV</a> for more information about my professional experience.</b><hr>

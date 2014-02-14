@@ -1,5 +1,66 @@
 
 ######################################################################
+tags: [coffeescript,node.js,mocha,error]
+title: Fixing \"Unexpected string\" error with CoffeeScript 1.7 and Mocha 1.17
+slug: mocha-1.17-coffeescript
+note: 2014-02-11
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Recently I've been running into the following error when testing CoffeeScript files using Mocha:
+
+> (exports, require, module, __filename, __dirname) { should  = require 'should'
+> SyntaxError: Unexpected string
+
+[The fix is described here on the mocha site.](http://visionmedia.github.io/mocha/#compilers-option)
+
+> coffee-script is no longer supported out of the box. CS and similar transpilers may be
+> used by mapping the file extensions (for use with --watch) and the module name. For example
+> --compilers coffee:coffee-script with CoffeeScript 1.6- or
+> --compilers coffee:coffee-script/register with CoffeeScript 1.7+.
+
+In other words, to fix the problem change the argument:
+
+    --compilers coffee:coffee-script
+
+on your Mocha command line to:
+
+    --compilers coffee:coffee-script/register
+
+######################################################################
+tags: [linux,cli,xml,css,html,xpath]
+title: Command-line tool for extracting content from XML and HTML documents
+slug: cli-for-html-extraction
+note: 2014-02-11
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[Xidel](http://videlibri.sourceforge.net/xidel.html) is a robust tool for extracting and transforming XML/HTML content on the commmand line.
+
+It's like `wget` or `curl` with a CSS and XPath/XQuery engine (among other features), attached.
+
+Xidel doesn't seem to be in the package management repositories I normally use, but you can [download it here](http://videlibri.sourceforge.net/xidel.html#downloads).
+
+The following example will (1) download a web page, (2) extract a list of links (specified via CSS selector) from it, (3) download the page corresponding to each of those links and finally (4) extract specific pieces of content (specified by CSS selectors) from each page:
+
+{% highlight console %}
+$ xidel [URL-OF-INDEX-PAGE] \
+  --follow "css('[CSS-SELECTOR-FOR-LINKS]')" \
+  --css "[CSS-SELECTOR-FOR-SOME-TEXT]" \
+  --extract "inner-html(css('[CSS-SELECTOR-FOR-SOME-HTML]'))"
+{% endhighlight %}
+
+As a concrete example, the command:
+
+{% highlight console %}
+$ xidel http://reddit.com -f  "css('a')" --css title
+{% endhighlight %}
+
+will download every page linked from the reddit.com homepage and print the content of its `title` tag.
+
+There are several more [examples on the Xidel site](http://videlibri.sourceforge.net/xidel.html#examples).
+
+######################################################################
 tags: [coffeescript,node.js,bash,gist]
 title: Shell script for service-like CoffeeScript/Node.js apps using forever
 slug: forever-service
