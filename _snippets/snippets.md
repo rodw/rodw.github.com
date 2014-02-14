@@ -1,7 +1,7 @@
 
 ######################################################################
-tags: [coffeescript,node.js,mocha,error]
-title: Fixing \"Unexpected string\" error with CoffeeScript 1.7 and Mocha 1.17
+tags: [coffeescript,node.js,mocha,debug]
+title: Fixing "Unexpected string" errors with CoffeeScript 1.7 and Mocha 1.17
 slug: mocha-1.17-coffeescript
 note: 2014-02-11
 
@@ -9,8 +9,10 @@ note: 2014-02-11
 
 Recently I've been running into the following error when testing CoffeeScript files using Mocha:
 
-> (exports, require, module, __filename, __dirname) { should  = require 'should'
-> SyntaxError: Unexpected string
+    (exports, require, module, __filename, __dirname) { should  = require 'should'
+                                                                          ^^^^^^^^
+    SyntaxError: Unexpected string
+
 
 [The fix is described here on the mocha site.](http://visionmedia.github.io/mocha/#compilers-option)
 
