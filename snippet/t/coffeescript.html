@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>9 coffeescript snippets</title>
+  <title>10 coffeescript snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -109,7 +109,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">9 coffeescript snippets</h1>
+              <h1 class=" remove-bottom">10 coffeescript snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -125,6 +125,45 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/mocha-1-17-coffeescript.html">
+        <h2 class="half-bottom">Fixing "Unexpected string" errors with CoffeeScript 1.7 and Mocha 1.17</h2>
+      </a>
+    
+    <div>
+      <p>Recently I&rsquo;ve been running into the following error when testing CoffeeScript files using Mocha:</p>
+
+<pre><code>(exports, require, module, __filename, __dirname) { should  = require 'should'
+                                                                      ^^^^^^^^
+SyntaxError: Unexpected string
+</code></pre>
+
+<p><a href="http://visionmedia.github.io/mocha/#compilers-option">The fix is described here on the mocha site.</a></p>
+
+<blockquote><p>coffee-script is no longer supported out of the box. CS and similar transpilers may be
+used by mapping the file extensions (for use with &ndash;watch) and the module name. For example
+&ndash;compilers coffee:coffee-script with CoffeeScript 1.6- or
+&ndash;compilers coffee:coffee-script/register with CoffeeScript 1.7+.</p></blockquote>
+
+<p>In other words, to fix the problem change the argument:</p>
+
+<pre><code>--compilers coffee:coffee-script
+</code></pre>
+
+<p>on your Mocha command line to:</p>
+
+<pre><code>--compilers coffee:coffee-script/register
+</code></pre>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/mocha.html">mocha</a> and <a href="/snippet/t/debug.html">debug</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/forever-service.html">
@@ -552,7 +591,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  8:27 PM on 13 February 2014</p>
+          <p class="smallprint">This page was generated at  3:43 PM on 14 February 2014</p>
         </div>
       </div>
     </div>

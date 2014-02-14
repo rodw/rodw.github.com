@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>1 jekyll snippets</title>
+  <title>1 xml snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -109,7 +109,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">1 jekyll snippets</h1>
+              <h1 class=" remove-bottom">1 xml snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -127,45 +127,39 @@
         
   <div class="snippet">
     
-      <a class="permalink" href="/snippet/s/pygments-language-identifiers.html">
-        <h2 class="half-bottom">Short list of language names recognized by pygments.</h2>
+      <a class="permalink" href="/snippet/s/cli-for-html-extraction.html">
+        <h2 class="half-bottom">Command-line tool for extracting content from XML and HTML documents</h2>
       </a>
     
     <div>
-      <p><code>pygments</code> language identifiers I use or have had to look up at one time or another.</p>
+      <p><a href="http://videlibri.sourceforge.net/xidel.html">Xidel</a> is a robust tool for extracting and transforming XML/HTML content on the commmand line.</p>
 
-<ul>
-<li>Antlr-Ruby - <code>antlr-ruby</code>/<code>antlr-rb</code></li>
-<li>awk - <code>awk</code>/<code>gawk</code>/<code>mawk</code>/<code>nawk</code></li>
-<li>Bash - <code>bash</code>/<code>sh</code>/<code>ksh</code> for shell scripts, <code>console</code> for interactive session captures</li>
-<li>Clojure - <code>clj</code>/<code>closure</code></li>
-<li>CoffeeScript - <code>coffee-script</code>/<code>coffeescript</code></li>
-<li>CSS - <code>css</code></li>
-<li>diff output - <code>diff</code>/ <code>udiff</code></li>
-<li>Haml/Sass/Scss - <code>haml</code>, <code>sass</code>, <code>scss</code></li>
-<li>HTML - <code>html</code></li>
-<li>HTTP transcripts - <code>http</code></li>
-<li>JavaScript - <code>js</code>/<code>javascript</code></li>
-<li>JSON - <code>json</code></li>
-<li>Lisp - <code>cl</code>/<code>common-lisp</code></li>
-<li>make - <code>make</code>/<code>makefile</code>/<code>mf</code>, <code>cmake</code>, <code>basemake</code>, <code>bsdmake</code></li>
-<li>nginx configuration files - <code>ngnix</code></li>
-<li>Postscript - <code>postscript</code></li>
-<li>Ruby - <code>ruby</code> for .rb files, <code>irb</code> for interactive console captures</li>
-<li>Scheme - <code>scm</code>/<code>scheme</code></li>
-<li>SQL - <code>sql</code>, <code>mysql</code>, <code>psql</code>, <code>postgresql-console</code>/<code>postgres-console</code>, <code>sqlite3</code></li>
-<li>TeX/LaTeX - <code>tex</code>, <code>latex</code></li>
-<li>Text - <code>text</code> (the no-op highlighter)</li>
-<li>XML/XSLT/XQuery - <code>xml</code>, <code>xslt</code>, <code>xquery</code></li>
-<li>Yaml - <code>yaml</code></li>
-</ul>
+<p>It&rsquo;s like <code>wget</code> or <code>curl</code> with a CSS and XPath/XQuery engine (among other features), attached.</p>
+
+<p>Xidel doesn&rsquo;t seem to be in the package management repositories I normally use, but you can <a href="http://videlibri.sourceforge.net/xidel.html#downloads">download it here</a>.</p>
+
+<p>The following example will (1) download a web page, (2) extract a list of links (specified via CSS selector) from it, (3) download the page corresponding to each of those links and finally (4) extract specific pieces of content (specified by CSS selectors) from each page:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> xidel <span class="o">[</span>URL-OF-INDEX-PAGE<span class="o">]</span> <span class="se">\</span>
+<span class="go">  --follow &quot;css(&#39;[CSS-SELECTOR-FOR-LINKS]&#39;)&quot; \</span>
+<span class="go">  --css &quot;[CSS-SELECTOR-FOR-SOME-TEXT]&quot; \</span>
+<span class="go">  --extract &quot;inner-html(css(&#39;[CSS-SELECTOR-FOR-SOME-HTML]&#39;))&quot;</span>
+</code></pre></div>
 
 
-<p>Also see <a href="http://pygments.org/languages/">the list of languages supported by Pygments</a> and <a href="http://pygments.org/docs/lexers/">the list of lexers included with Pygments</a>.</p>
+<p>As a concrete example, the command:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> xidel http://reddit.com -f  <span class="s2">&quot;css(&#39;a&#39;)&quot;</span> --css title
+</code></pre></div>
+
+
+<p>will download every page linked from the reddit.com homepage and print the content of its <code>title</code> tag.</p>
+
+<p>There are several more <a href="http://videlibri.sourceforge.net/xidel.html#examples">examples on the Xidel site</a>.</p>
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/pygments.html">pygments</a>, <a href="/snippet/t/jekyll.html">jekyll</a> and <a href="/snippet/t/markdown.html">markdown</a>.</small>
+      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/cli.html">cli</a>, <a href="/snippet/t/xml.html">xml</a>, <a href="/snippet/t/css.html">css</a>, <a href="/snippet/t/html.html">html</a> and <a href="/snippet/t/xpath.html">xpath</a>.</small>
     </div>    
     
   </div>
