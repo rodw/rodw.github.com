@@ -1,4 +1,29 @@
 ######################################################################
+tags: [colors,brewer]
+title: the <i>paired12</i> brewer color palette
+slug: brewer-colors-paired12
+note: 2014-02-15
+credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+<div class="swatch swatch-light" style="background-color: #A6CEE3"><span>#A6CEE3</span><span>rgb(166,206,227)</span><span>Light Blue</span></div>
+<div class="swatch swatch-dark"  style="background-color: #1f78b4"><span>#1F78B4</span><span>rgb( 31,120,180)</span><span>Dark Blue</span></div>
+
+<div class="swatch swatch-light" style="background-color: #B2DF8A"><span>#B2DF8A</span><span>rgb(178,223,138)</span><span>Light Green</span></div>
+<div class="swatch swatch-dark"  style="background-color: #33A02C"><span>#33A02C</span><span>rgb( 51,160, 44)</span><span>Dark Green</span></div>
+
+<div class="swatch swatch-light" style="background-color: #FB9A99"><span>#FB9A99</span><span>rgb(251,154,153)</span><span>Light Red (Pink)</span></div>
+<div class="swatch swatch-dark"  style="background-color: #E31A1C"><span>#E31A1C</span><span>rgb(227, 26, 28)</span><span>Dark Red</span></div>
+<div class="swatch swatch-light" style="background-color: #FDBF6F"><span>#FDBF6F</span><span>rgb(253,191,111)</span><span>Light Orange</span></div>
+<div class="swatch swatch-dark"  style="background-color: #FF7F00"><span>#FF7F00</span><span>rgb(255,127,  0)</span><span>Dark Orange</span></div>
+<div class="swatch swatch-light" style="background-color: #CAB2D6"><span>#CAB2D6</span><span>rgb(202,178,214)</span><span>Light Purple</span></div>
+<div class="swatch swatch-dark"  style="background-color: #6A3D9A"><span>#6A3D9A</span><span>rgb(106, 61,154)</span><span>Dark Purple</span></div>
+<div class="swatch swatch-light" style="background-color: #FFFF99"><span>#FFFF99</span><span>rgb(255,255,153)</span><span>Light Brown (Yellow)</span></div>
+<div class="swatch swatch-dark"  style="background-color: #B15928"><span>#B15928</span><span>rgb(177, 89, 40)</span><span>Dark Brown</span></div>
+
+
+
+######################################################################
 tags: [python,json,cli]
 title: Pretty-print JSON with Python json.tool
 slug: python-pretty-print-json-tool
