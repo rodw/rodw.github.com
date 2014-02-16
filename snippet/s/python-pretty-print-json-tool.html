@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>.gitignore boilerplate for common temporary files.</title>
+  <title>Pretty-print JSON with Python json.tool</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -124,38 +124,11 @@
 
       <div class="thirteen columns bulleted">
         <div class="snippet">
-  <h2 class="half-bottom">.gitignore boilerplate for common temporary files.</h2>
+  <h2 class="half-bottom">Pretty-print JSON with Python json.tool</h2>
   <div>
-    <p>A list of patterns for the names of common temporary and noise files, to be used as boilerplate in <code>.gitignore</code>, <code>.hgignore</code>, <code>.svnignore</code> etc.</p>
+    <p>Pretty-print a JSON file using Python (v2.5+)&rsquo;s built-in <code>json.tool</code> module:</p>
 
-<div class="highlight"><pre><code class="squid"><span class="c"># various tmp and noise files</span><span class="w"></span>
-<span class="c">#---------------------------------------------------------------------</span><span class="w"></span>
-$RECYCLE.BIN/<span class="w"></span>
-*.*~<span class="w"></span>
-*.log<span class="w"></span>
-*.pid<span class="w"></span>
-*.un~<span class="w"></span>
-*~<span class="w"></span>
-.*.sw[a-z]<span class="w"></span>
-.DS_Store<span class="w"></span>
-.Spotlight-V100<span class="w"></span>
-.Trashes<span class="w"></span>
-.\#*<span class="w"></span>
-._*<span class="w"></span>
-.directory<span class="w"></span>
-.elc<span class="w"></span>
-/.emacs.desktop<span class="w"></span>
-/.emacs.desktop.lock<span class="w"></span>
-Desktop.ini<span class="w"></span>
-Session.vim<span class="w"></span>
-Thumbs.db<span class="w"></span>
-\#*\#<span class="w"></span>
-auto-save-list<span class="w"></span>
-log<span class="w"></span>
-logs<span class="w"></span>
-temp<span class="w"></span>
-tmp<span class="w"></span>
-tramp<span class="w"></span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cat MYFILE.json <span class="p">|</span> python -m json.tool
 </code></pre></div>
 
 
@@ -163,7 +136,7 @@ tramp<span class="w"></span>
 
   </div>
   <div class="align-right">
-    <small>Tags: <a href="/snippet/t/git.html">git</a> and <a href="/snippet/t/gitignore.html">gitignore</a>.</small>
+    <small>Tags: <a href="/snippet/t/python.html">python</a>, <a href="/snippet/t/json.html">json</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
   </div>    
   
 </div>

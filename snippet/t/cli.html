@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>7 cli snippets</title>
+  <title>9 cli snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -110,7 +110,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">7 cli snippets</h1>
+              <h1 class=" remove-bottom">9 cli snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -126,6 +126,59 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/python-pretty-print-json-tool.html">
+        <h2 class="half-bottom">Pretty-print JSON with Python json.tool</h2>
+      </a>
+    
+    <div>
+      <p>Pretty-print a JSON file using Python (v2.5+)&rsquo;s built-in <code>json.tool</code> module:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cat MYFILE.json <span class="p">|</span> python -m json.tool
+</code></pre></div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/python.html">python</a>, <a href="/snippet/t/json.html">json</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/python-csv-to-json-array.html">
+        <h2 class="half-bottom">Python one-liner for reading a CSV file into a JSON array of arrays</h2>
+      </a>
+    
+    <div>
+      <p>Reading a CSV file into 2d Python array (an array of arrays):</p>
+
+<div class="highlight"><pre><code class="python"><span class="kn">import</span> <span class="nn">csv</span>
+<span class="n">array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span> <span class="n">MYFILE</span><span class="o">.</span><span class="n">csv</span> <span class="p">)))</span>
+</code></pre></div>
+
+
+<p>Dumping that as JSON (via the command-line):</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> python -c <span class="s2">&quot;import json,csv;print json.dumps(list(csv.reader(open( CSV-FILENAME ))))&quot;</span>
+</code></pre></div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/python.html">python</a>, <a href="/snippet/t/json.html">json</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/cli-for-html-extraction.html">
@@ -388,9 +441,13 @@
 
 
 
+        
+            <div style="text-align:right; color: rgb(119, 119, 119); font-size: 12px;"><a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.</div>
+          
       </div>
 
     </div>
+
   </div>
 
   
@@ -410,7 +467,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  3:30 PM on 15 February 2014</p>
+          <p class="smallprint">This page was generated at 12:19 AM on 16 February 2014</p>
         </div>
       </div>
     </div>

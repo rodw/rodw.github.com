@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>.gitignore boilerplate for common temporary files.</title>
+  <title>2 json snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -110,6 +110,8 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
+              <h1 class=" remove-bottom">2 json snippets</h1>
+            
             <div class="page-class remove-bottom">
               
                   <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -123,51 +125,60 @@
       
 
       <div class="thirteen columns bulleted">
-        <div class="snippet">
-  <h2 class="half-bottom">.gitignore boilerplate for common temporary files.</h2>
-  <div>
-    <p>A list of patterns for the names of common temporary and noise files, to be used as boilerplate in <code>.gitignore</code>, <code>.hgignore</code>, <code>.svnignore</code> etc.</p>
+        
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/python-pretty-print-json-tool.html">
+        <h2 class="half-bottom">Pretty-print JSON with Python json.tool</h2>
+      </a>
+    
+    <div>
+      <p>Pretty-print a JSON file using Python (v2.5+)&rsquo;s built-in <code>json.tool</code> module:</p>
 
-<div class="highlight"><pre><code class="squid"><span class="c"># various tmp and noise files</span><span class="w"></span>
-<span class="c">#---------------------------------------------------------------------</span><span class="w"></span>
-$RECYCLE.BIN/<span class="w"></span>
-*.*~<span class="w"></span>
-*.log<span class="w"></span>
-*.pid<span class="w"></span>
-*.un~<span class="w"></span>
-*~<span class="w"></span>
-.*.sw[a-z]<span class="w"></span>
-.DS_Store<span class="w"></span>
-.Spotlight-V100<span class="w"></span>
-.Trashes<span class="w"></span>
-.\#*<span class="w"></span>
-._*<span class="w"></span>
-.directory<span class="w"></span>
-.elc<span class="w"></span>
-/.emacs.desktop<span class="w"></span>
-/.emacs.desktop.lock<span class="w"></span>
-Desktop.ini<span class="w"></span>
-Session.vim<span class="w"></span>
-Thumbs.db<span class="w"></span>
-\#*\#<span class="w"></span>
-auto-save-list<span class="w"></span>
-log<span class="w"></span>
-logs<span class="w"></span>
-temp<span class="w"></span>
-tmp<span class="w"></span>
-tramp<span class="w"></span>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cat MYFILE.json <span class="p">|</span> python -m json.tool
 </code></pre></div>
 
 
 
 
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/python.html">python</a>, <a href="/snippet/t/json.html">json</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
   </div>
-  <div class="align-right">
-    <small>Tags: <a href="/snippet/t/git.html">git</a> and <a href="/snippet/t/gitignore.html">gitignore</a>.</small>
-  </div>    
-  
-</div>
-<!-- <hr/> -->
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/python-csv-to-json-array.html">
+        <h2 class="half-bottom">Python one-liner for reading a CSV file into a JSON array of arrays</h2>
+      </a>
+    
+    <div>
+      <p>Reading a CSV file into 2d Python array (an array of arrays):</p>
+
+<div class="highlight"><pre><code class="python"><span class="kn">import</span> <span class="nn">csv</span>
+<span class="n">array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span> <span class="n">MYFILE</span><span class="o">.</span><span class="n">csv</span> <span class="p">)))</span>
+</code></pre></div>
+
+
+<p>Dumping that as JSON (via the command-line):</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> python -c <span class="s2">&quot;import json,csv;print json.dumps(list(csv.reader(open( CSV-FILENAME ))))&quot;</span>
+</code></pre></div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/python.html">python</a>, <a href="/snippet/t/json.html">json</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
 
 
         
