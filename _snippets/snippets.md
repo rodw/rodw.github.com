@@ -1512,7 +1512,7 @@ M-x sort-lines
 
 
 ######################################################################
-tags: [pygments,jekyll,markdown]
+tags: [pygments,jekyll,markdown,python]
 title: Short list of language names recognized by pygments.
 slug: pygments-language-identifiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
