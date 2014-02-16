@@ -12,6 +12,11 @@
 .nobr { white-space: nowrap; }
 .nou { text-decoration: none; }
 
+div.swatch { height: 20px; width: 100%; padding: 4px; text-align: center; font-weight: bold; font-family: Droid Sans Mono, Monospaced}
+div.swatch-dark { color:#ddd; }
+div.swatch-light { color:#222; }
+div.swatch span { display:block; float:left; width:33% !important; text-align:center; }
+
 /* anti-reset
  ********************************************************************/
 i { font-style: italic; }
