@@ -1,5 +1,25 @@
 ######################################################################
 tags: [colors,brewer]
+title: the <i>spectral11</i> brewer color palette
+slug: brewer-colors-spectral11
+note: 2014-02-15
+credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+<div class="swatch swatch-dark" style="background-color: #9E0142"><span>#9E0142</span><span>rgb(158,  1, 66)</span><span>Eggplant Violet</span></div>
+<div class="swatch swatch-dark" style="background-color: #D53E4F"><span>#D53E4F</span><span>rgb(213, 62, 79)</span><span>Valencia Red</span></div>
+<div class="swatch swatch-light" style="background-color: #F46D43"><span>#F46D43</span><span>rgb(244,109, 67)</span><span>Crusta (Dark) Orange</span></div>
+<div class="swatch swatch-light" style="background-color: #FDAE61"><span>#FDAE61</span><span>rgb(253,174, 97)</span><span>Rajah (Light) Orange</span></div>
+<div class="swatch swatch-light" style="background-color: #FEE08B"><span>#FEE08B</span><span>rgb(254,244,139)</span><span>Cream Brulee (Dark) Yellow</span></div>
+<div class="swatch swatch-light" style="background-color: #FFFFBF"><span>#FFFFBF</span><span>rgb(255,255,191)</span><span>Lemon Chiffon (Light) Yellow</span></div>
+<div class="swatch swatch-light" style="background-color: #E6F598"><span>#E6F598</span><span>rgb(230,245,152)</span><span>Tidal (Pale, Yellow-) Green</span></div>
+<div class="swatch swatch-light" style="background-color: #ABDDA4"><span>#ABDDA4</span><span>rgb(171,221,164)</span><span>Moss (Pale) Green</span></div>
+<div class="swatch swatch-light" style="background-color: #66C2A5"><span>#66C2A5</span><span>rgb(102,194,165)</span><span>Puerto Rico (Blue-) Green</span></div>
+<div class="swatch swatch-dark" style="background-color: #3288BD"><span>#3288BD</span><span>rgb( 50,136,189)</span><span>Curious (Muted) Blue</span></div>
+<div class="swatch swatch-dark" style="background-color: #5E4FA2"><span>#5E4FA2</span><span>rgb( 94, 79,162)</span><span>Rich (Violet-) Blue</span></div>
+
+######################################################################
+tags: [colors,brewer]
 title: the <i>paired12</i> brewer color palette
 slug: brewer-colors-paired12
 note: 2014-02-15
@@ -20,8 +40,6 @@ credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org<
 <div class="swatch swatch-dark"  style="background-color: #6A3D9A"><span>#6A3D9A</span><span>rgb(106, 61,154)</span><span>Dark Purple</span></div>
 <div class="swatch swatch-light" style="background-color: #FFFF99"><span>#FFFF99</span><span>rgb(255,255,153)</span><span>Light Brown (Yellow)</span></div>
 <div class="swatch swatch-dark"  style="background-color: #B15928"><span>#B15928</span><span>rgb(177, 89, 40)</span><span>Dark Brown</span></div>
-
-
 
 ######################################################################
 tags: [python,json,cli]

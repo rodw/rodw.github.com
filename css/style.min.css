@@ -2,7 +2,7 @@
 .gist, .gist .gist-file .gist-data, .highlight code, .highlight pre { color:#fdce93; background-color:#303030 !important; }
 .gist { font-size: 0.8em !important;}
 
-div.swatch { height: 20px; width: 100%; padding: 4px; text-align: center; font-weight: bold; font-family: Droid Sans Mono, Monospaced}
+div.swatch { height: 20px; width: 100%; padding: 4px; text-align: center; font-family: Droid Sans Mono, Monospaced; font-size:0.9em;}
 div.swatch-dark { color:#ddd; }
 div.swatch-light { color:#222; }
 div.swatch span { display:block; float:left; width:33% !important; text-align:center; }
