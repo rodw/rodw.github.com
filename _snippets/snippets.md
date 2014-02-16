@@ -1,3 +1,38 @@
+######################################################################
+tags: [python,json,cli]
+title: Pretty-print JSON with Python json.tool
+slug: python-pretty-print-json-tool
+note: 2014-02-15
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Pretty-print a JSON file using Python (v2.5+)'s built-in `json.tool` module:
+
+{% highlight console %}
+$ cat MYFILE.json | python -m json.tool
+{% endhighlight %}
+
+######################################################################
+tags: [python,json,cli]
+title: Python one-liner for reading a CSV file into a JSON array of arrays
+slug: python-csv-to-json-array
+note: 2014-02-15
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Reading a CSV file into 2d Python array (an array of arrays):
+
+{% highlight python %}
+import csv
+array = list(csv.reader(open( MYFILE.csv )))
+{% endhighlight %}
+
+Dumping that as JSON (via the command-line):
+
+{% highlight console %}
+$ python -c "import json,csv;print json.dumps(list(csv.reader(open( CSV-FILENAME ))))"
+{% endhighlight %}
+
 
 ######################################################################
 tags: [coffeescript,node.js,mocha,debug]
