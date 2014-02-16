@@ -1,13 +1,31 @@
 ######################################################################
 tags: [colors,brewer]
+title: the <i>pastel19</i> brewer color palette
+slug: brewer-colors-spectral11
+note: 2014-02-15
+credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+<div class="swatch swatch-light" style="background-color: #FBB4AE"><span>#FBB4AE</span><span>rgb(251,180,174)</span><span>Sundown Red (Orange-Pink)</span></div>
+<div class="swatch swatch-light" style="background-color: #B3CDE3"><span>#B3CDE3</span><span>rgb(179,205,227)</span><span>Light Steel Blue</span></div>
+<div class="swatch swatch-light" style="background-color: #CCEBC5"><span>#CCEBC5</span><span>rgb(204,235,197)</span><span>Blue Romance (Pale) Green</span></div>
+<div class="swatch swatch-light" style="background-color: #DECBE4"><span>#DECBE4</span><span>rgb(222,203,208)</span><span>Blue Chalk (Pale) Violet</span></div>
+<div class="swatch swatch-light" style="background-color: #FED9A6"><span>#FED9A6</span><span>rgb(254,217,166)</span><span>Cape Honey (Orange-) Yellow</span></div>
+<div class="swatch swatch-light" style="background-color: #FFFFCC"><span>#FFFFCC</span><span>rgb(255,255,204)</span><span>Cream (Yellow) White</span></div>
+<div class="swatch swatch-light" style="background-color: #E5D8BD"><span>#E5D8BD</span><span>rgb(229,216,189)</span><span>Pearl Lusta (Gray-) Yellow</span></div>
+<div class="swatch swatch-light" style="background-color: #FDDAEC"><span>#FDDAEC</span><span>rgb(253,218,236)</span><span>Pig Pink Red (Pink)</span></div>
+<div class="swatch swatch-light" style="background-color: #F2F2F2"><span>#F2F2F2</span><span>rgb(242,242,242)</span><span>White Smoke White</span></div>
+
+######################################################################
+tags: [colors,brewer]
 title: the <i>spectral11</i> brewer color palette
 slug: brewer-colors-spectral11
 note: 2014-02-15
 credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<div class="swatch swatch-dark" style="background-color: #9E0142"><span>#9E0142</span><span>rgb(158,  1, 66)</span><span>Eggplant Violet</span></div>
-<div class="swatch swatch-dark" style="background-color: #D53E4F"><span>#D53E4F</span><span>rgb(213, 62, 79)</span><span>Valencia Red</span></div>
+<div class="swatch swatch-dark"  style="background-color: #9E0142"><span>#9E0142</span><span>rgb(158,&nbsp; 1, 66)</span><span>Eggplant Violet</span></div>
+<div class="swatch swatch-dark"  style="background-color: #D53E4F"><span>#D53E4F</span><span>rgb(213, 62, 79)</span><span>Valencia Red</span></div>
 <div class="swatch swatch-light" style="background-color: #F46D43"><span>#F46D43</span><span>rgb(244,109, 67)</span><span>Crusta (Dark) Orange</span></div>
 <div class="swatch swatch-light" style="background-color: #FDAE61"><span>#FDAE61</span><span>rgb(253,174, 97)</span><span>Rajah (Light) Orange</span></div>
 <div class="swatch swatch-light" style="background-color: #FEE08B"><span>#FEE08B</span><span>rgb(254,244,139)</span><span>Cream Brulee (Dark) Yellow</span></div>
@@ -15,8 +33,8 @@ credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org<
 <div class="swatch swatch-light" style="background-color: #E6F598"><span>#E6F598</span><span>rgb(230,245,152)</span><span>Tidal (Pale, Yellow-) Green</span></div>
 <div class="swatch swatch-light" style="background-color: #ABDDA4"><span>#ABDDA4</span><span>rgb(171,221,164)</span><span>Moss (Pale) Green</span></div>
 <div class="swatch swatch-light" style="background-color: #66C2A5"><span>#66C2A5</span><span>rgb(102,194,165)</span><span>Puerto Rico (Blue-) Green</span></div>
-<div class="swatch swatch-dark" style="background-color: #3288BD"><span>#3288BD</span><span>rgb( 50,136,189)</span><span>Curious (Muted) Blue</span></div>
-<div class="swatch swatch-dark" style="background-color: #5E4FA2"><span>#5E4FA2</span><span>rgb( 94, 79,162)</span><span>Rich (Violet-) Blue</span></div>
+<div class="swatch swatch-dark"  style="background-color: #3288BD"><span>#3288BD</span><span>rgb( 50,136,189)</span><span>Curious (Muted) Blue</span></div>
+<div class="swatch swatch-dark"  style="background-color: #5E4FA2"><span>#5E4FA2</span><span>rgb( 94, 79,162)</span><span>Rich (Violet-) Blue</span></div>
 
 ######################################################################
 tags: [colors,brewer]
@@ -26,20 +44,18 @@ note: 2014-02-15
 credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<div class="swatch swatch-light" style="background-color: #A6CEE3"><span>#A6CEE3</span><span>rgb(166,206,227)</span><span>Light Blue</span></div>
-<div class="swatch swatch-dark"  style="background-color: #1f78b4"><span>#1F78B4</span><span>rgb( 31,120,180)</span><span>Dark Blue</span></div>
-
-<div class="swatch swatch-light" style="background-color: #B2DF8A"><span>#B2DF8A</span><span>rgb(178,223,138)</span><span>Light Green</span></div>
-<div class="swatch swatch-dark"  style="background-color: #33A02C"><span>#33A02C</span><span>rgb( 51,160, 44)</span><span>Dark Green</span></div>
-
-<div class="swatch swatch-light" style="background-color: #FB9A99"><span>#FB9A99</span><span>rgb(251,154,153)</span><span>Light Red (Pink)</span></div>
-<div class="swatch swatch-dark"  style="background-color: #E31A1C"><span>#E31A1C</span><span>rgb(227, 26, 28)</span><span>Dark Red</span></div>
-<div class="swatch swatch-light" style="background-color: #FDBF6F"><span>#FDBF6F</span><span>rgb(253,191,111)</span><span>Light Orange</span></div>
-<div class="swatch swatch-dark"  style="background-color: #FF7F00"><span>#FF7F00</span><span>rgb(255,127,  0)</span><span>Dark Orange</span></div>
-<div class="swatch swatch-light" style="background-color: #CAB2D6"><span>#CAB2D6</span><span>rgb(202,178,214)</span><span>Light Purple</span></div>
-<div class="swatch swatch-dark"  style="background-color: #6A3D9A"><span>#6A3D9A</span><span>rgb(106, 61,154)</span><span>Dark Purple</span></div>
-<div class="swatch swatch-light" style="background-color: #FFFF99"><span>#FFFF99</span><span>rgb(255,255,153)</span><span>Light Brown (Yellow)</span></div>
-<div class="swatch swatch-dark"  style="background-color: #B15928"><span>#B15928</span><span>rgb(177, 89, 40)</span><span>Dark Brown</span></div>
+<div class="swatch swatch-light" style="background-color: #A6CEE3"><span>#A6CEE3</span><span>rgb(166,206,227)</span><span>French Pass (Light) Blue</span></div>
+<div class="swatch swatch-dark"  style="background-color: #1F78B4"><span>#1F78B4</span><span>rgb( 31,120,180)</span><span>Pelorous (Dark) Blue</span></div>
+<div class="swatch swatch-light" style="background-color: #B2DF8A"><span>#B2DF8A</span><span>rgb(178,223,138)</span><span>Feijoa (Light) Green</span></div>
+<div class="swatch swatch-dark"  style="background-color: #33A02C"><span>#33A02C</span><span>rgb( 51,160, 44)</span><span>La Palma (Dark) Green</span></div>
+<div class="swatch swatch-light" style="background-color: #FB9A99"><span>#FB9A99</span><span>rgb(251,154,153)</span><span>Rose Bud (Light) Red (Pink)</span></div>
+<div class="swatch swatch-dark"  style="background-color: #E31A1C"><span>#E31A1C</span><span>rgb(227, 26, 28)</span><span>Fire Engine (Dark) Red</span></div>
+<div class="swatch swatch-light" style="background-color: #FDBF6F"><span>#FDBF6F</span><span>rgb(253,191,111)</span><span style="font-size:90%">Chardonnay Yellow (Light Orange)</span></div>
+<div class="swatch swatch-light"  style="background-color: #FF7F00"><span>#FF7F00</span><span>rgb(255,127,&nbsp; 0)</span><span>Dark Orange</span></div>
+<div class="swatch swatch-light" style="background-color: #CAB2D6"><span>#CAB2D6</span><span>rgb(202,178,214)</span><span>Prelude (Light) Violet</span></div>
+<div class="swatch swatch-dark"  style="background-color: #6A3D9A"><span>#6A3D9A</span><span>rgb(106, 61,154)</span><span>Royal (Dark) Purple</span></div>
+<div class="swatch swatch-light" style="background-color: #FFFF99"><span>#FFFF99</span><span>rgb(255,255,153)</span><span style="font-size:90%">Canary Yellow (Light "Brown")</span></div>
+<div class="swatch swatch-dark"  style="background-color: #B15928"><span>#B15928</span><span>rgb(177, 89, 40)</span><span style="font-size:80%">Rose of Sharon Orange ("Dark" "Brown")</span></div>
 
 ######################################################################
 tags: [python,json,cli]
