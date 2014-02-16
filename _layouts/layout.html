@@ -120,9 +120,15 @@
 
       <div class="thirteen columns bulleted">
         {{ content }}
+        {% case page.class %}
+          {% when 'snippet' %}
+            <div style="text-align:right; color: rgb(119, 119, 119); font-size: 12px;"><a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.</div>
+          {% else %}
+        {% endcase %}
       </div>
 
     </div>
+
   </div>
 
   {%comment%}<!-- === FOOTER ==== -->{%endcomment%}
