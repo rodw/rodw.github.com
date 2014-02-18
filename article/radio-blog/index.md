@@ -52,7 +52,7 @@ So without further adieu, here's a list of the posts from that blog:
  * **[The Silent Majority Pays for Open Source](/article/radio-blog/2003-07-the-silent-majority-pays-for-open-source.html) - 7/30/03**
  * [Wanted: GUI Wrapper for Text-Based Java Applications](/article/radio-blog/2003-07-wanted-gui-wrapper-for-text-based-java-apps.html) - 7/29/03
  * [A is for Axion ... Z is for Zaurus](/article/radio-blog/2003-07-wanted-gui-wrapper-for-text-based-java-apps.html) - 7/24/03
- * [The Great Wall of China](/article/radio-blog/2003-07-the-great-wall-of-china.html) - 7/23/03
+ * **[The Great Wall of China](/article/radio-blog/2003-07-the-great-wall-of-china.html)** - 7/23/03
  * [Where are you all coming from?](/article/radio-blog/2003-07-where-are-you-coming-from.html) - 7/22/03
  * [Curly braces, Pipes, Escape and other characters on the Zaurus](/article/radio-blog/2003-07-curly-braces-and-other-chars-on-the-zaurus.html) - 7/21/03
  * **[LGPL and Java: More confused than ever](/article/radio-blog/2003-07-lgpl-and-java-more-confused-than-ever.html) - 7/18/03**
