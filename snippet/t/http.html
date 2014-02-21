@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>2 http snippets</title>
+  <title>3 http snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -110,7 +110,7 @@
         <div class="thirteen columns">
           <div id="page-header" class="half-bottom mtop">
             
-              <h1 class=" remove-bottom">2 http snippets</h1>
+              <h1 class=" remove-bottom">3 http snippets</h1>
             
             <div class="page-class remove-bottom">
               
@@ -126,6 +126,51 @@
 
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/python-static-web-server.html">
+        <h2 class="half-bottom">launch an HTTP server serving the current directory using Python</h2>
+      </a>
+    
+    <div>
+      <p>The Python <code>SimpleHTTPServer</code> module makes it easy to launch a simple web server using a current working directory as the &ldquo;docroot&rdquo;.</p>
+
+<p>With Python 2:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> python -m SimpleHTTPServer
+</code></pre></div>
+
+
+<p>or with Python 3:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> python3 -m http.server
+</code></pre></div>
+
+
+<p>By default, each will bind to port 8080, hence <code>http://localhost:8080/</code> will serve the top level of the working directory tree.  Hit <code>Ctrl-c</code> to stop.</p>
+
+<p>Both accept an optional port number:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> python -m SimpleHTTPServer 3001
+</code></pre></div>
+
+
+<p>or</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> python3 -m http.server 3001
+</code></pre></div>
+
+
+<p>if you want to bind to something other than port 8080.</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/python.html">python</a>, <a href="/snippet/t/http.html">http</a>, <a href="/snippet/t/cli.html">cli</a> and <a href="/snippet/t/one-liner.html">one-liner</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/wget-mirror.html">
@@ -160,7 +205,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/wget.html">wget</a> and <a href="/snippet/t/http.html">http</a>.</small>
+      <small>Tags: <a href="/snippet/t/wget.html">wget</a>, <a href="/snippet/t/http.html">http</a> and <a href="/snippet/t/one-liner.html">one-liner</a>.</small>
     </div>    
     
   </div>
@@ -193,7 +238,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/wget.html">wget</a> and <a href="/snippet/t/http.html">http</a>.</small>
+      <small>Tags: <a href="/snippet/t/wget.html">wget</a>, <a href="/snippet/t/http.html">http</a> and <a href="/snippet/t/one-liner.html">one-liner</a>.</small>
     </div>    
     
   </div>
@@ -227,7 +272,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  6:39 PM on 18 February 2014</p>
+          <p class="smallprint">This page was generated at 10:46 PM on 20 February 2014</p>
         </div>
       </div>
     </div>
