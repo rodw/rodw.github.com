@@ -1,20 +1,39 @@
 ######################################################################
-tags: [colors,brewer]
-title: the <i>pastel19</i> brewer color palette
-slug: brewer-colors-spectral11
-note: 2014-02-15
-credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.
+tags: [python,http,cli,one-liner]
+title: launch an HTTP server serving the current directory using Python
+slug: python-static-web-server
+note: 2014-02-20
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<div class="swatch swatch-light" style="background-color: #FBB4AE"><span>#FBB4AE</span><span>rgb(251,180,174)</span><span>Sundown Red (Orange-Pink)</span></div>
-<div class="swatch swatch-light" style="background-color: #B3CDE3"><span>#B3CDE3</span><span>rgb(179,205,227)</span><span>Light Steel Blue</span></div>
-<div class="swatch swatch-light" style="background-color: #CCEBC5"><span>#CCEBC5</span><span>rgb(204,235,197)</span><span>Blue Romance (Pale) Green</span></div>
-<div class="swatch swatch-light" style="background-color: #DECBE4"><span>#DECBE4</span><span>rgb(222,203,208)</span><span>Blue Chalk (Pale) Violet</span></div>
-<div class="swatch swatch-light" style="background-color: #FED9A6"><span>#FED9A6</span><span>rgb(254,217,166)</span><span>Cape Honey (Orange-) Yellow</span></div>
-<div class="swatch swatch-light" style="background-color: #FFFFCC"><span>#FFFFCC</span><span>rgb(255,255,204)</span><span>Cream (Yellow) White</span></div>
-<div class="swatch swatch-light" style="background-color: #E5D8BD"><span>#E5D8BD</span><span>rgb(229,216,189)</span><span>Pearl Lusta (Gray-) Yellow</span></div>
-<div class="swatch swatch-light" style="background-color: #FDDAEC"><span>#FDDAEC</span><span>rgb(253,218,236)</span><span>Pig Pink Red (Pink)</span></div>
-<div class="swatch swatch-light" style="background-color: #F2F2F2"><span>#F2F2F2</span><span>rgb(242,242,242)</span><span>White Smoke White</span></div>
+The Python `SimpleHTTPServer` module makes it easy to launch a simple web server using a current working directory as the "docroot".
+
+With Python 2:
+
+{% highlight console %}
+$ python -m SimpleHTTPServer
+{% endhighlight %}
+
+or with Python 3:
+
+{% highlight console %}
+$ python3 -m http.server
+{% endhighlight %}
+
+By default, each will bind to port 8080, hence `http://localhost:8080/` will serve the top level of the working directory tree.  Hit `Ctrl-c` to stop.
+
+Both accept an optional port number:
+
+{% highlight console %}
+$ python -m SimpleHTTPServer 3001
+{% endhighlight %}
+
+or
+
+{% highlight console %}
+$ python3 -m http.server 3001
+{% endhighlight %}
+
+if you want to bind to something other than port 8080.
 
 ######################################################################
 tags: [colors,brewer]
@@ -58,7 +77,7 @@ credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org<
 <div class="swatch swatch-dark"  style="background-color: #B15928"><span>#B15928</span><span>rgb(177, 89, 40)</span><span style="font-size:80%">Rose of Sharon Orange ("Dark" "Brown")</span></div>
 
 ######################################################################
-tags: [python,json,cli]
+tags: [python,json,cli,one-liner]
 title: Pretty-print JSON with Python json.tool
 slug: python-pretty-print-json-tool
 note: 2014-02-15
@@ -124,7 +143,7 @@ on your Mocha command line to:
     --compilers coffee:coffee-script/register
 
 ######################################################################
-tags: [linux,cli,xml,css,html,xpath]
+tags: [linux,cli,xml,css,html,xpath,one-liner]
 title: Command-line tool for extracting content from XML and HTML documents
 slug: cli-for-html-extraction
 note: 2014-02-11
@@ -171,7 +190,7 @@ This is an example of a (bash) shell script that uses the forever module to star
 (Also at [rodw/coffee-as-a-service-via-forever.sh](https://gist.github.com/rodw/8947415).)
 
 ######################################################################
-tags: [wget,http]
+tags: [wget,http,one-liner]
 title: Backup or mirror a website using wget
 slug: wget-mirror
 note: 2014-02-10
@@ -198,7 +217,7 @@ Some additional notes:
  * `-np` (`--no-parent`) can be used to limit `wget` to files below a specific "directory" (path).
 
 ######################################################################
-tags: [wget,http]
+tags: [wget,http,one-liner]
 title: Precompile pages or load a web cache using wget
 slug: precomiple-with-wget
 note: 2014-02-10
@@ -221,7 +240,7 @@ Where:
  * `--delete-after` will cause `wget` to delete each file as soon as it is downloaded (so the commmand leaves no traces behind.)
 
 ######################################################################
-tags: [linux,networking,iptables]
+tags: [linux,networking,iptables,one-liner]
 title: Mapping port 80 to port 3000 using iptables
 slug: iptables-port-mapping
 note: 2014-02-08
@@ -409,7 +428,7 @@ where `\size` is one of:
 Also see <http://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text> for font size metrics and other details.
 
 ######################################################################
-tags: [graphviz,dot,linux]
+tags: [graphviz,dot,linux,one-liner]
 title: Quickly render DOT (Graphviz) graph
 slug: graphviz-txlib
 note: 2014-01-01
@@ -419,7 +438,7 @@ note: 2014-01-01
 On Linux (and probably OSX) the command:
 
 {% highlight console %}
-dot -Txlib mygraph.gv
+$ dot -Txlib mygraph.gv
 {% endhighlight %}
 
 will quickly launch a lightweight window containing a `dot` rendering of the graph in `mygraph.gv`.
@@ -719,7 +738,7 @@ This seems to known as "automatic margin" mode, hence `smam` is `enter_am_mode` 
 Some terminals may not support this functionality.
 
 ######################################################################
-tags: [bash,linux]
+tags: [bash,linux,one-liner,cli]
 title: Use `less -S` for horizontal scrolling
 slug: less-chop-long-lines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1183,10 +1202,9 @@ function rectangles_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
 
 
 ######################################################################
-tags: [multimedia,sources,links]
+tags: [media,sources,links]
 title: Short list of sources for Creative Commons images and media.
-slug: test-slug
-draft: true
+slug: creative-commons-media-search
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * [Search for Creative Commons content via cc.org](http://search.creativecommons.org/)
@@ -1325,7 +1343,7 @@ tramp
 {% endhighlight %}
 
 ######################################################################
-tags: [linux]
+tags: [linux,one-liner]
 title: Find duplicate files on Linux.
 credit: Found at <a href="http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash">commmandlinefoo.com</a>
 slug: find-duplicates-on-linux
@@ -1360,7 +1378,7 @@ If I understand this correctly:
 Some alternative approaches can be found at [the original source](http://www.commandlinefu.com/commands/view/3555/find-duplicate-files-based-on-size-first-then-md5-hash).
 
 ######################################################################
-tags: [linux]
+tags: [linux,cli,one-liner]
 title: Generate a random list of words with `shuf`
 slug: shuf-usr-share-dict-words
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1376,7 +1394,7 @@ $ shuf -n 3 /usr/share/dict/words
 selects three words at random from the `words` dictionary.
 
 ######################################################################
-tags: [git,backup]
+tags: [git,backup,one-liner,cli]
 title: backup a git repository with `git bundle`
 slug: git-bundle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1398,7 +1416,7 @@ $ git clone PATH_TO_BUNDLE.git MY_PROJECT
 
 
 ######################################################################
-tags: [linux]
+tags: [linux,one-liner]
 title: Restore Ctrl+Alt+Backspace as a way to kill X on Linux.
 slug: re-enable-ctrl-alt-backspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1475,7 +1493,7 @@ echo "tar Ozxf <file> | dd of=<device>"
 {% endhighlight %}
 
 ######################################################################
-tags: [linux,bash]
+tags: [linux,bash,cli,one-liner]
 title: Find large files on Linux.
 slug: find-large-files
 credit: Thanks to Luc Pionchon for pointing me to `sort -h`.
@@ -1632,7 +1650,7 @@ PS: I haven't yet had a chance to sort these out, but there are at least four or
 The first two are supposed to address js2-mode's indentation problems (among other enhancements).
 
 ######################################################################
-tags: [linux]
+tags: [linux,cli]
 title: Set monitor resolution with xrandr
 slug: using-xrandr
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1761,7 +1779,7 @@ ARGF.each_line { |line| puts line }
 {% endhighlight %}
 
 ######################################################################
-tags: [linux,text-processing,sed,cli]
+tags: [linux,text-processing,sed,cli,one-liner]
 title: Strip characters from a string or file
 slug: strip-chars-with-sed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1772,7 +1790,7 @@ $ echo "A1B2C3" | sed 's/[A-Z]//g'
 {% endhighlight %}
 
 ######################################################################
-tags: [linux,text-processing,awk,cli]
+tags: [linux,text-processing,awk,cli,one-liner]
 title: Strip characters from a field in awk
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1783,7 +1801,7 @@ $ awk -F"\t" '{gsub(/[A-Za-z]/,"",$2); print $2 }'
 {% endhighlight %}
 
 ######################################################################
-tags: [linux,text-processing,awk,cli]
+tags: [linux,text-processing,awk,cli,one-liner]
 title: Some `awk` basics
 slug: some-awk-basics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1796,7 +1814,7 @@ $ awk -F"\t" '{print "field one=" $1 "; field two=" $2 }' file
 
 
 ######################################################################
-tags: [linux,text-processing,sed,cli]
+tags: [linux,text-processing,sed,cli,one-liner]
 title: Skip the first N lines in file
 slug: skip-n-lines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1835,7 +1853,7 @@ when you want to exclude lines **`A`** through **`B`** from the output.
 
 ######################################################################
 title: List Available Fonts
-tags: [linux,rudimentary]
+tags: [linux,cli,font]
 slug: list-fonts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To view a list of available fonts, use `fc-list`.
