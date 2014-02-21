@@ -64,11 +64,12 @@
 
   {%comment%}<!-- === MAIN BODY ==== -->{%endcomment%}
 
-  <div id="main">
+  <div id="mainbody">
     <div class="container">
 
       {%comment%}<!-- === LEFT NAV ==== -->{%endcomment%}
 
+      <div id="content-jump" class="align-center"><a href="#maincontent">Jump to content.</a></div>
       <div class="three columns align-center">
         <div style="margin-top:50px;"><a href="/"><img src="/img/braindump-64x64.png" height="64" width="64"></a></div>
         <div class="mtop"><a href="/" class="nobr nou" style="color:#555;"><b>Rodney Waldhoff</b></a></div>
@@ -84,40 +85,37 @@
         </ul>
       </div>
 
+      <div class="thirteen columns"><a name="maincontent"></a></div>
       {%comment%}<!-- === CONTENT ==== -->{%endcomment%}
-
       {%comment%}<!-- === CONTENT HEADING ==== -->{%endcomment%}
-
       {% unless page.tweaks.noheading %}
-        <div class="thirteen columns">
-          <div id="page-header" class="half-bottom mtop">
-            {% unless page.tweaks.notitle %}
-              <h1 class="{{page.tweaks.titlealign}} remove-bottom">{{ page.title }}</h1>
-            {% endunless %}
-            <div class="page-class remove-bottom">
-              {% case page.class %}
-                {% when 'blog-post' %}
-                  A <a href="/blog">blog entry</a>
-                  {% for tag in page.tags %}
-                    {% if forloop.first %} tagged {% endif %}
-                    {% if forloop.last and forloop.first == false %} and {% endif %}
-                    {% if forloop.last == false and forloop.first == false %}, {% endif %}
-                    <a href="/blog/{{tag | cgi_escape }}">{{tag}}</a>
-                  {% endfor %}
-                  published {{page.date | date: '<a href="/blog/%Y-%m/">%B %Y</a>' }}.
-                {% when 'snippet' %}
-                  <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
-                {% else %}
-                  <!-- page class '{{page.class}}' not matched. -->
-              {% endcase %}
-            </div>
+      <div class="thirteen columns">
+        <div id="page-header" class="half-bottom mtop">
+          {% unless page.tweaks.notitle %}
+            <h1 class="{{page.tweaks.titlealign}} remove-bottom">{{ page.title }}</h1>
+          {% endunless %}
+          <div class="page-class remove-bottom">
+            {% case page.class %}
+              {% when 'blog-post' %}
+                A <a href="/blog">blog entry</a>
+                {% for tag in page.tags %}
+                  {% if forloop.first %} tagged {% endif %}
+                  {% if forloop.last and forloop.first == false %} and {% endif %}
+                  {% if forloop.last == false and forloop.first == false %}, {% endif %}
+                  <a href="/blog/{{tag | cgi_escape }}">{{tag}}</a>
+                {% endfor %}
+                published {{page.date | date: '<a href="/blog/%Y-%m/">%B %Y</a>' }}.
+              {% when 'snippet' %}
+                <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
+              {% else %}
+                <!-- page class '{{page.class}}' not matched. -->
+            {% endcase %}
           </div>
-          {% unless page.tweaks.notitlehr %}<hr class="half-bottom remove-top"/>{% endunless %}
         </div>
-      {% endunless %}
-
-      {%comment%}<!-- === ACTUAL CONTENT ==== -->{%endcomment%}
-
+        {% unless page.tweaks.notitlehr %}<hr class="half-bottom remove-top"/>{% endunless %}
+      </div>
+    {% endunless %}
+    {%comment%}<!-- === ACTUAL CONTENT ==== -->{%endcomment%}
       <div class="thirteen columns bulleted">
         {{ content }}
         {% case page.class %}
@@ -126,9 +124,7 @@
           {% else %}
         {% endcase %}
       </div>
-
     </div>
-
   </div>
 
   {%comment%}<!-- === FOOTER ==== -->{%endcomment%}
