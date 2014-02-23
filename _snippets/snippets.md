@@ -925,7 +925,7 @@ argf.forEach( function(line) {
 {% endhighlight %}
 
 ######################################################################
-tags: [tips,chromium/google chrome]
+tags: [gui,chromium/google chrome]
 title: Ctrl-Back opens the referring page in a new tab in Chrome
 slug: chrome-go-back-in-new-tab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -967,7 +967,7 @@ Also, note that there is a version of upcase and downcase that work on the selec
 Of course, if you're using "CUA Keys", you can't easily type `C-x` without invoking "cut".
 
 ######################################################################
-tags: [emacs,ess,R]
+tags: [emacs,R]
 title: Working with R in emacs
 slug: ess-for-r-in-emacs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -990,7 +990,7 @@ sudo aptitude install ess=12.09-1
 4) Load R within emacs via `M-x R`.
 
 ######################################################################
-tags: [linux,debian,reference]
+tags: [linux,debian,cheatsheet]
 title: Cheat Sheet for Linux Run Levels
 slug: linux-run-level-cheatsheet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1036,7 +1036,7 @@ $ update-rc.d SERVICE_NAME stop 0 1 6 3 . start 2 4 5 .
 {% endhighlight %}
 
 ######################################################################
-tags: [bash,bash-prompt,linux]
+tags: [bash,linux]
 title: How to right-align text in your bash prompt
 slug: how-to-right-align-bash-prompt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1202,7 +1202,7 @@ function rectangles_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
 
 
 ######################################################################
-tags: [media,sources,links]
+tags: [media,sources,links,cc]
 title: Short list of sources for Creative Commons images and media.
 slug: creative-commons-media-search
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1692,7 +1692,7 @@ slug: vertical-center-css
 {% endhighlight %}
 
 ######################################################################
-tags: [ruby,rudimentary]
+tags: [ruby]
 title: Sorting a Ruby hash by key or value.
 slug: ruby-hash-sort
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1712,7 +1712,7 @@ h.sort_by {|k,v| v}
 Note both forms return an array of key-value pairs (i.e., an array of arrays).
 
 ######################################################################
-tags: [ruby,rudimentary]
+tags: [ruby]
 title: Using Ruby arrays as stacks and queues.
 slug: ruby-stack-queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1736,7 +1736,7 @@ slug: ruby-stack-queue
 {% endhighlight %}
 
 ######################################################################
-tags: [ruby,cli,rudimentary]
+tags: [ruby,cli]
 title: Reading from input files or STDIN in Ruby using ARGF.
 slug: ruby-argf-basics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1853,7 +1853,7 @@ when you want to exclude lines **`A`** through **`B`** from the output.
 
 ######################################################################
 title: List Available Fonts
-tags: [linux,cli,font]
+tags: [linux,cli]
 slug: list-fonts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To view a list of available fonts, use `fc-list`.
