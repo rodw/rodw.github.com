@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>1 ess snippets</title>
+  <title>Are concrete parent classes a code smell?</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -63,16 +63,16 @@
           
             
             
-            <li class="" >
-              <a class="" href="/article">Articles</a>
+              
+            
+            <li class="active" >
+              <a class="active" href="/article">Articles</a>
             </li>
           
             
             
-              
-            
-            <li class="active" >
-              <a class="active" href="/snippet">Snippets</a>
+            <li class="" >
+              <a class="" href="/snippet">Snippets</a>
             </li>
           
         </ul>
@@ -112,57 +112,30 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">1 ess snippets</h1>
+            <h1 class=" remove-bottom">Are concrete parent classes a code smell?</h1>
           
           <div class="page-class remove-bottom">
             
-                <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
-              
+                <!-- page class '' not matched. -->
+            
           </div>
         </div>
-        
+        <hr class="half-bottom remove-top"/>
       </div>
     
     
       <div class="thirteen columns bulleted">
-        
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/ess-for-r-in-emacs.html">
-        <h2 class="half-bottom">Working with R in emacs</h2>
-      </a>
-    
-    <div>
-      <p>1) <a href="http://www.r-project.org/">Install R</a>.</p>
+        <div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/article/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Tuesday, 22 April 2003</b>
 
-<p>2) <a href="http://ess.r-project.org/">Install ESS</a>:</p>
-
-<div class="highlight"><pre><code class="console"><span class="go">sudo aptitude install ess=12.09-1</span>
-</code></pre></div>
-
-
-<p>3) Require <code>ess-site</code>:</p>
-
-<div class="highlight"><pre><code class="cl"><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="s">&quot;/usr/share/emacs/site-lisp/&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;ess-site</span><span class="p">)</span>
-</code></pre></div>
-
-
-<p>4) Load R within emacs via <code>M-x R</code>.</p>
-
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>, <a href="/snippet/t/ess.html">ess</a> and <a href="/snippet/t/r.html">R</a>.</small>
-    </div>    
-    
-  </div>
-  <!-- <hr/> -->
-
-
+<p>
+Recently I realized that I've almost subconsciously been following a design heuristic that even I found surprising--I avoid concrete parent classes.  Since coming to this realization, I've been struggling (and failing) to come up with a good case for an instantiable parent class.  Is there a case for classes that are neither abstract nor final?  Could concrete parent classes be a code smell?
+</p><p>
+<a href="http://radio.weblogs.com/0122027/stories/2003/04/21/areConcreteParentClassesACodeSmell.html" title="Are concrete parent classes a code smell?">full story...</a>
+</p>
 
         
-            <div style="text-align:right; color: rgb(119, 119, 119); font-size: 12px;"><a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.</div>
-          
+        
       </div>
     </div>
   </div>
@@ -184,7 +157,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  1:37 PM on 23 February 2014</p>
+          <p class="smallprint">This page was generated at  6:54 PM on 24 February 2014</p>
         </div>
       </div>
     </div>

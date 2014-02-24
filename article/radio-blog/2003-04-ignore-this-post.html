@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>1 font snippets</title>
+  <title>Ignore this post (Demonstrates javablogs bug?)</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -63,16 +63,16 @@
           
             
             
-            <li class="" >
-              <a class="" href="/article">Articles</a>
+              
+            
+            <li class="active" >
+              <a class="active" href="/article">Articles</a>
             </li>
           
             
             
-              
-            
-            <li class="active" >
-              <a class="active" href="/snippet">Snippets</a>
+            <li class="" >
+              <a class="" href="/snippet">Snippets</a>
             </li>
           
         </ul>
@@ -112,42 +112,42 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">1 font snippets</h1>
+            <h1 class=" remove-bottom">Ignore this post (Demonstrates javablogs bug?)</h1>
           
           <div class="page-class remove-bottom">
             
-                <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
-              
+                <!-- page class '' not matched. -->
+            
           </div>
         </div>
-        
+        <hr class="half-bottom remove-top"/>
       </div>
     
     
       <div class="thirteen columns bulleted">
+        <div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/article/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Wednesday, 16 April 2003</b>
+
+<p>
+I've been chasing after a minor <a href="http://javablogs.com/">javablogs</a> bug that causes blog entries that aren't in my java channel to appear on the javablogs site, despite the fact that the <a href="http://www.javablogs.com/ViewBlog.jspa?id=10656">javablogs record for this site</a> is pointing to my <a href="http://radio.weblogs.com/0122027/categories/java/rss.xml">java feed</a> not my <a href="http://radio.weblogs.com/0122027/rss.xml">general feed</a>.
+<p>
+
+For example, <a href="http://www.javablogs.com/ViewDaysBlogs.jspa?date=15&amp;month=3&amp;year=2003">yesterday's added entries</a> include "Radio Tidbit: Waypath It! Macro" and "The Hundred Year Language (update on "Bruce Eckel has an interesting blog")", even though neither of them were published on <a href="http://radio.weblogs.com/0122027/2003/04/15.html">15 April 2003</a>, and neither of them are published on my <a href="http://radio.weblogs.com/0122027/categories/java/">java channel</a>.</p><p>
+
+My theory is this:  javablogs is correctly tracking the java feed to determine when my blog has changed, but is pulling from the general feed to obtain new entries.  That's why entries that were several days old and unrelated to Java suddenly got pulled in to the javablogs aggregator (because a java related post, "I/O Iterators for Java" finally came along).</p><p>
+
+My test is this.  This entry is only categorized under my main feed.  It will sit here quietly in the <a href="http://radio.weblogs.com/0122027/rss.xml">general feed</a> and not the <a href="http://radio.weblogs.com/0122027/categories/java/rss.xml">java feed</a>, and will not appear on the <a href="http://javablogs.com/">javablogs</a> site until I post a new entry under my Java category, when it will pull in both that new and this old entry.</p><p>
+
+I've noticed other folks posts sometimes bunch up in this way, I wonder if others have the same problem.</p><p>
+
+I suspect the underlying cause for this is some minor bug in the javablogs record update process.  I had originally registered my general feed with javablogs, and later changed that record to only point to my java category.</p><p>
+
+</p><div class="update">Update [16 April 2003]: I've just noticed that some others are <a href="http://dmartin.org/blojsom/blog/Java/?permalink=7390BBB3C66BBAA0C69BD42377883F1B.txt">complaining about the off topic content as well</a>.</div><p>
+
+</p><div class="update">Update [22 April 2003]: This post appeared on javablogs on 18 April 2003 (two days after the initial posting).  I'm not sure why or how, but you can see it <a href="http://www.javablogs.com/ViewDaysBlogs.jspa?date=18&amp;month=3&amp;year=2003" title="JavaBlogs: Day's Blogs: 18 April 2003">here</a></div>
+
         
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/list-fonts.html">
-        <h2 class="half-bottom">List Available Fonts</h2>
-      </a>
-    
-    <div>
-      <p>To view a list of available fonts, use <code>fc-list</code>.</p>
-
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/linux.html">linux</a>, <a href="/snippet/t/cli.html">cli</a> and <a href="/snippet/t/font.html">font</a>.</small>
-    </div>    
-    
-  </div>
-  <!-- <hr/> -->
-
-
-
         
-            <div style="text-align:right; color: rgb(119, 119, 119); font-size: 12px;"><a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.</div>
-          
       </div>
     </div>
   </div>
@@ -169,7 +169,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  1:37 PM on 23 February 2014</p>
+          <p class="smallprint">This page was generated at  6:54 PM on 24 February 2014</p>
         </div>
       </div>
     </div>
