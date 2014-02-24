@@ -60,30 +60,30 @@ So without further adieu, here's a list of the posts from that blog:
  * **[my pet bug, or another example of how sun doesn't get community development](/article/radio-blog/2003-07-my-pet-bug-or-sun-doesnt-get-community-development.html) - 7/15/03**
  * **[Given enough eyeballs, are all trends shallow?](/article/radio-blog/2003-07-given-enough-eyeballs-are-all-trends-shallow.html) - 7/14/03**
  * [Axion 1.0 Milestone 2 Released](/article/radio-blog/2003-07-axion-1.0m2-released.html) - 7/11/03
- * **Do you have a intranet portal? - 7/9/03**
- * 50% of crashes caused by 1% of bugs - 7/8/03
- * Wanted: Modular/Extensible Parser Generator - 7/7/03
- * **Re: Test Driven Development versus Component Reuse - 7/1/03**
+ * **[Do you have a intranet portal?](/article/radio-blog/2003-07-intranet-portal-screenshots.html) - 7/9/03**
+ * [50% of crashes caused by 1% of bugs](/article/radio-blog/2003-07-50-percent-of-crashes-caused-by-1-percent-of-bugs.html) - 7/8/03
+ * [Wanted: Modular/Extensible Parser Generator](/article/radio-blog/2003-07-wanted-modular-parser-generator.html) - 7/7/03
+ * [**Re: Test Driven Development versus Component Reuse](/article/radio-blog/2003-07-tdd-vs-reuse.html) - 7/1/03**
  * Re: "Test First Design With UML" and who's recepetive to test first development - 7/1/03
- * Like Clover? Check out JCoverage - 6/30/03
- * Re: Why Java is not Open Source - 6/26/03
- * Experimenting with Jester - 6/25/03
- * Testing Testing - 6/24/03
+ * [Like Clover? Check out JCoverage](/article/radio-blog/2003-06-like-clover-check-out-jcoverage.html) - 6/30/03
+ * [Re: Why Java is not Open Source](/article/radio-blog/2003-06-why-java-is-not-open-source.html) - 6/26/03
+ * [Experimenting with Jester](/article/radio-blog/2003-06-experimenting-with-jester.html) - 6/25/03
+ * [Testing Testing](/article/radio-blog/2003-06-testing-testing.html) - 6/24/03
  * Re: Liskov's Substitution Principle and JUnit Testing - 6/24/03
- * **A Frog Boiling Approach to Increasing Test Coverage - 6/23/03**
- * the fixmeister role, or ''you, help me'' - 6/17/03
+ * **[A Frog Boiling Approach to Increasing Test Coverage](/article/radio-blog/2003-06-frog-boiling-approach-to-increasing-test-coverage.html) - 6/23/03**
+ * **[the fixmeister role, or "you, help me"](/article/radio-blog/2003-06-fixmeister-or-you-help-me.html) - 6/17/03**
  * Yakkity yak, blog comes back. - 6/17/03
- * **The Pleasures of Profiling - 5/5/03**
- * **Unit tests with log statements are a code smell - 5/2/03**
- * **build cycles, development cycles, and the nag server - 4/29/03**
- * A Little Background on our Continuous Integration Setup - 4/28/03
- * InfoWorld's "Farewell Issue" - 4/23/03
- * Are concrete parent classes a code smell? - 4/22/03
- * Ignore this post (Demonstrates javablogs bug?) - 4/16/03
- * I/O Iterators for Java - 4/15/03
- * Radio Tidbit: Waypath It! Macro - 4/11/03
- * The Hundred Year Language (update on "Bruce Eckel has an interesting blog") - 4/9/03
- * Jason Horman's WikiDoclet - 4/8/03
+ * **[The Pleasures of Profiling](/article/radio-blog/2003-05-pleasures-of-perfomance-profiling.html) - 5/5/03**
+ * **[Unit tests with log statements are a code smell](/article/radio-blog/2003-05-unit-tests-with-log-statements-are-a-code-smell.html) - 5/2/03**
+ * **[build cycles, development cycles, and the nag server](/article/radio-blog/2003-04-build-cycles-dev-cycles-and-the-nag-server.html) - 4/29/03**
+ * [A Little Background on our Continuous Integration Setup](/article/radio-blog/2003-04-background-on-our-continuous-integration-setup.html) - 4/28/03
+ * [InfoWorld's "Farewell Issue"](/article/radio-blog/2003-04-infoworld-farewell-issue.html) - 4/23/03
+ * [Are concrete parent classes a code smell?](/article/radio-blog/2003-04-are-concrete-parent-classes-a-code-smell.html) - 4/22/03
+ * [Ignore this post (Demonstrates javablogs bug?)](/article/radio-blog/2003-04-ignore-this-post.html) - 4/16/03
+ * [I/O Iterators for Java](/article/radio-blog/2003-05-io-iterators-for-java.html) - 4/15/03
+ * [Radio Tidbit: Waypath It! Macro](/article/radio-blog/2003-04-radio-tibit-waypath-it-macro.html) - 4/11/03
+ * [The Hundred Year Language (update on "Bruce Eckel has an interesting blog")](/article/radio-blog/2003-04-the-hundred-year-language.html) - 4/9/03
+ * [Jason Horman's WikiDoclet](/article/radio-blog/2003-04-jason-horman-wikidocklet.html) - 4/8/03
  * Great Zaurus Software - 4/8/03
  * Rod's Open Source To Do List - 4/7/03
  * **A Question on Applying the LGPL to Java - 4/7/03**

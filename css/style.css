@@ -102,7 +102,7 @@ a.flatbutton { -webkit-transition:all .25s ease-in-out;-moz-transition:all .25s 
 /* .page-class a { color:#777;  } */
 /* .page-class a:hover { color:#4183c4;  } */
 @media only screen and (min-width:767px) {
-  #page-header { height:50px; position:relative;}
+  #page-header { min-height:50px; position:relative;}
   .page-class { position:absolute; bottom:3px; right:0;}
 }
 

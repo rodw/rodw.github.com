@@ -108,7 +108,7 @@ Looking at a spectrum from "most intimate" to "least intimate", we might identif
 2. **Staff Augmentation** -- the service is provided by contractors or freelancers that are managed very much like direct employees.
 3. **In-Sourced** -- the service is *developed* by an external supplier, but brought "in-house" for ongoing operation and maintenance.  (A lot of enterprise software implementations work this way, for example.)
 4. **Co-Sourced** -- the service is collaboratively developed and maintained by a combination of an external supplier and internal staff.
-5. **Single Vendor** -- the service is developed and maintained by a single external supplier.  (This a pretty typical supplier relationship.)
+5. **Single Vendor** -- the service is developed and maintained by a single external supplier.  (This is a pretty typical supplier relationship.)
 6. **Multi-Vendor** -- the service is provided by multiple suppliers, organized or coordinated by the firm itself.
 7. **Subcontracted** -- the service is provided by a "primary" supplier of some sort, who is in turn relying on subcontractors to do the work.
 8. **Multi-Client** -- the service is not customized for the individual firm, but provided by an "off-the-shelf" product of some sort. (E.g., something physically "installed" at the firm's location, or a SaaS-product that serves many clients.)
@@ -377,7 +377,7 @@ Let's look at some ways we might effect specific types of change:
 
     * Change expectations so that our staff and/or our customers no longer believe our organization is a unique snowflake in regard to this function.
 
-    * Look for partners or suppliers that can help us transition from a bespoke solution to a more common one.  What are we doing that's different from everyone else in this regard.
+    * Look for partners or suppliers that can help us transition from a bespoke solution to a more common one.  What are we doing that's different from everyone else in this regard?
 
 5. To change the **size**  of a bubble, we must increase or decrease the level of investment in that function.  We might:
 
@@ -385,7 +385,7 @@ Let's look at some ways we might effect specific types of change:
 
     * Eliminate production bottlenecks in order to scale up the level of investment (and level of output, of course).
 
-    * Look for alternative suppliers, that offer higher quality or a lower price.
+    * Look for alternative suppliers that offer higher quality or a lower price.
 
     * Make a capital investment to radically change the way in which we service that function.
 
@@ -407,6 +407,7 @@ Consider the function-bubbles in our example chart. We can readily identify some
       - look for ways to improve the ROI on that function (by getting more value or producing more efficiently), or
       - consider whether increasing our investment in the function might be appropriate,
       - etc.,
+
    but we probably don't need to make radical changes here.
 
 2. The *Trainers* function  (Quadrant I) is more or less in the right place, but given the size of the bubble we may want to look at it more closely.  We might:
@@ -424,7 +425,7 @@ Consider the function-bubbles in our example chart. We can readily identify some
       - look for ways to innovate in the delivery of this function, making it more a competitive advantage for us (moving the bubble up),
       - etc.
 
-4. The "Shark Food" function (Quadrant I) is important to use, yet we're using a relatively commodity supplier.  This might be OK, but it's probably worth a look.  We might:
+4. The "Shark Food" function (Quadrant I) is important to us, yet we're using a relatively commodity supplier.  This might be OK, but it's probably worth a look.  We might:
       - try to find a cheaper supplier (making the bubble even smaller), or
       - look for a supplier that we can form a long term partnership with (making the bubble "redder"), or
       - try to find a way to make our organization less dependent upon the supply of this function (moving the bubble to the left), or

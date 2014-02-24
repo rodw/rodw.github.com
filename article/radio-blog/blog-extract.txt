@@ -40,7 +40,7 @@ For instance, I use:
 </p>
 <pre>XmlStorageSystem.new('122027','8c8034f5c9d68564e155c67a6d4e4612','/0122027/')</pre>
 <p>
-although that's not my actual password.  
+although that's not my actual password.
 </p>
 <p>
 Actually, my local copy of xmlStorageSystem.rb has these value specified as the defaults, so I just user XmlStorageSystem.new, and I'll use that form in the rest of these examples.  The constructor also accepts an number of arguments that should allow one to connect to the <a href="http://www.pycs.net/">Python Community Server</a> and others, although Radio is the only server I've tried.
@@ -161,7 +161,7 @@ Here's a primitive version:
   return result;
 }</pre>
 <p>
-Hani, I enjoy your rants as much as the next geek, but if the best you can do is troll the <a href="mailto:annoucements@jakarta">annoucements@jakarta</a> list to wait for a chance to say "but there are times when that library isn't helpful" (which, so far, has seems to be the point of every jakarta-commons rant you've posted to date), I may find another use for that slot in my aggregator.  Also, I've noticed an increase in the number of logical fallacies in your rants.  Being a jerk for dramatic effect might be entertaining, but being a misleading jerk is not.  
+Hani, I enjoy your rants as much as the next geek, but if the best you can do is troll the <a href="mailto:annoucements@jakarta">annoucements@jakarta</a> list to wait for a chance to say "but there are times when that library isn't helpful" (which, so far, has seems to be the point of every jakarta-commons rant you've posted to date), I may find another use for that slot in my aggregator.  Also, I've noticed an increase in the number of logical fallacies in your rants.  Being a jerk for dramatic effect might be entertaining, but being a misleading jerk is not.
 </p>
   <div class="itemFooter"><a href="http://radio.weblogs.com/0122027/2003/11/17.html#a100" title="item permalink">posted&nbsp;11:53:36 AM</a>&nbsp;&nbsp;<a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=100&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F17.html%23a100" onclick="window.open (this.href, 'comments', 'width=515, height=480, location=0, resizable=1, scrollbars=1, status=0, toolbar=0, directories=0'); return(false);" title="Click here to comment on this post." class="commentLink">comment&nbsp;[<script type="text/javascript" language="JavaScript">commentCounter (100)</script>]</a>&nbsp;<a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=100&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F17.html%23a100">(link)</a>&nbsp;&nbsp;<a href="http://radiocomments.userland.com/comments$trackback?u=122027&amp;p=100&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F17.html%23a100" onclick="window.open (this.href, 'TrackBacks', 'width=515, height=480, location=0, resizable=1, scrollbars=1, status=0, toolbar=0, directories=0'); return(false);" class="commentLink">trackback&nbsp;[<script type="text/javascript" language="JavaScript">trackbackCounter (100)</script>]</a>&nbsp;<a href="http://radiocomments.userland.com/comments$trackback?u=122027&amp;p=100&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F17.html%23a100">(link)</a>
 </div>
@@ -201,7 +201,7 @@ This idiom is so strong in the Java community that it's almost counter-productiv
   }
 }</pre>
 <p>
-since many developers who see 
+since many developers who see
 </p>
 <pre>if(StringUtils.contains(someString,anotherString)) { ... }</pre>
 <p>
@@ -227,7 +227,7 @@ or even
 <p>
 etc.
 </p><p>
-Of course, the implementation I used for String.startsWith (<code>self[0...str.length] == str</code>) is just one of several possible implementations.  Regular expressions provide one way of implementing such a check.  The Java-like indexOf function provides another (e.g., <code>self.indexOf(str) == 0</code>). 
+Of course, the implementation I used for String.startsWith (<code>self[0...str.length] == str</code>) is just one of several possible implementations.  Regular expressions provide one way of implementing such a check.  The Java-like indexOf function provides another (e.g., <code>self.indexOf(str) == 0</code>).
 </p><p>
 Since there is no built-in String.startsWith (or for that matter String.contains) in Ruby, I wonder if there is some common idiom that experienced Ruby developers find more readable than adding a custom method to String?  If not for String.startsWith, how about String.contains?
 </p>
@@ -282,7 +282,7 @@ Beyond Blogging (by Elizabeth Lane Lawley) <sup><a href="http://radio.weblogs.co
   <p>
 <a href="http://www.it.rit.edu/~ell/il03-bb/index.php">Beyond Blogging</a> by Elizabeth Lane Lawley is, as Sam writes, "an excellent look at the entire ecosystem of blogging".
 </p><p>
-[Via <a href="http://www.intertwingly.net/blog/1635.html">Sam Ruby</a>] 
+[Via <a href="http://www.intertwingly.net/blog/1635.html">Sam Ruby</a>]
 </p>
   <div class="itemFooter"><a href="http://radio.weblogs.com/0122027/2003/11/05.html#a96" title="item permalink">posted&nbsp;12:05:57 PM</a>&nbsp;&nbsp;<a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=96&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F05.html%23a96" onclick="window.open (this.href, 'comments', 'width=515, height=480, location=0, resizable=1, scrollbars=1, status=0, toolbar=0, directories=0'); return(false);" title="Click here to comment on this post." class="commentLink">comment&nbsp;[<script type="text/javascript" language="JavaScript">commentCounter (96)</script>]</a>&nbsp;<a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=96&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F05.html%23a96">(link)</a>&nbsp;&nbsp;<a href="http://radiocomments.userland.com/comments$trackback?u=122027&amp;p=96&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F05.html%23a96" onclick="window.open (this.href, 'TrackBacks', 'width=515, height=480, location=0, resizable=1, scrollbars=1, status=0, toolbar=0, directories=0'); return(false);" class="commentLink">trackback&nbsp;[<script type="text/javascript" language="JavaScript">trackbackCounter (96)</script>]</a>&nbsp;<a href="http://radiocomments.userland.com/comments$trackback?u=122027&amp;p=96&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F11%2F05.html%23a96">(link)</a>
 </div>
@@ -295,8 +295,8 @@ Custom Radio UserLand Clients? <sup><a href="http://radio.weblogs.com/0122027/20
 
 
   <p>
-<a href="http://radio.userland.com/" title="Radio UserLand">Radio</a> is a reasonably nifty weblog client, 
-sporting an easy-to-use, web-based content management tool, a workable server-based news aggregator and a 
+<a href="http://radio.userland.com/" title="Radio UserLand">Radio</a> is a reasonably nifty weblog client,
+sporting an easy-to-use, web-based content management tool, a workable server-based news aggregator and a
 fairly robust weblog hosting infrastructure for USD$3.33 a month.
 </p><p>
 Things I find annoying about Radio include the fact that it won't run on a Unix-based OS (although there
@@ -304,15 +304,15 @@ are <a href="http://radio.weblogs.com/0102385/2003/04/24.html" title="Chris Doub
 of folks who've got the Windows version up and running under Wine on Linux), it's got a fairly large footprint, and
 it uses a relatively cumbersome and under-documented scripting framework.
 </p><p>
-All in all, the biggest appeal of Radio Userland to me is that I can get quick, easy and generally adequate weblog 
-hosting for monthly cost less than a trip to Starbucks.  If only I could continue to use the hosting service and 
-replace the Windows-based client--I'd be happy to generate the weblog HTML via some homegrown software and simply 
+All in all, the biggest appeal of Radio Userland to me is that I can get quick, easy and generally adequate weblog
+hosting for monthly cost less than a trip to Starbucks.  If only I could continue to use the hosting service and
+replace the Windows-based client--I'd be happy to generate the weblog HTML via some homegrown software and simply
 upload the content via FTP or SCP.
 </p><p>
-Well, it's not quite as easy as FTP, but after poking around a bit, I've figured out how to "manually" update a 
-Radio hosted site, or more generally, 
-<a href="http://www.myelin.co.nz/wcswiki/w/CommunityServerWiki" title="Community Server Wiki">any of a number of servers</a> 
-that supports the 
+Well, it's not quite as easy as FTP, but after poking around a bit, I've figured out how to "manually" update a
+Radio hosted site, or more generally,
+<a href="http://www.myelin.co.nz/wcswiki/w/CommunityServerWiki" title="Community Server Wiki">any of a number of servers</a>
+that supports the
 <a href="http://www.soapware.org/xmlStorageSystem" title="SoapWare.org: xmlStorageSystem">xmlStorageSystem</a> XML-RPC protocol.
 </p><p>
 Here's a relatively crude but functional example using <a href="http://jakarta.apache.org/commons/httpclient">HttpClient</a>.
@@ -324,14 +324,14 @@ First, the basic framework for processing a request and it's response.  This met
     method.setRequestBody(body);
     method.setPath("/RPC2");
     method.setRequestContentLength(body.length());
-&nbsp;        
-    HttpClient client = new HttpClient();        
-&nbsp;        
+&nbsp;
+    HttpClient client = new HttpClient();
+&nbsp;
     HostConfiguration host = new HostConfiguration();
     host.setHost("radio.xmlstoragesystem.com");
 &nbsp;
     client.executeMethod(host,method);
-&nbsp;  
+&nbsp;
     return method.getResponseBodyAsString();
 }</pre>
 <p>
@@ -342,7 +342,7 @@ Typically we pass an xmlStorageSystem request to this method as the String param
 &lt;methodCall&gt;
   &lt;methodName&gt;xmlStorageSystem.getServerCapabilities&lt;/methodName&gt;
   &lt;params&gt;
-    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is "122027" --&gt;&lt;/value&gt;&lt;/param&gt;  
+    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is "122027" --&gt;&lt;/value&gt;&lt;/param&gt;
     &lt;param&gt;&lt;value&gt;&lt;!-- the md5 hash of your radio password as ASCII bytes --&gt;&lt;/value&gt;&lt;/param&gt;
   &lt;/params&gt;
 &lt;/methodCall&gt;</pre>
@@ -353,7 +353,7 @@ To create or update a file (or files), we use <code>saveMultipleFiles</code>, fo
 &lt;methodCall&gt;
   &lt;methodName&gt;xmlStorageSystem.saveMultipleFiles&lt;/methodName&gt;
   &lt;params&gt;
-    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is "122027" --&gt;&lt;/value&gt;&lt;/param&gt;  
+    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is "122027" --&gt;&lt;/value&gt;&lt;/param&gt;
     &lt;param&gt;&lt;value&gt;&lt;!-- the md5 hash of your radio password as ASCII bytes --&gt;&lt;/value&gt;&lt;/param&gt;
     &lt;param&gt;
       &lt;value&gt;
@@ -378,7 +378,7 @@ To delete a file (or files), we use <code>deleteMultipleFiles</code>, for exampl
 &lt;methodCall&gt;
   &lt;methodName&gt;xmlStorageSystem.saveMultipleFiles&lt;/methodName&gt;
   &lt;params&gt;
-    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is "122027" --&gt;&lt;/value&gt;&lt;/param&gt;  
+    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is "122027" --&gt;&lt;/value&gt;&lt;/param&gt;
     &lt;param&gt;&lt;value&gt;&lt;!-- the md5 hash of your radio password as ASCII bytes --&gt;&lt;/value&gt;&lt;/param&gt;
     &lt;param&gt;
       &lt;value&gt;
@@ -392,7 +392,7 @@ To delete a file (or files), we use <code>deleteMultipleFiles</code>, for exampl
 <p>
 etc.
 </p><p>
-See <a href="http://www.soapware.org/xmlStorageSystem" title="SoapWare.org: xmlStorageSystem">Dave Winer's writeup</a> for more 
+See <a href="http://www.soapware.org/xmlStorageSystem" title="SoapWare.org: xmlStorageSystem">Dave Winer's writeup</a> for more
 procedures, details and <a href="http://www.soapware.org/stories/storyReader$16">examples</a>.
 </p><p>
 Now that I know how to manipulate my radio.weblogs.com site without using the Radio client, I'm tempted to roll my own weblogging software, if only so I don't have to keep a Windows box around to support my blog.  As I mentioned above, there are <a href="http://www.myelin.co.nz/wcswiki/w/CommunityServerWiki" title="Community Server Wiki">a number of servers</a> that support the xmlStorageSystem protocol.  Anyone know of any non-Radio clients for xmlStorageSystem?  At minimum, something that syncs an arbitrary local directory with a remove xmlStorageSystem server should be easy enough to implement, which would allow anything that you can "publish" locally to be used as a client to a Community Server implementation.
@@ -407,7 +407,7 @@ Now that I know how to manipulate my radio.weblogs.com site without using the Ra
 The Jakarta Commons Problem in a Nutshell <sup><a href="http://radio.weblogs.com/0122027/2003/10/30.html#a94" title="item permalink">#</a></sup>
 
 
-  <a href="http://nagoya.apache.org/eyebrowse/ReadMsg?listName=commons-dev@jakarta.apache.org&amp;msgNo=37216">Exhibit A</a>, 
+  <a href="http://nagoya.apache.org/eyebrowse/ReadMsg?listName=commons-dev@jakarta.apache.org&amp;msgNo=37216">Exhibit A</a>,
 <a href="http://nagoya.apache.org/eyebrowse/ReadMsg?listName=commons-dev@jakarta.apache.org&amp;msgNo=37218">Exhibit B</a>
   <div class="itemFooter"><a href="http://radio.weblogs.com/0122027/2003/10/30.html#a94" title="item permalink">posted&nbsp;9:26:23 AM</a>&nbsp;&nbsp;<a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=94&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F10%2F30.html%23a94" onclick="window.open (this.href, 'comments', 'width=515, height=480, location=0, resizable=1, scrollbars=1, status=0, toolbar=0, directories=0'); return(false);" title="Click here to comment on this post." class="commentLink">comment&nbsp;[<script type="text/javascript" language="JavaScript">commentCounter (94)</script>]</a>&nbsp;<a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=94&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F10%2F30.html%23a94">(link)</a>&nbsp;&nbsp;<a href="http://radiocomments.userland.com/comments$trackback?u=122027&amp;p=94&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F10%2F30.html%23a94" onclick="window.open (this.href, 'TrackBacks', 'width=515, height=480, location=0, resizable=1, scrollbars=1, status=0, toolbar=0, directories=0'); return(false);" class="commentLink">trackback&nbsp;[<script type="text/javascript" language="JavaScript">trackbackCounter (94)</script>]</a>&nbsp;<a href="http://radiocomments.userland.com/comments$trackback?u=122027&amp;p=94&amp;link=http%3A%2F%2Fradio.weblogs.com%2F0122027%2F2003%2F10%2F30.html%23a94">(link)</a>
 </div>
@@ -451,7 +451,7 @@ As I'm sure I'm not the first to suggest, it seems that the ideal PIM system pre
 </p><p>
 Clearly, I presume, blog-like software is an excellent starting point for the former, and wiki-like software is an excellent starting point for the former.  Fortunately, a number of projects have begun to explore combinations of the two, either by implementing a blog-as-wiki (like <a href="http://snipsnap.org/" title="snipsnap.org">SnipSnap</a> does) or by adding blogging features to a wiki engine (like <a href="http://www.jspwiki.org/" title="jspwiki.org">JspWiki</a> and no doubt others do).
 </p><p>
-Having a fair amount of Java experience (indeed, I've built a little wiki or two in Java), my first thought was to get a Java based wiki up and running on my Zaurus.  JspWiki looks nice, and like most Java-based wikis is Servlet/JSP based, so I endeavored to get a WAR-friendly Java Servlet engine up and running on my Zaurus.  Having tried both Tomcat and Jetty under both the <a href="http://www.esmertec.com/products/products_jeode.shtm" title="Jeode Java Runtime Environment">Jeode evm</a> and <a href="http://developer.java.sun.com/developer/earlyAccess/pp4zaurus/" title="J2ME Personal Profile for Zaurus">Personal Java cvm</a>, I came close, but fundamentally failed to do this.  (I note that my SL-5500 had just barely enough disk space or memory to do this as well.) 
+Having a fair amount of Java experience (indeed, I've built a little wiki or two in Java), my first thought was to get a Java based wiki up and running on my Zaurus.  JspWiki looks nice, and like most Java-based wikis is Servlet/JSP based, so I endeavored to get a WAR-friendly Java Servlet engine up and running on my Zaurus.  Having tried both Tomcat and Jetty under both the <a href="http://www.esmertec.com/products/products_jeode.shtm" title="Jeode Java Runtime Environment">Jeode evm</a> and <a href="http://developer.java.sun.com/developer/earlyAccess/pp4zaurus/" title="J2ME Personal Profile for Zaurus">Personal Java cvm</a>, I came close, but fundamentally failed to do this.  (I note that my SL-5500 had just barely enough disk space or memory to do this as well.)
 </p><p>
 I briefly considered setting up a stand-alone (i.e., non-Servlet/JSP) Java wiki engine on the Zaurus, but without a moderate amount of development that seems like an awkward environment for templating and modification, and non-servlet Java web development feels like dead-end development. (Its only a matter of time before a reasonably micro servlet engine is available.)  That's when I stumbled across <a href="http://c2.com/cgi/wiki?PhlIp" title="Ward's Wiki: PhlIp">PhlIp</a>'s <a href="http://www.xpsd.com/MiniRubyWiki" title="XpSD Wiki: Mini Ruby Wiki">Mini Ruby Wiki</a>, which implements a featureful, stand-alone wiki server in around 1000 lines of Ruby code.
 </p><p>
@@ -495,10 +495,10 @@ There's a block of code in MiniRubyWiki that renders a small calendar in HTML, n
     if today.mday() == dayOnCalendar.mday() then
       calendar += ' bgcolor="#88ff88"'
     end
-    calendar += '&gt;' 
+    calendar += '&gt;'
     # show the month for the first day in the calendar or in the month
     calendar += dayOnCalendar.strftime('%b') + ' ' if dayOnCalendar.mday == 1 or day == 0
-    calendar += dayOnCalendar.mday.to_s() 
+    calendar += dayOnCalendar.mday.to_s()
 &nbsp;
     # ...snip some stuff displayed within the calendar...
 &nbsp;
@@ -566,10 +566,10 @@ There's a block of code in MiniRubyWiki that renders a small calendar in HTML, n
     if today.mday() == dayOnCalendar.mday() then
       calendar += ' bgcolor="#88ff88"'
     end
-    calendar += '&gt;' 
+    calendar += '&gt;'
     # show the month for the first day in the calendar or in the month
     calendar += dayOnCalendar.strftime('%b') + ' ' if dayOnCalendar.mday == 1 or day == 0
-    calendar += dayOnCalendar.mday.to_s() 
+    calendar += dayOnCalendar.mday.to_s()
 &nbsp;
     # ...snip some stuff displayed within the calendar...
 &nbsp;
@@ -682,7 +682,7 @@ If the goal is (b), then we need an anti-architect.  We need to come up with imp
 </p>
 </blockquote>
 <p>
-Here option B is obviously a straw-man, so of course I'll follow option A.  But while I agree we need "an inexpensive-to-develop architecture", and the word "architect" appears in my job title, I'll suggest a evolutionary approach is the best way to get there.  Inexpensive-to-develop systems of any interesting size, let alone federations of such systems, are rarely "architected" in a traditional sense.  <b>What we need is an environment where diverse ideas are allowed to compete, cooperate and breed</b>. 
+Here option B is obviously a straw-man, so of course I'll follow option A.  But while I agree we need "an inexpensive-to-develop architecture", and the word "architect" appears in my job title, I'll suggest a evolutionary approach is the best way to get there.  Inexpensive-to-develop systems of any interesting size, let alone federations of such systems, are rarely "architected" in a traditional sense.  <b>What we need is an environment where diverse ideas are allowed to compete, cooperate and breed</b>.
 </p>
 <p>
 
@@ -745,13 +745,13 @@ Well, that part's done and the strategy won.
 </p><p>
 [...]
 </p><p>
-If the goal is still "(a) build a free alternative to proprietary software", then a new strategy is called for: competition on <i>software architecture</i>, not just licensing. 
+If the goal is still "(a) build a free alternative to proprietary software", then a new strategy is called for: competition on <i>software architecture</i>, not just licensing.
 </p>
 </blockquote>
 <p>
 Here Tom and I are in violent agreement.  If I were building an open source compiler and/or language-platform, I'd certainly think twice about doing it on <a href="http://www.tbray.org/ongoing/When/200x/2003/07/12/WebsThePlace" title="The Webs the Place">Sun's plantation</a>--not because it's too hard; in part (as before) because the utility of copying something that's already readily available is limited; but mostly because I think you could construct more useful environments.
 </p><p>
-It's worth applying this, independently, to the "enterprise libraries" I set aside earlier.  Are J2EE implementations like <a href="http://incubator.apache.org/projects/geronimo.html">Apache Geronimo</a> or <a href="http://jboss.org">JBoss</a> building something "useful" or a "$0-price OS component to lower the cost of proprietary applications"?  From my perspective, I've found some pieces of the J2EE suite to be quite useful, and others seem to fit Tom's "proprietary vendor" strategy. 
+It's worth applying this, independently, to the "enterprise libraries" I set aside earlier.  Are J2EE implementations like <a href="http://incubator.apache.org/projects/geronimo.html">Apache Geronimo</a> or <a href="http://jboss.org">JBoss</a> building something "useful" or a "$0-price OS component to lower the cost of proprietary applications"?  From my perspective, I've found some pieces of the J2EE suite to be quite useful, and others seem to fit Tom's "proprietary vendor" strategy.
 </p>
 <p>
 
@@ -780,9 +780,9 @@ different licensing.
 This point is puzzling.  Certainly we don't mean to assert that it is impossible to successfully build
 <a href="http://www.mysql.com/" title="MySQL, &quot;the world's most popular open source database&quot;">open</a>
 <a href="http://www.postgresql.org/" title="PostgreSQL, &quot;the world's most advanced open source database software&quot;">source</a>
-<a href="http://axion.tigris.org/index.html" title="Axion, the Java Database">databases</a>, 
-<a href="http://mozilla.org/" title="Mozilla.org">web</a> 
-<a href="http://www.konqueror.org/" title="Konqueror - Web Browser, File Manager - and more!">browsers</a>, 
+<a href="http://axion.tigris.org/index.html" title="Axion, the Java Database">databases</a>,
+<a href="http://mozilla.org/" title="Mozilla.org">web</a>
+<a href="http://www.konqueror.org/" title="Konqueror - Web Browser, File Manager - and more!">browsers</a>,
 or <a href="http://zope.org/" title="Zope: an open source application server">middleware</a>
 <a href="http://www.mico.org/" title="MICO: a freely available and fully compliant implementation of the CORBA standard">servers</a>,
 do we?
@@ -855,7 +855,7 @@ Spoiler Warning: If you'd like to work this Kata yourself, beware, spoilers foll
 <p>
 First, let's define some terms.
 </p><p>
-Let <nobr><i>S<sub>n</sub></i></nobr> be the set of binary sequences of length <i>n</i>.  Note that 
+Let <nobr><i>S<sub>n</sub></i></nobr> be the set of binary sequences of length <i>n</i>.  Note that
 <nobr>|<i>S<sub>n</sub></i>| = 2<sup><i>n</i></sup></nobr>.
 </p><p>
 Let <nobr><i>F<sub>n</sub></i></nobr> be the set of sequences of binary sequences of length <i>n</i> that do not contain two consecutive 1 bits.  The Kata asks us to determine <nobr>|<i>F<sub>n</sub></i>|</nobr>.  I'll call that <nobr><i>f(n)</i></nobr>.
@@ -884,13 +884,13 @@ By inspection, it's easy to work out the first few values of <i>f(n)</i>.  Note 
 <p>
 To make the proof a little bit easier, I'll introduce some additional notation.
 </p><p>
-Let <i>concat(a,b)</i> be a 
-function that maps a pair of sequences to a new sequence by prefixing the first to the second.  For example, 
+Let <i>concat(a,b)</i> be a
+function that maps a pair of sequences to a new sequence by prefixing the first to the second.  For example,
 <nobr>concat(1,0) = 10</nobr> and <nobr>concat(10,1101) = 101101</nobr>.
 </p><p>
-Let <i>CONCAT(a,B)</i> be 
-function that maps a sequence and a set of sequences to a new set of sequences obtained by prefixing the sequence 
-<i>a</i> to each sequence in the set <i>B</i>.  In other words, 
+Let <i>CONCAT(a,B)</i> be
+function that maps a sequence and a set of sequences to a new set of sequences obtained by prefixing the sequence
+<i>a</i> to each sequence in the set <i>B</i>.  In other words,
 <nobr>CONCAT(<i>s</i>,<i>T</i>) := { concat(<i>s</i>,<i>t</i>) : <i>t</i> in <i>T</i> }</nobr>.
 </p><p>
 
@@ -927,23 +927,23 @@ Hence <nobr><i>S<sub>n</sub></i></nobr> can be seen as the union of three disjoi
 For convenience, let's name each of those three sets:
 </p>
 <pre>
-Let <i>A</i> = CONCAT(0,<i>S<sub>n-1</sub></i>) 
+Let <i>A</i> = CONCAT(0,<i>S<sub>n-1</sub></i>)
 Let <i>B</i> = CONCAT(11,<i>S<sub>n-2</sub></i>)
 Let <i>C</i> = CONCAT(10,<i>S<sub>n-2</sub></i>)
 <i>S<sub>n</sub></i> = <i>A</i> union <i>B</i> union <i>C</i>
 </pre>
 <p>
 Since the sets <i>A</i>, <i>B</i> and <i>C</i> represent a proper partitioning of <nobr><i>S<sub>n</sub></i></nobr>,
-we can determine <nobr><i>F<sub>n</sub></i></nobr> by determining the sequences that meet the conditions in each of the sets 
+we can determine <nobr><i>F<sub>n</sub></i></nobr> by determining the sequences that meet the conditions in each of the sets
 independently.
 </p><p>
-How many sequences in <i>A</i> are in 
+How many sequences in <i>A</i> are in
 <nobr><i>F<sub>n</sub></i></nobr>?  The answer must be <nobr><i>f</i>(<i>n-1</i>)</nobr>, since prefixing a 0 bit won't change whether or not a sequence contains two consecutive 1 bits.
 </p><p>
-How many sequences in <i>B</i> are in 
+How many sequences in <i>B</i> are in
 <nobr><i>F<sub>n</sub></i></nobr>?  The answer must be 0, since our prefix alone already rules out all of those sequences.
 </p><p>
-How many sequences in <i>C</i> are in 
+How many sequences in <i>C</i> are in
 <nobr><i>F<sub>n</sub></i></nobr>?  The answer must be <nobr><i>f</i>(<i>n-2</i>)</nobr>, since prefixing 10 won't change whether or not a sequence contains two consecutive 1 bits.
 </p>
 <p>Hence:</p>
@@ -1119,7 +1119,7 @@ Now, I'll certainly admit that XML has its drawbacks.  Is it overly verbose?  Of
 </p><p>
 (On a related note, if "executable XML" is such a bad idea, how does one explain the longevity of Lisp?)
 </p><p>
-Despite these limitations, there is some value in selecting XML over, say (as Andy Hunt suggested for Ant) some arbitrary context-free grammar.  
+Despite these limitations, there is some value in selecting XML over, say (as Andy Hunt suggested for Ant) some arbitrary context-free grammar.
 </p><p>
 Part of this value is the ease with which a developer can drop in an XML parser, but that's only an indirect source of value.  Part of this value is the comfort that users familiar with popular SGML applications (read "HTML") have with the angle bracket notation, but that may only explain the quick adoption.
 </p><p>
@@ -1154,7 +1154,7 @@ Now, I'll certainly admit that XML has its drawbacks.  Is it overly verbose?  Of
 </p><p>
 (On a related note, if "executable XML" is such a bad idea, how does one explain the longevity of Lisp?)
 </p><p>
-Despite these limitations, there is some value in selecting XML over, say (as Andy Hunt suggested for Ant) some arbitrary context-free grammar.  
+Despite these limitations, there is some value in selecting XML over, say (as Andy Hunt suggested for Ant) some arbitrary context-free grammar.
 </p><p>
 Part of this value is the ease with which a developer can drop in an XML parser, but that's only an indirect source of value.  Part of this value is the comfort that users familiar with popular SGML applications (read "HTML") have with the angle bracket notation, but that may only explain the quick adoption.
 </p><p>
@@ -1195,7 +1195,7 @@ I think <a href="http://www.livejournal.com/users/stevenberkowitz/" title="Steve
 </p><p>
 I'm going to make an assumption here, but I think it's an assumption I can safely make.  The majority of software developers aren't selling software, or even software support and services.
 </p><p>
-Living as I do, in Chicago, where I'm <a href="http://www.bls.gov/" title="U.S. Department of Labor: Bureau of Labor Statistics">told</a> both the per capita and absolute number of software developers is higher than the Silicon Valley, I think this observation is a bit more obvious.  I know a lot of software developers, but practically none of them build software for direct sale to consumers or businesses.  When a "software development" firm is hired, it's often for custom (or at least customized) development.  Even when we sell shrink-wrapped software, <a href="http://store.britannica.com/escalate/store/CategoryPage?pls=britannica&amp;bc=britannica&amp;cc=videos_software" title="Britannica Store: Software">as my company does</a>, it's not the software that customers are really buying. 
+Living as I do, in Chicago, where I'm <a href="http://www.bls.gov/" title="U.S. Department of Labor: Bureau of Labor Statistics">told</a> both the per capita and absolute number of software developers is higher than the Silicon Valley, I think this observation is a bit more obvious.  I know a lot of software developers, but practically none of them build software for direct sale to consumers or businesses.  When a "software development" firm is hired, it's often for custom (or at least customized) development.  Even when we sell shrink-wrapped software, <a href="http://store.britannica.com/escalate/store/CategoryPage?pls=britannica&amp;bc=britannica&amp;cc=videos_software" title="Britannica Store: Software">as my company does</a>, it's not the software that customers are really buying.
 </p><p>
 For most companies and for most developers, software isn't a business, it's a tool for getting the real work done.
 </p><p>
@@ -1242,14 +1242,14 @@ If you'd like to do the same, here's how:
 <li>Ensure that you have the java.util Collections and java.sql JDBC packages available on your platform.  Since the Insignia Jeode VM installed on the Zaurus by default is JDK 1.1 based, I had to copy over the JDK Collections manually.  I had thought the Collections package was available as a standalone JAR to drop in to JDK 1.1 environments but as I was unable to find it.  I just copied over the rt.jar from a JDK 1.3 installation, but I think the java.util package would suffice.</li>
 <li><p>Obtain a copy of axiondb.properties.  You can pull this out of the Axion JAR or from <a href="http://axion.tigris.org/source/browse/axion/conf/axiondb.properties" title="axion/conf/axiondb.properties">CVS</a>.  Normally Axion loads this file out of the JAR automatically, but the Jeode VM seems to always return null for getClassLoader so we had to add a mechanism for specifying the configuration as an external file.</p></li>
 <li><p>Now simply copy those files over to the Zaurus, add the JARs to your classpath, and you are ready to go.  For example to run the Axion console I use:</p>
-<pre>evm 
- -Dorg.axiondb.engine.BaseDatabase.properties=axiondb.properties 
+<pre>evm
+ -Dorg.axiondb.engine.BaseDatabase.properties=axiondb.properties
  -classpath axion-1.0-M3-dev.jar:
             commons-collections.jar:
             commons-logging.jar:
             commons-codec.jar:
             regexp.jar:
-            rt.jar 
+            rt.jar
  org.axiondb.tools.Console $1 $2</pre>
 </li>
 </ul><p>
@@ -1553,8 +1553,7 @@ This release adds <a href="http://axion.tigris.org/releases/1.0M2/release-notes.
 
 Do you have a intranet portal? <sup><a href="http://radio.weblogs.com/0122027/2003/07/09.html#a48" title="item permalink">#</a></sup>
 
-
-  <p>
+<p>
 I'll show you <a href="http://radio.weblogs.com/0122027/images/sysarch_1000x746.png" title="screenshot">mine</a> if you show me yours.
 </p><p>
 <a href="http://radio.weblogs.com/0122027/images/sysarch_1000x746.png" title="full size screenshot"><img src="http://radio.weblogs.com/0122027/images/sysarch_1000x746.png" width="333" height="249" align="right" alt="screenshot"></a>
@@ -1611,7 +1610,7 @@ This "portal" is largely cobbled together out of server side includes.  It'd be 
 50% of crashes caused by 1% of bugs <sup><a href="http://radio.weblogs.com/0122027/2003/07/08.html#a43" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 An interesting statistic: In <a href="http://research.microsoft.com/~toddpro/papers/disruptive.ppt" title="[Powerpoint] Disruptive Programming Language Technologies">Disruptive Programming Language Technologies</a>, Todd Proebsting of the Programming Language Systems group at Microsoft Research notes:
 </p>
 <blockquote>
@@ -1638,7 +1637,7 @@ There's some other interesting stuff in that presentation as well.
 Wanted: Modular/Extensible Parser Generator <sup><a href="http://radio.weblogs.com/0122027/2003/07/07.html#a41" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 Over at the <a href="http://axion.tigris.org/" title="Axion: Open Source Java RDBMS">Axion</a> project, we're using a <a href="http://javacc.dev.java.net/" title="JavaCC:  Java Compiler Compiler">JavaCC</a> <a href="http://axion.tigris.org/source/browse/axion/grammars/AxionSqlParser.jj" title="Axion's AxionSqlParser.jj">grammar</a> to implement the SQL parser.
 </p><p>
 One of things we've found Axion to be good for is unit testing database applications.  In other words, one can use an in-memory, in-process Axion database as a "mock" replacement for a regular production database.  In this case, it's quite useful to have Axion closely mimic the syntax of other RDBM systems.  For example, Axion supports <code>LIMIT</code> and <code>OFFSET</code> clauses like <a href="http://www.postgresql.com/" title="PostgeSQL open source database">PostgeSQL</a> and <a href="http://www.mysql.com/" title="MySQL open source database">MySQL</a> as well as a <code>ROWNUM</code> pseudo-column like <a href="http://www.oracle.com/" title="Oracle closed source database">Oracle</a>.  Similarly, Axion supports the ISO SQL 99 syntax for outer joins (<code>FROM a LEFT OUTER JOIN b ON a.id = b.id</code>) , but it would be nice to support Oracle's custom syntax (<code>FROM a, b WHERE a.id = b.id(+)</code>) as well.
@@ -1674,7 +1673,7 @@ or both.  I'm especially interested in being able to combine grammars at runtime
 Re: Test Driven Development versus Component Reuse <sup><a href="http://radio.weblogs.com/0122027/2003/07/01.html#a39" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 Over on the <a href="http://www.softwarecraftsmen.com/blog/" title="Software Craftsmen">Software Craftsmen blog</a>, Mike Hogan <a href="http://www.softwarecraftsmen.com/blog/archives/000003.html" title="Test Driven Development versus Component Reuse">asks</a> what is meant by "the simplest thing that could possibly work".  For what it's worth, Beck actually addresses this point directly in <i>Extreme Programming Explained</i> [<a href="http://www.amazon.com/exec/obidos/ASIN/0201616416/rodsradiowebl-20" title="details at amazon (via my associates id)">ISBN:0201616416</a>]:
 </p>
 <blockquote>
@@ -1689,7 +1688,7 @@ Over on the <a href="http://www.softwarecraftsmen.com/blog/" title="Software Cra
 <p>If you view the design as a communication medium, then you will have objects or methods for every important concept.  You will choose the names of the classes and methods to work together.</p>
 </blockquote>
 <p>
-I have my own issues with that definition that I hope to pick up in a later post. (For starters, define "everything you want to communicate".) 
+I have my own issues with that definition that I hope to pick up in a later post. (For starters, define "everything you want to communicate".)
 </p>
 <p>
 Mike goes on to question whether there are times when TSTTCPW conflicts with design for reuse.
@@ -1735,9 +1734,9 @@ void testGrepWithJakartaOro() {
 <p>
 (Alternatively, (1) define a "mock" instance of RegexpProvider for the purpose of this test rather than using specific implementations and (2) define an abstract getRegexpProvider method in your test class, an implement these tests as concrete extensions of that abstract test case, but I digress.)
 </p><p>
-Now we can justify the creation of the RegexpProvider interface, and ReusableGrep still meets the "simplest" criteria.  (Ignoring that ORO and Regexp likely support slightly different syntaxes.) 
+Now we can justify the creation of the RegexpProvider interface, and ReusableGrep still meets the "simplest" criteria.  (Ignoring that ORO and Regexp likely support slightly different syntaxes.)
 </p><p>
-I think Mike's first instinct--simple is "the smallest amount of code" that will "get the test case[s] running and refuses to concern itself with any potential future requirement" is the right one.  Have additional requirements you'd like to assert? Then express them as tests and this simple rule allows you to support them.  When approaching development test first I think a lot these questions about "what is simple" simply fade away, as does much premature generalization.  (And I say that without taking a position on whether ReusableGrep represents premature generalization or not.  I recognize that it's meant as a trivial example.) 
+I think Mike's first instinct--simple is "the smallest amount of code" that will "get the test case[s] running and refuses to concern itself with any potential future requirement" is the right one.  Have additional requirements you'd like to assert? Then express them as tests and this simple rule allows you to support them.  When approaching development test first I think a lot these questions about "what is simple" simply fade away, as does much premature generalization.  (And I say that without taking a position on whether ReusableGrep represents premature generalization or not.  I recognize that it's meant as a trivial example.)
 </p><p>
 PS: I can't resist the tempation to plug a <a href="http://jakarta.apache.org/commons/sandbox/functor" title="Apache's Jakarta-Commons Functor">commons-functor</a> approach to this Grep implementation.  How about something like:</p><p>
 </p><pre>Lines.from(reader).contains(RegexpMatch.of("my expression"))</pre>
@@ -1766,7 +1765,7 @@ Over on the <a href="http://www.softwarecraftsmen.com/blog/" title="Software Cra
 <p>If you view the design as a communication medium, then you will have objects or methods for every important concept.  You will choose the names of the classes and methods to work together.</p>
 </blockquote>
 <p>
-I have my own issues with that definition that I hope to pick up in a later post. (For starters, define "everything you want to communicate".) 
+I have my own issues with that definition that I hope to pick up in a later post. (For starters, define "everything you want to communicate".)
 </p>
 <p>
 Mike goes on to question whether there are times when TSTTCPW conflicts with design for reuse.
@@ -1812,9 +1811,9 @@ void testGrepWithJakartaOro() {
 <p>
 (Alternatively, (1) define a "mock" instance of RegexpProvider for the purpose of this test rather than using specific implementations and (2) define an abstract getRegexpProvider method in your test class, an implement these tests as concrete extensions of that abstract test case, but I digress.)
 </p><p>
-Now we can justify the creation of the RegexpProvider interface, and ReusableGrep still meets the "simplest" criteria.  (Ignoring that ORO and Regexp likely support slightly different syntaxes.) 
+Now we can justify the creation of the RegexpProvider interface, and ReusableGrep still meets the "simplest" criteria.  (Ignoring that ORO and Regexp likely support slightly different syntaxes.)
 </p><p>
-I think Mike's first instinct--simple is "the smallest amount of code" that will "get the test case[s] running and refuses to concern itself with any potential future requirement" is the right one.  Have additional requirements you'd like to assert? Then express them as tests and this simple rule allows you to support them.  When approaching development test first I think a lot these questions about "what is simple" simply fade away, as does much premature generalization.  (And I say that without taking a position on whether ReusableGrep represents premature generalization or not.  I recognize that it's meant as a trivial example.) 
+I think Mike's first instinct--simple is "the smallest amount of code" that will "get the test case[s] running and refuses to concern itself with any potential future requirement" is the right one.  Have additional requirements you'd like to assert? Then express them as tests and this simple rule allows you to support them.  When approaching development test first I think a lot these questions about "what is simple" simply fade away, as does much premature generalization.  (And I say that without taking a position on whether ReusableGrep represents premature generalization or not.  I recognize that it's meant as a trivial example.)
 </p><p>
 PS: I can't resist the tempation to plug a <a href="http://jakarta.apache.org/commons/sandbox/functor" title="Apache's Jakarta-Commons Functor">commons-functor</a> approach to this Grep implementation.  How about something like:</p><p>
 </p><pre>Lines.from(reader).contains(RegexpMatch.of("my expression"))</pre>
@@ -1828,7 +1827,7 @@ PS: I can't resist the tempation to plug a <a href="http://jakarta.apache.org/co
 Like Clover? Check out JCoverage <sup><a href="http://radio.weblogs.com/0122027/2003/06/30.html#a37" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 Like <a href="http://www.thecortex.net/clover/" title="Clover: a code coverage tool for Java">Clover</a>, <a href="http://jcoverage.com/" title="JCoverage: a code coverage tool for Java">JCoverage</a> is a code coverage analyzer for Java.  "Instrument" your code with either of these tools, run your unit test suite (really, execute the code in any way), and one can generate a report on what was executed (lines, methods, branches, etc.), and more importantly, what wasn't.
 </p><p>
 Unlike Clover:
@@ -1852,7 +1851,7 @@ With JCoverage, I think I'll need to reconsider <a href="http://radio.weblogs.co
 Re: Why Java is not Open Source <sup><a href="http://radio.weblogs.com/0122027/2003/06/26.html#a36" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 The CTO for Sun's Desktop Division <a href="http://today.java.net/pub/au/16" title="Hans Muller's bio on java.net">Hans Muller</a> <a href="http://weblogs.java.net/pub/wlg/202" title="Why Java is not Open Source: One Cowboy's Opinion">writes</a>:
 </p>
 <blockquote><i>I think that one of the primary reasons that Java is not an open source project is that given the size of the developer community, forks are unacceptable. In other words the millions of developers who build software on top of Java value its stability more than they value the right to get under the hood and fix it.</i></blockquote>
@@ -1877,8 +1876,8 @@ I didn't and still don't expect Sun to open source Java, although not for any of
 Experimenting with Jester <sup><a href="http://radio.weblogs.com/0122027/2003/06/25.html#a35" title="item permalink">#</a></sup>
 
 
-  <p>
-In a <a href="http://radio.weblogs.com/0122027/2003/06/24.html#a34" title="24 June 2003: Testing Testing">previous post</a> I alluded to the use of mutation testing to evaluate the completeness of a test suite, rather than relying upon pure test coverage metrics.  In a <a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=34" title="comments on &quot;Testing Testing&quot;">comment</a> to that post <a href="http://www.oshineye.com/" title="Adewale Oshineye's homepage">Adewale Oshineye</a> suggested that I check out Ivan Moore's <a href="http://jester.sourceforge.net/" title="Jester: the JUnit test tester">Jester</a>, a Java/JUnit based mutation testing tool.  I'd seen Jester before, but I'd never used it nor looked at it in much detail.  The anecdote about <a href="http://groups.yahoo.com/group/extremeprogramming/message/32277" title="jester shows bowling scoring could be simpler">what Jester uncovered</a> in Bob Martin's and Robert Koss's <a href="http://www.objectmentor.com/resources/articles/xpepisode.htm" title="Engineer Notebook: An Extreme Programming Episode">test driven bowling score calculator example</a> was certainly interesting, so this morning I bit the bullet and downloaded a copy.  
+<p>
+In a <a href="http://radio.weblogs.com/0122027/2003/06/24.html#a34" title="24 June 2003: Testing Testing">previous post</a> I alluded to the use of mutation testing to evaluate the completeness of a test suite, rather than relying upon pure test coverage metrics.  In a <a href="http://radiocomments2.userland.com/comments?u=122027&amp;p=34" title="comments on &quot;Testing Testing&quot;">comment</a> to that post <a href="http://www.oshineye.com/" title="Adewale Oshineye's homepage">Adewale Oshineye</a> suggested that I check out Ivan Moore's <a href="http://jester.sourceforge.net/" title="Jester: the JUnit test tester">Jester</a>, a Java/JUnit based mutation testing tool.  I'd seen Jester before, but I'd never used it nor looked at it in much detail.  The anecdote about <a href="http://groups.yahoo.com/group/extremeprogramming/message/32277" title="jester shows bowling scoring could be simpler">what Jester uncovered</a> in Bob Martin's and Robert Koss's <a href="http://www.objectmentor.com/resources/articles/xpepisode.htm" title="Engineer Notebook: An Extreme Programming Episode">test driven bowling score calculator example</a> was certainly interesting, so this morning I bit the bullet and downloaded a copy.
 </p><p>
 Getting Jester up and running was a minor hassle (and it seems like much of that hassle could be alleviated), but I've written my share of open source projects with quirky configuration and installation, so I'll leave that alone.  Once my files were placed in the proper position and after tweaking the python scripts to get them to run on whatever version of python I've got on my RedHat box, Jester ran slowly (waiting on javac) but well.  It ran much faster once I figured out how to tell Jester to stop mutating my comments (set <code>shouldRemoveComments=true</code> in <code>jester.cfg</code>).  The result was a basic HTML report like <a href="http://jester.sourceforge.net/jester.html" title="example Jester report">this one</a>.
 </p><p>
@@ -1912,7 +1911,7 @@ In short, I think Jester meets <a href="http://www.intertwingly.net/blog/" title
 Testing Testing <sup><a href="http://radio.weblogs.com/0122027/2003/06/24.html#a34" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 My fear, and perhaps it's not a well founded one, is that <a href="http://radio.weblogs.com/0122027/2003/06/23.html#a32" title="23 June 2003: A Frog Boiling Approach to Increasing Test Coverage">the pursuit of pure test coverage</a>--the percentage of lines, statements, methods, etc. tested--will provide a false sense of completeness.  If "percent executed by test code" is your sole metric, it's easy to write superficial tests that execute statements, but actually "test" very little.
 </p><p>
 For example, a couple of weeks ago I added the following test to one of our suites:
@@ -1941,7 +1940,7 @@ This single test--directly invoking just four distinct methods and comprising on
   boolean started = false;
 }</pre>
 <p>
-Is this test useless?  At this point I'll argue it isn't.  Superficial testing of these 1,500 lines is better than no testing at all.  This test at least confirms that we've got the classpath right (including any resources loaded on application startup) and that there aren't any uncaught exceptions being thrown on startup.  (When better tests are in place, this superficial test may indeed become useless.) But the resulting test coverage metric is certainly misleading. 
+Is this test useless?  At this point I'll argue it isn't.  Superficial testing of these 1,500 lines is better than no testing at all.  This test at least confirms that we've got the classpath right (including any resources loaded on application startup) and that there aren't any uncaught exceptions being thrown on startup.  (When better tests are in place, this superficial test may indeed become useless.) But the resulting test coverage metric is certainly misleading.
 </p><p>
 One solution, probably the right one, is to simply <a href="http://www.junit.org/news/article/test_first/index.htm" title="JUnit.org: Test First Articles">develop the code test first</a>.  If every change to production code was made to address a failing test (or to refactor under a unchanging test suite) then one certainly wouldn't find himself in this situation.  But this solution doesn't address my (our) current situation, in which we have 100,000 lines of "legacy" code and perhaps 60% of that code was developed "test last" if test at all.  The lack of tests has become a drag on our ability to refactor or simply work with that code.  If it was sufficient to simply tell folks to develop test first, I wouldn't be as concerned with measuring test coverage in the first place.
 </p><p>
@@ -1988,7 +1987,7 @@ This single test--directly invoking just four distinct methods and comprising on
   boolean started = false;
 }</pre>
 <p>
-Is this test useless?  At this point I'll argue it isn't.  Superficial testing of these 1,500 lines is better than no testing at all.  This test at least confirms that we've got the classpath right (including any resources loaded on application startup) and that there aren't any uncaught exceptions being thrown on startup.  (When better tests are in place, this superficial test may indeed become useless.) But the resulting test coverage metric is certainly misleading. 
+Is this test useless?  At this point I'll argue it isn't.  Superficial testing of these 1,500 lines is better than no testing at all.  This test at least confirms that we've got the classpath right (including any resources loaded on application startup) and that there aren't any uncaught exceptions being thrown on startup.  (When better tests are in place, this superficial test may indeed become useless.) But the resulting test coverage metric is certainly misleading.
 </p><p>
 One solution, probably the right one, is to simply <a href="http://www.junit.org/news/article/test_first/index.htm" title="JUnit.org: Test First Articles">develop the code test first</a>.  If every change to production code was made to address a failing test (or to refactor under a unchanging test suite) then one certainly wouldn't find himself in this situation.  But this solution doesn't address my (our) current situation, in which we have 100,000 lines of "legacy" code and perhaps 60% of that code was developed "test last" if test at all.  The lack of tests has become a drag on our ability to refactor or simply work with that code.  If it was sufficient to simply tell folks to develop test first, I wouldn't be as concerned with measuring test coverage in the first place.
 </p><p>
@@ -2019,7 +2018,7 @@ We've talked a bit about simply targeting some figure, say 80% coverage, and per
 </p><p>
 While the "frog boiling" approach--slowly raising the temperature on test coverage--appeals to me, something about the arbitrary "percent coverage" goals doesn't seem right.  I think I'd prefer goals that call for complete (100%) coverage of something, perhaps with different values of "something".  I'm not entirely sure why.
 </p><p>
-Specifically, I'm thinking of the following stages: 
+Specifically, I'm thinking of the following stages:
 </p>
 <ol>
 <li>All modules have tests.  Conveniently, this can be easily and quickly tested at build time.  We can make the absence of tests a build failure.  It is possible to programmatically evaluate the remaining goals, but not as quickly.  We'd have to execute the test coverage check on every continuous integration build, something that may take too much time.</li>
@@ -2042,7 +2041,7 @@ I wonder if any reader has some experience with similar strategies for increasin
 the fixmeister role, or ''you, help me'' <sup><a href="http://radio.weblogs.com/0122027/2003/06/17.html#a31" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 In some <a href="http://radio.weblogs.com/0122027/2003/04/28.html#a26" title="28 April 2003: A Little Background on our Continuous Integration Setup">previous</a> <a href="http://radio.weblogs.com/0122027/2003/04/29.html#a27" title="29 April 2003: build cycles, development cycles, and the nag server">posts</a>, I discussed some of the challenges we've experienced maintaining a <a href="http://www.martinfowler.com/articles/continuousIntegration.html" title="Continuous Integration by Martin Fowler and Matthew Foemmel">continuous integration</a> discipline at my day job.  In my last post on this topic, I alluded to "additional measures" which we adopted.  Time to describe what I was talking about.
 </p><p>
 Although I hadn't seen it at the time of the events described below, I recently ran across a comment on <a href="http://c2.com/cgi/wiki" title="Ward's Wiki: Front Page">Ward's Wiki</a> that accurately captures the problem we encountered and its solution:
@@ -2058,7 +2057,7 @@ Toward the end of April, in the midst of one of the longer low points in our <a 
 <br>
 <b>Sent:</b> Wed 4/23/2003 10:29 AM
 </p><p>
-There was a time, not so long ago, when we would regularly see a dozen or more good integration builds per day. In fact the vast majority of builds were clean ones. (See <i>[internal link to an historical report on continuous integration builds]</i>.)  Recently (meaning the past few months) we're lucky to see a dozen good builds in a week.  
+There was a time, not so long ago, when we would regularly see a dozen or more good integration builds per day. In fact the vast majority of builds were clean ones. (See <i>[internal link to an historical report on continuous integration builds]</i>.)  Recently (meaning the past few months) we're lucky to see a dozen good builds in a week.
 </p><p>
 As we've seen rather directly the past couple of weeks, our inability to regularly integrate changes across the entire code base slows our development process, delays production releases and may threaten our ability to deliver products according to schedule.  Moreover, integration problems compound themselves.  When we go several hours (let alone several days) without a clean build, it's no longer just one problem we need to fix, but several problems that are hidden behind the first one, masked because problems in some dependent library stops the build before it discovers the later problems.
 </p><p>
@@ -2123,7 +2122,7 @@ Toward the end of April, in the midst of one of the longer low points in our <a 
 <br>
 <b>Sent:</b> Wed 4/23/2003 10:29 AM
 </p><p>
-There was a time, not so long ago, when we would regularly see a dozen or more good integration builds per day. In fact the vast majority of builds were clean ones. (See <i>[internal link to an historical report on continuous integration builds]</i>.)  Recently (meaning the past few months) we're lucky to see a dozen good builds in a week.  
+There was a time, not so long ago, when we would regularly see a dozen or more good integration builds per day. In fact the vast majority of builds were clean ones. (See <i>[internal link to an historical report on continuous integration builds]</i>.)  Recently (meaning the past few months) we're lucky to see a dozen good builds in a week.
 </p><p>
 As we've seen rather directly the past couple of weeks, our inability to regularly integrate changes across the entire code base slows our development process, delays production releases and may threaten our ability to deliver products according to schedule.  Moreover, integration problems compound themselves.  When we go several hours (let alone several days) without a clean build, it's no longer just one problem we need to fix, but several problems that are hidden behind the first one, masked because problems in some dependent library stops the build before it discovers the later problems.
 </p><p>
@@ -2172,8 +2171,8 @@ In the eight weeks or so since this process was initiated, we've been around the
 The Pleasures of Profiling <sup><a href="http://radio.weblogs.com/0122027/2003/05/05.html#a29" title="item permalink">#</a></sup>
 
 
-  <p>
-Prompted by <a href="http://www.nicklothian.com/" title="BadMagicNumber, Nick's Weblog">Nick</a>'s <a href="http://www.nicklothian.com/blog/2003/04/29/#axion1" title="29 Apr 2003: Axion">post</a> about <a href="http://axion.tigris.org/" title="Axion, an Open Source Java Relational Database Engine">Axion</a>'s insert performance and some internal product delivery schedules, I've been doing some profiling and tuning of Axion's performance (with some <a href="http://axion.tigris.org/servlets/ReadMsg?list=dev&amp;msgNo=471" title="Performance of Axion inserts">good</a> <a href="http://axion.tigris.org/servlets/ReadMsg?list=dev&amp;msgNo=478" title="btree index performance improved by ~100x">results</a>).  I'm reminded of how much I truly enjoy this activity. 
+<p>
+Prompted by <a href="http://www.nicklothian.com/" title="BadMagicNumber, Nick's Weblog">Nick</a>'s <a href="http://www.nicklothian.com/blog/2003/04/29/#axion1" title="29 Apr 2003: Axion">post</a> about <a href="http://axion.tigris.org/" title="Axion, an Open Source Java Relational Database Engine">Axion</a>'s insert performance and some internal product delivery schedules, I've been doing some profiling and tuning of Axion's performance (with some <a href="http://axion.tigris.org/servlets/ReadMsg?list=dev&amp;msgNo=471" title="Performance of Axion inserts">good</a> <a href="http://axion.tigris.org/servlets/ReadMsg?list=dev&amp;msgNo=478" title="btree index performance improved by ~100x">results</a>).  I'm reminded of how much I truly enjoy this activity.
 </p><p>
 I can tell you don't believe me, so I took some notes and wrote up <a href="http://radio.weblogs.com/0122027/stories/2003/05/05/thePleasuresOfProfiling.html" title="the full article">a brief account</a>.
 </p>
@@ -2187,8 +2186,8 @@ I can tell you don't believe me, so I took some notes and wrote up <a href="http
 Unit tests with log statements are a code smell <sup><a href="http://radio.weblogs.com/0122027/2003/05/02.html#a28" title="item permalink">#</a></sup>
 
 
-  <p>
-While this is not an earth shattering realization, I've come hold the opinion that log statements (<a href="http://jakarta.apache.org/log4j/" title="jakarta.apache.org/log4j">log4j</a>, <a href="http://avalon.apache.org/logkit/" title="avalon.apache.org/logkit">logkit</a>, <a href="http://java.sun.com/j2se/1.4.1/docs/api/java/util/logging/package-summary.html" title="javadocs for java.util.logging">java.util.logging</a>, <a href="http://jakarta.apache.org/commons/logging/" title="jakarta.apache.org/commons/logging">commons-logging</a>, what have you) within unit tests are a <a href="http://c2.com/cgi/wiki?CodeSmell" title="Ward's Wiki: CodeSmell">code smell</a>, perhaps universally.  
+<p>
+While this is not an earth shattering realization, I've come hold the opinion that log statements (<a href="http://jakarta.apache.org/log4j/" title="jakarta.apache.org/log4j">log4j</a>, <a href="http://avalon.apache.org/logkit/" title="avalon.apache.org/logkit">logkit</a>, <a href="http://java.sun.com/j2se/1.4.1/docs/api/java/util/logging/package-summary.html" title="javadocs for java.util.logging">java.util.logging</a>, <a href="http://jakarta.apache.org/commons/logging/" title="jakarta.apache.org/commons/logging">commons-logging</a>, what have you) within unit tests are a <a href="http://c2.com/cgi/wiki?CodeSmell" title="Ward's Wiki: CodeSmell">code smell</a>, perhaps universally.
 </p><p>
 While I'll sometimes add a few System.out.println calls to a unit test while I'm trying to diagnose a particular failure, configuring a full-blown logging setup within a unit test always seemed like more time and trouble than it was worth. From time to time I'll encounter a heavily logged TestCase in some code base I'm working with.  The more I work with such TestCases, the more I find this to be an indication that something is not right.
 </p><p>
@@ -2211,7 +2210,7 @@ Here's why:
 build cycles, development cycles, and the nag server <sup><a href="http://radio.weblogs.com/0122027/2003/04/29.html#a27" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 One thing I've noticed about <a href="http://radio.weblogs.com/0122027/2003/04/28.html#a26" title="28 April 2003: A Little Background on our Continuous Integration Setup">our continuous integration process</a> and its meta-process is that both are cyclical.  Here's three examples:
 </p>
 <a name="whenItRains"></a><h3>..FF...FFFFFFFFFF...., or when it rains, it pours</h3>
@@ -2232,7 +2231,7 @@ At times, and to my great frustration, we've had to remove aspects of the build 
 </p>
 <h3>the nag server</h3>
 <p>
-From time to time we find that the discipline of continuous integration begins to slip: successful builds become less frequent and broken builds are fixed more slowly.  The team gets used to seeing frequent build failures, begins ignoring nag messages, becomes complacent, and tends to look for local workarounds rather than addressing the global integration issues.  (This is an instance of the <a href="http://www.c2.com/cgi/wiki?FixBrokenWindows" title="Ward's Wiki: FixBrokenWindows">fix broken windows</a> pattern.)  Despite what Fowler will tell you, in my experience there are some developers who are more than happy to give up the benefits of a continuous integration process, or who fail to recognize what those benefits are in the first place.  (Perhaps not coincidentally, many of these developers haven't been working here as long as the CI process has.)  In part these cycles are an extension of the cycles above--cruft and insufficiently considered work-arounds build up until the code base is fundamentally brittle.   In part these cycles are related to the evolution of the code base--major, cross-component refactorings and shotgun maintenance sometimes lead to periods of build instability.  We've found that whatever the cause sometimes the team needs a little kick to get back on track.  
+From time to time we find that the discipline of continuous integration begins to slip: successful builds become less frequent and broken builds are fixed more slowly.  The team gets used to seeing frequent build failures, begins ignoring nag messages, becomes complacent, and tends to look for local workarounds rather than addressing the global integration issues.  (This is an instance of the <a href="http://www.c2.com/cgi/wiki?FixBrokenWindows" title="Ward's Wiki: FixBrokenWindows">fix broken windows</a> pattern.)  Despite what Fowler will tell you, in my experience there are some developers who are more than happy to give up the benefits of a continuous integration process, or who fail to recognize what those benefits are in the first place.  (Perhaps not coincidentally, many of these developers haven't been working here as long as the CI process has.)  In part these cycles are an extension of the cycles above--cruft and insufficiently considered work-arounds build up until the code base is fundamentally brittle.   In part these cycles are related to the evolution of the code base--major, cross-component refactorings and shotgun maintenance sometimes lead to periods of build instability.  We've found that whatever the cause sometimes the team needs a little kick to get back on track.
 </p><p>
 <a href="http://radio.weblogs.com/0116794/" title="Weblog: Morgan Delagrange">Morgan</a> recently suggested one pleasingly simple kick of this sort.  While discussing a low point in our CI cycle, Morgan half-jokingly suggested that what we needed was a "nag server"--a giant, prominently located monitor that displays the status of the current build.  We jumped on it literally immediately, grabbed the biggest monitor we could find and an underused server; and set them up in the hallway in front of the primary development cube farm with a web browser continuously refreshing a simplier, bigger and bolder version of our build status page.  Morgan later added an automated count of the number of consecutive build failures or successes (replacing a flip chart we manually updated for a while).
 </p><p>
@@ -2248,12 +2247,12 @@ The nag server worked rather well for a while--it improved the build success:fai
 A Little Background on our Continuous Integration Setup <sup><a href="http://radio.weblogs.com/0122027/2003/04/28.html#a26" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 I've been tinkering with a long post on some experiences with <a href="http://www.martinfowler.com/articles/continuousIntegration.html" title="Continuous Integration by Martin Fowler and Matthew Foemmel">continuous integration</a>, but since I'm having trouble finding the time to put it all together, I'll try splitting it up into multiple posts (as seems to be all the rage these days). At the very least this should help me get something posted.
 </p><p>
 Part 1, a little background.
 </p><p>
-At the shop where I work we've been running an increasingly continuous integration service for a little over two years.  
+At the shop where I work we've been running an increasingly continuous integration service for a little over two years.
 Our first fully automated, detect-a-change, build-and-smoke-test occurred on 15 October 2001.  Prior to that we had been running a complete build-and-smoke test at least nightly for several months.
 </p><p>
 Through fits and starts, this CI process has grown to be pretty comprehensive. It performs a complete build-and-unit-test, and in limited circumstances, deploy-and-functional-test across nearly 100 modules (roughly 200,000 non-blank, non-comment lines of code) supporting various internal and external, server, web-based and desktop applications being developed full time by more than 20 developers.  The service is based upon a modified version of <a href="http://cruisecontrol.sf.net/" title="CruiseControl's SourceForge Page">CruiseControl</a> (1.2.1) driving a common <a href="http://ant.apache.org/" title="Apache Ant">Ant</a> build script, <a href="http://junit.org/" title="JUnit.org">JUnit</a> unit tests, <a href="http://jakarta.apache.org/commons/latka/" title="Apache's Jakarta Commons Latka">Latka</a> and <a href="http://jfcunit.sourceforge.net/" title="jfcUnit's SourceForge Page">jfcUnit</a> functional tests.  Build results are reported through email and on our intranet.  Clean builds are tagged, and the generated artifacts are placed in a repository that serves as the foundation for both production deployments and sandbox development.  (Curiously, we've found <a href="http://cvshome.org" title="CVS Home">CVS</a> to be one of the weakest links in that tool chain, but that's a topic for another day.)
@@ -2270,10 +2269,10 @@ It has its problems, but all in all, it's an admirable, perhaps even enviable, s
 InfoWorld's "Farewell Issue" <sup><a href="http://radio.weblogs.com/0122027/2003/04/23.html#a25" title="item permalink">#</a></sup>
 
 
-  <p>
+ <p>
 I work for a company that at one time tried to position itself as a "dot com" and as a result I've seen a lot of friends and colleagues come and go over the years.  This inevitably results in a "farewell" email of one form or another.  For reasons both morbid and practical I archived many of these emails.  I named this mail folder "I quit", although it might more accurately be named "I've been laid off".  I find the variety of length, content, and tone fascinating.  Some are short but sincere: "It has been a privilege (and a blast) working with you, but I am moving on..."  Others are business-like and more than a little bitter: "As of [date] I will be resigning from my position as [title] of [department]."  Others strive to be poetic: "...and so castles made of sand, fall in the sea, eventually."  Others wax philosophical: "I imagine it was probably a dreich, sodden morning as two gentlemen nervously paced the stony, moss-covered steps..."
 </p><p>
-Going through my mail yesterday afternoon, I had a sensation while flipping through the April 18th edition of <a href="http://infoworld.com/" title="infoworld.com">InfoWorld</a> magazine similar to the one I have when looking through my "I quit" archive.  It seems that InfoWorld is changing formats a bit and has bid farewell to a number of its columnists.  I'm not a regular reader of InfoWorld, and probably couldn't identify any of its columnists by name, but <a href="http://infoworld.com/article/03/04/18/16survguide_1.html" title="Bob Lewis: Survival Guide: Parting thoughts">the</a> 
+Going through my mail yesterday afternoon, I had a sensation while flipping through the April 18th edition of <a href="http://infoworld.com/" title="infoworld.com">InfoWorld</a> magazine similar to the one I have when looking through my "I quit" archive.  It seems that InfoWorld is changing formats a bit and has bid farewell to a number of its columnists.  I'm not a regular reader of InfoWorld, and probably couldn't identify any of its columnists by name, but <a href="http://infoworld.com/article/03/04/18/16survguide_1.html" title="Bob Lewis: Survival Guide: Parting thoughts">the</a>
 <a href="http://infoworld.com/article/03/04/18/16storinside_1.html" title="Mario Apicella and Scott Tyler Shafer: Storage Insider: Rounding third, coming home">number</a>
 <a href="http://infoworld.com/article/03/04/18/16gripe_1.html" title="Ed Foster: The Gripe Line: Unfinished business">of</a>
 <a href="http://infoworld.com/article/03/04/18/16winman_1.html" title="Brian Livingston: Window Manager: Time for a change">farewell</a>
@@ -2289,7 +2288,7 @@ Going through my mail yesterday afternoon, I had a sensation while flipping thro
 Are concrete parent classes a code smell? <sup><a href="http://radio.weblogs.com/0122027/2003/04/22.html#a24" title="item permalink">#</a></sup>
 
 
-  <p>
+<p>
 Recently I realized that I've almost subconsciously been following a design heuristic that even I found surprising--I avoid concrete parent classes.  Since coming to this realization, I've been struggling (and failing) to come up with a good case for an instantiable parent class.  Is there a case for classes that are neither abstract nor final?  Could concrete parent classes be a code smell?
 </p><p>
 <a href="http://radio.weblogs.com/0122027/stories/2003/04/21/areConcreteParentClassesACodeSmell.html" title="Are concrete parent classes a code smell?">full story...</a>
@@ -2304,7 +2303,7 @@ Recently I realized that I've almost subconsciously been following a design heur
 Ignore this post (Demonstrates javablogs bug?) <sup><a href="http://radio.weblogs.com/0122027/2003/04/16.html#a23" title="item permalink">#</a></sup>
 
 
-  I've been chasing after a minor <a href="http://javablogs.com/">javablogs</a> bug that causes blog entries that aren't in my java channel to appear on the javablogs site, despite the fact that the <a href="http://www.javablogs.com/ViewBlog.jspa?id=10656">javablogs record for this site</a> is pointing to my <a href="http://radio.weblogs.com/0122027/categories/java/rss.xml">java feed</a> not my <a href="http://radio.weblogs.com/0122027/rss.xml">general feed</a>.<p>
+I've been chasing after a minor <a href="http://javablogs.com/">javablogs</a> bug that causes blog entries that aren't in my java channel to appear on the javablogs site, despite the fact that the <a href="http://www.javablogs.com/ViewBlog.jspa?id=10656">javablogs record for this site</a> is pointing to my <a href="http://radio.weblogs.com/0122027/categories/java/rss.xml">java feed</a> not my <a href="http://radio.weblogs.com/0122027/rss.xml">general feed</a>.<p>
 
 For example, <a href="http://www.javablogs.com/ViewDaysBlogs.jspa?date=15&amp;month=3&amp;year=2003">yesterdays added entries</a> include "Radio Tidbit: Waypath It! Macro" and "The Hundred Year Language (update on "Bruce Eckel has an interesting blog")", even though neither of them were published on <a href="http://radio.weblogs.com/0122027/2003/04/15.html">15 April 2003</a>, and neither of them are published on my <a href="http://radio.weblogs.com/0122027/categories/java/">java channel</a>.</p><p>
 
@@ -2329,7 +2328,7 @@ I suspect the underlying cause for this is some minor bug in the javablogs recor
 I/O Iterators for Java <sup><a href="http://radio.weblogs.com/0122027/2003/04/15.html#a22" title="item permalink">#</a></sup>
 
 
-  While fleshing out the remaining parts of the <a href="http://cvs.apache.org/viewcvs/jakarta-commons/collections/src/java/org/apache/commons/collections/primitives/" title="package org.apache.commons.collections.primitives">primitives</a> package in <a href="http://jakarta.apache.org/commons/" title="Apache's Jakarta Commons Collections">Commons Collections</a>, a simple but potentially powerful feature became apparent.  Using the byte-based primitive collections, it's not only easy but also efficient to bring together the I/O and Collections APIs via <a href="http://cvs.apache.org/viewcvs.cgi/jakarta-commons/collections/src/java/org/apache/commons/collections/primitives/adapters/io/" title="package org.apache.commons.collections.primitives.adapters.io">ByteIterator/InputStream adapters</a>. <p>
+While fleshing out the remaining parts of the <a href="http://cvs.apache.org/viewcvs/jakarta-commons/collections/src/java/org/apache/commons/collections/primitives/" title="package org.apache.commons.collections.primitives">primitives</a> package in <a href="http://jakarta.apache.org/commons/" title="Apache's Jakarta Commons Collections">Commons Collections</a>, a simple but potentially powerful feature became apparent.  Using the byte-based primitive collections, it's not only easy but also efficient to bring together the I/O and Collections APIs via <a href="http://cvs.apache.org/viewcvs.cgi/jakarta-commons/collections/src/java/org/apache/commons/collections/primitives/adapters/io/" title="package org.apache.commons.collections.primitives.adapters.io">ByteIterator/InputStream adapters</a>. <p>
 
 This allows one to treat any InputStream as a ByteIterator (and hence as an Iterator over Bytes)  without resorting to a byte array buffer.  This means that Iterator-based APIs like the <a href="http://jakarta.apache.org/commons/sandbox/functor/" title="Apache's Jakarta Commons Functor">functor</a> <a href="http://jakarta.apache.org/commons/sandbox/functor/apidocs/org/apache/commons/functor/core/collection/CollectionAlgorithms.html" title="CollectionAlgorithms">algorithms</a> can be applied to I/O streams.  Similarly, this allows one to treat any ByteCollection (or Collection of Bytes) as a source for InputStreams.  This means that stream-based APIs can be applied to ByteCollections and Collections of Bytes.</p><p>
 
@@ -2361,7 +2360,7 @@ The full story is <a href="http://radio.weblogs.com/0122027/stories/2003/04/11/r
 The Hundred Year Language (update on "Bruce Eckel has an interesting blog") <sup><a href="http://radio.weblogs.com/0122027/2003/04/09.html#a17" title="item permalink">#</a></sup>
 
 
-  John Wiseman <a href="http://lemonodor.com/archives/000390.html" title="Lemonodor: April 09, 2003: The Hundred Year Language">points out</a> that Paul Graham has written up a version of his PyCon keynote address on 
+John Wiseman <a href="http://lemonodor.com/archives/000390.html" title="Lemonodor: April 09, 2003: The Hundred Year Language">points out</a> that Paul Graham has written up a version of his PyCon keynote address on
 <a href="http://www.paulgraham.com/hundred.html">"The Hundred Year Language"</a>.  <p>
 
 This is the address that was summarized in <a href="http://mindview.net/WebLog">Bruce Eckel's weblog</a>, as I <a href="http://radio.weblogs.com/0122027/2003/04/03.html#a9" title="Rod Waldhoff's Weblog: April 03, 2003: Bruce Eckel has an interesting blog">previously mentioned</a>.</p><p>
@@ -2449,6 +2448,8 @@ I haven't tried it yet, but it seems like a really useful tool for those who fin
 </div>
   <p></p>
 
+
+================================================================================
 
 < Monday, 7 April 2003 >
 
@@ -2674,5 +2675,3 @@ I'm still getting used to the <a href="http://radio.userland.com/">Radio</a> sty
 
 
 All Posts
-
-
