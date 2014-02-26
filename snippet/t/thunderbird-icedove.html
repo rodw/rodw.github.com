@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>How to disable services in Debian/Linux</title>
+  <title>1 thunderbird/icedove snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,6 +112,8 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
+            <h1 class=" remove-bottom">1 thunderbird/icedove snippets</h1>
+          
           <div class="page-class remove-bottom">
             
                 <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -123,31 +125,60 @@
     
     
       <div class="thirteen columns bulleted">
-        <div class="snippet">
-  <h2 class="half-bottom">How to disable services in Debian/Linux</h2>
-  <div>
-    <p>The easy way is to install <code>sysv-rc-conf</code>:</p>
+        
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/access-google-calendar-from-thunderbird.html">
+        <h2 class="half-bottom">Accessing Google Calendar from Thunderbird/Lightning (Icedove/Iceowl)</h2>
+      </a>
+    
+    <div>
+      <p><em>Background Note: On <a href="http://debian.org">Debian</a>, Mozilla&rsquo;s email client <a href="http://www.mozilla.org/thunderbird">Thunderbird</a> is known as <a href="https://wiki.debian.org/Icedove">Icedove</a>, and Mozilla&rsquo;s calendar client <a href="http://www.mozilla.org/en-US/projects/calendar">Lightning</a> is known as Iceowl. This rebranding has <a href="http://en.wikipedia.org/wiki/Mozilla_Corporation_software_rebranded_by_the_Debian_project">something to do with the licensing requirements</a> surrounding the &ldquo;Mozilla&rdquo; name. As I understand it, Firefox/Iceweasel, Thunderbird/Icedove and Sunbird/Lightning/Iceowl are identical save for the icons and naming.</em></p>
 
-<div class="highlight"><pre><code class="console"><span class="gp">$</span> aptitude install sysv-rc-conf
-<span class="gp">$</span> sysv-rc-conf
+<p>Here&rsquo;s how to access Google Calendar using Lightning/Iceowl, whether as a standalone application or as a Thunderbird/Icedove add-on.</p>
+
+<p><strong>1. Install the application:</strong></p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> sudo aptitude install iceowl
 </code></pre></div>
 
 
-<p>Manually, use <code>update-rc.d</code> and specify the run levels, like so:</p>
+<p>Or the add-on (assuming you&rsquo;ve already installed Thunderbird/Icedove):</p>
 
-<div class="highlight"><pre><code class="console"><span class="gp">$</span> update-rc.d SERVICE_NAME stop 0 1 6 3 . start 2 4 5 .
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> sudo aptitude install iceowl-extension
 </code></pre></div>
 
 
+<p>You can install both, but note that they don&rsquo;t share a configuration so you&rsquo;ll need to set up your calendars in both Lightning/Iceowl and Thunderbird/Icedove.</p>
 
+<p><strong>2. Get the &ldquo;private URL&rdquo; for your calendar.</strong></p>
 
+<p>Go to the web-based <a href="https://www.google.com/calendar/">Google Calendar</a>.</p>
+
+<p>On the left-side navigation bar, notice the &ldquo;My Calendars&rdquo; section (expand that if needed). Hover over one of your calendars and click on the little caret/down-arrow menu that appears. Select <code>Calendar settings</code> from that menu.</p>
+
+<p>On the &ldquo;Calendar settings&rdquo; page, note the section labeled &ldquo;Private Addresses&rdquo;.  Copy the URL that is linked to by the orange button labeled &ldquo;XML&rdquo;.</p>
+
+<p><strong>3. Create a new calendar in Lightning/Iceowl.</strong></p>
+
+<p>In the standalone app, that&rsquo;s <code>File</code> > <code>New Calendar</code>. Within Thunderbird/Icedove, that&rsquo;s <code>File</code> > <code>New</code> > <code>Calendar</code>.</p>
+
+<p>Select <code>On the Network</code> (and click <code>Next</code>).</p>
+
+<p>Select <code>Google Calendar</code> and paste the URL you copied in step 2 into the <code>Location</code> field.  (Then click <code>Next</code>.)</p>
+
+<p>Enter your Google username/password and tweak the settings as desired.</p>
+
+<p><strong>4. Repeat steps 2 and 3 for each calendar you want to integrate.</strong></p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/google-calendar.html">google-calendar</a>, <a href="/snippet/t/thunderbird-icedove.html">thunderbird/icedove</a>, <a href="/snippet/t/lightning-iceowl.html">lightning/iceowl</a>, <a href="/snippet/t/debian.html">debian</a> and <a href="/snippet/t/linux.html">linux</a>.</small>
+    </div>    
+    
   </div>
-  <div class="align-right">
-    <small>Tags: <a href="/snippet/t/linux.html">linux</a> and <a href="/snippet/t/debian.html">debian</a>.</small>
-  </div>    
-  
-</div>
-<!-- <hr/> -->
+  <!-- <hr/> -->
+
 
 
         
