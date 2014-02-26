@@ -1,3 +1,50 @@
+
+######################################################################
+tags: [google-calendar,thunderbird/icedove,lightning/iceowl,debian,linux]
+title: Accessing Google Calendar from Thunderbird/Lightning (Icedove/Iceowl)
+slug: access-google-calendar-from-thunderbird
+note: 2014-02-26
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*Background Note: On [Debian](http://debian.org), Mozilla's email client [Thunderbird](http://www.mozilla.org/thunderbird) is known as [Icedove](https://wiki.debian.org/Icedove), and Mozilla's calendar client [Lightning](http://www.mozilla.org/en-US/projects/calendar) is known as Iceowl. This rebranding has [something to do with the licensing requirements](http://en.wikipedia.org/wiki/Mozilla_Corporation_software_rebranded_by_the_Debian_project) surrounding the "Mozilla" name. As I understand it, Firefox/Iceweasel, Thunderbird/Icedove and Sunbird/Lightning/Iceowl are identical save for the icons and naming.*
+
+Here's how to access Google Calendar using Lightning/Iceowl, whether as a standalone application or as a Thunderbird/Icedove add-on.
+
+**1. Install the application:**
+
+{% highlight console %}
+$ sudo aptitude install iceowl
+{% endhighlight %}
+
+Or the add-on (assuming you've already installed Thunderbird/Icedove):
+
+{% highlight console %}
+$ sudo aptitude install iceowl-extension
+{% endhighlight %}
+
+You can install both, but note that they don't share a configuration so you'll need to set up your calendars in both Lightning/Iceowl and Thunderbird/Icedove.
+
+**2. Get the "private URL" for your calendar.**
+
+Go to the web-based [Google Calendar](https://www.google.com/calendar/).
+
+On the left-side navigation bar, notice the "My Calendars" section (expand that if needed). Hover over one of your calendars and click on the little caret/down-arrow menu that appears. Select `Calendar settings` from that menu.
+
+On the "Calendar settings" page, note the section labeled "Private Addresses".  Copy the URL that is linked to by the orange button labeled "XML".
+
+**3. Create a new calendar in Lightning/Iceowl.**
+
+In the standalone app, that's `File` > `New Calendar`. Within Thunderbird/Icedove, that's `File` > `New` > `Calendar`.
+
+Select `On the Network` (and click `Next`).
+
+Select `Google Calendar` and paste the URL you copied in step 2 into the `Location` field.  (Then click `Next`.)
+
+Enter your Google username/password and tweak the settings as desired.
+
+**4. Repeat steps 2 and 3 for each calendar you want to integrate.**
+
+
 ######################################################################
 tags: [python,http,cli,one-liner]
 title: launch an HTTP server serving the current directory using Python
