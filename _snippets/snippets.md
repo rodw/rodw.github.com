@@ -1,3 +1,53 @@
+######################################################################
+tags: [javascript,web,html,performance]
+title: Preloading images with JavaScript
+slug: preloading-images-with-js
+note: 2014-03-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For single-page apps, this should be sufficient:
+
+{% highlight javascript %}
+function preload_images(urls) {
+  urls.forEach( function(i, url ) {
+    (new Image()).src = url;
+  });
+}
+
+preload_images( [ 'image1.jpg', 'image2.png', 'image3.tiff' ] );
+{% endhighlight %}
+
+If you want to add a slight delay (so other web assets can load first) use something like:
+
+{% highlight javascript %}
+setTimeout( function() { preload_images( [ 'image1.jpg', 'image2.png', 'image3.tiff' ] ); }, 500) ;
+{% endhighlight %}
+
+The single-page-app method above loads each image in the array into memory.  *However*, browsers generally won't cache these images, so if the user navigates to another page without viewing the images, they will be lost.
+
+To make the images cachable, it helps to add the image that is created into the actual DOM tree for the page. Here's one way:
+
+{% highlight javascript %}
+function preload_images(urls) {
+  var newdiv = document.createElement("div");
+  if(newdiv.setAttribute) {
+    newdiv.setAttribute("style","display:none;");
+  } else if(newdiv.style && newdiv.style.setAttribute) {
+    newdiv.style.setAttribute("cssText","display:none;");
+  } else if(newdiv.style) {
+    newdiv.style.cssText = "display:none;";
+  } else {
+    newdiv.style = "display:none;"
+  }
+  urls.forEach( function(i, url ) {
+    var newimg = new Image();
+    newimg.src = url
+    newdiv.appendChild(newimg);
+  });
+  document.body.appendChild(newdiv);
+}
+{% endhighlight %}
+
 
 ######################################################################
 tags: [google-calendar,thunderbird/icedove,lightning/iceowl,debian,linux]
