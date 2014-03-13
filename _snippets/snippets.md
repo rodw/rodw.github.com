@@ -1,4 +1,61 @@
 ######################################################################
+tags: [javascript,coffeescript,node.js,http,https,express.js]
+title: Launching an SSL (HTTPS) Server in Node.js and Express.js
+slug: node-https-ssl
+note: 2014-03-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+JavaScript:
+
+{% highlight javascript %}
+var https      = require("https");
+var fs         = require("fs");
+var key_file   = "/path/to/file.pem";
+var cert_file  = "/path/to/file.crt";
+var passphrase = "this is optional";
+var config     = {
+  key: fs.readFileSync(key_file),
+ cert: fs.readFileSync(cert_file)
+};
+if(passphrase) {
+  config.passphrase = passphrase;
+}
+
+https.createServer(config,app).listen(443);
+{% endhighlight %}
+
+CoffeeScript:
+
+{% highlight coffeescript %}
+https      = require "https"
+fs         = require "fs"
+key_file   = "/path/to/file.pem"
+cert_file  = "/path/to/file.crt"
+passphrase = "this is optional"
+config     = {
+  key: fs.readFileSync(key_file)
+ cert: fs.readFileSync(cert_file)
+}
+config.passphrase = passphrase if passphrase?
+
+https.createServer(config,app).listen(443)
+{% endhighlight %}
+
+
+Where `/path/to/file.pem` is the path to a file containing an RSA key, generated (for example) by:
+
+{% highlight console %}
+$ openssl genrsa 1024 > /path/to/file.pem
+{% endhighlight %}
+
+and  `/path/to/file.crt` is the path to a file containing an SSL certificate, generated (for example) by:
+
+{% highlight console %}
+$ openssl req -new -key /path/to/file.pem -out csr.pem
+$ openssl x509 -req -days 365 -in csr.pem -signkey /path/to/file.pem -out /path/to/file.crt
+{% endhighlight %}
+
+######################################################################
 tags: [javascript,coffeescript,node.js,express.js]
 title: Redirect www.example.com to example.com in Node.js and Express.js
 slug: redirect-domain-in-expressjs
