@@ -1,4 +1,35 @@
 ######################################################################
+tags: [javascript,coffeescript,node.js,express.js]
+title: Redirect www.example.com to example.com in Node.js and Express.js
+slug: redirect-domain-in-expressjs
+note: 2014-03-13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To redirect all paths on the "www" version of a hostname to the "non-www" (domain only) version using Express.js (or Connect):
+
+JavaScript:
+
+{% highlight javascript %}
+app.get('/*', function(req, res, next) {
+ if(/^www\./.test(req.headers.host)) {
+  res.redirect(req.protocol+'://'+req.headers.host.replace(/^www\./,'')+req.url,301);
+ } else {
+  next();
+ }
+});
+{% endhighlight %}
+
+CoffeeScript:
+
+{% highlight coffeescript %}
+app.get '/*', (req, res, next)->
+ if /^www\./.test req.headers.host
+  res.redirect "#{req.protocol}://#{req.headers.host.replace(/^www\./,'')}#{req.url}",301
+ else
+  next()
+{% endhighlight %}
+
+######################################################################
 tags: [javascript,web,html,performance]
 title: Preloading images with JavaScript
 slug: preloading-images-with-js
@@ -273,7 +304,7 @@ will download every page linked from the reddit.com homepage and print the conte
 There are several more [examples on the Xidel site](http://videlibri.sourceforge.net/xidel.html#examples).
 
 ######################################################################
-tags: [coffeescript,node.js,bash,gist]
+tags: [coffeescript,javascript,node.js,bash,gist,cli]
 title: Shell script for service-like CoffeeScript/Node.js apps using forever
 slug: forever-service
 note: 2014-02-11
@@ -287,7 +318,7 @@ This is an example of a (bash) shell script that uses the forever module to star
 (Also at [rodw/coffee-as-a-service-via-forever.sh](https://gist.github.com/rodw/8947415).)
 
 ######################################################################
-tags: [wget,http,one-liner]
+tags: [wget,http,one-liner,web,backup]
 title: Backup or mirror a website using wget
 slug: wget-mirror
 note: 2014-02-10
@@ -314,7 +345,7 @@ Some additional notes:
  * `-np` (`--no-parent`) can be used to limit `wget` to files below a specific "directory" (path).
 
 ######################################################################
-tags: [wget,http,one-liner]
+tags: [wget,http,one-liner,performance,web]
 title: Precompile pages or load a web cache using wget
 slug: precomiple-with-wget
 note: 2014-02-10
@@ -337,7 +368,7 @@ Where:
  * `--delete-after` will cause `wget` to delete each file as soon as it is downloaded (so the commmand leaves no traces behind.)
 
 ######################################################################
-tags: [linux,networking,iptables,one-liner]
+tags: [linux,networking,iptables,one-liner,http]
 title: Mapping port 80 to port 3000 using iptables
 slug: iptables-port-mapping
 note: 2014-02-08
@@ -465,7 +496,7 @@ Left \hfill Center-Left \hfill Center-Right \hfill Right
 etc.
 
 ######################################################################
-tags: [coffeescript,node.js,sql,mysql,html]
+tags: [coffeescript,node.js,sql,mysql,html,web]
 title: A General Purpose SQL-to-HTML Routine for CoffeeScript/JavaScript/Node.js
 slug: nodejs-sql-to-html
 note: 2014-02-08
@@ -663,7 +694,7 @@ flatten_array = (a)->
 {% endhighlight %}
 
 ######################################################################
-tags: [node.js,javascript,coffeescript]
+tags: [node.js,javascript,coffeescript,cli,linux]
 title: gracefully closing node.js applications via signal handling
 slug: node-js-process-on-sigint
 note: 2013-01-08
@@ -696,7 +727,7 @@ PS: On Linux (and similar) you can enter `kill -l` on the command line to see a 
 
 
 ######################################################################
-tags: [html,latex]
+tags: [html,latex,web]
 title: breaking non-space (zero-width space)
 slug: zero-width-space-char
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -744,7 +775,7 @@ slug: emacs-cursor-movement-shortcuts
 
 
 ######################################################################
-tags: [emacs,shortcuts]
+tags: [emacs,shortcut]
 title: Searching in Emacs
 slug: emacs-searching
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -762,7 +793,7 @@ slug: emacs-c-x-c-x
 For example:  Use `C-s foo` to search for something.  Maybe use `C-s` again to step thru. Now use `C-x C-x` to flip back to the point where you started (and `C-x C-x` again to return).
 
 ######################################################################
-tags: [javascript,coffeescript,regexp]
+tags: [javascript,coffeescript,regexp,cheatsheet]
 title: Cheat Sheet for JavaScript Regular Expressions
 slug: js-regexp-cheat-sheet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1280,7 +1311,7 @@ A few ways to add line numbers in emacs:
 Also see [emacswiki.org/LineNumbers](http://www.emacswiki.org/LineNumbers).
 
 ######################################################################
-tags: [javascript,algorithm]
+tags: [javascript]
 title: How to determine if two rectangles overlap.
 slug: rectangles-intersect
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1309,7 +1340,7 @@ slug: creative-commons-media-search
 * [Search for Creative Commons content via Google](https://www.google.com/search?q=kitten&tbs=sur:f&tbm=isch)
 
 ######################################################################
-tags: [css]
+tags: [css,html,web]
 title: Cross-browser CSS transitions
 slug: cross-browser-css-transitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1524,14 +1555,11 @@ Modern Debian and Ubuntu distributions have this disabled by default.
 $ setxkbmap -option terminate:ctrl_alt_backspace
 {% endhighlight %}
 
-
 ######################################################################
-tags: [css]
-title: Some useful CSS mix-ins
-slug: some-css-mixins
+tags: [css,web,html,css-mixin]
+title: Presentational CSS Classes
+slug: presentational-css-classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-## Presentational Classes
 
 These are the opposite of semantic markup, but I find them useful:
 
@@ -1546,7 +1574,11 @@ These are the opposite of semantic markup, but I find them useful:
 .small        { font-size: 80%; } /* should really sync with the <small> tag rules */
 {% endhighlight %}
 
-## "Fixing" resets
+######################################################################
+tags: [css,web,html,css-mixin]
+title: Fixing CSS Resets
+slug: fixing-css-resets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CSS reset frameworks often strip out *all* formatting. These CSS rules contain some re-resets:
 
@@ -1624,7 +1656,7 @@ Of course, you could use `du` without the `-h` to get file sizes by the default 
 </strike>
 
 ######################################################################
-tags: [emacs]
+tags: [emacs,shortcut,cheatsheet]
 title: Spell checking cheat-sheet for emacs.
 credit: Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.
 slug: emacs-spell-keys
@@ -1768,7 +1800,7 @@ $ xrandr --output LVDS1 --off --output VGA1 --auto
 {% endhighlight %}
 
 ######################################################################
-tags: [css]
+tags: [css,html,web]
 title: Vertically centering block elements with CSS.
 credit: via <a href="http://phrogz.net/css/vertical-align/index.html">phrogz.net</a>.
 slug: vertical-center-css
