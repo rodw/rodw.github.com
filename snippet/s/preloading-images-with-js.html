@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Backup an SD card on Linux using dd</title>
+  <title>Preloading images with JavaScript</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -124,24 +124,48 @@
     
       <div class="thirteen columns bulleted">
         <div class="snippet">
-  <h2 class="half-bottom">Backup an SD card on Linux using dd</h2>
+  <h2 class="half-bottom">Preloading images with JavaScript</h2>
   <div>
-    
+    <p>For single-page apps, this should be sufficient:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="c">#!/bin/bash</span>
-<span class="k">if</span> <span class="o">[</span> -b <span class="s2">&quot;/dev/$1&quot;</span> <span class="o">]</span>
-<span class="k">then</span>
-<span class="k">  </span><span class="nv">outfile</span><span class="o">=</span><span class="s2">&quot;sdcard-backup-`date +&quot;</span>%s<span class="s2">&quot;`.dd&quot;</span>
-  <span class="nb">echo</span> <span class="s2">&quot;cloning /dev/$1 to $outfile&quot;</span>
-  dd <span class="k">if</span><span class="o">=</span>/dev/<span class="nv">$1</span> <span class="nv">of</span><span class="o">=</span><span class="nv">$outfile</span>
-  <span class="nb">echo</span> <span class="s2">&quot;tgz-ing $outfile&quot;</span>
-  tar zcvf <span class="nv">$outfile</span>.tgz <span class="nv">$outfile</span>
-  <span class="nb">echo</span> <span class="s2">&quot;done.&quot;</span>
-<span class="k">else</span>
-<span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;Usage: $0 /dev/&lt;device&gt;&quot;</span>
-<span class="k">fi</span>
-<span class="nb">echo</span> <span class="s2">&quot;to restore, unmount(?), then use:&quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot;tar Ozxf &lt;file&gt; | dd of=&lt;device&gt;&quot;</span>
+<div class="highlight"><pre><code class="javascript"><span class="kd">function</span> <span class="nx">preload_images</span><span class="p">(</span><span class="nx">urls</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">urls</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">url</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="k">new</span> <span class="nx">Image</span><span class="p">()).</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">preload_images</span><span class="p">(</span> <span class="p">[</span> <span class="s1">&#39;image1.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;image2.png&#39;</span><span class="p">,</span> <span class="s1">&#39;image3.tiff&#39;</span> <span class="p">]</span> <span class="p">);</span>
+</code></pre></div>
+
+
+<p>If you want to add a slight delay (so other web assets can load first) use something like:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">setTimeout</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">preload_images</span><span class="p">(</span> <span class="p">[</span> <span class="s1">&#39;image1.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;image2.png&#39;</span><span class="p">,</span> <span class="s1">&#39;image3.tiff&#39;</span> <span class="p">]</span> <span class="p">);</span> <span class="p">},</span> <span class="mi">500</span><span class="p">)</span> <span class="p">;</span>
+</code></pre></div>
+
+
+<p>The single-page-app method above loads each image in the array into memory.  <em>However</em>, browsers generally won&rsquo;t cache these images, so if the user navigates to another page without viewing the images, they will be lost.</p>
+
+<p>To make the images cachable, it helps to add the image that is created into the actual DOM tree for the page. Here&rsquo;s one way:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">function</span> <span class="nx">preload_images</span><span class="p">(</span><span class="nx">urls</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">newdiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">newdiv</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newdiv</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;style&quot;</span><span class="p">,</span><span class="s2">&quot;display:none;&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">newdiv</span><span class="p">.</span><span class="nx">style</span> <span class="o">&amp;&amp;</span> <span class="nx">newdiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newdiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;cssText&quot;</span><span class="p">,</span><span class="s2">&quot;display:none;&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">newdiv</span><span class="p">.</span><span class="nx">style</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">newdiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">cssText</span> <span class="o">=</span> <span class="s2">&quot;display:none;&quot;</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">newdiv</span><span class="p">.</span><span class="nx">style</span> <span class="o">=</span> <span class="s2">&quot;display:none;&quot;</span>
+  <span class="p">}</span>
+  <span class="nx">urls</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">url</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">newimg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+    <span class="nx">newimg</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">url</span>
+    <span class="nx">newdiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newimg</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newdiv</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 
 
@@ -149,7 +173,7 @@
 
   </div>
   <div class="align-right">
-    <small>Tags: <a href="/snippet/t/linux.html">linux</a> and <a href="/snippet/t/backup.html">backup</a>.</small>
+    <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/web.html">web</a>, <a href="/snippet/t/html.html">html</a> and <a href="/snippet/t/performance.html">performance</a>.</small>
   </div>    
   
 </div>
