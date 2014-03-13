@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>4 http snippets</title>
+  <title>5 http snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,7 +112,7 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">4 http snippets</h1>
+            <h1 class=" remove-bottom">5 http snippets</h1>
           
           <div class="page-class remove-bottom">
             
@@ -126,6 +126,72 @@
     
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/node-https-ssl.html">
+        <h2 class="half-bottom">Launching an SSL (HTTPS) Server in Node.js and Express.js</h2>
+      </a>
+    
+    <div>
+      <p>JavaScript:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">https</span>      <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;https&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span>         <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;fs&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">key_file</span>   <span class="o">=</span> <span class="s2">&quot;/path/to/file.pem&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">cert_file</span>  <span class="o">=</span> <span class="s2">&quot;/path/to/file.crt&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">passphrase</span> <span class="o">=</span> <span class="s2">&quot;this is optional&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">config</span>     <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">key</span><span class="o">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">key_file</span><span class="p">),</span>
+ <span class="nx">cert</span><span class="o">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">cert_file</span><span class="p">)</span>
+<span class="p">};</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">passphrase</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">passphrase</span> <span class="o">=</span> <span class="nx">passphrase</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span><span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">443</span><span class="p">);</span>
+</code></pre></div>
+
+
+<p>CoffeeScript:</p>
+
+<div class="highlight"><pre><code class="coffeescript"><span class="nv">https      = </span><span class="nx">require</span> <span class="s">&quot;https&quot;</span>
+<span class="nv">fs         = </span><span class="nx">require</span> <span class="s">&quot;fs&quot;</span>
+<span class="nv">key_file   = </span><span class="s">&quot;/path/to/file.pem&quot;</span>
+<span class="nv">cert_file  = </span><span class="s">&quot;/path/to/file.crt&quot;</span>
+<span class="nv">passphrase = </span><span class="s">&quot;this is optional&quot;</span>
+<span class="nv">config     = </span><span class="p">{</span>
+  <span class="nv">key: </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">key_file</span><span class="p">)</span>
+ <span class="nv">cert: </span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">cert_file</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nv">config.passphrase = </span><span class="nx">passphrase</span> <span class="k">if</span> <span class="nx">passphrase</span><span class="o">?</span>
+
+<span class="nx">https</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span><span class="nx">app</span><span class="p">).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">443</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Where <code>/path/to/file.pem</code> is the path to a file containing an RSA key, generated (for example) by:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> openssl genrsa 1024 &gt; /path/to/file.pem
+</code></pre></div>
+
+
+<p>and  <code>/path/to/file.crt</code> is the path to a file containing an SSL certificate, generated (for example) by:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> openssl req -new -key /path/to/file.pem -out csr.pem
+<span class="gp">$</span> openssl x509 -req -days 365 -in csr.pem -signkey /path/to/file.pem -out /path/to/file.crt
+</code></pre></div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/http.html">http</a>, <a href="/snippet/t/https.html">https</a> and <a href="/snippet/t/express-js.html">express.js</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/python-static-web-server.html">
@@ -295,7 +361,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  5:17 PM on 13 March 2014</p>
+          <p class="smallprint">This page was generated at  5:36 PM on 13 March 2014</p>
         </div>
       </div>
     </div>
