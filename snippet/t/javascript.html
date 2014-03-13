@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>9 javascript snippets</title>
+  <title>11 javascript snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,7 +112,7 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">9 javascript snippets</h1>
+            <h1 class=" remove-bottom">11 javascript snippets</h1>
           
           <div class="page-class remove-bottom">
             
@@ -126,6 +126,47 @@
     
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/redirect-domain-in-expressjs.html">
+        <h2 class="half-bottom">Redirect www.example.com to example.com in Node.js and Express.js</h2>
+      </a>
+    
+    <div>
+      <p>To redirect all paths on the &ldquo;www&rdquo; version of a hostname to the &ldquo;non-www&rdquo; (domain only) version using Express.js (or Connect):</p>
+
+<p>JavaScript:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/*&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">protocol</span><span class="o">+</span><span class="s1">&#39;://&#39;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="mi">301</span><span class="p">);</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">next</span><span class="p">();</span>
+ <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+<p>CoffeeScript:</p>
+
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;/*&#39;</span><span class="p">,</span> <span class="nf">(req, res, next)-&gt;</span>
+ <span class="k">if</span> <span class="sr">/^www\./</span><span class="p">.</span><span class="nx">test</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">protocol</span><span class="si">}</span><span class="s">://</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span><span class="si">}#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">301</span>
+ <span class="k">else</span>
+  <span class="nx">next</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/node-js.html">node.js</a> and <a href="/snippet/t/express-js.html">express.js</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/preloading-images-with-js.html">
@@ -181,6 +222,28 @@
     </div>
     <div class="align-right">
       <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/web.html">web</a>, <a href="/snippet/t/html.html">html</a> and <a href="/snippet/t/performance.html">performance</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/forever-service.html">
+        <h2 class="half-bottom">Shell script for service-like CoffeeScript/Node.js apps using forever</h2>
+      </a>
+    
+    <div>
+      <p>This is an example of a (bash) shell script that uses the forever module to start and stop a CoffeeScript application as if it were a service.</p>
+
+<script src="https://gist.github.com/rodw/8947415.js"></script>
+
+
+<p>(Also at <a href="https://gist.github.com/rodw/8947415">rodw/coffee-as-a-service-via-forever.sh</a>.)</p>
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/bash.html">bash</a>, <a href="/snippet/t/gist.html">gist</a> and <a href="/snippet/t/cli.html">cli</a>.</small>
     </div>    
     
   </div>
@@ -282,7 +345,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/coffeescript.html">coffeescript</a>.</small>
+      <small>Tags: <a href="/snippet/t/node-js.html">node.js</a>, <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/cli.html">cli</a> and <a href="/snippet/t/linux.html">linux</a>.</small>
     </div>    
     
   </div>
@@ -325,7 +388,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a> and <a href="/snippet/t/regexp.html">regexp</a>.</small>
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/regexp.html">regexp</a> and <a href="/snippet/t/cheatsheet.html">cheatsheet</a>.</small>
     </div>    
     
   </div>
@@ -554,7 +617,7 @@
 
     </div>
     <div class="align-right">
-      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a> and <a href="/snippet/t/algorithm.html">algorithm</a>.</small>
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>.</small>
     </div>    
     
   </div>
@@ -586,7 +649,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  2:37 PM on 13 March 2014</p>
+          <p class="smallprint">This page was generated at  5:17 PM on 13 March 2014</p>
         </div>
       </div>
     </div>

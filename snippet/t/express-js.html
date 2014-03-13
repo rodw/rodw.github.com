@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>Some useful CSS mix-ins</title>
+  <title>1 express.js snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,6 +112,8 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
+            <h1 class=" remove-bottom">1 express.js snippets</h1>
+          
           <div class="page-class remove-bottom">
             
                 <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -123,52 +125,48 @@
     
     
       <div class="thirteen columns bulleted">
-        <div class="snippet">
-  <h2 class="half-bottom">Some useful CSS mix-ins</h2>
-  <div>
-    <h2>Presentational Classes</h2>
+        
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/redirect-domain-in-expressjs.html">
+        <h2 class="half-bottom">Redirect www.example.com to example.com in Node.js and Express.js</h2>
+      </a>
+    
+    <div>
+      <p>To redirect all paths on the &ldquo;www&rdquo; version of a hostname to the &ldquo;non-www&rdquo; (domain only) version using Express.js (or Connect):</p>
 
-<p>These are the opposite of semantic markup, but I find them useful:</p>
+<p>JavaScript:</p>
 
-<div class="highlight"><pre><code class="css"><span class="nc">.align-both</span>   <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">justify</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.align-center</span> <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.align-left</span>   <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.align-right</span>  <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.float-left</span>   <span class="p">{</span> <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.float-right</span>  <span class="p">{</span> <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.nobr</span>         <span class="p">{</span> <span class="k">white-space</span><span class="o">:</span> <span class="k">nowrap</span><span class="p">;</span> <span class="p">}</span>
-<span class="nc">.small</span>        <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">80</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span> <span class="c">/* should really sync with the &lt;small&gt; tag rules */</span>
+<div class="highlight"><pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/*&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">protocol</span><span class="o">+</span><span class="s1">&#39;://&#39;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="mi">301</span><span class="p">);</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">next</span><span class="p">();</span>
+ <span class="p">}</span>
+<span class="p">});</span>
 </code></pre></div>
 
 
-<h2>&ldquo;Fixing&rdquo; resets</h2>
+<p>CoffeeScript:</p>
 
-<p>CSS reset frameworks often strip out <em>all</em> formatting. These CSS rules contain some re-resets:</p>
-
-<div class="highlight"><pre><code class="css"><span class="c">/* I understand the theory behind replacing &lt;i&gt; and &lt;b&gt; with &lt;em&gt; and &lt;strong&gt;, but c&#39;mon, really? */</span>
-<span class="nt">i</span>     <span class="p">{</span> <span class="k">font-style</span><span class="o">:</span> <span class="k">italic</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">b</span>     <span class="p">{</span> <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">small</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">80</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="c">/* Make superscripts and subscripts actually do something: */</span>
-<span class="nt">sup</span><span class="o">,</span> <span class="nt">sub</span> <span class="p">{</span> <span class="k">height</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">line-height</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span> <span class="k">vertical-align</span><span class="o">:</span> <span class="k">baseline</span><span class="p">;</span> <span class="n">_vertical</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="k">bottom</span><span class="p">;</span> <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">sup</span>      <span class="p">{</span>   <span class="k">bottom</span><span class="o">:</span> <span class="m">1ex</span><span class="p">;</span> <span class="p">}</span>
-<span class="nt">sub</span>      <span class="p">{</span>   <span class="k">top</span><span class="o">:</span> <span class="m">.5ex</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="c">/* Mono-spaced types. */</span>
-<span class="nt">pre</span><span class="o">,</span> <span class="nt">code</span><span class="o">,</span> <span class="nt">kbd</span><span class="o">,</span> <span class="nt">samp</span><span class="o">,</span> <span class="nt">tt</span> <span class="p">{</span> <span class="k">font-family</span><span class="o">:</span> <span class="s1">&#39;droid sans mono slashed&#39;</span><span class="o">,</span> <span class="s1">&#39;droid sans mono dotted&#39;</span><span class="o">,</span> <span class="s1">&#39;droid sans mono&#39;</span><span class="o">,</span> <span class="k">monospace</span><span class="o">,</span> <span class="k">monospace</span><span class="p">;</span> <span class="p">}</span>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;/*&#39;</span><span class="p">,</span> <span class="nf">(req, res, next)-&gt;</span>
+ <span class="k">if</span> <span class="sr">/^www\./</span><span class="p">.</span><span class="nx">test</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">protocol</span><span class="si">}</span><span class="s">://</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span><span class="si">}#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">301</span>
+ <span class="k">else</span>
+  <span class="nx">next</span><span class="p">()</span>
 </code></pre></div>
 
 
 
 
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/node-js.html">node.js</a> and <a href="/snippet/t/express-js.html">express.js</a>.</small>
+    </div>    
+    
   </div>
-  <div class="align-right">
-    <small>Tags: <a href="/snippet/t/css.html">css</a>.</small>
-  </div>    
-  
-</div>
-<!-- <hr/> -->
+  <!-- <hr/> -->
+
 
 
         
@@ -195,7 +193,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  2:37 PM on 13 March 2014</p>
+          <p class="smallprint">This page was generated at  5:17 PM on 13 March 2014</p>
         </div>
       </div>
     </div>

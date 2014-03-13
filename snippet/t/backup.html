@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>3 backup snippets</title>
+  <title>4 backup snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,7 +112,7 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">3 backup snippets</h1>
+            <h1 class=" remove-bottom">4 backup snippets</h1>
           
           <div class="page-class remove-bottom">
             
@@ -126,6 +126,46 @@
     
       <div class="thirteen columns bulleted">
         
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/wget-mirror.html">
+        <h2 class="half-bottom">Backup or mirror a website using wget</h2>
+      </a>
+    
+    <div>
+      <p>To create a local mirror or backup of a website with <code>wget</code>, run:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> wget  -r -l 5 -k -w 1 --random-wait URL
+</code></pre></div>
+
+
+<p>Where:</p>
+
+<ul>
+<li><code>-r</code> (or <code>--recursive</code>) will cause <code>wget</code> to recursively download files</li>
+<li><code>-l N</code> (or <code>--level=N</code>) will limit recursion to at most N levels below the root document (defaults to 5, use <code>inf</code> for infinite recursion)</li>
+<li><code>-k</code> (or <code>--convert-links</code>) will cause <code>wget</code> to convert links in the downloaded documents so that the files can be viewed locally</li>
+<li><code>-w</code> (or <code>--wait=N</code>) will cause <code>wget</code> to wait N seconds between requests</li>
+<li><code>--random-wait</code> will cause <code>wget</code> to randomly vary the wait time to <code>0.5x</code> to <code>1.5x</code> the value specified by <code>--wait</code></li>
+</ul>
+
+
+<p>Some additional notes:</p>
+
+<ul>
+<li><code>--mirror</code> (or <code>-m</code>) can be used as a shortcut for <code>-r -N -l inf --no-remove-listing</code> which enables infinite recursion and preserves both the server timestamps and FTP directory listings.</li>
+<li><code>-np</code> (<code>--no-parent</code>) can be used to limit <code>wget</code> to files below a specific &ldquo;directory&rdquo; (path).</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/wget.html">wget</a>, <a href="/snippet/t/http.html">http</a>, <a href="/snippet/t/one-liner.html">one-liner</a>, <a href="/snippet/t/web.html">web</a> and <a href="/snippet/t/backup.html">backup</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
   <div class="snippet">
     
       <a class="permalink" href="/snippet/s/github-backup.html">
@@ -242,7 +282,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  2:37 PM on 13 March 2014</p>
+          <p class="smallprint">This page was generated at  5:17 PM on 13 March 2014</p>
         </div>
       </div>
     </div>

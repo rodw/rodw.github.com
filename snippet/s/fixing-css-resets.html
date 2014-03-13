@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>2 brewer snippets</title>
+  <title>Fixing CSS Resets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,8 +112,6 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">2 brewer snippets</h1>
-          
           <div class="page-class remove-bottom">
             
                 <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -125,114 +123,35 @@
     
     
       <div class="thirteen columns bulleted">
-        
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/brewer-colors-spectral11.html">
-        <h2 class="half-bottom">the <i>spectral11</i> brewer color palette</h2>
-      </a>
-    
-    <div>
-      
+        <div class="snippet">
+  <h2 class="half-bottom">Fixing CSS Resets</h2>
+  <div>
+    <p>CSS reset frameworks often strip out <em>all</em> formatting. These CSS rules contain some re-resets:</p>
 
-<div class="swatch swatch-dark"  style="background-color: #9E0142"><span>#9E0142</span><span>rgb(158,&nbsp; 1, 66)</span><span>Eggplant Violet</span></div>
+<div class="highlight"><pre><code class="css"><span class="c">/* I understand the theory behind replacing &lt;i&gt; and &lt;b&gt; with &lt;em&gt; and &lt;strong&gt;, but c&#39;mon, really? */</span>
+<span class="nt">i</span>     <span class="p">{</span> <span class="k">font-style</span><span class="o">:</span> <span class="k">italic</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">b</span>     <span class="p">{</span> <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">small</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">80</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span>
 
+<span class="c">/* Make superscripts and subscripts actually do something: */</span>
+<span class="nt">sup</span><span class="o">,</span> <span class="nt">sub</span> <span class="p">{</span> <span class="k">height</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">line-height</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span> <span class="k">vertical-align</span><span class="o">:</span> <span class="k">baseline</span><span class="p">;</span> <span class="n">_vertical</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="k">bottom</span><span class="p">;</span> <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">sup</span>      <span class="p">{</span>   <span class="k">bottom</span><span class="o">:</span> <span class="m">1ex</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">sub</span>      <span class="p">{</span>   <span class="k">top</span><span class="o">:</span> <span class="m">.5ex</span><span class="p">;</span> <span class="p">}</span>
 
-<div class="swatch swatch-dark"  style="background-color: #D53E4F"><span>#D53E4F</span><span>rgb(213, 62, 79)</span><span>Valencia Red</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #F46D43"><span>#F46D43</span><span>rgb(244,109, 67)</span><span>Crusta (Dark) Orange</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FDAE61"><span>#FDAE61</span><span>rgb(253,174, 97)</span><span>Rajah (Light) Orange</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FEE08B"><span>#FEE08B</span><span>rgb(254,244,139)</span><span>Cream Brulee (Dark) Yellow</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FFFFBF"><span>#FFFFBF</span><span>rgb(255,255,191)</span><span>Lemon Chiffon (Light) Yellow</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #E6F598"><span>#E6F598</span><span>rgb(230,245,152)</span><span>Tidal (Pale, Yellow-) Green</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #ABDDA4"><span>#ABDDA4</span><span>rgb(171,221,164)</span><span>Moss (Pale) Green</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #66C2A5"><span>#66C2A5</span><span>rgb(102,194,165)</span><span>Puerto Rico (Blue-) Green</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #3288BD"><span>#3288BD</span><span>rgb( 50,136,189)</span><span>Curious (Muted) Blue</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #5E4FA2"><span>#5E4FA2</span><span>rgb( 94, 79,162)</span><span>Rich (Violet-) Blue</span></div>
+<span class="c">/* Mono-spaced types. */</span>
+<span class="nt">pre</span><span class="o">,</span> <span class="nt">code</span><span class="o">,</span> <span class="nt">kbd</span><span class="o">,</span> <span class="nt">samp</span><span class="o">,</span> <span class="nt">tt</span> <span class="p">{</span> <span class="k">font-family</span><span class="o">:</span> <span class="s1">&#39;droid sans mono slashed&#39;</span><span class="o">,</span> <span class="s1">&#39;droid sans mono dotted&#39;</span><span class="o">,</span> <span class="s1">&#39;droid sans mono&#39;</span><span class="o">,</span> <span class="k">monospace</span><span class="o">,</span> <span class="k">monospace</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>
 
 
 
 
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/colors.html">colors</a> and <a href="/snippet/t/brewer.html">brewer</a>.</small>
-    </div>    
-    <div class="align-right"><small>Credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.</small></div>
   </div>
-  <!-- <hr/> -->
-
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/brewer-colors-paired12.html">
-        <h2 class="half-bottom">the <i>paired12</i> brewer color palette</h2>
-      </a>
-    
-    <div>
-      
-
-<div class="swatch swatch-light" style="background-color: #A6CEE3"><span>#A6CEE3</span><span>rgb(166,206,227)</span><span>French Pass (Light) Blue</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #1F78B4"><span>#1F78B4</span><span>rgb( 31,120,180)</span><span>Pelorous (Dark) Blue</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #B2DF8A"><span>#B2DF8A</span><span>rgb(178,223,138)</span><span>Feijoa (Light) Green</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #33A02C"><span>#33A02C</span><span>rgb( 51,160, 44)</span><span>La Palma (Dark) Green</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FB9A99"><span>#FB9A99</span><span>rgb(251,154,153)</span><span>Rose Bud (Light) Red (Pink)</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #E31A1C"><span>#E31A1C</span><span>rgb(227, 26, 28)</span><span>Fire Engine (Dark) Red</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FDBF6F"><span>#FDBF6F</span><span>rgb(253,191,111)</span><span style="font-size:90%">Chardonnay Yellow (Light Orange)</span></div>
-
-
-<div class="swatch swatch-light"  style="background-color: #FF7F00"><span>#FF7F00</span><span>rgb(255,127,&nbsp; 0)</span><span>Dark Orange</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #CAB2D6"><span>#CAB2D6</span><span>rgb(202,178,214)</span><span>Prelude (Light) Violet</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #6A3D9A"><span>#6A3D9A</span><span>rgb(106, 61,154)</span><span>Royal (Dark) Purple</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FFFF99"><span>#FFFF99</span><span>rgb(255,255,153)</span><span style="font-size:90%">Canary Yellow (Light "Brown")</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #B15928"><span>#B15928</span><span>rgb(177, 89, 40)</span><span style="font-size:80%">Rose of Sharon Orange ("Dark" "Brown")</span></div>
-
-
-
-
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/colors.html">colors</a> and <a href="/snippet/t/brewer.html">brewer</a>.</small>
-    </div>    
-    <div class="align-right"><small>Credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.</small></div>
-  </div>
-  <!-- <hr/> -->
-
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/css.html">css</a>, <a href="/snippet/t/web.html">web</a>, <a href="/snippet/t/html.html">html</a> and <a href="/snippet/t/css-mixin.html">css-mixin</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
 
 
         

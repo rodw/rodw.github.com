@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>3 shortcut snippets</title>
+  <title>5 shortcut snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,7 +112,7 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">3 shortcut snippets</h1>
+            <h1 class=" remove-bottom">5 shortcut snippets</h1>
           
           <div class="page-class remove-bottom">
             
@@ -151,6 +151,28 @@
 <li><p><code>M-v</code> or <code>&lt;PageUp&gt;</code> &ndash; up one page (<code>scroll-down-command</code>)</p></li>
 <li><p><code>C-x C-n</code> &ndash; set current column as &ldquo;goal&rdquo; column for up/down movement</p></li>
 <li><code>C-u C-x C-n</code> &ndash; cancel current goal column</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a> and <a href="/snippet/t/shortcut.html">shortcut</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/emacs-searching.html">
+        <h2 class="half-bottom">Searching in Emacs</h2>
+      </a>
+    
+    <div>
+      <ul>
+<li><code>C-s</code> / <code>C-r</code> &ndash; search / search backward in current buffer</li>
+<li><code>M-s o</code> / <code>M-x occur</code> / <code>M-x ioccur</code> &ndash; list lines in current buffer matching regexp</li>
+<li><code>M-x rgrep</code> &ndash; recursive grep (find in files)</li>
 </ul>
 
 
@@ -232,6 +254,39 @@
   </div>
   <!-- <hr/> -->
 
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/emacs-spell-keys.html">
+        <h2 class="half-bottom">Spell checking cheat-sheet for emacs.</h2>
+      </a>
+    
+    <div>
+      <ul>
+<li><code>M-$</code> - <code>ispell-word</code> or <code>ispell-region</code> (depending on whether something is selected)</li>
+<li><code>[SPACE]</code> - Skip this word—continue to consider it incorrect, but don&rsquo;t change it here.</li>
+<li><code>r newword [RETURN]</code> - Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.)</li>
+<li><code>R new [RETURN]</code> - Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.)</li>
+<li><code>a</code> - Accept the incorrect word—treat it as correct, but only in this editing session.</li>
+<li><code>A</code> - Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer.</li>
+<li><code>i</code> - Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions.</li>
+<li><code>m</code> - Like <code>i</code>, but you can also specify dictionary completion information.</li>
+<li><code>u</code> - Insert the lower-case version of this word in your private dictionary file.</li>
+<li><code>l word [RETURN]</code> - Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use <code>*</code> in word as a wildcard.</li>
+<li><code>C-g X</code> - Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with <code>C-u M-$</code>.</li>
+<li><code>x</code> - Quit interactive spell checking and move point back to where it was when you started spell checking.</li>
+<li><code>q</code> - Quit interactive spell checking and kill the spell-checker subprocess.</li>
+<li><code>?</code> - Help</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>, <a href="/snippet/t/shortcut.html">shortcut</a> and <a href="/snippet/t/cheatsheet.html">cheatsheet</a>.</small>
+    </div>    
+    <div class="align-right"><small>Credit: Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.</small></div>
+  </div>
+  <!-- <hr/> -->
+
 
 
         
@@ -258,7 +313,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  2:37 PM on 13 March 2014</p>
+          <p class="smallprint">This page was generated at  5:17 PM on 13 March 2014</p>
         </div>
       </div>
     </div>

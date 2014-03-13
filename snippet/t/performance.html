@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>1 performance snippets</title>
+  <title>2 performance snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,7 +112,7 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">1 performance snippets</h1>
+            <h1 class=" remove-bottom">2 performance snippets</h1>
           
           <div class="page-class remove-bottom">
             
@@ -186,6 +186,39 @@
   </div>
   <!-- <hr/> -->
 
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/precomiple-with-wget.html">
+        <h2 class="half-bottom">Precompile pages or load a web cache using wget</h2>
+      </a>
+    
+    <div>
+      <p>Many web frameworks and templating engines will generate the HTML version of a document the first time it is accessed.  This can make the first hit on a given page significantly slower than subsequent hits.</p>
+
+<p>You can use <code>wget</code> to pre-cache web pages using a command such as:</p>
+
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> wget -r -l 3 -nd --delete-after URL
+</code></pre></div>
+
+
+<p>Where:</p>
+
+<ul>
+<li><code>-r</code> (or <code>--recursive</code>) will cause <code>wget</code> to recursively download files</li>
+<li><code>-l N</code> (or <code>--level=N</code>) will limit recursion to at most N levels below the root document (defaults to 5, use <code>inf</code> for infinite recursion)</li>
+<li><code>-nd</code> (or <code>--no-directories</code>) will prevent <code>wget</code> from creating local directories to match the server-side paths</li>
+<li><code>--delete-after</code> will cause <code>wget</code> to delete each file as soon as it is downloaded (so the commmand leaves no traces behind.)</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/wget.html">wget</a>, <a href="/snippet/t/http.html">http</a>, <a href="/snippet/t/one-liner.html">one-liner</a>, <a href="/snippet/t/performance.html">performance</a> and <a href="/snippet/t/web.html">web</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
 
 
         
@@ -212,7 +245,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  2:37 PM on 13 March 2014</p>
+          <p class="smallprint">This page was generated at  5:17 PM on 13 March 2014</p>
         </div>
       </div>
     </div>

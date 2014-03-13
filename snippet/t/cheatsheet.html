@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>2 cheatsheet snippets</title>
+  <title>4 cheatsheet snippets</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,7 +112,7 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">2 cheatsheet snippets</h1>
+            <h1 class=" remove-bottom">4 cheatsheet snippets</h1>
           
           <div class="page-class remove-bottom">
             
@@ -173,6 +173,49 @@
 
   <div class="snippet">
     
+      <a class="permalink" href="/snippet/s/js-regexp-cheat-sheet.html">
+        <h2 class="half-bottom">Cheat Sheet for JavaScript Regular Expressions</h2>
+      </a>
+    
+    <div>
+      <h3>flags</h3>
+
+<ul>
+<li><code>/pattern/g</code> - global</li>
+<li><code>/pattern/i</code> - case-insensitive</li>
+<li><code>/pattern/m</code> - multi-line</li>
+</ul>
+
+
+<h3>patterns</h3>
+
+<ul>
+<li><code>\s</code> - any whitespace character (<code>[\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>[\s\S]</code> - commonly used for &ldquo;anything including newlines (alternative <code>[^]</code>)</li>
+<li><p><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</p></li>
+<li><p><code>\w</code> - any word character (alpha, numeric or underscore) (<code>[a-zA-Z0-9_]</code>)</p></li>
+<li><code>\W</code> - any non-word character (<code>[^a-zA-Z0-9_]</code>)</li>
+<li><code>\d</code> - any digit (<code>[0-9]</code>)</li>
+<li><code>\D</code> - any non-digit (<code>[^0-9]</code>)</li>
+<li><code>\cX</code>- control character X (e.g. <code>\cM</code> matches <code>control-M</code> (<code>^M</code>))</li>
+<li><code>\b</code> - word boundary (the position between a word char and whitespace)</li>
+<li><code>\B</code> - not a word boundary (<code>[^\b]</code>).</li>
+<li><code>\xhh</code> - the character with hex code <code>hh</code></li>
+<li><code>\uhhhh</code> - the character with hex code <code>hhhh</code></li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/regexp.html">regexp</a> and <a href="/snippet/t/cheatsheet.html">cheatsheet</a>.</small>
+    </div>    
+    
+  </div>
+  <!-- <hr/> -->
+
+  <div class="snippet">
+    
       <a class="permalink" href="/snippet/s/linux-run-level-cheatsheet.html">
         <h2 class="half-bottom">Cheat Sheet for Linux Run Levels</h2>
       </a>
@@ -213,6 +256,39 @@
   </div>
   <!-- <hr/> -->
 
+  <div class="snippet">
+    
+      <a class="permalink" href="/snippet/s/emacs-spell-keys.html">
+        <h2 class="half-bottom">Spell checking cheat-sheet for emacs.</h2>
+      </a>
+    
+    <div>
+      <ul>
+<li><code>M-$</code> - <code>ispell-word</code> or <code>ispell-region</code> (depending on whether something is selected)</li>
+<li><code>[SPACE]</code> - Skip this word—continue to consider it incorrect, but don&rsquo;t change it here.</li>
+<li><code>r newword [RETURN]</code> - Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.)</li>
+<li><code>R new [RETURN]</code> - Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.)</li>
+<li><code>a</code> - Accept the incorrect word—treat it as correct, but only in this editing session.</li>
+<li><code>A</code> - Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer.</li>
+<li><code>i</code> - Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions.</li>
+<li><code>m</code> - Like <code>i</code>, but you can also specify dictionary completion information.</li>
+<li><code>u</code> - Insert the lower-case version of this word in your private dictionary file.</li>
+<li><code>l word [RETURN]</code> - Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use <code>*</code> in word as a wildcard.</li>
+<li><code>C-g X</code> - Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with <code>C-u M-$</code>.</li>
+<li><code>x</code> - Quit interactive spell checking and move point back to where it was when you started spell checking.</li>
+<li><code>q</code> - Quit interactive spell checking and kill the spell-checker subprocess.</li>
+<li><code>?</code> - Help</li>
+</ul>
+
+
+    </div>
+    <div class="align-right">
+      <small>Tags: <a href="/snippet/t/emacs.html">emacs</a>, <a href="/snippet/t/shortcut.html">shortcut</a> and <a href="/snippet/t/cheatsheet.html">cheatsheet</a>.</small>
+    </div>    
+    <div class="align-right"><small>Credit: Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.</small></div>
+  </div>
+  <!-- <hr/> -->
+
 
 
         
@@ -239,7 +315,7 @@
         </p>
         <p class="half-bottom">&copy; Copyright 2012-2014 Rodney Waldhoff.</p>
         <div id="caveator">
-          <p class="smallprint">This page was generated at  2:37 PM on 13 March 2014</p>
+          <p class="smallprint">This page was generated at  5:17 PM on 13 March 2014</p>
         </div>
       </div>
     </div>

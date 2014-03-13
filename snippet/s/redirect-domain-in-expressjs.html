@@ -6,7 +6,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-  <title>2 brewer snippets</title>
+  <title>Redirect www.example.com to example.com in Node.js and Express.js</title>
 	
 	<meta name="author" content="rod">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -112,8 +112,6 @@
       <div class="thirteen columns">
         <div id="page-header" class="half-bottom mtop">
           
-            <h1 class=" remove-bottom">2 brewer snippets</h1>
-          
           <div class="page-class remove-bottom">
             
                 <a href="/snippet">Snippets</a> are tiny notes I've collected for easy reference.
@@ -125,114 +123,42 @@
     
     
       <div class="thirteen columns bulleted">
-        
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/brewer-colors-spectral11.html">
-        <h2 class="half-bottom">the <i>spectral11</i> brewer color palette</h2>
-      </a>
-    
-    <div>
-      
+        <div class="snippet">
+  <h2 class="half-bottom">Redirect www.example.com to example.com in Node.js and Express.js</h2>
+  <div>
+    <p>To redirect all paths on the &ldquo;www&rdquo; version of a hostname to the &ldquo;non-www&rdquo; (domain only) version using Express.js (or Connect):</p>
 
-<div class="swatch swatch-dark"  style="background-color: #9E0142"><span>#9E0142</span><span>rgb(158,&nbsp; 1, 66)</span><span>Eggplant Violet</span></div>
+<p>JavaScript:</p>
 
-
-<div class="swatch swatch-dark"  style="background-color: #D53E4F"><span>#D53E4F</span><span>rgb(213, 62, 79)</span><span>Valencia Red</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #F46D43"><span>#F46D43</span><span>rgb(244,109, 67)</span><span>Crusta (Dark) Orange</span></div>
+<div class="highlight"><pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/*&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">protocol</span><span class="o">+</span><span class="s1">&#39;://&#39;</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="mi">301</span><span class="p">);</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">next</span><span class="p">();</span>
+ <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 
 
-<div class="swatch swatch-light" style="background-color: #FDAE61"><span>#FDAE61</span><span>rgb(253,174, 97)</span><span>Rajah (Light) Orange</span></div>
+<p>CoffeeScript:</p>
 
-
-<div class="swatch swatch-light" style="background-color: #FEE08B"><span>#FEE08B</span><span>rgb(254,244,139)</span><span>Cream Brulee (Dark) Yellow</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FFFFBF"><span>#FFFFBF</span><span>rgb(255,255,191)</span><span>Lemon Chiffon (Light) Yellow</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #E6F598"><span>#E6F598</span><span>rgb(230,245,152)</span><span>Tidal (Pale, Yellow-) Green</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #ABDDA4"><span>#ABDDA4</span><span>rgb(171,221,164)</span><span>Moss (Pale) Green</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #66C2A5"><span>#66C2A5</span><span>rgb(102,194,165)</span><span>Puerto Rico (Blue-) Green</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #3288BD"><span>#3288BD</span><span>rgb( 50,136,189)</span><span>Curious (Muted) Blue</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #5E4FA2"><span>#5E4FA2</span><span>rgb( 94, 79,162)</span><span>Rich (Violet-) Blue</span></div>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span> <span class="s">&#39;/*&#39;</span><span class="p">,</span> <span class="nf">(req, res, next)-&gt;</span>
+ <span class="k">if</span> <span class="sr">/^www\./</span><span class="p">.</span><span class="nx">test</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">protocol</span><span class="si">}</span><span class="s">://</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^www\./</span><span class="p">,</span><span class="s">&#39;&#39;</span><span class="p">)</span><span class="si">}#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">301</span>
+ <span class="k">else</span>
+  <span class="nx">next</span><span class="p">()</span>
+</code></pre></div>
 
 
 
 
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/colors.html">colors</a> and <a href="/snippet/t/brewer.html">brewer</a>.</small>
-    </div>    
-    <div class="align-right"><small>Credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.</small></div>
   </div>
-  <!-- <hr/> -->
-
-  <div class="snippet">
-    
-      <a class="permalink" href="/snippet/s/brewer-colors-paired12.html">
-        <h2 class="half-bottom">the <i>paired12</i> brewer color palette</h2>
-      </a>
-    
-    <div>
-      
-
-<div class="swatch swatch-light" style="background-color: #A6CEE3"><span>#A6CEE3</span><span>rgb(166,206,227)</span><span>French Pass (Light) Blue</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #1F78B4"><span>#1F78B4</span><span>rgb( 31,120,180)</span><span>Pelorous (Dark) Blue</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #B2DF8A"><span>#B2DF8A</span><span>rgb(178,223,138)</span><span>Feijoa (Light) Green</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #33A02C"><span>#33A02C</span><span>rgb( 51,160, 44)</span><span>La Palma (Dark) Green</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FB9A99"><span>#FB9A99</span><span>rgb(251,154,153)</span><span>Rose Bud (Light) Red (Pink)</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #E31A1C"><span>#E31A1C</span><span>rgb(227, 26, 28)</span><span>Fire Engine (Dark) Red</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FDBF6F"><span>#FDBF6F</span><span>rgb(253,191,111)</span><span style="font-size:90%">Chardonnay Yellow (Light Orange)</span></div>
-
-
-<div class="swatch swatch-light"  style="background-color: #FF7F00"><span>#FF7F00</span><span>rgb(255,127,&nbsp; 0)</span><span>Dark Orange</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #CAB2D6"><span>#CAB2D6</span><span>rgb(202,178,214)</span><span>Prelude (Light) Violet</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #6A3D9A"><span>#6A3D9A</span><span>rgb(106, 61,154)</span><span>Royal (Dark) Purple</span></div>
-
-
-<div class="swatch swatch-light" style="background-color: #FFFF99"><span>#FFFF99</span><span>rgb(255,255,153)</span><span style="font-size:90%">Canary Yellow (Light "Brown")</span></div>
-
-
-<div class="swatch swatch-dark"  style="background-color: #B15928"><span>#B15928</span><span>rgb(177, 89, 40)</span><span style="font-size:80%">Rose of Sharon Orange ("Dark" "Brown")</span></div>
-
-
-
-
-    </div>
-    <div class="align-right">
-      <small>Tags: <a href="/snippet/t/colors.html">colors</a> and <a href="/snippet/t/brewer.html">brewer</a>.</small>
-    </div>    
-    <div class="align-right"><small>Credit: via <a href="http://www.graphviz.org/doc/info/colors.html">graphviz.org</a>; more info at <a href="http://mkweb.bcgsc.ca/brewer/">mkweb.bcgsc.ca/brewer/</a>.</small></div>
-  </div>
-  <!-- <hr/> -->
-
+  <div class="align-right">
+    <small>Tags: <a href="/snippet/t/javascript.html">javascript</a>, <a href="/snippet/t/coffeescript.html">coffeescript</a>, <a href="/snippet/t/node-js.html">node.js</a> and <a href="/snippet/t/express-js.html">express.js</a>.</small>
+  </div>    
+  
+</div>
+<!-- <hr/> -->
 
 
         
