@@ -1,0 +1,12 @@
+{>"_bootstrap.dust"/}
+{<page_title}{?title}{title} | {/title}{/page_title}
+{<main_container_content}
+  <div class="container">
+    <div class="row">
+      {>"_sidebar.dust"/}
+      <div class="col-md-10">
+        {content|s}
+      </div>
+    </div>
+  </div>
+{/main_container_content}

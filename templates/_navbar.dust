@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">HeyRod.com</a>
+    </div>
+    <div  id="main-nav" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {>"_navbar-tab" tab_name="home"     tab_Name="Home"     tab_url="/"/}
+        {>"_navbar-tab" tab_name="projects" tab_Name="Projects" tab_url="/projects/"/}
+        {>"_navbar-tab" tab_name="articles" tab_Name="Articles" tab_url="/articles/"/}
+        {>"_navbar-tab" tab_name="snippets" tab_Name="Snippets" tab_url="/snippets/"/}
+      </ul>
+    </div>
+  </div>
+</nav>

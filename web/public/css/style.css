@@ -1,0 +1,21 @@
+/*.navbar-inverse { background:#221a0f; color:#d3af86;}
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a { color:#d09a83;}
+.navbar-inverse .navbar-brand a:hover, .navbar-inverse .navbar-nav > li > a:hover { color:#e9e0ee;}
+.navbar-inverse .navbar-nav > li.active { color:#e9e0ee; background:#221a0f;}*/
+body { background: #f6f6f6; }
+.navbar { border-radius:0px; }
+.snippet { border:1px solid black; padding:1em; }
+.snippet h2 { padding-top:0; margin-top:0;}
+.snippet .tags { text-align:right; }
+.snippet-title > div {min-height:70px; }
+.snippet-title-right { position:relative; }
+.snippet-title-right .snippet-title-link { position:absolute; bottom:12px; right:0; }
+.snippet { position:relative; }
+.snippet .permalink { position:absolute; top:8px; right:12px; }
+.snippet .pubdate { position:absolute; bottom:14px; left:12px;  }
+pre {padding:0px;}
+code {background:#3f3f3f; color:#33dd33;}
+div.swatch { height: 32px; line-height:32px; width: 100%; text-align: center; font-family: Droid Sans Mono, Monospaced;}
+div.swatch-dark { color:#ddd; }
+div.swatch-light { color:#222; }
+div.swatch span { display:block; float:left; width:33% !important; text-align:center; }
