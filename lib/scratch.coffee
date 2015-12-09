@@ -221,7 +221,10 @@ class Scratch
     h = ((dt.getHours() + 11) % 12 + 1)
     buf += h
     buf += ":"
-    buf += dt.getMinutes()
+    m = dt.getMinutes()
+    if m < 10
+      m = "0#{m}"
+    buf += m
     buf += " "
     if dt.getHours() > 12
       buf += "PM"
