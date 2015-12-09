@@ -1,0 +1,22 @@
+{>"_bootstrap.dust"/}
+{<page_title}{?title}{snippets.length} {tag_name} snippet{@unless value="{snippets.length}" is="1"}s{/unless}| {/title}{/page_title}
+{<main_container_content}
+  <div class="container">
+    <div class="row">
+      {>"_sidebar.dust"/}
+      <div class="col-md-10">
+        <div class="row snippet-title">
+          <div class="col-sm-7"><h1>{snippets.length} {tag_name} snippet{@unless value="{snippets.length}" is="1"}s{/unless}</h1></div>
+          <div class="col-sm-5 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div>
+        </div>
+        {#snippets}
+          {>"_snippet.dust"/}
+          <br>&nbsp;</br>
+        {/snippets}
+        <div class="row">
+          <div class="col-sm-12 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{/main_container_content}

@@ -1,0 +1,42 @@
+{
+  "name": "rods-ssg",
+  "version": "0.1.0",
+  "published": "9 November 2015 (2000)",
+  "description": "Rod's static site generator.",
+  "private": true,
+  "license": "MIT",
+  "author": "Rod",
+  "dependencies": {
+    "common-dustjs-helpers": "^0.2",
+    "dustjs-linkedin": "2.5.x",
+    "inote-util": "^0.8",
+    "klei-dust": "0.8.x",
+    "meta-marked": "0.3.x",
+    "optimist": "0.6.x",
+    "shelljs": "0.3.x",
+    "tmpfs": "0.1.x"
+  },
+  "devDependencies": {
+    "http-server": "latest",
+    "clean-css": "3.1.x",
+    "coffee-coverage": "0.4.x",
+    "coffee-script": "^1.10",
+    "coffee-19-jshint": "^2.3",
+    "docco": "^0.7",
+    "highlight.js": "^8.4",
+    "istanbul": "^0.3",
+    "jasmine-node": "^1.14",
+    "marked": "^0.3",
+    "marked-toc": "^0.3",
+    "mocha": "^2.2",
+    "should": "^5.2",
+    "uglify-js": "^2.4",
+    "uglifycss": "^0.0"
+  },
+  "main": "lib/main.js",
+  "scripts": {
+  },
+  "engines": {
+    "node": "^0.12"
+  }
+}
