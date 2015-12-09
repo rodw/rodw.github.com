@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Curly braces, Pipes, Escape and other characters on the Zaurus | HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li class="active"><a href="/articles/">Articles <span class="sr-only">(current)</span></a></li><li><a href="/snippets/">Snippets</a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><h1 id="curly-braces-pipes-escape-and-other-characters-on-the-zaurus">Curly braces, Pipes, Escape and other characters on the Zaurus</h1>
+<p><div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/articles/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Monday, 21 July 2003</b></p>
+<p>
+If you&#39;ve ever tried to type code, pseudo-code or shell scripts on the Sharp <a href="http://www.zaurus.com/" title="Zaurus.com: Sharp's Zaurus site">Zaurus</a>, you may have noticed that the little slide-out keyboard is missing some useful keys.  If you&#39;ve done much typing with this thumb-keyboard, you may have noticed that when you fat-finger a couple of keys, you can get some of those extra characters.  For my reference as much as yours, here&#39;s a short list:
+</p>
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody><tr>
+ <th>keys</th>
+ <th>character</th>
+ <th>unicode value</th>
+ <th>name</th>
+</tr>
+<tr>
+ <td>[Fn]+z</td>
+ <td>&nbsp;</td>
+ <td>0x005A(?)</td>
+ <td>undo</td>
+</tr>
+<tr>
+ <td>[Fn]+[Shift]+c</td>
+ <td>€</td>
+ <td>0x20AC</td>
+ <td>euro symbol</td>
+</tr>
+<tr>
+ <td>[Fn]+[Shift]+[Backspace]</td>
+ <td>[</td>
+ <td>0x005B</td>
+ <td>left square bracket</td>
+</tr>
+<tr>
+ <td>[Fn]+[Shift]+,</td>
+ <td>]</td>
+ <td>0x005D</td>
+ <td>right square bracket</td>
+</tr>
+<tr>
+ <td>[Fn]+[Shift]+.</td>
+ <td>{</td>
+ <td>0x007B</td>
+ <td>left curly brace</td>
+</tr>
+<tr>
+ <td>[Fn]+[Shift]+[Enter]</td>
+ <td>}</td>
+ <td>0x007D</td>
+ <td>right curly brace</td>
+</tr>
+<tr>
+ <td>[Fn]+[Shift]+&#39;</td>
+ <td>^</td>
+ <td>0x005E</td>
+ <td>caret/circumflex</td>
+</tr>
+<tr>
+ <td>[Fn]+[Shift]+[Space]</td>
+ <td>`</td>
+ <td>0x0060</td>
+ <td>tick/backquote</td>
+</tr>
+<tr>
+ <td>[Shift]+[Space]</td>
+ <td>|</td>
+ <td>0x007C</td>
+ <td>pipe</td>
+</tr>
+<tr>
+ <td>[Shift]+[Tab]</td>
+ <td>\</td>
+ <td>0x005C</td>
+ <td>backslash (note that this is listed incorrectly in the sharp doc)</td>
+</tr>
+</tbody></table>
+<p>
+In the table above, &quot;[Fn]&quot; means the purple &quot;function&quot; key, &quot;[Shift]&quot; means the arrow-up &quot;shift&quot; key, &quot;[Backspace] means the white back-arrow/delete key, &quot;[Enter]&quot; means the purple &quot;return&quot; key, &quot;[Space]&quot; means the space bar, &quot;[Tab]&quot; means the purple tab key, and a &quot;+&quot; means hit these keys in combination, typically by holding down the &quot;meta&quot; keys first.
+</p><p>
+Also notice that the &quot;Cancel&quot; button works like &quot;Escape&quot;, which makes VI usable without resorting to the on-screen (virtual) keyboard.
+</p><p>
+There&#39;s <a href="http://www.zaurus.com/dev/support/downloads/sl5600_keycode_v091.pdf" title="Keycode for Java/Qtopia Applications">a full keycode mapping table</a> available on Sharp&#39;s site.
+</p></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

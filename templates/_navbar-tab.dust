@@ -1,5 +1,0 @@
-{@if value="{active_tab}" is="{tab_name}"}
-  <li class="active"><a href="{tab_url}">{tab_Name} <span class="sr-only">(current)</span></a></li>
-{:else}
-  <li><a href="{tab_url}">{tab_Name}</a></li>
-{/if}

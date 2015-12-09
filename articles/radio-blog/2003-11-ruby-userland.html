@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Ruby Userland | HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li class="active"><a href="/articles/">Articles <span class="sr-only">(current)</span></a></li><li><a href="/snippets/">Snippets</a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><h1 id="ruby-userland">Ruby Userland</h1>
+<p><div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/articles/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Friday, 21 November 2003</b></p>
+<p>
+As I <a href="http://radio.weblogs.com/0122027/2003/11/04.html#a95" title="Custom Radio UserLand Clients?">previously mentioned</a>, I&#39;ve been toying with custom clients to the <a href="http://www.soapware.org/xmlStorageSystem">XmlStorageSystem</a> XML-RPC protocol used by <a href="http://radio.userland.com/">Radio Userland</a> and <a href="http://www.myelin.co.nz/wcswiki/w/CommunityServerWiki">several open source blog servers</a>, with the ultimate goal of hosting a custom blog on the radio.weblogs.com host.
+</p><p>
+Over the past couple of evenings I&#39;ve hacked out <a href="/articles/radio-blog/xmlStorageSystem.rb.txt" title="xmlStorageSystem.rb">xmlStorageSystem.rb</a>, a reasonably functional Ruby-based client to the XmlStorageSystem system protocol.  It works like this:
+</p>
+<p>
+To create a new instance of the client, use:
+</p>
+<pre>XmlStorageSystem.new(<i>&lt;usernumber&gt;</i>,<i>&lt;md5-hash-of-password&gt;</i>,<i>&lt;root-directory&gt;</i>)</pre>
+<p>
+For instance, I use:
+</p>
+<pre>XmlStorageSystem.new(&#39;122027&#39;,&#39;8c8034f5c9d68564e155c67a6d4e4612&#39;,&#39;/0122027/&#39;)</pre>
+<p>
+although that&#39;s not my actual password.
+</p>
+<p>
+Actually, my local copy of xmlStorageSystem.rb has these value specified as the defaults, so I just user XmlStorageSystem.new, and I&#39;ll use that form in the rest of these examples.  The constructor also accepts an number of arguments that should allow one to connect to the <a href="http://www.pycs.net/">Python Community Server</a> and others, although Radio is the only server I&#39;ve tried.
+</p>
+<p>
+To get a listing of the files currently stored on the server, use:
+</p>
+<pre>XmlStorageSystem.new.getMyDirectory</pre>
+<p>
+To download all those files to a local directory
+</p>
+<pre>XmlStorageSystem.new.backupMyDirectory &#39;backupdir&#39;</pre>
+<p>
+To upload a file (or files) to the server, use:
+</p>
+<pre>XmlStorageSystem.new.saveMultipleFiles( &#39;local-base-dir&#39;, [ &#39;file1&#39;, &#39;file2&#39;, &#39;etc&#39; ])</pre>
+<p>
+To delete a file (or files)  from the server, use:
+</p>
+<pre>XmlStorageSystem.new.deleteMultipleFiles( [ &#39;file1&#39;, &#39;file2&#39;, &#39;etc&#39; ])</pre>
+<p>
+Finally, the really handy one:
+</p>
+<pre>XmlStorageSystem.new.updateFromLocalDirectory &#39;localdir&#39;</pre>
+<p>
+Which will compare the list of files in the local directory with those on the server, delete the ones that don&#39;t appear locally, and load/update the rest.
+</p><p>
+Since this is Ruby, it&#39;s easy to set up little shell scripts that invoke those commands in ways useful to your personal work style.
+</p><p>
+If one wanted to be clever, there is metadata available via XmlStorageSystem.getMyDirectory that would allow one to determine whether or not a file has changed since it was last uploaded, but I haven&#39;t gotten around to that yet.
+</p><p>
+I&#39;m still pretty much a Ruby neophyte, so there&#39;s probably substantial room for improvement there.  In particular, (1) there&#39;s no error handling present just yet and (2) the current implementation supports hackablity (changing the script itself) more than extensibility.  Nevertheless, it&#39;s neat that a Ruby neophyte can write a basic XmlStorageSystem client in 150 lines of readable code.
+</p></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

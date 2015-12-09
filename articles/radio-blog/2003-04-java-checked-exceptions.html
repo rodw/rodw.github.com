@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Java&#39;s checked exceptions were a mistake | HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li class="active"><a href="/articles/">Articles <span class="sr-only">(current)</span></a></li><li><a href="/snippets/">Snippets</a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><h1 id="java-s-checked-exceptions-were-a-mistake-and-here-s-what-i-would-like-to-do-about-it-">Java&#39;s checked exceptions were a mistake (and here&#39;s what I would like to do about it)</h1>
+<p><div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/articles/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>1 April 2003</b></p>
+<p>Java&#39;s checked exceptions were an experiment. While Java borrows most of its try/catch exception handling from C++, the notion of &quot;checked&quot; exceptions, which must either be caught or explicitly thrown, are a Java addition. By and large, this experiment has failed. You won&#39;t find checked exceptions in Java-influenced languages like Ruby or C#.</p>
+<p>An idea (the idea?) behind C++ style exception handling is a sound one--it allows one to deal with exceptional conditions at an appropriate, perhaps centralized, point in the call stack, which may be far from where the exceptional condition was encountered. Unrecoverable exceptions are common at very low levels of the code--places where we&#39;re interacting with I/O and network devices, for example. But these are the very places least likely to know the appropriate response. Do we simply &quot;skip&quot; that action? Try again? Try a different service? Report the problem to the user? To syslog? Allowing the problem to &quot;propagate up&quot; to some caller is a convenient and relatively clean way of dealing with this problem of needing what is essentially out-of-band communication.</p>
+<p>At first glance, checked exceptions seem like a good idea too. The major risk with unchecked exceptions is that no one will catch them--problems might bubble clear off the stack. Checked exceptions require that callers either deal with the exception or make it known what they are not dealing with. It forces the caller to consider the exceptional case: If you&#39;re opening a file, be prepared to handle FileNotFound. If you&#39;re connecting to a server, there may be NoRouteToHost.</p>
+<p>The problem that&#39;s introduced here is the impedance between the intention of try/catch exception handling in general (allow exceptional conditions to be handled far from their source) and the implication of checked exceptions in particular (everyone between the thrower and the handler must be aware of the exception that passes through).</p>
+<p>Even at a second glance, checked exceptions work fairly well. This approach is adequate for self-contained systems, where the distance between the thrower and catcher is small, or for &quot;bottom tier&quot; subsystems, which act as a source for exceptions, but rarely as a sink or pipe (think of basic networking, file I/O, JDBC, etc.).</p>
+<p>Checked exceptions are pretty much disastrous for the connecting parts of an application&#39;s architecture however. These middle-level APIs don&#39;t need or generally want to know about the specific types of failure that might occur at lower levels, and are too general purpose to be able to adequately respond to the exceptional conditions that might occur.</p>
+<p>Jakarta-Commons Pool provides a good example of this phenomenon. The first release of pool didn&#39;t allow checked exceptions:</p>
+<pre><code class="lang-java">class ObjectPool {
+  Object borrowObject();
+  void returnObject(Object obj);
+}
+</code></pre>
+<p>But when the generator of pooled objects may throw a checked exception (like Jakarta-Commons DBCP does), extensions of pool were left with two undesirable options--either quietly swallow the checked exception:</p>
+<pre><code class="lang-java">class ConnectionFactory implements PoolableObjectFactory {
+  void makeObject() {
+    try {
+      // ...
+    } catch(SQLException e) {
+      return null;
+    }
+  }
+}
+</code></pre>
+<p>or wrap it with some RuntimeException:</p>
+<pre><code class="lang-java">class ConnectionFactory implements PoolableObjectFactory {
+  void makeObject() {
+    try {
+      // ...
+    } catch(SQLException e) {
+      throw new RuntimeException(e.toString());
+    }
+  }
+}
+</code></pre>
+<p>(JDK 1.4&#39;s chained exceptions make this better (throw new RuntimeException(e)), but still not great, for reasons I&#39;ll discuss below).</p>
+<p>Both options undermine the utility of the exception handling mechanism.</p>
+<p>The current (cvs HEAD) version of Jakarta-Commons Pool allows for arbitrary checked exceptions:</p>
+<pre><code class="lang-java">class ObjectPool {
+  Object borrowObject() throws Exception;
+  void returnObject(Object obj) throws Exception;
+}
+</code></pre>
+<p>which feels cleaner in some respects, but similarly undermines the utility of the exception handling mechanism. Clients of ObjectPool instances that don&#39;t throw checked exceptions in practice still need to behave as if they do. Clients of ObjectPool instances that do throw checked exceptions lose any compile-time checking that exceptions of a given type are handled in some meaningful way (i.e., we lose all indications that we expect a specific exception--SQLException--and instead must deal with the most generic case). This situation isn&#39;t any better than it would be if DriverManager.getConnection() simply threw a RuntimeException, and in some respects, is a bit worse since now I have to litter my code with seemingly extraneous &quot;throws Exception&quot; clauses.</p>
+<p>The DBCP case is unique, since the client of the ObjectPool is also a SQLException-aware type. (Generally DBCP is a pool masquerading as a Driver or DataSource. Pool plugs-in to DBCP, but it is fully encapsulated by it.) In this scenario, a RuntimeException envelope would be sufficient:</p>
+<pre><code class="lang-java">class RuntimeSQLException extends RuntimeException {
+  RuntimeSQLException(SQLException e) {
+    exception = e;
+  }
+
+  SQLException getSQLException() {
+    return exception;
+  }
+
+  private SQLException exception = e;
+}
+
+class PoolingDriver {
+  Connection connect(String url, Properties props) throws SQLException {
+     try {
+       return (Connection)(pool.borrowObject());
+     } catch(RuntimeSQLException e) {
+       throw e.getSQLException();
+     }
+  }
+
+  private ObjectPool pool;
+}
+
+class ConnectionFactory implements PoolableObjectFactory {
+  void makeObject() {
+    try {
+      // ...
+    } catch(SQLException e) {
+      throw new RuntimeSQLException(e);
+    }
+  }
+}
+</code></pre>
+<p>but this approach only works when there is somebody upstream from ConnectionFactory who knows what to do with a RuntimeSQLException--i.e., when we have control over the code on both sides of the code that the exception passes through.</p>
+<p>The problem is thornier when the source for the checked exceptions (which creates the &quot;envelope&quot;) may be a different component than the one that wants to open the envelope. Jakarta-Commons Functor is a good example of this. The generic functor interfaces don&#39;t want to (and hopefully don&#39;t need to) be aware of the various checked exceptions that an implementation of that interface might encounter. At the same time, much of the point of an API like Functor is to allow a client of the functor interfaces to interoperate with disparate implementations of those interfaces, so an approach that requires clients to be aware of every functor implementation&#39;s RuntimeXXXException subtype (RuntimeIOException, RuntimeSAXException, etc.) isn&#39;t desirable either.</p>
+<p>I&#39;ll suggest that what we need is a single uniform mechanism for tunneling checked Exceptions through APIs that only allow RuntimeException. The exception chaining mechanism in JDK 1.4 supports this, but not in a backwards compatible fashion. Jakarta-Commons Lang has a NestedException type that works in earlier JREs, but not in a forward compatible fashion. But exception chaining is really a different concept. Using chained exceptions alone makes it impossible to distinguish the &quot;chain of exceptions&quot; case from the &quot;tunneling Exception through RuntimeException&quot; case. What we really need is a dedicated adapter type:</p>
+<pre><code class="lang-java">class ExceptionRuntimeException extends RuntimeException {
+  ExceptionRuntimeException(Exception e) {
+    exception = e;
+  }
+  void rethrowException() throws Exception {
+    throw e;
+  }
+  /* ...etc... */
+  Exception e;
+}
+</code></pre>
+<p>Such a type could delegate methods like printStackTrace appropriately, could be used for the exclusive purpose of tunneling checked Exceptions, and is equally valid in JDK 1.3 and JDK 1.4. Placing this type in a small, standalone utility component (of Jakarta-Commons for example), would be a rather minor imposition on clients of components that use it (ExceptionRuntimeException would be a run-time dependency if ever instantiated, but clients who choose to could simply treat at a code level like any other RuntimeException.)</p>
+<p>Here&#39;s an example. Jakarta-Commons Functor has a UnaryPredicate type:</p>
+<pre><code class="lang-java">interface UnaryPredicate {
+  boolean test(Object obj);
+}
+</code></pre>
+<p>and methods for filtering a Collection according to some UnaryPredicate:</p>
+<pre><code class="lang-java">class CollectionAlgorithms {
+  static Collection select(Iterator iter, UnaryPredicate pred, Collection col) {
+    while(iter.hasNext()) {
+      Object obj = iter.next();
+      if(pred.test(obj)) {
+        col.add(obj);
+      }
+    }
+    return col;
+  }
+
+  static Collection select(Iterator iter, UnaryPredicate pred) {
+    return select(iter,pred,new ArrayList());
+  }
+}
+</code></pre>
+<p>which might be used as:</p>
+<pre><code class="lang-java">Collection allFiles = getListOfFiles();
+Collection directoriesOnly =
+   CollectionAlgorithms.select(allFiles.iterator(),new IsDirectory());
+</code></pre>
+<p>The implementation of the IsDirectory predicate might have need for checked exceptions of course:</p>
+<pre><code class="lang-java">/**
+ * Given a String representing a file URI, determines
+ * whether the given file is a Directory or not.
+ * @throws ExceptionRuntimeException for a URISyntaxException
+ */
+class IsDirectory implements UnaryPredicate {
+  boolean test(Object obj) {
+    URI uri;
+    try {
+      uri = new URI((String)obj);
+    } catch(URISyntaxException e) {
+      throw new ExceptionRuntimeException(e);
+    }
+    File file = new File(uri);
+    return file.isDirectory();
+  }
+}
+</code></pre>
+<p>but using ExceptionRuntimeException allows us to tunnel through the RuntimeException-based functor API without losing information and without adding &quot;throws Exception&quot; to every method in the Functor API.</p>
+<p>Whenever we&#39;re ready, we can unwrap the underlying checked Exception, and can easily distinguish that case from other instances of RuntimeException:</p>
+<pre><code class="lang-java">boolean flag;
+try {
+  flag = isDirectory.test(someObject);
+} catch(ClassCastException e) {
+  // thrown when someObject is not a String
+} catch(NullPointerException e) {
+  // thrown when someObject is null
+} catch(IllegalArgumentException e) {
+  // thrown when someObject isn&#39;t a file URI
+} catch(ExceptionRuntimeException ere) {
+  // thrown only if some Exception was thrown
+  try {
+    ere.rethrowException();
+  } catch(URISyntaxException e) {
+    // thrown when someObject isn&#39;t a valid URI
+  } catch(Exception e) {
+    // other checked exceptions, which we
+    // could throw as checked or unchecked
+    // as needed   
+    throw ere;
+  }
+}
+</code></pre>
+<p>I&#39;ve grown increasingly fond of this approach, and think I&#39;ll try to put something together in the Jakarta Commons sandbox for it.</p>
+<p>By the way, I still think checked exceptions offer some advantage in the cases I enumerated above. Consider Axion&#39;s AxionException for example. By design, the use of AxionException is fully encapsulated within the Axion API. Clients to Axion&#39;s external interface should never encounter an AxionException, it&#39;s only used internally. But similarly, clients to AxionException should generally never encounter an Axion-specific RuntimeException either--Axion&#39;s external interface should throw SQLException almost exclusively. Making AxionException a checked exception makes this constraint much easier to enforce (the JDBC-tier of Axion can easily tell which methods may result in an AxionException and which methods may not), even if it means that many of Axion&#39;s internal methods are declared to throw AxionException. Having an ExceptionRuntimeException adapter makes it possible to tunnel AxionExceptions through third-party APIs like Commons Functor.</p>
+<p>Post script:</p>
+<p>Thinking it unlikely that I was the first person to have this frustration with checked exceptions I consulted with some of my usual sources. One can find a number of related articles and postings, including Bruce &quot;Thinking in Java&quot; Eckel&#39;s Does Java need Checked Exceptions? and Checked Exceptions Are Of Dubious Value and Exception Tunneling on Ward&#39;s Wiki.</p>
+<p>A somewhat contrary position can be found in Alan Griffith&#39;s Exceptional Java. Among other guidelines, Alan suggests exception &quot;translation&quot; to wrap or chain exceptions to a predictable, component- or API-specific type. This seems similar to exception tunneling, and perhaps sometimes appropriate, but the thought of having to walk arbitrarily deep exception chains to find the relevant exception gives me pause.</p>
+</div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Wanted: Modular/Extensible Parser Generator | HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li class="active"><a href="/articles/">Articles <span class="sr-only">(current)</span></a></li><li><a href="/snippets/">Snippets</a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><h1 id="wanted-modular-extensible-parser-generator">Wanted: Modular/Extensible Parser Generator</h1>
+<p><div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/articles/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Monday, 7 July 2003</b></p>
+<p>
+Over at the <a href="http://axion.tigris.org/" title="Axion: Open Source Java RDBMS">Axion</a> project, we&#39;re using a <a href="http://javacc.dev.java.net/" title="JavaCC:  Java Compiler Compiler">JavaCC</a> <a href="http://axion.tigris.org/source/browse/axion/grammars/AxionSqlParser.jj" title="Axion's AxionSqlParser.jj">grammar</a> to implement the SQL parser.
+</p><p>
+One of things we&#39;ve found Axion to be good for is unit testing database applications.  In other words, one can use an in-memory, in-process Axion database as a &quot;mock&quot; replacement for a regular production database.  In this case, it&#39;s quite useful to have Axion closely mimic the syntax of other RDBM systems.  For example, Axion supports <code>LIMIT</code> and <code>OFFSET</code> clauses like <a href="http://www.postgresql.com/" title="PostgeSQL open source database">PostgeSQL</a> and <a href="http://www.mysql.com/" title="MySQL open source database">MySQL</a> as well as a <code>ROWNUM</code> pseudo-column like <a href="http://www.oracle.com/" title="Oracle closed source database">Oracle</a>.  Similarly, Axion supports the ISO SQL 99 syntax for outer joins (<code>FROM a LEFT OUTER JOIN b ON a.id = b.id</code>) , but it would be nice to support Oracle&#39;s custom syntax (<code>FROM a, b WHERE a.id = b.id(+)</code>) as well.
+</p><p>
+Supporting the idiosyncrasies of several of the popular database engines in a single grammar file seems cumbersome at best. and probably impossible. It tends to bloat our keyword namespace.  Eventually, it must lead to conflicts.  (For example, if I&#39;m trying to unit test code that eventually interacts with an Oracle database, then the &quot;mock&quot; database shouldn&#39;t accept LIMIT and OFFSET clauses, and shouldn&#39;t consider those to be keywords either.)
+</p><p>
+Axion&#39;s design is modular enough to allow for pluggable parser implementations.  Indeed, anything that implements:
+</p>
+
+<pre><code class="lang-java">interface Parser {
+  AxionCommand parse(String sql) throws AxionException;
+}
+</code></pre>
+<p>
+can be dropped right in.  Hence it is straightforward to define, for example, MySqlSyntax.jj, OracleSyntax.jj, SqlServerSyntax.jj, etc. to support a specific SQL dialect.  The trouble is, each of those files is going to be 90% or more the same.  What I&#39;d like is a clean mechanism for either:
+</p>
+<ul>
+<li>declaring SpecializedGrammar to extend from GeneralizedGrammer, perhaps with abstract productions and the like, or</li>
+<li>declaring SpecializedGrammar to be the composition of SubGrammarA and SubGrammarB</li>
+</ul>
+<p>
+or both.  I&#39;m especially interested in being able to combine grammars at runtime.  Anyone have any suggestions?  Can you point to an example?
+</p>
+<p>
+(I&#39;ll be honest, I&#39;m not much of a *CC expert.  This might be straightforward in JJTree or ANTLR, I just haven&#39;t dug into it much.  I&#39;m pretty sure it&#39;s not straightforward in plain old JavaCC.)
+</p></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

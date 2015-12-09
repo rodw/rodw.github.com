@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/articles/">Articles</a></li><li class="active"><a href="/snippets/">Snippets <span class="sr-only">(current)</span></a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><div class="row snippet-title"><div class="col-sm-7"><h1>17 emacs snippets</h1></div><div class="col-sm-5 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-calendar.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="emacs-calendar-functions">emacs calendar functions</h1>
+<p>Open the calendar:</p>
+<pre><code>M-x calendar
+</code></pre><p>(You can close the calendar with <code>q</code>, which invokes <code>(calendar-exit)</code>.</p>
+<p>Movement:</p>
+<ul>
+<li><code>C-f</code> or arrow-right is <code>(calendar-forward-day)</code> and <code>C-b</code> or arrow-left is <code>(calendar-backward-day)</code>.</li>
+<li><code>C-n</code> or arrow-down is <code>(calendar-forward-week)</code> and <code>C-p</code> or arrow-up is <code>(calendar-backward-week)</code>.</li>
+<li><code>M-}</code> or <code>&gt;</code> is <code>(calendar-forward-month)</code> and <code>M-{</code> or <code>&lt;</code> is <code>(calendar-backward-month)</code></li>
+<li><code>C-x ]</code> is <code>(calendar-forward-year)</code> and <code>C-x [</code> is <code>(calendar-backward-year)</code></li>
+<li>Use the <code>M-&lt;n&gt;</code> prefix to move a multiple of the above.  E.g. <code>M-90 C-f</code> (or <code>M-90 &lt;right-arrow&gt;</code>) moves forward 90 days.  (In calendar mode, the meta key is optional, simply <code>90 &lt;right-arrow&gt;</code> will move forward 90 days, <code>16 &lt;down-arrow&gt;</code> will move forward 16 weeks, etc.)</li>
+<li><code>o</code> will let you interactively select a date.</li>
+<li><code>.</code> will return to today</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li>(Right-click on the calendar will generally open up a context-menu about these.)</li>
+<li><code>p d</code> is (calendar-print-day-of-year)</li>
+<li>Type<code>C-&lt;space&gt;</code>, move to another date and type <code>M-=</code> to invoke <code>(calendar-count-days-region)</code> (show the number of days between the dates (including the endpoints).</li>
+<li>Type <code>H m</code> or <code>H y</code> to generate an html-format calendar (month and year, respectively).  (<code>t &lt;something&gt;</code> generates a number of interesting calendars in TeX, if you are so inclined.)</li>
+<li>Type <code>h</code> to see known holidays for the selected date, or <code>a</code> to see all holidays for the three month period that is displayed. Use <code>M-x list-holidays</code> for even more.  Use <code>M</code> to see a list of lunar phases. Use <code>S</code> to see sunrise/sunset information.</li>
+</ul>
+<p>Also see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Calendar_002fDiary.html">the emacs manual</a>.</p>
+<div class="pubdate">Published 15 Apr 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-cursor-movement-shortcuts.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="emacs-cursor-movement-shortcuts">emacs cursor movement shortcuts</h1>
+<ul>
+<li><code>M-g g &lt;N&gt;</code> or <code>M-g M-g &lt;N&gt;</code> -- go to line <N> (<code>goto-line</code>)</li>
+<li><code>M-g c &lt;N&gt;</code> -- go to <em>character</em> <N> (<code>goto-char</code>)</li>
+<li><p><code>M-g &lt;TAB&gt; &lt;N&gt;</code> -- go to column <N> in the current line</p>
+</li>
+<li><p><code>M-&lt;</code> -- <code>beginning-of-buffer</code></p>
+</li>
+<li><p><code>M-&gt;</code> -- <code>end-of-buffer</code></p>
+</li>
+<li><p><code>C-a</code> or <code>&lt;home&gt;</code> -- <code>move-beginning-of-line</code></p>
+</li>
+<li><p><code>C-e</code> or <code>&lt;end&gt;</code> -- <code>move-end-of-line</code></p>
+</li>
+<li><p><code>C-f</code> or <code>&lt;right&gt;</code> -- forward one char (<code>forward-char</code>) or right one char (<code>right-char</code>).   (Note <code>right-char</code> moves <em>backward</em> when editing right-to-left text.)</p>
+</li>
+<li><code>M-f</code> or <code>M-&lt;right&gt;</code> or <code>C-&lt;right&gt;</code>  -- forward one word (<code>forward-word</code>) or right one word (<code>right-word</code>).</li>
+<li><code>C-b</code> or <code>&lt;left&gt;</code> -- backward one char (<code>backward-char</code>) or left one char (<code>left-char</code>).   (Note <code>left-char</code> moves <em>forward</em> when editing right-to-left text.)</li>
+<li><p><code>M-b</code> or <code>M-&lt;left&gt;</code> or <code>C-&lt;left&gt;</code>  -- back one word (<code>backward-word</code>) or left one word (<code>left-word</code>).</p>
+</li>
+<li><p><code>C-n</code> or <code>&lt;down&gt;</code> -- down one line (<code>next-line</code>)</p>
+</li>
+<li><code>C-v</code> or <code>&lt;PageDown&gt;</code> -- down one page (<code>scroll-up-command</code>)</li>
+<li><code>C-p</code> or <code>&lt;up&gt;</code> -- up one line (<code>previous-line</code>)</li>
+<li><p><code>M-v</code> or <code>&lt;PageUp&gt;</code> -- up one page (<code>scroll-down-command</code>)</p>
+</li>
+<li><p><code>C-x C-n</code> -- set current column as &quot;goal&quot; column for up/down movement</p>
+</li>
+<li><code>C-u C-x C-n</code> -- cancel current goal column</li>
+</ul>
+<div class="pubdate">Published 15 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-searching.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="searching-in-emacs">Searching in Emacs</h1>
+<ul>
+<li><code>C-s</code> / <code>C-r</code> -- search / search backward in current buffer</li>
+<li><code>M-s o</code> / <code>M-x occur</code> / <code>M-x ioccur</code> -- list lines in current buffer matching regexp</li>
+<li><code>M-x rgrep</code> -- recursive grep (find in files)</li>
+</ul>
+<div class="pubdate">Published 23 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-c-x-c-x.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="c-x-c-x-to-toggle-between-positions">C-x C-x to toggle between positions</h1>
+<p>For example:  Use <code>C-s foo</code> to search for something.  Maybe use <code>C-s</code> again to step thru. Now use <code>C-x C-x</code> to flip back to the point where you started (and <code>C-x C-x</code> again to return).</p>
+<div class="pubdate">Published 23 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-font-size.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="change-font-size-in-emacs">Change font size in emacs</h1>
+<p>To change the font size in the current buffer:</p>
+<ul>
+<li><p><code>C-x C-+</code> - increase font size</p>
+</li>
+<li><p><code>C-x C--</code> - decrease font size</p>
+</li>
+</ul>
+<p>Follow either with <code>+</code>, <code>-</code> or <code>0</code> for continued adjustment.</p>
+<p>To change the font size in all buffers:</p>
+<pre><code>(set-face-attribute &#39;default nil :height 120) ;; where `height` is 10x point size
+</code></pre><div class="pubdate">Published 23 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-elisp.html">elisp</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/paste-in-isearch-with-m-y.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="use-m-y-to-yank-paste-into-the-emacs-i-search-prompt">Use <code>M-y</code> to yank (paste) into the emacs i-search prompt</h1>
+<pre><code>C-s M-y
+</code></pre><div class="pubdate">Published 21 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-change-case.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="change-text-case-in-emacs">Change Text Case in Emacs</h1>
+<p>To change the letter case in Emacs:</p>
+<ul>
+<li><p><code>M-u</code> - <code>(upcase-word)</code> - will convert following word to UPPER case (or the rest of the current word).</p>
+</li>
+<li><p><code>M-l</code> - <code>(downcase-word)</code> - will convert following word to lower case (or the rest of the current word).</p>
+</li>
+<li><p><code>M-c</code> - <code>(capitalize-word)</code> - will Capitalize the following word (or the rest of the current word).</p>
+</li>
+</ul>
+<p>For example, consider the text <code>The quick brown fox jumped.</code></p>
+<p>If you position the cursor on the <code>q</code> (fifth column), then <code>M-u</code> changes <code>quick</code> to <code>QUICK</code>, <code>M-c</code> changes <code>quick</code> to <code>Quick</code>, etc.</p>
+<p>If you position the cursor on the <code>u</code> (sixth column), then <code>M-u</code> changes <code>quick</code> to <code>qUICK</code>, <code>M-c</code> changes <code>quick</code> to <code>qUick</code>, etc.</p>
+<p>One could probably write an elisp function based on <code>(capitalize-word)</code> and some heuristics or dictionary look-ups to create a true title case function (e.g., not capitalize <code>a</code>, <code>an</code>, <code>the</code> in the middle of a phrase), but <code>M-c</code> is a quick and easy approximation.</p>
+<p>Also, note that there is a version of upcase and downcase that work on the selection (region) instead of the next word.</p>
+<ul>
+<li><p><code>C-x C-u</code> - <code>(upcase-region)</code></p>
+</li>
+<li><p><code>C-x C-l</code> - <code>(downcase-region)</code></p>
+</li>
+</ul>
+<p>Of course, if you&#39;re using &quot;CUA Keys&quot;, you can&#39;t easily type <code>C-x</code> without invoking &quot;cut&quot;.</p>
+<div class="pubdate">Published 25 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/ess-for-r-in-emacs.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="working-with-r-in-emacs">Working with R in emacs</h1>
+<p>1) <a href="http://www.r-project.org/">Install R</a>.</p>
+<p>2) <a href="http://ess.r-project.org/">Install ESS</a>:</p>
+<pre><code class="lang-bash">sudo aptitude install ess=12.09-1
+</code></pre>
+<p>3) Require <code>ess-site</code>:</p>
+<pre><code>(add-to-list &#39;load-path &quot;/usr/share/emacs/site-lisp/&quot;)
+(require &#39;ess-site)
+</code></pre><p>4) Load R within emacs via <code>M-x R</code>.</p>
+<div class="pubdate">Published 26 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>, <a href="tag-r-lang.html">r-lang</a> and <a href="tag-elisp.html">elisp</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacsclient-daemon-default-font.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="default-fonts-with-emacsclient-emacs-daemon">Default fonts with emacsclient/emacs --daemon</h1>
+<p>I&#39;ve been using <code>set-default-font</code> in my <code>.emacs</code> file to configure emacs to use my favorite programming font.</p>
+<pre><code>(set-default-font &quot;Droid Sans Mono Slashed-10&quot;) ;;; set default font
+</code></pre><p>I use <code>emacs --daemon</code> to keep an instance of emacs running as a background process on my development machine so that I can run <code>emacsclient</code> to call up an emacs window (frame) instantaneously (and keep the same session running even after a close the emacs frame).</p>
+<p>Suddenly (after an <code>aptitude safe-upgrade</code>, I think, but I&#39;m not sure what triggered this change), emacs frames that are created by <code>emacsclient</code> connecting to the <code>emacs --daemon</code> instance no longer used my default font when initially opened. The default font worked properly for stand-alone emacs instances (opened with <code>emacs</code>), and for <code>emacsclient</code>, executing <code>(set-default-font)</code> after startup worked fine, but it no longer worked automatically.</p>
+<p>To fix this, I had to set up a <code>default-frame-alist</code>, which I believe defines commands to execute whenever a new frame is opened.</p>
+<pre><code>(set-default-font &quot;Droid Sans Mono Slashed-10&quot;) ;;; set default font
+(setq default-frame-alist &#39;((font . &quot;Droid Sans Mono Slashed-10&quot;))) ;;; set default font for emacs --daemon / emacsclient
+</code></pre><p>By the way, I also discovered the <code>describe-font</code> elisp function while trying to diagnose this issue.</p>
+<pre><code>(describe-font &quot;Droid Sans Mono Slashed-10&quot;)
+;; or M-x describe-font &lt;RETURN&gt; Droid Sans Mono Slashed-10 &lt;RETURN&gt;
+</code></pre><p>which opens a <code>*Help*</code> buffer containing:</p>
+<pre><code>name (opened by): -unknown-Droid Sans Mono Slashed-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1
+       full name: Droid Sans Mono Slashed:pixelsize=13:foundry=unknown:weight=normal:slant=normal:width=normal:spacing=100:scalable=true
+            size: 13
+          height: 17
+ baseline-offset:  0
+relative-compose:  0
+</code></pre><div class="pubdate">Published 11 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-elisp.html">elisp</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/various-emacs-shortcuts.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="various-emacs-shortcuts">various emacs shortcuts</h1>
+<ul>
+<li>In org-mode, <code>&lt;s[tab]</code> inserts a BEGIN_SRC/END_SRC block. (Think &quot;insert source&quot;.)</li>
+<li>Bookmarks<ul>
+<li><code>C-x r b</code> - jump to bookmark</li>
+<li><code>C-x r m</code> - create (make) bookmark</li>
+</ul>
+</li>
+<li><code>M-o M-s</code> / <code>M-o M-S</code> - center line / center paragraph</li>
+<li><code>M-&lt;Home&gt;</code>, <code>M-&lt;Page Up&gt;</code>, etc. - move in other window/frame (without losing focus on the current window/frame)</li>
+<li><p>cursor movement</p>
+<ul>
+<li><code>C-a</code> / <code>C-e</code> - beginning of line / end of line</li>
+<li><code>M-a</code> / <code>M-e</code> - beginning of sentence / end of sentence</li>
+<li><code>C-b</code> / <code>C-f</code> - backward one character / forward one character</li>
+<li><code>C-p</code> / <code>C-n</code> - previous line / next line</li>
+</ul>
+</li>
+<li><p><code>C-l</code> - recenter top/bottom</p>
+</li>
+<li><code>C-j</code> - newline and indent</li>
+<li><code>C-c h</code> - hide lines matching</li>
+<li><code>C-h e</code> - show echo area messages</li>
+</ul>
+<div class="pubdate">Published 12 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>, <a href="tag-org-mode.html">org-mode</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/number-lines-emacs.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="numbering-lines-in-emacs">Numbering lines in emacs</h1>
+<p>A few ways to add line numbers in emacs:</p>
+<ul>
+<li><p><code>M-x linum-mode &lt;RET&gt;</code> will annotate the buffer with line numbers. (These numbers are decoration, in the &quot;fringe&quot; rather than part of the buffer text.)  Also see <a href="http://emacser.com/linum-plus.htm">Linum Plus</a>.</p>
+</li>
+<li><p><code>C-x r N</code> will <em>insert</em> line numbers into the selected region. (These numbers are content, they are added to the text of the buffer.)</p>
+</li>
+<li><p><code>M-x line-number-mode &lt;RET&gt;</code> show the line number of the current line in the modeline.</p>
+</li>
+<li><p><code>C-x l</code> will report (in the minibuffer) the total number of lines in the current buffer as well as the number of lines before and after the cursor</p>
+</li>
+<li><p><code>M-x what-line &lt;RET&gt;</code> will report (in the minibuffer) the current line number</p>
+</li>
+</ul>
+<p>Also see <a href="http://www.emacswiki.org/LineNumbers">emacswiki.org/LineNumbers</a>.</p>
+<div class="pubdate">Published 13 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/gitignore-mode.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="simple-emacs-mode-for-gitignore-files-">Simple emacs mode for .gitignore files.</h1>
+<p>Through the power of <a href="http://emacswiki.org/emacs/GenericMode">generic-mode</a>, adding the following lines to your <code>.emacs</code> file will add syntax-coloring support for <code>.gitignore</code>, <code>.svnignore</code>, etc. files.  And by &quot;syntax-coloring&quot; I mean that lines that start with a <code>#</code> will be marked as comments.</p>
+<pre><code>(require &#39;generic-x)
+(add-to-list &#39;auto-mode-alist &#39;(&quot;\\..*ignore$&quot; . hosts-generic-mode))
+</code></pre><p>Actually, any text after an un-escaped <code>#</code> will be marked as a comment, which isn&#39;t the way Git and SVN interpret those files. (TODO: it would be pretty simple to add a dot-ignore-generic-mode that handles this correctly.)</p>
+<div class="pubdate">Published 13 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>, <a href="tag-elisp.html">elisp</a> and <a href="tag-todo.html">todo</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-spell-keys.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="spell-checking-cheat-sheet-for-emacs-">Spell checking cheat-sheet for emacs.</h1>
+<ul>
+<li><code>M-$</code> - <code>ispell-word</code> or <code>ispell-region</code> (depending on whether something is selected)</li>
+<li><code>[SPACE]</code> - Skip this word—continue to consider it incorrect, but don&#39;t change it here.</li>
+<li><code>r newword [RETURN]</code> - Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.)</li>
+<li><code>R new [RETURN]</code> - Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.)</li>
+<li><code>a</code> - Accept the incorrect word—treat it as correct, but only in this editing session.</li>
+<li><code>A</code> - Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer.</li>
+<li><code>i</code> - Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions.</li>
+<li><code>m</code> - Like <code>i</code>, but you can also specify dictionary completion information.</li>
+<li><code>u</code> - Insert the lower-case version of this word in your private dictionary file.</li>
+<li><code>l word [RETURN]</code> - Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use <code>*</code> in word as a wildcard.</li>
+<li><code>C-g X</code> - Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with <code>C-u M-$</code>.</li>
+<li><code>x</code> - Quit interactive spell checking and move point back to where it was when you started spell checking.</li>
+<li><code>q</code> - Quit interactive spell checking and kill the spell-checker subprocess.</li>
+<li><code>?</code> - Help</li>
+</ul>
+<p>Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.</p>
+<div class="pubdate">Published 14 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/insert-newline-into-emacs-minibuffer.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="using-quoted-insert-or-how-to-enter-a-newline-character-in-the-emacs-minibuffer">Using (quoted-insert), or how to enter a newline character in the emacs minibuffer</h1>
+<p>To insert a newline character in the mini-buffer, use <code>(quoted-insert)</code></p>
+<pre><code>C-q C-j
+</code></pre><p>Via <a href="http://jeremy.zawodny.com/blog/archives/008872.html">jwz</a>.</p>
+<div class="pubdate">Published 4 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-dos2unix.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="dos2unix-in-emacs">dos2unix in emacs</h1>
+<pre><code>M-% C-q C-m [RETURN] [RETURN]
+</code></pre><p><code>M-%</code> is bound to <code>(query-replace)</code>. <code>C-q</code> is bound to <code>(quoted-insert)</code>, which allows <code>C-m</code> to insert the control character <code>^M</code>.</p>
+<div class="pubdate">Published 4 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-case-insensitive-sort.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="case-insensitive-sort-lines-in-emacs-">Case insensitive sort-lines in emacs.</h1>
+<pre><code>M-x set-variable [RETURN] sort-fold-case [RETURN] t [RETURN]
+M-x sort-lines
+</code></pre><div class="pubdate">Published 7 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/fix-j2s-mode-indent-via-js-mode.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="using-js-mode-s-indent-logic-in-js2-mode">Using js-mode&#39;s indent logic in js2-mode</h1>
+<p>Steve Yegge&#39;s <a href="http://code.google.com/p/js2-mode/">js2-mode</a> is a sweet major mode for working with JavaScript in Emacs, but its auto-indentation logic is <a href="http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely">notoriously frustrating</a>.</p>
+<p>Here&#39;s a somewhat hack-y workaround: switch to <code>javascript-mode</code> before calling <code>indent-region</code> and then switch back.</p>
+<pre><code>;; use js-mode&#39;s indent logic, by pressing C-M-| (C-M-S-\)
+(defun rlw/js-indent-region () (interactive) (js-mode) (indent-region (region-beginning) (region-end)) (js2-mode) )
+(define-key js2-mode-map (kbd &quot;C-M-|&quot;) &#39;rlw/js-indent-region)
+</code></pre><p>PS: I haven&#39;t yet had a chance to sort these out, but there are at least four or five JavaScript modes:</p>
+<ul>
+<li><a href="https://github.com/mooz/js2-mode">mooz&#39;s fork of js2-mode</a></li>
+<li><a href="https://github.com/thomblake/js3-mode">thomblake&#39;s js3-mode</a></li>
+<li>I think the defunct <a href="http://www.nongnu.org/espresso/">espresso-mode</a> is now the built-in <code>js-mode</code>.</li>
+<li>I&#39;m not sure where that leaves <code>javascript-mode</code>.  Also defunct I think.</li>
+<li>Steve Yegge&#39;s <a href="http://code.google.com/p/js2-mode/">js2-mode</a></li>
+</ul>
+<p>The first two are supposed to address js2-mode&#39;s indentation problems (among other enhancements).</p>
+<div class="pubdate">Published 7 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>, <a href="tag-elisp.html">elisp</a> and <a href="tag-javascript.html">javascript</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

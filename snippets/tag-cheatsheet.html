@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/articles/">Articles</a></li><li class="active"><a href="/snippets/">Snippets <span class="sr-only">(current)</span></a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><div class="row snippet-title"><div class="col-sm-7"><h1>8 cheatsheet snippets</h1></div><div class="col-sm-5 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-cursor-movement-shortcuts.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="emacs-cursor-movement-shortcuts">emacs cursor movement shortcuts</h1>
+<ul>
+<li><code>M-g g &lt;N&gt;</code> or <code>M-g M-g &lt;N&gt;</code> -- go to line <N> (<code>goto-line</code>)</li>
+<li><code>M-g c &lt;N&gt;</code> -- go to <em>character</em> <N> (<code>goto-char</code>)</li>
+<li><p><code>M-g &lt;TAB&gt; &lt;N&gt;</code> -- go to column <N> in the current line</p>
+</li>
+<li><p><code>M-&lt;</code> -- <code>beginning-of-buffer</code></p>
+</li>
+<li><p><code>M-&gt;</code> -- <code>end-of-buffer</code></p>
+</li>
+<li><p><code>C-a</code> or <code>&lt;home&gt;</code> -- <code>move-beginning-of-line</code></p>
+</li>
+<li><p><code>C-e</code> or <code>&lt;end&gt;</code> -- <code>move-end-of-line</code></p>
+</li>
+<li><p><code>C-f</code> or <code>&lt;right&gt;</code> -- forward one char (<code>forward-char</code>) or right one char (<code>right-char</code>).   (Note <code>right-char</code> moves <em>backward</em> when editing right-to-left text.)</p>
+</li>
+<li><code>M-f</code> or <code>M-&lt;right&gt;</code> or <code>C-&lt;right&gt;</code>  -- forward one word (<code>forward-word</code>) or right one word (<code>right-word</code>).</li>
+<li><code>C-b</code> or <code>&lt;left&gt;</code> -- backward one char (<code>backward-char</code>) or left one char (<code>left-char</code>).   (Note <code>left-char</code> moves <em>forward</em> when editing right-to-left text.)</li>
+<li><p><code>M-b</code> or <code>M-&lt;left&gt;</code> or <code>C-&lt;left&gt;</code>  -- back one word (<code>backward-word</code>) or left one word (<code>left-word</code>).</p>
+</li>
+<li><p><code>C-n</code> or <code>&lt;down&gt;</code> -- down one line (<code>next-line</code>)</p>
+</li>
+<li><code>C-v</code> or <code>&lt;PageDown&gt;</code> -- down one page (<code>scroll-up-command</code>)</li>
+<li><code>C-p</code> or <code>&lt;up&gt;</code> -- up one line (<code>previous-line</code>)</li>
+<li><p><code>M-v</code> or <code>&lt;PageUp&gt;</code> -- up one page (<code>scroll-down-command</code>)</p>
+</li>
+<li><p><code>C-x C-n</code> -- set current column as &quot;goal&quot; column for up/down movement</p>
+</li>
+<li><code>C-u C-x C-n</code> -- cancel current goal column</li>
+</ul>
+<div class="pubdate">Published 15 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-searching.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="searching-in-emacs">Searching in Emacs</h1>
+<ul>
+<li><code>C-s</code> / <code>C-r</code> -- search / search backward in current buffer</li>
+<li><code>M-s o</code> / <code>M-x occur</code> / <code>M-x ioccur</code> -- list lines in current buffer matching regexp</li>
+<li><code>M-x rgrep</code> -- recursive grep (find in files)</li>
+</ul>
+<div class="pubdate">Published 23 Mar 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/various-emacs-shortcuts.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="various-emacs-shortcuts">various emacs shortcuts</h1>
+<ul>
+<li>In org-mode, <code>&lt;s[tab]</code> inserts a BEGIN_SRC/END_SRC block. (Think &quot;insert source&quot;.)</li>
+<li>Bookmarks<ul>
+<li><code>C-x r b</code> - jump to bookmark</li>
+<li><code>C-x r m</code> - create (make) bookmark</li>
+</ul>
+</li>
+<li><code>M-o M-s</code> / <code>M-o M-S</code> - center line / center paragraph</li>
+<li><code>M-&lt;Home&gt;</code>, <code>M-&lt;Page Up&gt;</code>, etc. - move in other window/frame (without losing focus on the current window/frame)</li>
+<li><p>cursor movement</p>
+<ul>
+<li><code>C-a</code> / <code>C-e</code> - beginning of line / end of line</li>
+<li><code>M-a</code> / <code>M-e</code> - beginning of sentence / end of sentence</li>
+<li><code>C-b</code> / <code>C-f</code> - backward one character / forward one character</li>
+<li><code>C-p</code> / <code>C-n</code> - previous line / next line</li>
+</ul>
+</li>
+<li><p><code>C-l</code> - recenter top/bottom</p>
+</li>
+<li><code>C-j</code> - newline and indent</li>
+<li><code>C-c h</code> - hide lines matching</li>
+<li><code>C-h e</code> - show echo area messages</li>
+</ul>
+<div class="pubdate">Published 12 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>, <a href="tag-org-mode.html">org-mode</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/emacs-spell-keys.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="spell-checking-cheat-sheet-for-emacs-">Spell checking cheat-sheet for emacs.</h1>
+<ul>
+<li><code>M-$</code> - <code>ispell-word</code> or <code>ispell-region</code> (depending on whether something is selected)</li>
+<li><code>[SPACE]</code> - Skip this word—continue to consider it incorrect, but don&#39;t change it here.</li>
+<li><code>r newword [RETURN]</code> - Replace the word, just this time, with new. (The replacement string will be rescanned for more spelling errors.)</li>
+<li><code>R new [RETURN]</code> - Replace the word with new, and do a query-replace so you can replace it elsewhere in the buffer if you wish. (The replacements will be rescanned for more spelling errors.)</li>
+<li><code>a</code> - Accept the incorrect word—treat it as correct, but only in this editing session.</li>
+<li><code>A</code> - Accept the incorrect word—treat it as correct, but only in this editing session and for this buffer.</li>
+<li><code>i</code> - Insert this word in your private dictionary file so that Aspell or Ispell or Hunspell will consider it correct from now on, even in future sessions.</li>
+<li><code>m</code> - Like <code>i</code>, but you can also specify dictionary completion information.</li>
+<li><code>u</code> - Insert the lower-case version of this word in your private dictionary file.</li>
+<li><code>l word [RETURN]</code> - Look in the dictionary for words that match word. These words become the new list of “near-misses”; you can select one of them as the replacement by typing a digit. You can use <code>*</code> in word as a wildcard.</li>
+<li><code>C-g X</code> - Quit interactive spell checking, leaving point at the word that was being checked. You can restart checking again afterward with <code>C-u M-$</code>.</li>
+<li><code>x</code> - Quit interactive spell checking and move point back to where it was when you started spell checking.</li>
+<li><code>q</code> - Quit interactive spell checking and kill the spell-checker subprocess.</li>
+<li><code>?</code> - Help</li>
+</ul>
+<p>Via <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html">the emacs FAQ</a>.</p>
+<div class="pubdate">Published 14 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/js-regexp-cheat-sheet.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="cheat-sheet-for-javascript-regular-expressions">Cheat Sheet for JavaScript Regular Expressions</h1>
+<h2 id="flags">flags</h2>
+<ul>
+<li><code>/pattern/g</code> - global</li>
+<li><code>/pattern/i</code> - case-insensitive</li>
+<li><code>/pattern/m</code> - multi-line</li>
+</ul>
+<h2 id="patterns">patterns</h2>
+<ul>
+<li><code>\s</code> - any whitespace character (<code>[\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>[\s\S]</code> - commonly used for &quot;anything including newlines (alternative <code>[^]</code>)</li>
+<li><p><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</p>
+</li>
+<li><p><code>\w</code> - any word character (alpha, numeric or underscore) (<code>[a-zA-Z0-9_]</code>)</p>
+</li>
+<li><code>\W</code> - any non-word character (<code>[^a-zA-Z0-9_]</code>)</li>
+<li><code>\d</code> - any digit (<code>[0-9]</code>)</li>
+<li><code>\D</code> - any non-digit (<code>[^0-9]</code>)</li>
+<li><code>\cX</code>- control character X (e.g. <code>\cM</code> matches <code>control-M</code> (<code>^M</code>))</li>
+<li><code>\b</code> - word boundary (the position between a word char and whitespace)</li>
+<li><code>\B</code> - not a word boundary (<code>[^\b]</code>).</li>
+<li><code>\xhh</code> - the character with hex code <code>hh</code></li>
+<li><code>\uhhhh</code> - the character with hex code <code>hhhh</code></li>
+</ul>
+<div class="pubdate">Published 18 Jan 2013</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-regexp.html">regexp</a>, <a href="tag-cheatsheet.html">cheatsheet</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/linux-run-level-cheatsheet.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="cheat-sheet-for-linux-run-levels">Cheat Sheet for Linux Run Levels</h1>
+<p>&quot;Standard&quot; Linux uses the following run levels:</p>
+<ul>
+<li><strong><em>Run Level 0</em></strong> is halt (shutdown).</li>
+<li><strong><em>Run Level 1</em></strong> is single-user mode.</li>
+<li><strong><em>Run Level 2</em></strong> is multi-user mode (without networking)</li>
+<li><strong><em>Run Level 3</em></strong> is multi-user mode (with networking). This is the normal &quot;terminal&quot; mode. (I.e., before the display manager is run).</li>
+<li><strong><em>Run Level 4</em></strong> is undefined.</li>
+<li><strong><em>Run Level 5</em></strong> is multi-usermode with a GUI display manager (X11).</li>
+<li><strong><em>Run Level 6</em></strong> is reboot.</li>
+</ul>
+<p>In Debian and its derivatives run levels 2 thru 5 are the same: multi-user mode with networking, and with a display manager if available.</p>
+<ul>
+<li><strong><em>Run Level 0</em></strong> is halt (shutdown).</li>
+<li><strong><em>Run Level 1</em></strong> is single-user mode.</li>
+<li><strong><em>Run Level 2-5</em></strong> is multi-user mode with networking and a GUI display manager when available.</li>
+<li><strong><em>Run Level 6</em></strong> is reboot.</li>
+</ul>
+<p>Debian also adds <strong><em>Run Level S</em></strong>, which is executed when the system first boots.</p>
+<p>Also see <a href="http://en.wikipedia.org/wiki/Runlevel">Wikipedia&#39;s article on run levels</a>.</p>
+<div class="tags">Tagged <a href="tag-linux.html">linux</a>, <a href="tag-debian.html">debian</a>, <a href="tag-cheatsheet.html">cheatsheet</a>, <a href="tag-service.html">service</a> and <a href="tag-ops.html">ops</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/some-awk-basics.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="some-awk-basics">Some &#39;awk&#39; basics</h1>
+<p>Extract tab delimited fields from a file:</p>
+<pre><code class="lang-bash">$ awk -F&quot;\t&quot; &#39;{print &quot;field one=&quot; $1 &quot;; field two=&quot; $2 }&#39; file
+</code></pre>
+<div class="tags">Tagged <a href="tag-linux.html">linux</a>, <a href="tag-awk.html">awk</a>, <a href="tag-tool.html">tool</a> and <a href="tag-cheatsheet.html">cheatsheet</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/sqlite-cheat-sheet.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="a-cheat-sheet-for-sqlite">A Cheat Sheet for SQLite</h1>
+<h2 id="general">General</h2>
+<ul>
+<li>Most of the SQLite &quot;meta&quot; commands begin with a dot.  When in doubt, try <code>.help</code></li>
+<li>Use <code>Ctrl-d</code> or  <code>.exit</code> or <code>.quit</code> to exit (and <code>Ctrl-c</code> to terminiate a long-running SQL query).</li>
+<li>Enter <code>.show</code> to see current settings.</li>
+</ul>
+<h2 id="meta-data">Meta-data</h2>
+<ul>
+<li>Enter <code>.databases</code> to see a list of mounted databases.</li>
+<li>Enter <code>.tables</code> to see a list of table names.</li>
+<li>Enter <code>.index</code> to see a list of index names.</li>
+<li>Enter <code>.schema TABLENAME</code> to see the create table statement for a given table.</li>
+</ul>
+<h2 id="import-and-export">Import and Export</h2>
+<ul>
+<li>Enter <code>.output FILENAME</code> to pipe output to the specified file.  (Use <code>.output stdout</code> to return to the default behavior or printing results to the console.)</li>
+<li>Enter <code>.mode [csv|column|html|insert|line|list|tabs|tcl]</code> to change the way in which query results are printed.</li>
+<li>Enter <code>.separator DELIM</code> to change the delimiter used in  (<code>list</code>-mode) exports and imports. (Defaults to <code>|</code>.)</li>
+<li>Enter <code>.dump [TABLEPATTERN]</code> to create a collection of SQL statements for recreating the database (or just those tables with naames matching the optional TABLEPATTERN).</li>
+<li>Enter <code>.read FILENAME</code> to execute the specified file as a SQL script.</li>
+</ul>
+<div class="pubdate">Published 18 Sep 2013</div><div class="tags">Tagged <a href="tag-sql.html">sql</a>, <a href="tag-sqlite.html">sqlite</a>, <a href="tag-database.html">database</a>, <a href="tag-cheatsheet.html">cheatsheet</a> and <a href="tag-ops.html">ops</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

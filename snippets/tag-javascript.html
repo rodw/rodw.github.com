@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/articles/">Articles</a></li><li class="active"><a href="/snippets/">Snippets <span class="sr-only">(current)</span></a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><div class="row snippet-title"><div class="col-sm-7"><h1>15 javascript snippets</h1></div><div class="col-sm-5 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/fix-j2s-mode-indent-via-js-mode.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="using-js-mode-s-indent-logic-in-js2-mode">Using js-mode&#39;s indent logic in js2-mode</h1>
+<p>Steve Yegge&#39;s <a href="http://code.google.com/p/js2-mode/">js2-mode</a> is a sweet major mode for working with JavaScript in Emacs, but its auto-indentation logic is <a href="http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely">notoriously frustrating</a>.</p>
+<p>Here&#39;s a somewhat hack-y workaround: switch to <code>javascript-mode</code> before calling <code>indent-region</code> and then switch back.</p>
+<pre><code>;; use js-mode&#39;s indent logic, by pressing C-M-| (C-M-S-\)
+(defun rlw/js-indent-region () (interactive) (js-mode) (indent-region (region-beginning) (region-end)) (js2-mode) )
+(define-key js2-mode-map (kbd &quot;C-M-|&quot;) &#39;rlw/js-indent-region)
+</code></pre><p>PS: I haven&#39;t yet had a chance to sort these out, but there are at least four or five JavaScript modes:</p>
+<ul>
+<li><a href="https://github.com/mooz/js2-mode">mooz&#39;s fork of js2-mode</a></li>
+<li><a href="https://github.com/thomblake/js3-mode">thomblake&#39;s js3-mode</a></li>
+<li>I think the defunct <a href="http://www.nongnu.org/espresso/">espresso-mode</a> is now the built-in <code>js-mode</code>.</li>
+<li>I&#39;m not sure where that leaves <code>javascript-mode</code>.  Also defunct I think.</li>
+<li>Steve Yegge&#39;s <a href="http://code.google.com/p/js2-mode/">js2-mode</a></li>
+</ul>
+<p>The first two are supposed to address js2-mode&#39;s indentation problems (among other enhancements).</p>
+<div class="pubdate">Published 7 May 2013</div><div class="tags">Tagged <a href="tag-emacs.html">emacs</a>, <a href="tag-elisp.html">elisp</a> and <a href="tag-javascript.html">javascript</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/node-https-ssl.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="launching-an-ssl-https-server-in-node-js">Launching an SSL (HTTPS) Server in Node.js</h1>
+<p>JavaScript:</p>
+<pre><code class="lang-javascript">var https      = require(&quot;https&quot;);
+var fs         = require(&quot;fs&quot;);
+var key_file   = &quot;/path/to/file.pem&quot;;
+var cert_file  = &quot;/path/to/file.crt&quot;;
+var passphrase = &quot;this is optional&quot;;
+var config     = {
+  key: fs.readFileSync(key_file),
+ cert: fs.readFileSync(cert_file)
+};
+if(passphrase) {
+  config.passphrase = passphrase;
+}
+
+https.createServer(config,app).listen(443);
+</code></pre>
+<p>CoffeeScript:</p>
+<pre><code class="lang-coffeescript">https      = require &quot;https&quot;
+fs         = require &quot;fs&quot;
+key_file   = &quot;/path/to/file.pem&quot;
+cert_file  = &quot;/path/to/file.crt&quot;
+passphrase = &quot;this is optional&quot;
+config     = {
+  key:  fs.readFileSync(key_file)
+  cert: fs.readFileSync(cert_file)
+}
+config.passphrase = passphrase if passphrase?
+
+https.createServer(config,app).listen(443)
+</code></pre>
+<p>Where <code>/path/to/file.pem</code> is the path to a file containing an RSA key, generated (for example) by:</p>
+<pre><code class="lang-bash">openssl genrsa 1024 &gt; /path/to/file.pem
+</code></pre>
+<p>and  <code>/path/to/file.crt</code> is the path to a file containing an SSL certificate, generated (for example) by:</p>
+<pre><code class="lang-bash">openssl req -new -key /path/to/file.pem -out csr.pem
+openssl x509 -req -days 365 -in csr.pem -signkey /path/to/file.pem -out /path/to/file.crt
+</code></pre>
+<div class="pubdate">Published 13 Mar 2014</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-nodejs.html">nodejs</a>, <a href="tag-http.html">http</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/redirect-domain-in-expressjs.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="redirect-www-example-com-to-example-com-in-node-js-and-express-js">Redirect www.example.com to example.com in Node.js and Express.js</h1>
+<p>To redirect all paths on the &quot;www&quot; version of a hostname to the &quot;non-www&quot; (domain only) version using Express.js (or Connect):</p>
+<p>JavaScript:</p>
+<pre><code class="lang-javascript">app.all(&#39;/*&#39;, function(req, res, next) {
+ if(/^www\./.test(req.headers.host)) {
+  res.redirect(req.protocol + &#39;://&#39; + req.headers.host.replace(/^www\./,&#39;&#39;) + req.url,301);
+ } else {
+  next();
+ }
+});
+</code></pre>
+<p>CoffeeScript:</p>
+<pre><code class="lang-coffeescript">app.all &#39;/*&#39;, (req, res, next)-&gt;
+  if /^www\./.test req.headers.host
+    res.redirect &quot;#{req.protocol}://#{req.headers.host.replace(/^www\./,&#39;&#39;)}#{req.url}&quot;,301
+  else
+    next()
+</code></pre>
+<div class="pubdate">Published 13 Mar 2014</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-nodejs.html">nodejs</a>, <a href="tag-expressjs.html">expressjs</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/redirect-http-to-https-in-expressjs.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="redirect-http-to-https-in-node-js-and-express-js">Redirect http: to https: in Node.js and Express.js</h1>
+<p>To redirect all HTTP requests to the equivalent HTTPS requests using Express.js you can create a simple Express instance that listens on the HTTP port and performs the redirect.</p>
+<p>JavaScript:</p>
+<pre><code class="lang-javascript">var http       = require(&#39;http&#39;);
+var express    = require(&#39;express&#39;);
+var HTTP_PORT  = 80;
+var HTTPS_PORT = 443;
+
+var http_app = express();
+http_app.set(&#39;port&#39;, HTTP_PORT);
+
+http_app.all(&#39;/*&#39;, function(req, res, next) {
+  if (/^http$/.test(req.protocol)) {
+    var host = req.headers.host.replace(/:[0-9]+$/g, &quot;&quot;); // strip the port # if any
+    if ((HTTPS_PORT != null) &amp;&amp; HTTPS_PORT !== 443) {
+      return res.redirect(&quot;https://&quot; + host + &quot;:&quot; + HTTPS_PORT + req.url, 301);
+    } else {
+      return res.redirect(&quot;https://&quot; + host + req.url, 301);
+    }
+  } else {
+    return next();
+  }
+});
+
+http.createServer(http_app).listen(HTTP_PORT).on(&#39;listening&#39;, function() {
+  return console.log(&quot;HTTP to HTTPS redirect app launched.&quot;);
+});
+</code></pre>
+<p>CoffeeScript:</p>
+<pre><code class="lang-coffeescript">http       = require &#39;http&#39;
+express    = require &#39;express&#39;
+HTTP_PORT  = 80
+HTTPS_PORT = 443
+
+http_app = express()
+http_app.set &#39;port&#39;, HTTP_PORT
+
+http_app.all &#39;/*&#39;, (req, res, next)-&gt;
+  if /^http$/.test req.protocol
+    host = req.headers.host.replace /:[0-9]+$/g, &quot;&quot; # strip the port # if any
+    if HTTPS_PORT? and HTTPS_PORT isnt 443
+      res.redirect &quot;https://#{host}:#{HTTPS_PORT}#{req.url}&quot;, 301
+    else
+      res.redirect &quot;https://#{host}#{req.url}&quot;, 301
+  else
+    next()
+
+http.createServer(http_app).listen(HTTP_PORT).on &#39;listening&#39;,()-&gt;
+  console.log &quot;HTTP to HTTPS redirect app launched.&quot;
+</code></pre>
+<div class="pubdate">Published 13 Mar 2014</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-nodejs.html">nodejs</a>, <a href="tag-expressjs.html">expressjs</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/prefetching-images-with-js.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="preloading-images-with-javascript">Preloading images with JavaScript</h1>
+<p>If your web app dynamically displays certain images and you don&#39;t want to make sure that the images are downloaded before they are first displayed, you can pre-fetch the images using some simple javascript.</p>
+<p>For single-page apps, this should be sufficient:</p>
+<pre><code class="lang-javascript">function preload_images(urls) {
+  urls.forEach( function(i, url ) {
+    (new Image()).src = url;
+  });
+}
+
+preload_images( [ &#39;image1.jpg&#39;, &#39;image2.png&#39;, &#39;image3.tiff&#39; ] );
+</code></pre>
+<p>If you want to add a slight delay (so other web assets can load first) use something like:</p>
+<pre><code class="lang-javascript">setTimeout( function() { preload_images( [ &#39;image1.jpg&#39;, &#39;image2.png&#39;, &#39;image3.tiff&#39; ] ); }, 500) ;
+</code></pre>
+<p>The single-page-app method above loads each image in the array into memory.  <em>However</em>, browsers generally won&#39;t cache these images, so if the user navigates to another page without viewing the images, they will be lost.</p>
+<p>To make the images cachable, it helps to add the image that is created into the actual DOM tree for the page. Here&#39;s one way:</p>
+<pre><code class="lang-javascript">function preload_images(urls) {
+  var newdiv = document.createElement(&quot;div&quot;)
+  if(newdiv.setAttribute) {
+    newdiv.setAttribute(&quot;style&quot;,&quot;display:none;&quot;)
+  } else if(newdiv.style &amp;&amp; newdiv.style.setAttribute) {
+    newdiv.style.setAttribute(&quot;cssText&quot;,&quot;display:none;&quot;)
+  } else if(newdiv.style) {
+    newdiv.style.cssText = &quot;display:none;&quot;;
+  } else {
+    newdiv.style = &quot;display:none;&quot;
+  }
+  urls.forEach( function(i, url ) {
+    var newimg = new Image();
+    newimg.src = url
+    newdiv.appendChild(newimg)
+  });
+  document.body.appendChild(newdiv)
+}
+</code></pre>
+<div class="pubdate">Published 13 Mar 2014</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-web.html">web</a>, <a href="tag-html.html">html</a>, <a href="tag-performance.html">performance</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/node-js-sql-to-html.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="a-general-purpose-sql-to-html-routine-for-coffeescript-javascript-node-js">A General Purpose SQL-to-HTML Routine for CoffeeScript/JavaScript/Node.js</h1>
+<p>Using <a href="https://github.com/felixge/node-mysql">node-mysql</a> or similar, the following CoffeeScript routine will generate an HTML table containing the data in a SQL result set, including column headings:</p>
+<pre><code class="lang-coffeescript">sql_to_html:(connection,query,bindvars,callback)-&gt;
+  connection.query query, bindvars, (err,rows,fields)-&gt;
+    if err?
+       callback(err)
+    else
+      buffer = &#39;&lt;table border=1&gt;&lt;tr&gt;&#39;
+      for field in fields
+        buffer += &quot;&lt;th&gt;#{field.name}&lt;/th&gt;&quot;
+      buffer += &#39;&lt;/tr&gt;&#39;
+      for row in rows
+        buffer += &#39;&lt;tr&gt;&#39;
+        for field in fields
+          buffer += &quot;&lt;td&gt;#{row[field.name]}&lt;/td&gt;&quot;
+        buffer += &#39;&lt;/tr&gt;&#39;
+      buffer += &#39;&lt;/table&gt;&#39;
+      callback(null,buffer)
+</code></pre>
+<div class="pubdate">Published 8 Feb 2014</div><div class="tags">Tagged <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-javascript.html">javascript</a>, <a href="tag-nodejs.html">nodejs</a>, <a href="tag-sql.html">sql</a>, <a href="tag-database.html">database</a>, <a href="tag-mysql.html">mysql</a>, <a href="tag-html.html">html</a>, <a href="tag-web.html">web</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/escape-for-regexp.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="escape-a-string-for-use-in-a-regular-expression">escape a string for use in a regular expression</h1>
+<p>The following function converts reserved characters into backslash-escaped patterns.  This allows a literal string to be used within a regular expression.</p>
+<pre><code class="lang-coffeescript">escape_for_regexp=(str)-&gt;
+  return str.replace(/([.?*+^$[\]\\(){}|-])/g, &quot;\\$1&quot;)
+</code></pre>
+<p>For example:</p>
+<pre><code class="lang-javascript">var literal = &quot;Who said that?&quot;;
+var escaped = escape_for_regexp(literal); // yields &quot;Who said that\?&quot;
+var regexp = new RegExp(escaped);
+console.log(regexp);                      // yields /Who said that\?/
+</code></pre>
+<div class="pubdate">Published 19 Jun 2013</div><div class="tags">Tagged <a href="tag-regexp.html">regexp</a>, <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/coffeescript-flatten-array.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="flatten-an-array-in-coffeescript">flatten an array in coffeescript</h1>
+<pre><code class="lang-coffeescript">flatten_array = (a)-&gt;
+  unless a?
+    return null
+  else if a.length is 0
+    return []
+  else
+    return ( a.reduce (l,r)-&gt;l.concat(r) )
+</code></pre>
+<div class="pubdate">Published 23 Jan 2013</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/node-js-process-on-sigint.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="gracefully-closing-node-js-applications-via-signal-handling">gracefully closing node.js applications via signal handling</h1>
+<p>To make your node.js application gracefully respond to shutdown signals, use <code>process.on(SIGNAL,HANDLER)</code>.</p>
+<p>For example, to respond to <code>SIGINT</code> (typically <em>Ctrl-c</em>), you can use:</p>
+<pre><code class="lang-js">process.on( &quot;SIGINT&quot;, function() {
+  console.log(&#39;CLOSING [SIGINT]&#39;);
+  process.exit();
+} );
+</code></pre>
+<p>Note that without the <code>process.exit()</code>, the program will not be shutdown.  (This is you chance to override or &quot;trap&quot; the signal.)</p>
+<p>Some common examples (in CoffeeScript):</p>
+<pre><code class="lang-coffeescript">process.on &#39;SIGHUP&#39;,  ()-&gt;console.log(&#39;CLOSING [SIGHUP]&#39;);  process.exit()
+process.on &#39;SIGINT&#39;,  ()-&gt;console.log(&#39;CLOSING [SIGINT]&#39;);  process.exit()
+process.on &#39;SIGQUIT&#39;, ()-&gt;console.log(&#39;CLOSING [SIGQUIT]&#39;); process.exit()
+process.on &#39;SIGABRT&#39;, ()-&gt;console.log(&#39;CLOSING [SIGABRT]&#39;); process.exit()
+process.on &#39;SIGTERM&#39;, ()-&gt;console.log(&#39;CLOSING [SIGTERM]&#39;); process.exit()
+</code></pre>
+<p>PS: On Linux (and similar) you can enter <code>kill -l</code> on the command line to see a list of possible signals, and <code>kill -N PID</code> to send signal <em>N</em> to the process with process ID <em>PID</em>.</p>
+<div class="pubdate">Published 8 Jan 2013</div><div class="tags">Tagged <a href="tag-nodejs.html">nodejs</a>, <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-cli.html">cli</a>, <a href="tag-linux.html">linux</a>, <a href="tag-ops.html">ops</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/js-regexp-cheat-sheet.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="cheat-sheet-for-javascript-regular-expressions">Cheat Sheet for JavaScript Regular Expressions</h1>
+<h2 id="flags">flags</h2>
+<ul>
+<li><code>/pattern/g</code> - global</li>
+<li><code>/pattern/i</code> - case-insensitive</li>
+<li><code>/pattern/m</code> - multi-line</li>
+</ul>
+<h2 id="patterns">patterns</h2>
+<ul>
+<li><code>\s</code> - any whitespace character (<code>[\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</li>
+<li><code>[\s\S]</code> - commonly used for &quot;anything including newlines (alternative <code>[^]</code>)</li>
+<li><p><code>\S</code> - any non-whitespace character (<code>[^\f\n\r\t\v\u00A0\u2028\u2029]</code>)</p>
+</li>
+<li><p><code>\w</code> - any word character (alpha, numeric or underscore) (<code>[a-zA-Z0-9_]</code>)</p>
+</li>
+<li><code>\W</code> - any non-word character (<code>[^a-zA-Z0-9_]</code>)</li>
+<li><code>\d</code> - any digit (<code>[0-9]</code>)</li>
+<li><code>\D</code> - any non-digit (<code>[^0-9]</code>)</li>
+<li><code>\cX</code>- control character X (e.g. <code>\cM</code> matches <code>control-M</code> (<code>^M</code>))</li>
+<li><code>\b</code> - word boundary (the position between a word char and whitespace)</li>
+<li><code>\B</code> - not a word boundary (<code>[^\b]</code>).</li>
+<li><code>\xhh</code> - the character with hex code <code>hh</code></li>
+<li><code>\uhhhh</code> - the character with hex code <code>hhhh</code></li>
+</ul>
+<div class="pubdate">Published 18 Jan 2013</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-regexp.html">regexp</a>, <a href="tag-cheatsheet.html">cheatsheet</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/nodejs-require-main.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="check-require-main-to-test-if-a-node-js-file-is-run-directly">Check <code>require.main</code> to test if a Node.js file is run directly</h1>
+<p>In Node, when a file is run directly from the command line, <code>require.main</code> is set to its <code>module</code>. Hence <code>require.main === module</code> tells you whether or not your script was invoked directly or required by another file.</p>
+<p>A JavaScript &quot;main&quot; idiom:</p>
+<pre><code class="lang-javascript">//#!/usr/bin/env node
+// file: example.js
+
+function main() {
+  // ...
+}
+
+if(require.main === module) {
+  main();
+}
+</code></pre>
+<p>The <code>main</code> method will run if <code>example.js</code> is invoked via <code>node example.js</code> or <code>./example.js</code> but not when required within another script (via <code>require(&#39;./example&#39;)</code>, for example).</p>
+<p>A CoffeeScript &quot;main&quot; idiom (using classes, although it doesn&#39;t have to):</p>
+<pre><code class="lang-coffeescript">#!/usr/bin/env coffee
+# file: example.coffee
+class Example
+  main:()-&gt;
+    # ...
+
+if require.main is module
+  (new Example()).main()
+</code></pre>
+<p>The <code>main</code> method will run if <code>example.coffee</code> is invoked via <code>coffee example.coffee</code> or <code>./example.coffee</code> but not when required within another script (via <code>require(&#39;./example&#39;)</code>, for example).</p>
+<p>Also see <a href="http://nodejs.org/docs/v0.4.8/api/all.html#accessing_the_main_module">the nodejs.org docs</a>.</p>
+<div class="pubdate">Published 3 Mar 2013</div><div class="tags">Tagged <a href="tag-nodejs.html">nodejs</a>, <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-cli.html">cli</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/argv-underscore-in-optimist.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="in-node-optimist-argv-_-is-an-array-of-the-extra-parameters">In node-optimist, <code>argv._</code> is an array of the &quot;extra&quot; parameters</h1>
+<p>In substack&#39;s <a href="https://github.com/substack/node-optimist">node-optimist</a>, you can use <code>argv._</code> to fetch any parameters remaining after optimist has done its parsing.</p>
+<p>For example (in CoffeeScript):</p>
+<pre><code class="lang-coffeescript"># file: example.coffee
+optimist = require &#39;optimist&#39;
+options = {
+  &#39;help&#39; : { description:&#39;Show this message and exit.&#39;, boolean:true, alias:&#39;h&#39; }
+}
+argv = optimist.usage(&#39;Usage: $0 [--help]&#39;, options).argv
+
+# Now argv._ contains an array &quot;extra&quot; parameters, if any
+console.log argv._
+</code></pre>
+<p>For example</p>
+<pre><code class="lang-bash">coffee example.coffee --help
+</code></pre>
+<p>yields</p>
+<pre><code class="lang-json">[ ]
+</code></pre>
+<p>but either of</p>
+<pre><code class="lang-bash">coffee example.coffee --help foo.txt bar.png
+</code></pre>
+<p>or</p>
+<pre><code class="lang-bash">coffee example.coffee foo.txt bar.png
+</code></pre>
+<p>yield</p>
+<pre><code class="lang-json">[ &quot;foo.txt&quot;, &quot;bar.png&quot; ]
+</code></pre>
+<div class="pubdate">Published 3 Mar 2013</div><div class="tags">Tagged <a href="tag-nodejs.html">nodejs</a>, <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-cli.html">cli</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/argf-for-nodejs.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="ruby-like-argf-for-node-js">Ruby-like ARGF for Node.js</h1>
+<p>tokuhirom&#39;s <a href="https://github.com/tokuhirom/node-argf">node-argf</a> module offers a Ruby-like ARGF for Node.js.</p>
+<p>Install via:</p>
+<pre><code class="lang-bash">npm install argf
+</code></pre>
+<p>or by adding</p>
+<pre><code class="lang-json">{
+  &quot;dependencies&quot; : {
+    &quot;argf&quot; : &quot;latest&quot;
+  }
+}
+</code></pre>
+<p>to your <code>package.json</code> file.</p>
+<p>Use ARGF like this:</p>
+<pre><code class="lang-javascript">ARGF = require(&#39;argf&#39;);
+argf = new ARGF();  // create argf based on current
+                    // command line parameters or
+                    // input streams.
+
+// register a callback for when all input data has been read
+argf.on(&#39;finished&#39;, function() {
+  console.log(&quot;Done processing all inputs.&quot;);
+});
+
+// process the input(s)
+argf.forEach( function(line) {
+  console.log(&quot;Read:&quot;,line);
+  console.log(&quot;From source:&quot;,argv.stream.path);
+}
+</code></pre>
+<p>Like Ruby&#39;s <code>ARGF</code>, the module assumes any elements in <code>process.argv</code> represent files to process (and uses the input stream if no files are provided.</p>
+<p>You can also pass an array to <code>new ARGF()</code> to provide the list of files, which is handy if you&#39;re using something like <a href="https://github.com/substack/node-optimist">node-optimist</a>.  (Note that in node-optimist you can use <code>argv._</code> to get the remaining parameters after parsing.)  For example:</p>
+<pre><code class="lang-javascript">optimist = require(&#39;optimist&#39;);
+ARGF = require(&#39;argf&#39;);
+
+options = {
+  # ...
+}
+argv = optimist.usage(&#39;Usage: $0 ...&#39;, options).argv;
+
+argf = new ARGF(argv._);
+
+argf.on(&#39;finished&#39;, function() {
+  console.log(&quot;Done processing all inputs.&quot;);
+});
+
+// process the input(s)
+argf.forEach( function(line) {
+  console.log(&quot;Read:&quot;,line);
+  console.log(&quot;From source:&quot;,argv.stream.path);
+}
+</code></pre>
+<div class="pubdate">Published 3 Mar 2013</div><div class="tags">Tagged <a href="tag-nodejs.html">nodejs</a>, <a href="tag-javascript.html">javascript</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-cli.html">cli</a>, <a href="tag-ruby.html">ruby</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/rectangles-intersect.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="how-to-determine-if-two-rectangles-overlap-">How to determine if two rectangles overlap.</h1>
+<pre><code class="lang-javascript">// Assuming that x1,y1 and x2,y2 give the upper left and
+// lower right coordinates of the rectangles (respectively).
+function rectangles_dont_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
+  return (Ax1 &lt; Bx2) &amp;&amp; (Ax2 &gt; Bx1) &amp;&amp; (Ay1 &lt; By1) &amp;&amp; (Ay2 &gt; By2);
+}
+
+function rectangles_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2) {
+  return !rectangles_dont_intersect(Ax1,Ay1,Ax2,Ay2,Bx1,By1,Bx2,By2);
+}
+</code></pre>
+<div class="pubdate">Published 3 Mar 2013</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/gitignore-for-coffee.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="-gitignore-boilerplate-for-coffeescript-node-js-projects-">&#39;.gitignore&#39; boilerplate for CoffeeScript/Node.JS projects.</h1>
+<pre><code># node.js / coffeescript
+#--------------------------------------------------------------------
+docs/*.html
+docs/docco
+lib-cov
+lib/*.js
+node_modules
+README.html
+test/*.js
+</code></pre><div class="tags">Tagged <a href="tag-git.html">git</a>, <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-javascript.html">javascript</a> and <a href="tag-nodejs.html">nodejs</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

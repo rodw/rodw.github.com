@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>A Timely Bug | HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li class="active"><a href="/articles/">Articles <span class="sr-only">(current)</span></a></li><li><a href="/snippets/">Snippets</a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><h1 id="a-timely-bug">A Timely Bug</h1>
+<p><div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/articles/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Wednesday, 22 October 2003</b>
+  <p>
+I&#39;m a sucker for quirky bugs.  Recently, I&#39;ve been hacking around with <a href="http://c2.com/cgi/wiki?PhlIp" title="Ward's Wiki: PhlIp">PhlIp</a>&#39;s excellent <a href="http://www.xpsd.com/MiniRubyWiki" title="XpSD Wiki: Mini Ruby Wiki">Mini Ruby Wiki</a> (more on that later), and discovered one such bug.
+</p><p>
+There&#39;s a block of code in MiniRubyWiki that renders a small calendar in HTML, not unlike your typical blog calendar widget.  Here&#39;s a small subset (the actual code is more interesting that this) which is largely although not completely unchanged from the original miniWiki.rb source.  See if you can spot the bug.
+</p></p>
+<pre><code class="lang-ruby">  # here&#39;s a constant, declared elsewhere in the program
+  SecondsInDay = 60 * 60 * 24
+
+  # ...
+
+  # In this loop we&#39;re rendering a four-week calendar,
+  # from the beginning of last week until the end of the week after next.
+  # &quot;beginningOfLastWeek&quot; is a Time indicating the Sunday of last week
+
+  today = Time.now()
+  (0...28).each do |day|
+    dayOnCalendar = beginningOfLastWeek + day * SecondsInDay
+    # break the row every seven days
+    calendar += &#39;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&#39; if day.divmod(7)[1] == 0
+    calendar += &#39;&amp;lt;td&#39;
+    # highlight today
+    if today.mday() == dayOnCalendar.mday() then
+      calendar += &#39; bgcolor=&quot;#88ff88&quot;&#39;
+    end
+    calendar += &#39;&amp;gt;&#39;
+    # show the month for the first day in the calendar or in the month
+    calendar += dayOnCalendar.strftime(&#39;%b&#39;) + &#39; &#39; if dayOnCalendar.mday == 1 or day == 0
+    calendar += dayOnCalendar.mday.to_s()
+
+    # ...snip some stuff displayed within the calendar...
+
+    calendar += &#39;&amp;lt;/tr&amp;gt;&#39;
+  end
+</code></pre>
+<p>
+I&#39;ve been running this code on my Zaurus, sometimes launching it from the EmbeddedKonsole on the Zaurus itself, and sometimes from an ssh terminal running on a remote machine.  Eventually I noticed something funky about this.  When I launch the server from the ssh terminal, 1 November 2003 is listed, correctly, as a Saturday.  When I launch the server from a terminal on the Zaurus itself, 1 November isn&#39;t listed at all (the last day on the calendar is 31 October 2003, listed, incorrectly, as a Saturday).  In fact, when I launch the server from the Zaurus, Sunday, 26 October 2003 is listed twice.
+</p><p>
+Adding a &quot;puts curDay.to_s&quot; line inside that loop makes the problem obvious.  This output like the following:
+</p>
+
+<pre><code>Sun Oct 19 00:00:00 CDT 2003
+Mon Oct 20 00:00:00 CDT 2003
+Tue Oct 21 00:00:00 CDT 2003
+Wed Oct 22 00:00:00 CDT 2003
+Thu Oct 23 00:00:00 CDT 2003
+Fri Oct 24 00:00:00 CDT 2003
+Sat Oct 25 00:00:00 CDT 2003
+Sun Oct 26 00:00:00 CDT 2003
+Sun Oct 26 23:00:00 CST 2003
+Mon Oct 27 23:00:00 CST 2003
+Tue Oct 28 23:00:00 CST 2003
+Wed Oct 29 23:00:00 CST 2003
+Thu Oct 30 23:00:00 CST 2003
+Fri Oct 31 23:00:00 CST 2003
+</code></pre><p>
+That&#39;s right, sometimes 24x60x60 is the wrong value for SecondsInDay.  Due to the switch from CDT to CST, 26 October 2003 has 25 hours, so adding SecondsInDay to the midnight time isn&#39;t sufficient to advance the day.
+</p><p>
+For whatever reason, when launched via remote ssh terminal, the interpreter doesn&#39;t seem to be aware of the locale (it shows the times as UTC), but when launched from EmbeddedKonsole, Time.now() is aware of the locale and manages the switch from CDT to CST automatically, leading to the bug.
+</p><p>
+Cute, no?
+</p></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

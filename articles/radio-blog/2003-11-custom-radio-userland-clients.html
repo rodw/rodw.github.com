@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li class="active"><a href="/articles/">Articles <span class="sr-only">(current)</span></a></li><li><a href="/snippets/">Snippets</a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><h1 id="custom-radio-userland-clients-">Custom Radio UserLand Clients?</h1>
+<p><div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/articles/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Tuesday, 4 November 2003</b></p>
+<p>
+<a href="http://radio.userland.com/" title="Radio UserLand">Radio</a> is a reasonably nifty weblog client,
+sporting an easy-to-use, web-based content management tool, a workable server-based news aggregator and a
+fairly robust weblog hosting infrastructure for USD$3.33 a month.
+</p><p>
+Things I find annoying about Radio include the fact that it won&#39;t run on a Unix-based OS (although there
+are <a href="http://radio.weblogs.com/0102385/2003/04/24.html" title="Chris Double's Radio Weblog">reports</a>
+of folks who&#39;ve got the Windows version up and running under Wine on Linux), it&#39;s got a fairly large footprint, and
+it uses a relatively cumbersome and under-documented scripting framework.
+</p><p>
+All in all, the biggest appeal of Radio Userland to me is that I can get quick, easy and generally adequate weblog
+hosting for monthly cost less than a trip to Starbucks.  If only I could continue to use the hosting service and
+replace the Windows-based client--I&#39;d be happy to generate the weblog HTML via some homegrown software and simply
+upload the content via FTP or SCP.
+</p><p>
+Well, it&#39;s not quite as easy as FTP, but after poking around a bit, I&#39;ve figured out how to &quot;manually&quot; update a
+Radio hosted site, or more generally,
+<a href="http://www.myelin.co.nz/wcswiki/w/CommunityServerWiki" title="Community Server Wiki">any of a number of servers</a>
+that supports the
+<a href="http://www.soapware.org/xmlStorageSystem" title="SoapWare.org: xmlStorageSystem">xmlStorageSystem</a> XML-RPC protocol.
+</p><p>
+Here&#39;s a relatively crude but functional example using <a href="http://jakarta.apache.org/commons/httpclient">HttpClient</a>.
+</p><p>
+First, the basic framework for processing a request and it&#39;s response.  This method takes a request &quot;body&quot; and returns the response.  Typically both the request and the response will be XML-RPC documents.
+</p>
+
+<pre><code class="lang-java">String processRequest(String body) throws IOException, HttpException {
+    PostMethod method = new PostMethod();
+    method.setRequestHeader(&quot;Content-type&quot;,&quot;text/xml&quot;);
+    method.setRequestBody(body);
+    method.setPath(&quot;/RPC2&quot;);
+    method.setRequestContentLength(body.length());
+
+    HttpClient client = new HttpClient();
+
+    HostConfiguration host = new HostConfiguration();
+    host.setHost(&quot;radio.xmlstoragesystem.com&quot;);
+
+    client.executeMethod(host,method);
+
+    return method.getResponseBodyAsString();
+}
+</code></pre>
+<p>
+Typically we pass an xmlStorageSystem request to this method as the String parameter.  Here&#39;s one simple example, a sort of
+&quot;status&quot; query:
+</p>
+
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;methodCall&gt;
+  &lt;methodName&gt;xmlStorageSystem.getServerCapabilities&lt;/methodName&gt;
+  &lt;params&gt;
+    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is &quot;122027&quot; --&gt;&lt;/value&gt;&lt;/param&gt;
+    &lt;param&gt;&lt;value&gt;&lt;!-- the md5 hash of your radio password as ASCII bytes --&gt;&lt;/value&gt;&lt;/param&gt;
+  &lt;/params&gt;
+&lt;/methodCall&gt;
+</code></pre>
+<p>
+To create or update a file (or files), we use <code>saveMultipleFiles</code>, for example:
+</p>
+
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;methodCall&gt;
+  &lt;methodName&gt;xmlStorageSystem.saveMultipleFiles&lt;/methodName&gt;
+  &lt;params&gt;
+    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is &quot;122027&quot; --&gt;&lt;/value&gt;&lt;/param&gt;
+    &lt;param&gt;&lt;value&gt;&lt;!-- the md5 hash of your radio password as ASCII bytes --&gt;&lt;/value&gt;&lt;/param&gt;
+    &lt;param&gt;
+      &lt;value&gt;
+        &lt;array&gt;
+          &lt;data&gt;&lt;value&gt;/rpctest/test.html&lt;/value&gt;&lt;/data&gt; &lt;!-- location of file --&gt;
+        &lt;/array&gt;
+      &lt;/value&gt;
+    &lt;/param&gt;
+    &lt;param&gt;
+      &lt;value&gt;
+        &lt;array&gt;
+          &lt;data&gt;&lt;value&gt;Hello World!&lt;/value&gt;&lt;/data&gt; &lt;!-- contents of file --&gt;
+        &lt;/array&gt;
+      &lt;/value&gt;
+    &lt;/param&gt;
+  &lt;/params&gt;
+&lt;/methodCall&gt;
+</code></pre>
+<p>
+To delete a file (or files), we use <code>deleteMultipleFiles</code>, for example:
+</p>
+
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;methodCall&gt;
+  &lt;methodName&gt;xmlStorageSystem.saveMultipleFiles&lt;/methodName&gt;
+  &lt;params&gt;
+    &lt;param&gt;&lt;value&gt;&lt;!-- your radio user number, e.g., mine is &quot;122027&quot; --&gt;&lt;/value&gt;&lt;/param&gt;
+    &lt;param&gt;&lt;value&gt;&lt;!-- the md5 hash of your radio password as ASCII bytes --&gt;&lt;/value&gt;&lt;/param&gt;
+    &lt;param&gt;
+      &lt;value&gt;
+        &lt;array&gt;
+          &lt;data&gt;&lt;value&gt;/rpctest/test.html&lt;/value&gt;&lt;/data&gt; &lt;!-- location of file --&gt;
+        &lt;/array&gt;
+      &lt;/value&gt;
+    &lt;/param&gt;
+  &lt;/params&gt;
+&lt;/methodCall&gt;
+</code></pre>
+<p>
+etc.
+</p><p>
+See <a href="http://www.soapware.org/xmlStorageSystem" title="SoapWare.org: xmlStorageSystem">Dave Winer&#39;s writeup</a> for more
+procedures, details and <a href="http://www.soapware.org/stories/storyReader$16">examples</a>.
+</p><p>
+Now that I know how to manipulate my radio.weblogs.com site without using the Radio client, I&#39;m tempted to roll my own weblogging software, if only so I don&#39;t have to keep a Windows box around to support my blog.  As I mentioned above, there are <a href="http://www.myelin.co.nz/wcswiki/w/CommunityServerWiki" title="Community Server Wiki">a number of servers</a> that support the xmlStorageSystem protocol.  Anyone know of any non-Radio clients for xmlStorageSystem?  At minimum, something that syncs an arbitrary local directory with a remove xmlStorageSystem server should be easy enough to implement, which would allow anything that you can &quot;publish&quot; locally to be used as a client to a Community Server implementation.
+</p></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

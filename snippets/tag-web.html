@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/articles/">Articles</a></li><li class="active"><a href="/snippets/">Snippets <span class="sr-only">(current)</span></a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><div class="row snippet-title"><div class="col-sm-7"><h1>9 web snippets</h1></div><div class="col-sm-5 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/prefetching-images-with-js.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="preloading-images-with-javascript">Preloading images with JavaScript</h1>
+<p>If your web app dynamically displays certain images and you don&#39;t want to make sure that the images are downloaded before they are first displayed, you can pre-fetch the images using some simple javascript.</p>
+<p>For single-page apps, this should be sufficient:</p>
+<pre><code class="lang-javascript">function preload_images(urls) {
+  urls.forEach( function(i, url ) {
+    (new Image()).src = url;
+  });
+}
+
+preload_images( [ &#39;image1.jpg&#39;, &#39;image2.png&#39;, &#39;image3.tiff&#39; ] );
+</code></pre>
+<p>If you want to add a slight delay (so other web assets can load first) use something like:</p>
+<pre><code class="lang-javascript">setTimeout( function() { preload_images( [ &#39;image1.jpg&#39;, &#39;image2.png&#39;, &#39;image3.tiff&#39; ] ); }, 500) ;
+</code></pre>
+<p>The single-page-app method above loads each image in the array into memory.  <em>However</em>, browsers generally won&#39;t cache these images, so if the user navigates to another page without viewing the images, they will be lost.</p>
+<p>To make the images cachable, it helps to add the image that is created into the actual DOM tree for the page. Here&#39;s one way:</p>
+<pre><code class="lang-javascript">function preload_images(urls) {
+  var newdiv = document.createElement(&quot;div&quot;)
+  if(newdiv.setAttribute) {
+    newdiv.setAttribute(&quot;style&quot;,&quot;display:none;&quot;)
+  } else if(newdiv.style &amp;&amp; newdiv.style.setAttribute) {
+    newdiv.style.setAttribute(&quot;cssText&quot;,&quot;display:none;&quot;)
+  } else if(newdiv.style) {
+    newdiv.style.cssText = &quot;display:none;&quot;;
+  } else {
+    newdiv.style = &quot;display:none;&quot;
+  }
+  urls.forEach( function(i, url ) {
+    var newimg = new Image();
+    newimg.src = url
+    newdiv.appendChild(newimg)
+  });
+  document.body.appendChild(newdiv)
+}
+</code></pre>
+<div class="pubdate">Published 13 Mar 2014</div><div class="tags">Tagged <a href="tag-javascript.html">javascript</a>, <a href="tag-web.html">web</a>, <a href="tag-html.html">html</a>, <a href="tag-performance.html">performance</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/node-js-sql-to-html.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="a-general-purpose-sql-to-html-routine-for-coffeescript-javascript-node-js">A General Purpose SQL-to-HTML Routine for CoffeeScript/JavaScript/Node.js</h1>
+<p>Using <a href="https://github.com/felixge/node-mysql">node-mysql</a> or similar, the following CoffeeScript routine will generate an HTML table containing the data in a SQL result set, including column headings:</p>
+<pre><code class="lang-coffeescript">sql_to_html:(connection,query,bindvars,callback)-&gt;
+  connection.query query, bindvars, (err,rows,fields)-&gt;
+    if err?
+       callback(err)
+    else
+      buffer = &#39;&lt;table border=1&gt;&lt;tr&gt;&#39;
+      for field in fields
+        buffer += &quot;&lt;th&gt;#{field.name}&lt;/th&gt;&quot;
+      buffer += &#39;&lt;/tr&gt;&#39;
+      for row in rows
+        buffer += &#39;&lt;tr&gt;&#39;
+        for field in fields
+          buffer += &quot;&lt;td&gt;#{row[field.name]}&lt;/td&gt;&quot;
+        buffer += &#39;&lt;/tr&gt;&#39;
+      buffer += &#39;&lt;/table&gt;&#39;
+      callback(null,buffer)
+</code></pre>
+<div class="pubdate">Published 8 Feb 2014</div><div class="tags">Tagged <a href="tag-coffeescript.html">coffeescript</a>, <a href="tag-javascript.html">javascript</a>, <a href="tag-nodejs.html">nodejs</a>, <a href="tag-sql.html">sql</a>, <a href="tag-database.html">database</a>, <a href="tag-mysql.html">mysql</a>, <a href="tag-html.html">html</a>, <a href="tag-web.html">web</a> and <a href="tag-dev.html">dev</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/zero-width-space-char-in-html-and-latex.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="breaking-non-space-zero-width-space-">breaking non-space (zero-width space)</h1>
+<p>To insert a zero-width space character (as a hint to the layout engine that it <em>could</em> insert a line break here) in HTML:</p>
+<pre><code class="lang-html">&amp;#x200B;
+</code></pre>
+<p>Or in Latex:</p>
+<pre><code>\hspace{0pt}
+</code></pre><div class="pubdate">Published 6 Apr 2014</div><div class="tags">Tagged <a href="tag-html.html">html</a>, <a href="tag-tex-latex.html">tex-latex</a> and <a href="tag-web.html">web</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/download-website-with-wget.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="backup-or-mirror-a-website-using-wget">Backup or mirror a website using wget</h1>
+<p>To create a local mirror or backup of a website with <code>wget</code>, run:</p>
+<pre><code class="lang-bash">wget -r -l 5 -k -w 1 --random-wait &lt;URL&gt;
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>-r</code> (or <code>--recursive</code>) will cause <code>wget</code> to recursively download files</li>
+<li><code>-l N</code> (or <code>--level=N</code>) will limit recursion to at most N levels below the root document (defaults to 5, use <code>inf</code> for infinite recursion)</li>
+<li><code>-k</code> (or <code>--convert-links</code>) will cause <code>wget</code> to convert links in the downloaded documents so that the files can be viewed locally</li>
+<li><code>-w</code> (or <code>--wait=N</code>) will cause <code>wget</code> to wait N seconds between requests</li>
+<li><code>--random-wait</code> will cause <code>wget</code> to randomly vary the wait time to <code>0.5x</code> to <code>1.5x</code> the value specified by <code>--wait</code></li>
+</ul>
+<p>Some additional notes:</p>
+<ul>
+<li><code>--mirror</code> (or <code>-m</code>) can be used as a shortcut for <code>-r -N -l inf --no-remove-listing</code> which enables infinite recursion and preserves both the server timestamps and FTP directory listings.</li>
+<li><code>-np</code> (<code>--no-parent</code>) can be used to limit <code>wget</code> to files below a specific &quot;directory&quot; (path).</li>
+</ul>
+<div class="pubdate">Published 10 Feb 2014</div><div class="tags">Tagged <a href="tag-wget.html">wget</a>, <a href="tag-linux.html">linux</a>, <a href="tag-http.html">http</a>, <a href="tag-one-liner.html">one-liner</a>, <a href="tag-web.html">web</a>, <a href="tag-backup.html">backup</a>, <a href="tag-tool.html">tool</a> and <a href="tag-ops.html">ops</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/pre-cache-with-wget.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="pre-generate-pages-or-load-a-web-cache-using-wget">Pre-generate pages or load a web cache using wget</h1>
+<p>Many web frameworks and template engines will defer the generation the HTML version of a document the first time it is accessed.  This can make the first hit on a given page significantly slower than subsequent hits.</p>
+<p>You can use <code>wget</code> to pre-cache web pages using a command such as:</p>
+<pre><code class="lang-bash">wget -r -l 3 -nd --delete-after &lt;URL&gt;
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>-r</code> (or <code>--recursive</code>) will cause <code>wget</code> to recursively download files</li>
+<li><code>-l N</code> (or <code>--level=N</code>) will limit recursion to at most N levels below the root document (defaults to 5, use <code>inf</code> for infinite recursion)</li>
+<li><code>-nd</code> (or <code>--no-directories</code>) will prevent <code>wget</code> from creating local directories to match the server-side paths</li>
+<li><code>--delete-after</code> will cause <code>wget</code> to delete each file as soon as it is downloaded (so the command leaves no traces behind.)</li>
+</ul>
+<div class="pubdate">Published 10 Feb 2014</div><div class="tags">Tagged <a href="tag-wget.html">wget</a>, <a href="tag-linux.html">linux</a>, <a href="tag-http.html">http</a>, <a href="tag-one-liner.html">one-liner</a>, <a href="tag-performance.html">performance</a>, <a href="tag-web.html">web</a>, <a href="tag-tool.html">tool</a> and <a href="tag-ops.html">ops</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/cross-browser-css-transitions.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="cross-browser-css-transitions">Cross-browser CSS transitions</h1>
+<pre><code class="lang-css">.foo {
+  transition:         opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  -moz-transition:    opacity .25s ease-in-out;
+  -o-transition:      opacity .25s ease-in-out;
+}
+</code></pre>
+<p>Where the right-hand side has the general form:</p>
+<pre><code>PROPERTY DURATION [TIMING-FUNCTION] [TRANSITION-DELAY]
+</code></pre><p>Transitions can chained:</p>
+<pre><code class="lang-css"> .foo { transition: opacity .25s ease-in-out, height 1s linear }
+</code></pre>
+<h2 id="transition-timing-functions">Transition timing functions</h2>
+<ul>
+<li><p><code>linear</code> - constant rate of change between states.</p>
+<p><code>cubic-bezier(0.0, 0.0, 1.0, 1.0)</code></p>
+</li>
+<li><p><code>ease</code> -  (the default) slow acceleration, then faster, before rapidly slowing again at the end.</p>
+<p><code>cubic-bezier(0.25, 0.1, 0.25, 1.0)</code></p>
+</li>
+<li><p><code>ease-in-out</code> - like ease but accelerating/decelerating more rapidly (with a shorter transition between acceleration and deceleration).</p>
+<p><code>cubic-bezier(0.42, 0, 0.58, 1.0)</code></p>
+</li>
+<li><p><code>ease-in</code> - equivalent to the first half of ease-in-out; rapid accelerating then transitioning to a constant rate of change at the end.</p>
+<p><code>cubic-bezier(0.42, 0, 1, 1.0)</code></p>
+</li>
+<li><p><code>ease-out</code> - equivalent to the second half of ease-in-out; a constant rate of change transitioning rapid deceleration at the end.</p>
+<p><code>cubic-bezier(0.42, 0, 0.58, 1.0)</code></p>
+</li>
+<li><p><code>cubic-bezier(x1,y1,x2,y2)</code> - follows <a href="http://en.wikipedia.org/wiki/B%C3%A9zier_curve">cubic Bézier curve</a> using the control points (0,0), (x1,y1), (x2,y2) and (1,1).</p>
+</li>
+<li><p><code>steps( n, [start|end] )</code> - stepwise function with <em>n</em> steps</p>
+</li>
+</ul>
+<h2 id="how-to-read-cubic-bezier-functions">How to read <code>cubic-bezier</code> functions</h2>
+<p>Imagine the transition as a stepwise function starting at (0,0) and ending at (1,1) and with two steps in between.  The <code>cubic-bezier(x1,y1,x2,y2)</code> function specifies the points in the middle. In other words, <em>x1</em> and <em>x2</em> are the times at which the second and third steps happen, respectively (expressed as a fraction of the total transition duration) and <em>y1</em> and <em>y2</em> are how far along the transition is at <em>x1</em> and <em>x2</em>, respectively (expressed as a fraction of the total transition &quot;distance&quot;).  Very loosely, the cubic-bezier function &quot;smooths&quot; those steps.</p>
+<p>These are nicely demonstrated <a href="http://www.the-art-of-web.com/css/timing-function/">here</a>.</p>
+<div class="tags">Tagged <a href="tag-css.html">css</a>, <a href="tag-html.html">html</a>, <a href="tag-web.html">web</a> and <a href="tag-design.html">design</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/presentational-css-classes.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="presentational-css-classes">Presentational CSS Classes</h1>
+<p>These are the opposite of semantic markup, but I find them useful:</p>
+<pre><code class="lang-css">.align-both   { text-align: justify; }
+.align-center { text-align: center; }
+.align-left   { text-align: left; }
+.align-right  { text-align: right; }
+.float-left   { float: left; }
+.float-right  { float: right; }
+.nobr         { white-space: nowrap; }
+.small        { font-size: 80%; } /* should really sync with the &lt;small&gt; tag rules */
+</code></pre>
+<div class="tags">Tagged <a href="tag-css.html">css</a>, <a href="tag-html.html">html</a>, <a href="tag-web.html">web</a> and <a href="tag-design.html">design</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/fixing-css-resets.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="fixing-css-resets">Fixing CSS Resets</h1>
+<p>CSS reset frameworks often strip out <em>all</em> formatting. These CSS rules contain some re-resets:</p>
+<pre><code class="lang-css">/* I understand the theory behind replacing &lt;i&gt; and &lt;b&gt; with &lt;em&gt; and &lt;strong&gt;, but c&#39;mon, really? */
+i     { font-style: italic; }
+b     { font-weight: bold; }
+small { font-size: 80%; }
+
+/* Make superscripts and subscripts actually do something: */
+sup, sub { height: 0; line-height: 1; vertical-align: baseline; _vertical-align: bottom; position: relative; }
+sup      {    bottom: 1ex; }
+sub      {    top: .5ex; }
+
+/* Mono-spaced types. */
+pre, code, kbd, samp, tt { font-family: &#39;droid sans mono slashed&#39;, &#39;droid sans mono dotted&#39;, &#39;droid sans mono&#39;, monospace, monospace; }
+</code></pre>
+<div class="tags">Tagged <a href="tag-css.html">css</a>, <a href="tag-html.html">html</a>, <a href="tag-web.html">web</a> and <a href="tag-design.html">design</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 snippet"><div class="permalink"><a href="/snippets/vertical-center-css.html" title="permalink for this snippet"><i class="fa fa-link"></i></a></div><h1 id="vertically-centering-block-elements-with-css-">Vertically centering block elements with CSS.</h1>
+<p>Via <a href="http://phrogz.net/css/vertical-align/index.html">phrogz.net</a>.</p>
+<pre><code class="lang-html">&lt;style type=&quot;text/css&quot;&gt;
+    #wrapper { position:relative; } /* position:absolute is also ok */
+    #wrapped { position:absolute; top:50%; height:10em; margin-top:-5em; }  /* margin-top = -1 * height/2 */
+&lt;/style&gt;
+...
+&lt;div id=&quot;wrapper&quot;&gt;
+    &lt;div id=&quot;wrapped&quot;&gt;
+        &lt;p&gt;Block content.&lt;/p&gt;
+        &lt;p&gt;But still vertically centered.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<div class="tags">Tagged <a href="tag-css.html">css</a>, <a href="tag-html.html">html</a>, <a href="tag-web.html">web</a> and <a href="tag-design.html">design</a>.</div></div></div><br>&nbsp;</br><div class="row"><div class="col-sm-12 text-right snippet-title-right"><div class="text-right snippet-title-link"><a href="/snippets">Snippets</a> are tiny notes I've collected for easy reference.</div></div></div></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>

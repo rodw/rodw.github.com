@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>On Programming Idioms | HeyRod.com</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/hjs/railscasts.min.css"><style></style></head><body role="document"><nav class="navbar navbar-inverse" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/">HeyRod.com</a></div><div  id="main-nav" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li class="active"><a href="/articles/">Articles <span class="sr-only">(current)</span></a></li><li><a href="/snippets/">Snippets</a></li></ul></div></div></nav><div class="wrapper"><div class="main-container"><div class="container"><div class="row"><div class="col-md-2 text-center"><a href="/"><img src="/img/rod-fc-circle-on-white-200x200.png" height="100" width="100"></a><br>&nbsp;<br>Rodney Waldhoff<br><a href="http://heyrod.com/"><i class="fa fa-cloud"></i> HeyRod.com</a><br><a href="mailto:rwaldhoff+heyrod.com@gmail.com"><i class="fa fa-envelope"></i>  Email</a><br>&nbsp;<br><a href="https://github.com/rodw/"><i class="fa fa-github-alt"></i> GitHub</a><br><a href="http://stackoverflow.com/users/1225825/rod"><i class="fa fa-stack-overflow"></i> StackOverflow</a><br><a href="https://www.linkedin.com/in/rwald"><i class="fa fa-linkedin"></i> LinkedIn</a><br>&nbsp;</div><div class="col-md-10"><h1 id="on-programming-idioms">On Programming Idioms</h1>
+<p><div style="color:#333">(Back in 2003 I ran <a href="http://radio.weblogs.com/0122027/">a moderately popular tech blog</a> on the Radio UserLand platform.  This is an archived version of a post from that blog. You can view <a href="/articles/radio-blog/index.html">an index of all the archived posts</a>.)</div><hr>
+<b>Friday, 14 November 2003</b></p>
+<p>
+Two things I&#39;m always keen to learn when picking up a new programming language are:
+</p>
+<ol>
+<li>How does one organize large projects?  In other words, how does one partition responsibilities and types across namespaces, modules and files?</li>
+<li>What are the common idioms in the language?</li>
+</ol>
+<p>
+I&#39;ve been doing some string processing work with Ruby recently, and it&#39;s got me thinking about examples of the latter.
+</p><p>
+For example, in Java, the String class doesn&#39;t have a direct, boolean-valued method that will tell you whether or not a String contains another String, i.e., there&#39;s nothing like:
+</p>
+
+<pre><code class="lang-java">if(someString.contains(anotherString)) { ... }
+</code></pre>
+<p>
+Instead, most Java developers will write:
+</p>
+
+<pre><code class="lang-java">if(someString.indexOf(anotherString) != -1) { ... }
+</code></pre>
+<p>
+where String.indexOf(String) returns the index of the first occurrence of the argument String, or -1 if the given String isn&#39;t found.  Most Java developers will immediately recognize that as the &quot;String.contains&quot; idiom, and won&#39;t miss a beat.
+</p><p>
+This idiom is so strong in the Java community that it&#39;s almost counter-productive to write a custom utility method:
+</p>
+
+<pre><code class="lang-java">public class StringUtils {
+  public static boolean contains(String a, String b) {
+    return (a.indexOf(b) != -1);
+  }
+}
+</code></pre>
+<p>
+since many developers who see
+</p>
+
+<pre><code class="lang-java">if(StringUtils.contains(someString,anotherString)) { ... }
+</code></pre>
+<p>
+are likely to wonder whether the StringUtils.contains method really does what it is implied--Is this equivalent to the String.indexOf idiom?  Is that someString.contains(anotherString) or vice versa? How are null&#39;s handled? etc.  Unless the developer is already comfortable and familiar with the StringUtils class being used, this code is probably less readable to an experienced developer than the &quot;indexOf != -1&quot; formulation.
+</p><p>
+(This is not to say that &quot;String.indexOf(x) != -1&quot; is actually preferable to &quot;String.contains(x)&quot;, but rather that in the absence of String.contains, the idiom is more widely recognized than a custom utility method.  Why Sun can&#39;t at some point introduce a String.contains method, say in JDK 1.5,  isn&#39;t entirely clear to me.)
+</p><p>
+Now, in the Ruby scripting I&#39;ve been doing recently, I keep needing to determine whether a String begins with a given prefix.  In Java, that&#39;s the String.startsWith method, of course.  The Ruby String class does not have a startsWith method, but one of the neat things about Ruby is that it&#39;s possible to literally add such a method the the String class, as follows:
+</p>
+
+<pre><code class="lang-ruby">class String
+  def startsWith str
+    return self[0...str.length] == str
+  end
+end
+</code></pre>
+<p>
+after which everything behaves exactly like the built-in String class contained that definition.  For example, one can then write:
+</p>
+
+<pre><code class="lang-ruby">if someString.startsWith(anotherString) ...
+</code></pre>
+<p>
+or even
+</p>
+
+<pre><code class="lang-ruby">if &quot;a literal string&quot;.startsWith(anotherString) ...
+</code></pre>
+<p>
+etc.
+</p><p>
+Of course, the implementation I used for String.startsWith (<code>self[0...str.length] == str</code>) is just one of several possible implementations.  Regular expressions provide one way of implementing such a check.  The Java-like indexOf function provides another (e.g., <code>self.indexOf(str) == 0</code>).
+</p><p>
+Since there is no built-in String.startsWith (or for that matter String.contains) in Ruby, I wonder if there is some common idiom that experienced Ruby developers find more readable than adding a custom method to String?  If not for String.startsWith, how about String.contains?
+</p></div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 6:6 PM on 9 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>
