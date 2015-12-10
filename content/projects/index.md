@@ -14,6 +14,13 @@ Prior to Intellinote I worked in a number of digital product development roles a
 See [Rod's resume (PDF)](/files/Waldhoff-Rodney-resume-2014-02.pdf) for more detailed information but be warned that that document may not be up-to-date.
 
 ==========
+# The Graphviz Cookbook
+
+To be candid progress has slowed a bit since my [day job](https://www.intellinote.net/) took off, but I've been working on a how-to book about [Graphviz](http://www.graphviz.org/), a powerful, open-source, graph visualization and processing framework.
+
+***[The Graphviz Cookbook](/projects/gv-cookbook.html)***, like a regular cookbook, is meant to be a practical guide that shows you how to create something tangible and, hopefully, teaches you how to improvise your own creations using similar techniques. You can **[find out more information and download sample chapters here](/projects/gv-cookbook.html)**.
+
+==========
 # The Axion RDMS
 
 Once upon a time I created a fully-functional relational database from scratch (with more than a bit of help from collaborators). I was a major developer behind Axion, a small, fast, open source relational database system written in and for Java. **[Axion](http://axion.tigris.org/)** has been dormant for quite a while, but it was and still is a fairly robust and complete system. Axion had and as far as I know still has some features no other RDBMS provides. Axion...
@@ -30,7 +37,7 @@ Once upon a time I created a fully-functional relational database from scratch (
 Building this wasn't as impractical as it might sound. The first version of Axion was created by a tiny team in less than 5 months in support of a top-selling, award-winning, shrink-wrapped retail CD/DVD-ROM product, and was successfully used in support of that product for nearly a decade.
 
 ==========
-# Some Recent Stuff
+# Recent Open Source Stuff
 
 Some public repositories and other things I've been working on lately:
 

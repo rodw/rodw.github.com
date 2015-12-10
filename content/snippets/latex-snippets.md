@@ -9,6 +9,7 @@ context:
 tags: [tex-latex,design]
 slug: latex-condensed-letter-spacing
 date: 2014-2-8
+title: Tweak letter spacing in TeX/LaTeX
 ---
 
 # Tweak letter spacing in TeX/LaTeX
@@ -28,6 +29,7 @@ Normal Text
 tags: [tex-latex]
 slug: latex-fix-name-collision
 date: 2014-2-8
+title: Avoiding naming collisions in TeX/LaTeX
 ---
 
 # Avoiding naming collisions in TeX/LaTeX
@@ -56,6 +58,7 @@ Now both packages are loaded safely (and the `pifont` `\cross` macro is now avai
 tags: [tex-latex,design]
 slug: latex-page-margins
 date: 2014-2-8
+title: Setting page margins in TeX/LaTeX
 ---
 
 # Setting page margins in TeX/LaTeX
@@ -71,6 +74,7 @@ Use the `geometry` package. For example:
 tags: [tex-latex,design]
 slug: latex-tab-align-hfill
 date: 2014-2-8
+title: Tab-like alignment in TeX/LaTeX using \hfill
 ---
 
 # Tab-like alignment in TeX/LaTeX using \hfill
@@ -106,6 +110,7 @@ etc.
 tags: [tex-latex,design]
 slug: latex-font-sizes
 date: 2014-2-8
+title: TeX/LaTeX Font Sizes
 ---
 
 # TeX/LaTeX Font Sizes
@@ -139,8 +144,8 @@ Also see <http://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text> for font size me
 tags: [html,tex-latex,web]
 slug: zero-width-space-char-in-html-and-latex
 date: 2014-4-6
+title: breaking non-space (zero-width space)
 ---
-
 # breaking non-space (zero-width space)
  
 To insert a zero-width space character (as a hint to the layout engine that it *could* insert a line break here) in HTML:

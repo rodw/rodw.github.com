@@ -9,6 +9,7 @@ context:
 tags: [linux,tool,xml,css,html,xpath,one-liner,ops]
 slug: cli-for-html-extraction
 date: 2014-2-11
+title: Command-line tool for spidering sites and extracting XML/HTML content
 ---
 
 # Command-line tool for spidering sites and extracting XML/HTML content
@@ -43,6 +44,7 @@ There are several more [examples on the Xidel site](http://videlibri.sourceforge
 tags: [nodejs,linux,service,ops]
 slug: forever-service
 date: 2014-2-11
+title: shell script for service-like node.js apps using forever
 ---
 
 # Shell script for service-like CoffeeScript/Node.js apps using forever
@@ -58,6 +60,7 @@ This is an example of a (bash) shell script that uses the forever module to star
 tags: [wget,linux,http,one-liner,web,backup,tool,ops]
 slug: download-website-with-wget
 date: 2014-2-10
+title: Backup or mirror a website using wget
 ---
 
 # Backup or mirror a website using wget
@@ -86,6 +89,7 @@ Some additional notes:
 tags: [wget,linux,http,one-liner,performance,web,tool,ops]
 slug: pre-cache-with-wget
 date: 2014-2-10
+title: Pre-generate pages or load a web cache using wget
 ---
 
 # Pre-generate pages or load a web cache using wget
@@ -110,6 +114,7 @@ Where:
 tags: [linux,networking,iptables,one-liner,http,tool,ops]
 slug: iptables-port-mapping
 date: 2014-2-8
+title: Mapping port 80 to port 3000 using iptables
 ---
 
 # Mapping port 80 to port 3000 using iptables
@@ -129,6 +134,7 @@ Now requests to port 80 will be forwarded on to port 3000.
 tags: [linux,debian,tool]
 slug: xwindows-caps-lock-ctrl-xmodmap
 date: 2014-2-8
+title: Making CAPS-LOCK into a control key in X
 ---
 
 # Making CAPS-LOCK into a control key in X
@@ -150,8 +156,8 @@ $ xmodmap ~/.xmodmap
 tags: [graphviz,linux,one-liner,tool]
 slug: graphviz-txlib
 date: 2014-1-1
+title: Quickly render a 'dot' (Graphviz) graph
 ---
-
 # Quickly render a 'dot' (Graphviz) graph
 
 On Linux and OSX the command:
@@ -171,8 +177,8 @@ The same `-Txlib` parameter works for the other Graphviz rendering engines, incl
 tags: [gui,debian,linux]
 slug: access-google-calendar-from-thunderbird
 date: 2014-2-26
+title: Accessing Google Calendar from Thunderbird/Lightning
 ---
-
 # Accessing Google Calendar from Thunderbird/Lightning (Icedove/Iceowl)
 
 *Background Note: On [Debian](http://debian.org), Mozilla's email client [Thunderbird](http://www.mozilla.org/thunderbird) is known as [Icedove](https://wiki.debian.org/Icedove), and Mozilla's calendar client [Lightning](http://www.mozilla.org/en-US/projects/calendar) is known as Iceowl. This rebranding has [something to do with the licensing requirements](http://en.wikipedia.org/wiki/Mozilla_Corporation_software_rebranded_by_the_Debian_project) surrounding the "Mozilla" name. As I understand it, Firefox/Iceweasel, Thunderbird/Icedove and Sunbird/Lightning/Iceowl are identical save for the icons and naming.*
@@ -217,8 +223,9 @@ Enter your Google username/password and tweak the settings as desired.
 ---
 tags: [bash,linux]
 slug: toggle-line-wrapping-in-terminal
+title: Toggle line-wrapping in terminal with 'tput rmam' and 'tput sram'
 ---
-# Toggle line-wrapping in terminal with 'tput rmam' and 'tput sram'
+# Toggle line-wrapping in the terminal with 'tput rmam' and 'tput sram'
 
 The command:
 
@@ -244,8 +251,9 @@ Some terminals may not support this functionality.
 ---
 tags: [bash,linux,one-liner,cli]
 slug: less-chop-long-lines
+title: Use 'less -S' for horizontal scrolling
 ---
-# Use 'less -S'`' for horizontal scrolling
+# Use 'less -S' for horizontal scrolling
 
 The flag `-S` (or `--chop-long-lines`) will cause `less` to truncate lines at the screen (terminal) boundary, rather than wrapping as it does by default.  You can then scroll horizontally (with the arrow keys, for example) to view the full lines when needed.
 
@@ -257,6 +265,7 @@ cat some_file_with_very_long_lines | less -S
 ---
 tags: [linux,debian,cheatsheet,service,ops]
 slug: linux-run-level-cheatsheet
+title: Cheat Sheet for Linux Run Levels
 ---
 # Cheat Sheet for Linux Run Levels
 
@@ -285,6 +294,7 @@ Also see [Wikipedia's article on run levels](http://en.wikipedia.org/wiki/Runlev
 ---
 tags: [linux,debian,service,ops]
 slug: disable-services-in-linux
+title: How to disable services in Debian/Linux
 ---
 # How to disable services in Debian/Linux
 
@@ -305,6 +315,7 @@ update-rc.d SERVICE_NAME stop 0 1 6 3 . start 2 4 5 .
 ---
 tags: [bash,linux,cli]
 slug: how-to-right-align-bash-prompt
+title: How to right-align text in your bash prompt
 ---
 
 # How to right-align text in your bash prompt
@@ -371,8 +382,9 @@ If you are curious, the `\e[1m\e[32m` bit makes the text bold (`\e[1m`) and gree
 ---
 tags: [linux,one-liner,ops]
 slug: find-duplicates-on-linux
+title: Find duplicate files on Linux
 ---
-# Find duplicate files on Linux.
+# Find duplicate files on Linux (or OSX).
 
 Find files that have the same size and MD5 hash (and hence are likely to be exact duplicates):
 
@@ -404,6 +416,7 @@ Some alternative approaches can be found at [the original source](http://www.com
 ---
 tags: [linux,one-liner,tool]
 slug: shuf-usr-share-dict-words
+title: Generate a random list of words on Linux
 ---
 # Generate a random list of words with `shuf`
 
@@ -421,6 +434,7 @@ selects three words at random from the `words` dictionary.
 ---
 tags: [linux,debian]
 slug: re-enable-ctrl-alt-backspace
+title: Restore Ctrl+Alt+Backspace as a way to kill X on Linux
 ---
 # Restore Ctrl+Alt+Backspace as a way to kill X on Linux.
 
@@ -434,6 +448,7 @@ setxkbmap -option terminate:ctrl_alt_backspace
 ---
 tags: [linux,backup,tool]
 slug: how-to-backup-an-sd-card
+title: Backup an SD card on Linux using 'dd'
 ---
 # Backup an SD card on Linux using 'dd'
 
@@ -458,6 +473,7 @@ echo "tar Ozxf <file> | dd of=<device>"
 ---
 tags: [linux,one-liner,tool]
 slug: find-large-files
+title: Find large files on Linux
 ---
 # Find large files on Linux.
 
@@ -490,6 +506,7 @@ Of course, you could use `du` without the `-h` to get file sizes by the default 
 ---
 tags: [linux,debian,tool]
 slug: using-xrandr
+title: Set monitor resolution with xrandr
 ---
 # Set monitor resolution with xrandr
 
@@ -515,6 +532,7 @@ $ xrandr --output LVDS1 --off --output VGA1 --auto
 ---
 tags: [linux,awk,tool,one-liner]
 slug: strip-chars-with-awk
+title: strip characters with 'awk'
 ---
 # Strip characters from a field in 'awk'
 
@@ -528,6 +546,7 @@ awk -F"\t" '{gsub(/[A-Za-z]/,"",$2); print $2 }'
 ---
 tags: [linux,sed,tool,one-liner]
 slug: strip-chars-with-sed
+title: strip characters with 'sed'
 ---
 # Strip characters from a string or file with 'sed'
 
@@ -540,6 +559,7 @@ $ echo "A1B2C3" | sed 's/[A-Z]//g'
 ---
 tags: [linux,awk,tool,cheatsheet]
 slug: some-awk-basics
+title: Some 'awk' basics
 ---
 # Some 'awk' basics
 
@@ -553,6 +573,7 @@ $ awk -F"\t" '{print "field one=" $1 "; field two=" $2 }' file
 ---
 tags: [linux,sed,tool]
 slug: skip-n-lines
+title: skip the first N lines in file
 ---
 # Skip the first N lines in file
 
@@ -592,6 +613,7 @@ when you want to exclude lines **`A`** through **`B`** from the output.
 ---
 tags: [linux,debian,tool]
 slug: list-fonts
+title: List Available Fonts
 ---
 # List Available Fonts
 
@@ -601,6 +623,7 @@ To view a list of available fonts, use `fc-list`.
 ---
 tags: [linux,bash]
 slug: always-append-bash-history
+title: immediately append to ~/.bash_history
 ---
 # Append to ~/.bash_history "immediately"
 

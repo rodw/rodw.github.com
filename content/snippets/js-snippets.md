@@ -9,6 +9,7 @@ context:
 tags: [javascript,coffeescript,nodejs,http,dev]
 slug: node-https-ssl
 date: 2014-3-13
+title: Launching an SSL (HTTPS) Server in Node.js
 ---
 
 # Launching an SSL (HTTPS) Server in Node.js
@@ -67,6 +68,7 @@ openssl x509 -req -days 365 -in csr.pem -signkey /path/to/file.pem -out /path/to
 tags: [javascript,coffeescript,nodejs,expressjs,dev]
 slug: redirect-domain-in-expressjs
 date: 2014-3-13
+title: Redirect www.example.com to example.com in Node.js
 ---
 
 # Redirect www.example.com to example.com in Node.js and Express.js
@@ -100,6 +102,7 @@ app.all '/*', (req, res, next)->
 tags: [javascript,coffeescript,nodejs,expressjs,dev]
 slug: redirect-http-to-https-in-expressjs
 date: 2014-3-13
+title: Redirect http to https in Node.js
 ---
 
 # Redirect http: to https: in Node.js and Express.js
@@ -164,6 +167,7 @@ http.createServer(http_app).listen(HTTP_PORT).on 'listening',()->
 tags: [javascript,web,html,performance,dev]
 slug: prefetching-images-with-js
 date: 2014-3-13
+title: Preloading images with JavaScript
 ---
 
 # Preloading images with JavaScript
@@ -218,6 +222,7 @@ function preload_images(urls) {
 tags: [coffeescript,nodejs,dev]
 slug: mocha-coffeescript-unexpected-string-error
 date: 2014-2-11
+title: Fixing "Unexpected string" errors with CoffeeScript 1.7 and Mocha 1.17
 ---
 
 # Fixing "Unexpected string" errors with CoffeeScript 1.7 and Mocha 1.17
@@ -250,6 +255,7 @@ on your Mocha command line to:
 tags: [coffeescript,javascript,nodejs,sql,database,mysql,html,web,dev]
 slug: node-js-sql-to-html
 date: 2014-2-8
+title: A General Purpose SQL-to-HTML Routine for Node.js
 ---
 
 # A General Purpose SQL-to-HTML Routine for CoffeeScript/JavaScript/Node.js
@@ -280,6 +286,7 @@ sql_to_html:(connection,query,bindvars,callback)->
 tags: [regexp,javascript,coffeescript,dev]
 slug: escape-for-regexp
 date: 2013-6-19
+title: escape a string for use in a regular expression
 ---
 
 # escape a string for use in a regular expression
@@ -305,6 +312,7 @@ console.log(regexp);                      // yields /Who said that\?/
 tags: [javascript,coffeescript,dev]
 slug: coffeescript-flatten-array
 date: 2013-1-23
+title: flatten an array in coffeescript
 ---
 
 # flatten an array in coffeescript
@@ -321,9 +329,10 @@ flatten_array = (a)->
 
 ===============================================================================
 ---
-tags: [nodejs,javascript,coffeescript,cli,linux,ops,dev]
+tags: [nodejs,javascript,coffeescript,cli,linux,service,ops,dev]
 slug: node-js-process-on-sigint
 date: 2013-1-8
+title: gracefully closing node.js
 ---
 # gracefully closing node.js applications via signal handling
 
@@ -357,6 +366,7 @@ PS: On Linux (and similar) you can enter `kill -l` on the command line to see a 
 tags: [javascript,coffeescript,regexp,cheatsheet,dev]
 slug: js-regexp-cheat-sheet
 date: 2013-1-18
+title: Cheat Sheet for JavaScript Regular Expressions
 ---
 # Cheat Sheet for JavaScript Regular Expressions
 
@@ -387,6 +397,7 @@ date: 2013-1-18
 tags: [nodejs,javascript,coffeescript,cli,dev]
 slug: nodejs-require-main
 date: 2013-3-3
+title: check require.main to test if a node.js file is run directly
 ---
 # Check `require.main` to test if a Node.js file is run directly
 
@@ -431,6 +442,7 @@ Also see [the nodejs.org docs](http://nodejs.org/docs/v0.4.8/api/all.html#access
 tags: [nodejs,javascript,coffeescript,cli,dev]
 slug: argv-underscore-in-optimist
 date: 2013-3-3
+title: in node-optimist, 'argv._' contains the "extra" parameters
 ---
 # In node-optimist, `argv._` is an array of the "extra" parameters
 
@@ -484,6 +496,7 @@ yield
 tags: [nodejs,javascript,coffeescript,cli,ruby,dev]
 slug: argf-for-nodejs
 date: 2013-3-3
+title: ruby-like ARGF for node.js
 ---
 # Ruby-like ARGF for Node.js
 
@@ -557,9 +570,10 @@ argf.forEach( function(line) {
 tags: [javascript,dev]
 slug: rectangles-intersect
 date: 2013-3-3
+title: How to determine if two rectangles overlap
 ---
 
-# How to determine if two rectangles overlap.
+# How to determine if two rectangles overlap
 
 ```javascript
 // Assuming that x1,y1 and x2,y2 give the upper left and

@@ -9,6 +9,7 @@ context:
 tags: [python,json,cli,one-liner]
 slug: python-pretty-print-json-tool
 date: 2014-2-15
+title: Pretty-print JSON with Python's json.tool
 ---
 # Pretty-print JSON with Python's json.tool
 
@@ -23,6 +24,7 @@ cat MYFILE.json | python -m json.tool
 tags: [python,json,cli,one-liner]
 slug: python-csv-to-json-array
 date: 2014-2-15
+title: Python one-liner for reading a CSV file into a JSON array of arrays
 ---
 # Python one-liner for reading a CSV file into a JSON array of arrays
 
@@ -43,8 +45,9 @@ $ python -c "import json,csv;print json.dumps(list(csv.reader(open( CSV-FILENAME
 ---
 tags: [pygments,markdown,python,tool]
 slug: pygments-language-identifiers
+title: Short list of language names recognized by pygments
 ---
-#  Short list of language names recognized by pygments.
+# Short list of language names recognized by pygments.
 
 `pygments` language identifiers I use or have had to look up at one time or another.
 
@@ -79,6 +82,7 @@ Also see [the list of languages supported by Pygments](http://pygments.org/langu
 tags: [python,http,cli,one-liner,ops,tool]
 slug: python-static-web-server
 date: 2014-2-20
+title: Launch an HTTP server serving the current directory using Python
 ---
 # Launch an HTTP server serving the current directory using Python
 

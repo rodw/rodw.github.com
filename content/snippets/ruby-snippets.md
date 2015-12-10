@@ -8,6 +8,7 @@ context:
 ---
 tags: [ruby,dev]
 slug: ruby-hash-sort
+title: Sorting a Ruby hash by key or value
 ---
 # Sorting a Ruby hash by key or value.
 
@@ -29,6 +30,7 @@ Note both forms return an array of key-value pairs (i.e., an array of arrays).
 ---
 tags: [ruby,dev]
 slug: ruby-stack-queue
+title: Using Ruby arrays as stacks and queues
 ---
 # Using Ruby arrays as stacks and queues.
 
@@ -54,6 +56,7 @@ slug: ruby-stack-queue
 ---
 tags: [ruby,dev,cli]
 slug: ruby-argf-basics
+title: Reading from input files or STDIN in Ruby using ARGF.
 ---
 # Reading from input files or STDIN in Ruby using ARGF.
 
@@ -98,6 +101,7 @@ ARGF.each_line { |line| puts line }
 ---
 tags: [ruby,dev]
 slug: split-ruby-array-in-half
+title: Split a Ruby array into two halves
 ---
 # Split a Ruby array into two halves.
 
@@ -118,6 +122,7 @@ a.each_slice( (a.size/2.0).round ).to_a # => [[1, 2, 3], [4, 5]]
 ---
 tags: [ruby,dev]
 slug: split-ruby-array-equally
+title: Split a Ruby array into N equally-sized parts
 ---
 # Split a Ruby array into N equally-sized parts.
 

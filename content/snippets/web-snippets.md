@@ -9,6 +9,7 @@ context:
 tags: [color-palette,design]
 slug: brewer-colors-spectral11
 date: 2014-2-15
+title: spectral11 color palette
 ---
 # The *spectral11* brewer color palette
 
@@ -31,6 +32,7 @@ via [graphviz.org](http://www.graphviz.org/doc/info/colors.html); more info at [
 tags: [color-palette,design]
 slug: brewer-colors-paired12
 date: 2014-2-15
+title: paired12 color palette
 ---
 # The *paired12* brewer color palette
 
@@ -53,6 +55,7 @@ via [graphviz.org](http://www.graphviz.org/doc/info/colors.html); more info at [
 ---
 tags: [css,html,web,design]
 slug: cross-browser-css-transitions
+title: Cross-browser CSS transitions
 ---
 # Cross-browser CSS transitions
 
@@ -113,6 +116,7 @@ These are nicely demonstrated [here](http://www.the-art-of-web.com/css/timing-fu
 ---
 tags: [css,html,web,design]
 slug: presentational-css-classes
+title: Presentational CSS Classes
 ---
 # Presentational CSS Classes
 
@@ -133,6 +137,7 @@ These are the opposite of semantic markup, but I find them useful:
 ---
 tags: [css,html,web,design]
 slug: fixing-css-resets
+title: Fixing CSS Resets
 ---
 # Fixing CSS Resets
 
@@ -158,6 +163,7 @@ pre, code, kbd, samp, tt { font-family: 'droid sans mono slashed', 'droid sans m
 ---
 tags: [css,html,web,design]
 slug: vertical-center-css
+title: Vertically centering block elements with CSS
 ---
 # Vertically centering block elements with CSS.
 

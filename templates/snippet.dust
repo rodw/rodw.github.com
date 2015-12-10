@@ -1,5 +1,5 @@
 {>"_bootstrap.dust"/}
-{<page_title}{?title}{slug} | {/title}{/page_title}
+{<page_title}{?title}{title}{:else}{slug}{/title} | {/page_title}
 {<main_container_content}
   <div class="container">
     <div class="row">

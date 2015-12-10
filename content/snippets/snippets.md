@@ -9,6 +9,7 @@ context:
 tags: [git,backup,ops]
 slug: github-backup
 date: 2014-1-1
+title: Backup an entire GitHub repository
 ---
 
 # Backup an entire GitHub repository
@@ -24,6 +25,7 @@ The following shell script will back up an organization's GitHub repositories, i
 tags: [sql,sqlite,database,cheatsheet,ops]
 slug: sqlite-cheat-sheet
 date: 2013-9-18
+title: A Cheat Sheet for SQLite
 ---
 # A Cheat Sheet for SQLite
 
@@ -52,8 +54,8 @@ date: 2013-9-18
 ---
 tags: [gui]
 slug: chrome-go-back-in-new-tab
+title: Ctrl-Back opens the referring page in a new tab in Chrome
 ---
-
 # Ctrl-Back opens the referring page in a new tab in Chrome
 
 In Chromium/Google Chrome, holding down the `Ctrl` button while clicking on the back button will open a new tab with the appropriate page (`history.go(-1)`) in a new tab.
@@ -64,6 +66,7 @@ I don't know how long this has been a feature, but I accidentally stumbled acros
 ---
 tags: [bookmark,media,cc,design]
 slug: creative-commons-media-search
+title: list of sources for Creative Commons images and media
 ---
 # Short list of sources for Creative Commons images and media.
 
@@ -75,6 +78,7 @@ slug: creative-commons-media-search
 ---
 tags: [git,coffeescript,javascript,nodejs]
 slug: gitignore-for-coffee
+title: .gitignore boilerplate for Node.JS projects
 ---
 # '.gitignore' boilerplate for CoffeeScript/Node.JS projects.
 
@@ -94,6 +98,7 @@ test/*.js
 ---
 tags: [git]
 slug: gitignore-for-coffee
+title: .gitignore boilerplate
 ---
 # '.gitignore' boilerplate for common temporary files.
 
@@ -134,6 +139,7 @@ tramp
 ---
 tags: [git,backup,one-liner,ops,tool]
 slug: git-bundle
+title: backup a git repository with 'git bundle'
 ---
 # backup a git repository with 'git bundle'
 
@@ -156,6 +162,7 @@ git clone PATH_TO_BUNDLE.git MY_PROJECT
 ---
 tags: [mind-hack]
 slug: begin-with-the-end-in-mind
+title: Begin with the end in mind
 ---
 # Begin with the end in mind.
 
@@ -167,6 +174,7 @@ Try to articulate *why* this task is important,
 ---
 tags: [mind-hack]
 slug: assume-success
+title: The first step is to assume success
 ---
 # The first step is to assume success.
 
@@ -176,6 +184,7 @@ Imagine the work is complete and wildly successful. what does that look like? wh
 ---
 tags: [mind-hack]
 slug: channel-someone-else
+title: Channel Someone Else
 ---
 # Channel Someone
 

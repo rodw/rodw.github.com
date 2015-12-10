@@ -9,6 +9,7 @@ context:
 tags: [emacs]
 slug: emacs-calendar
 date: 2013-4-15
+title: emacs calendar functions
 ---
 
 # emacs calendar functions
@@ -45,6 +46,7 @@ Also see [the emacs manual](http://www.gnu.org/software/emacs/manual/html_node/e
 tags: [emacs,cheatsheet]
 slug: emacs-cursor-movement-shortcuts
 date: 2013-3-15
+title: emacs cursor movement shortcuts
 ---
 
 # emacs cursor movement shortcuts
@@ -77,6 +79,7 @@ date: 2013-3-15
 tags: [emacs,cheatsheet]
 slug: emacs-searching
 date: 2013-3-23
+title: Searching in Emacs
 ---
 
 # Searching in Emacs
@@ -90,6 +93,7 @@ date: 2013-3-23
 tags: [emacs]
 slug: emacs-c-x-c-x
 date: 2013-3-23
+title: use C-x C-x to toggle between positions in emacs
 ---
 
 # C-x C-x to toggle between positions
@@ -101,6 +105,7 @@ For example:  Use `C-s foo` to search for something.  Maybe use `C-s` again to s
 tags: [emacs,elisp]
 slug: emacs-font-size
 date: 2013-3-23
+titel: Change font size in emacs
 ---
 # Change font size in emacs
 
@@ -123,6 +128,7 @@ To change the font size in all buffers:
 tags: [emacs]
 slug: paste-in-isearch-with-m-y
 date: 2013-3-21
+title: how to paste into the emacs i-search prompt
 ---
 # Use `M-y` to yank (paste) into the emacs i-search prompt
 
@@ -135,6 +141,7 @@ C-s M-y
 tags: [emacs]
 slug: emacs-change-case
 date: 2013-3-25
+title: Change Text Case in Emacs
 ---
 # Change Text Case in Emacs
 
@@ -167,6 +174,7 @@ Of course, if you're using "CUA Keys", you can't easily type `C-x` without invok
 tags: [emacs,r-lang,elisp]
 slug: ess-for-r-in-emacs
 date: 2013-3-26
+title: Working with R in emacs
 ---
 # Working with R in emacs
 
@@ -192,6 +200,7 @@ sudo aptitude install ess=12.09-1
 tags: [emacs,elisp]
 slug: emacsclient-daemon-default-font
 date: 2013-5-11
+title: Default fonts with emacsclient/emacs --daemon
 ---
 # Default fonts with emacsclient/emacs --daemon
 
@@ -235,6 +244,7 @@ relative-compose:  0
 tags: [emacs,org-mode,cheatsheet]
 slug: various-emacs-shortcuts
 date: 2013-5-12
+title: various emacs shortcuts
 ---
 # various emacs shortcuts
 
@@ -260,6 +270,7 @@ date: 2013-5-12
 tags: [emacs]
 slug: number-lines-emacs
 date: 2013-5-13
+title: numbering lines in emacs
 ---
 # Numbering lines in emacs
 
@@ -282,6 +293,7 @@ Also see [emacswiki.org/LineNumbers](http://www.emacswiki.org/LineNumbers).
 tags: [emacs,elisp,todo]
 slug: gitignore-mode
 date: 2013-5-13
+title: simple emacs mode for .gitignore files
 ---
 # Simple emacs mode for .gitignore files.
 
@@ -299,6 +311,7 @@ Actually, any text after an un-escaped `#` will be marked as a comment, which is
 tags: [emacs,cheatsheet]
 slug: emacs-spell-keys
 date: 2013-5-14
+title: spell checking cheat-sheet for emacs
 ---
 # Spell checking cheat-sheet for emacs.
 
@@ -324,6 +337,7 @@ Via [the emacs FAQ](http://www.gnu.org/software/emacs/manual/html_node/emacs/Spe
 tags: [emacs]
 slug: insert-newline-into-emacs-minibuffer
 date: 2013-5-4
+title: how to enter a newline character in the emacs minibuffer
 ---
 # Using (quoted-insert), or how to enter a newline character in the emacs minibuffer
 
@@ -340,6 +354,7 @@ Via [jwz](http://jeremy.zawodny.com/blog/archives/008872.html).
 tags: [emacs]
 slug: emacs-dos2unix
 date: 2013-5-4
+title: dos2unix in emacs
 ---
 # dos2unix in emacs
 
@@ -354,6 +369,7 @@ M-% C-q C-m [RETURN] [RETURN]
 tags: [emacs]
 slug: emacs-case-insensitive-sort
 date: 2013-5-7
+title: case insensitive sort-lines in emacs
 ---
 # Case insensitive sort-lines in emacs.
 
@@ -367,6 +383,7 @@ M-x sort-lines
 tags: [emacs,elisp,javascript]
 slug: fix-j2s-mode-indent-via-js-mode
 date: 2013-5-7
+title: using js-mode's indent logic in js2-mode
 ---
 # Using js-mode's indent logic in js2-mode
 
