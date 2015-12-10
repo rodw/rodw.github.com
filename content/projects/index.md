@@ -51,6 +51,8 @@ Some public repositories and other things I've been working on lately:
  
  * **[inote-util](https://github.com/intellinote/inote-util)** is a collection of generic utility functions and classes for JavaScript/CoffeeScript.
  
+ * **[termstyle](https://github.com/rodw/termstyle)** is a (server-side) JavaScript library that provides utility functions supporting styled console (terminal) output.
+ 
  * **[gvpr-lib](https://github.com/rodw/gvpr-lib)** is a small library of common functions for gvpr, Graphviz's awk-like language for transforming and processing graphs. It includes **[gvpr-mode](https://github.com/rodw/gvpr-lib/blob/master/extra/gvpr-mode.el)**, a simple emacs lisp major mode for working with gvpr. gvpr-mode is available on the [Marmalade](https://marmalade-repo.org/packages/gvpr-mode/) and [MELPA](http://melpa.org/#/gvpr-mode) package repositories. In modern versions of emacs you can run `M-x package-install <RET> gvrp-mode <RET>`` to install it.
  
  * **[pandox](https://github.com/rodw/pandox)** is an implementation of the [pandoc](http://johnmacfarlane.net/pandoc/) filter API in JavaScript/CoffeeScript.
