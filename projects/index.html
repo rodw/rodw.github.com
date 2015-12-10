@@ -2,7 +2,25 @@
 <p>I&#39;m the VP of Engineering at <strong><a href="https://www.intellinote.net/">Intellinote</a></strong>, a team communication and collaboration platform for the web, desktop and mobile. Intellinote features: video conferencing, screen sharing, real-time messaging (chat), note taking, task management, file sharing, dozens of built-in integrations and an extensive REST API.</p>
 <p>Prior to Intellinote I worked in a number of digital product development roles at several large and small firms, including the <strong><a href="http://www.shrm.org/">Society for Human Resource Management</a></strong> and <strong><a href="http://www.britannica.com/">Encyclop&aelig;dia Britannica</a></strong>.  </p>
 <p>See <a href="/files/Waldhoff-Rodney-resume-2014-02.pdf">Rod&#39;s resume (PDF)</a> for more detailed information but be warned that that document may not be up-to-date.</p>
-<h1 id="some-recent-stuff">Some Recent Stuff</h1>
+<h1 id="the-axion-rdms">The Axion RDMS</h1>
+<p>Once upon a time I created a fully-functional relational database from scratch (with more than a bit of help from collaborators). I was a major developer behind Axion, a small, fast, open source relational database system written in and for Java. <strong><a href="http://axion.tigris.org/">Axion</a></strong> has been dormant for quite a while, but it was and still is a fairly robust and complete system. Axion had and as far as I know still has some features no other RDBMS provides. Axion...</p>
+<ul>
+<li>is embedded (it runs in-process within the same JVM as the client code),</li>
+<li>supports both persistent (on-disk) and transient (in-memory) modes,</li>
+<li>supports both ANSI SQL and several extensions from Oracle&#39;s SQL dialect (circa 10g or whatever was released at the time),</li>
+<li>is fully transactional,</li>
+<li>is fully ACID (providing Atomicity, Consistency and Isolation and Durability),</li>
+<li>can be easily extended with custom &quot;pluggable&quot; table, index, column (field) and function types.</li>
+<li>can be found in commercial products containing millions of rows and gigabytes of data, processing thousands of transactions per second (while not a toy database by any standards, this certainly isn&#39;t &quot;big data&quot; volumes, but bear in mind that this was 10-15 years ago on what even then were low-end consumer models).</li>
+<li>was nominated as a Program to Read on the venerable C2 Wiki (a.k.a. &quot;Ward&#39;s Wiki&quot; or, notably, &quot;the original wiki&quot;).</li>
+</ul>
+<p>Building this wasn&#39;t as impractical as it might sound. The first version of Axion was created by a tiny team in less than 5 months in support of a top-selling, award-winning, shrink-wrapped retail CD/DVD-ROM product, and was successfully used in support of that product for nearly a decade.</p>
+<h1 id="apache-software-foundation">Apache Software Foundation</h1>
+<p>I used to be quite active in the Java corners of the <strong><a href="http://www.apache.org/">Apache Software Foundation</a></strong>. I had a pretty big role the creation of <strong><a href="http://commons.apache.org/">Jakarta-Commons</a></strong> (which eventually morphed into Apache-Commons) and a lesser role in the founding of the <strong><a href="http://db.apache.org/">Apache DB</a></strong> project. A fair bit of my code can still be found in the <strong><a href="http://commons.apache.org/">Apache Commons</a></strong>, <strong><a href="http://tomcat.apache.org/">Apache-Tomcat</a></strong>, and (through a number of migrations of HttpClient) in <strong><a href="http://hc.apache.org/">HttpComponents</a></strong>, among other places.</p>
+</div><div class="col-md-5"><h1 id="the-graphviz-cookbook">The Graphviz Cookbook</h1>
+<p>To be candid progress has slowed a bit since my <a href="https://www.intellinote.net/">day job</a> took off, but I&#39;ve been working on a how-to book about <a href="http://www.graphviz.org/">Graphviz</a>, a powerful, open-source, graph visualization and processing framework.</p>
+<p><strong><em><a href="/projects/gv-cookbook.html">The Graphviz Cookbook</a></em></strong>, like a regular cookbook, is meant to be a practical guide that shows you how to create something tangible and, hopefully, teaches you how to improvise your own creations using similar techniques. You can <strong><a href="/projects/gv-cookbook.html">find out more information and download sample chapters here</a></strong>.</p>
+<h1 id="recent-open-source-stuff">Recent Open Source Stuff</h1>
 <p>Some public repositories and other things I&#39;ve been working on lately:</p>
 <ul>
 <li><p><strong><a href="https://www.npmjs.com/package/swagger-dsl">SwaggerDSL</a></strong> is a CoffeeScript-based domain-specific language for generating JSON documents for <a href="http://swagger.io/">Swagger</a>. At <a href="https://www.intellinote.net/">Intellinote</a> we use SwaggerDSL to generate the documenation for our <a href="https://app.intellinote.net/rest/api/v2/">REST API</a>.</p>
@@ -26,19 +44,4 @@
 </ul>
 <h1 id="brightspoke-a-search-engine-for-bikes-">Brightspoke, a search engine for bikes.</h1>
 <p>The last time I was on the market for a new bicycle I created a tool for comparing bikes that I think is pretty nifty. The bike data is now stale, but the stem fit calculator remains popular. The calculator can help you determine how your handlebars will move when you change your stem. (The stem being the bit on a bike that connects the handlebars to the fork.) <em>(Offline)</em></p>
-</div><div class="col-md-5"><h1 id="the-axion-rdms">The Axion RDMS</h1>
-<p>Once upon a time I created a fully-functional relational database from scratch (with more than a bit of help from collaborators). I was a major developer behind Axion, a small, fast, open source relational database system written in and for Java. <strong><a href="http://axion.tigris.org/">Axion</a></strong> has been dormant for quite a while, but it was and still is a fairly robust and complete system. Axion had and as far as I know still has some features no other RDBMS provides. Axion...</p>
-<ul>
-<li>is embedded (it runs in-process within the same JVM as the client code),</li>
-<li>supports both persistent (on-disk) and transient (in-memory) modes,</li>
-<li>supports both ANSI SQL and several extensions from Oracle&#39;s SQL dialect (circa 10g or whatever was released at the time),</li>
-<li>is fully transactional,</li>
-<li>is fully ACID (providing Atomicity, Consistency and Isolation and Durability),</li>
-<li>can be easily extended with custom &quot;pluggable&quot; table, index, column (field) and function types.</li>
-<li>can be found in commercial products containing millions of rows and gigabytes of data, processing thousands of transactions per second (while not a toy database by any standards, this certainly isn&#39;t &quot;big data&quot; volumes, but bear in mind that this was 10-15 years ago on what even then were low-end consumer models).</li>
-<li>was nominated as a Program to Read on the venerable C2 Wiki (a.k.a. &quot;Ward&#39;s Wiki&quot; or, notably, &quot;the original wiki&quot;).</li>
-</ul>
-<p>Building this wasn&#39;t as impractical as it might sound. The first version of Axion was created by a tiny team in less than 5 months in support of a top-selling, award-winning, shrink-wrapped retail CD/DVD-ROM product, and was successfully used in support of that product for nearly a decade.</p>
-<h1 id="apache-software-foundation">Apache Software Foundation</h1>
-<p>I used to be quite active in the Java corners of the <strong><a href="http://www.apache.org/">Apache Software Foundation</a></strong>. I had a pretty big role the creation of <strong><a href="http://commons.apache.org/">Jakarta-Commons</a></strong> (which eventually morphed into Apache-Commons) and a lesser role in the founding of the <strong><a href="http://db.apache.org/">Apache DB</a></strong> project. A fair bit of my code can still be found in the <strong><a href="http://commons.apache.org/">Apache Commons</a></strong>, <strong><a href="http://tomcat.apache.org/">Apache-Tomcat</a></strong>, and (through a number of migrations of HttpClient) in <strong><a href="http://hc.apache.org/">HttpComponents</a></strong>, among other places.</p>
-</div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 7:02 PM on 10 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>
+</div></div></div></div></div><hr style="width:100%"><div class="container"><div class="row"><div class="col-md-4 text-muted">This page was generated at 9:18 PM on 10 Dec 2015.</div><div class="col-md-4 text-muted text-center"><a href="http://heyrod.com/">HeyRod.com</a></div><div class="col-md-4 text-muted text-right">Copyright &copy; 1999 - 2015 Rodney Waldhoff.</div><br>&nbsp;</div></div><script src="/js/bootstrap.min.js"></script><script src="/js/ugly.js"></script><script src="/js/highlight.min.js"></script></body></html>
