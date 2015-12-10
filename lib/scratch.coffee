@@ -282,7 +282,7 @@ class Scratch
   # identifies the proper destination file for the given slug value
   _slug_to_dest:(slug)=>
     dest = path.join(SITE_DIR,path.relative(CONTENT_DIR,slug))
-    unless /\.[a-z]+/i.test dest
+    unless /\.[a-z]+$/i.test dest
       dest += ".html"
     return dest
 

@@ -11,10 +11,10 @@
     </div>
     <div  id="main-nav" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        {>"_navbar-tab" tab_name="home"     tab_Name="Home"     tab_url="/"/}
-        {>"_navbar-tab" tab_name="projects" tab_Name="Projects" tab_url="/projects/"/}
-        {>"_navbar-tab" tab_name="articles" tab_Name="Articles" tab_url="/articles/"/}
-        {>"_navbar-tab" tab_name="snippets" tab_Name="Snippets" tab_url="/snippets/"/}
+        {>"_navbar-tab" tab_name="home"     tab_Name="<i class='fa fa-home'></i>&nbsp;&nbsp;Home"          tab_url="/"/}
+        {>"_navbar-tab" tab_name="projects" tab_Name="<i class='fa fa-briefcase'></i>&nbsp;&nbsp;Projects" tab_url="/projects/"/}
+        {>"_navbar-tab" tab_name="articles" tab_Name="<i class='fa fa-book'></i>&nbsp;&nbsp;Articles"      tab_url="/articles/"/}
+        {>"_navbar-tab" tab_name="snippets" tab_Name="<i class='fa fa-hashtag'></i>&nbsp;&nbsp;Snippets"   tab_url="/snippets/"/}
       </ul>
     </div>
   </div>

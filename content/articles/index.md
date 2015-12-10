@@ -11,3 +11,5 @@ You could call this a “blog” but the writing tends to be long-form and publi
  * [How to develop a sourcing strategy.](/articles/how-to-develop-a-sourcing-strategy.html) - a six-step process for implementing a “strategic sourcing” framework.
 
  * [Archived posts from Rod’s old Radio blog](/articles/radio-blog/) - Back in 2003 I ran a moderately popular technology blog. This is an archive of posts from that blog.
+
+ * A [colophon](/articles/colophon.html) provides some additional information about how this site is generated.
