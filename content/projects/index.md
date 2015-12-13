@@ -11,7 +11,7 @@ I'm the VP of Engineering at **[Intellinote](https://www.intellinote.net/)**, a 
 
 Prior to Intellinote I worked in a number of digital product development roles at several large and small firms, including the **[Society for Human Resource Management](http://www.shrm.org/)** and **[Encyclop&aelig;dia Britannica](http://www.britannica.com/)**.  
 
-See [Rod's resume (PDF)](/files/Waldhoff-Rodney-resume-2014-02.pdf) for more detailed information but be warned that that document may not be up-to-date.
+See **<a href="/files/Waldhoff-Rodney-resume-2014-02.pdf" onclick=”var that=this;_gaq.push([‘_trackEvent’,’Download’,’PDF’,this.href]);setTimeout(function(){location.href=that.href;},200);return false;”>Rod's resume (PDF)</a>** for more detailed information but be warned that that document may not be up-to-date.
 
 ==========
 # The Graphviz Cookbook

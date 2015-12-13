@@ -20,10 +20,11 @@ The book is organized into four parts:
 
 You can download the following sample chapters (for personal use) in a PDF format:
 
- * **[Chapter 1: Graphviz in a nutshell](/files/gv-cookbook-chapter-01-sample-15343.pdf)** is an excerpt from Part 1 ("Getting Started").
 
- * **[Chapter 6: Section 7: patchwork](/files/gv-cookbook-chapter-06-sample-20343.pdf)** is an excerpt from Part 2 ("Ingredients").
+ * **<a href="/files/gv-cookbook-chapter-01-sample-15343.pdf" onclick=”var that=this;_gaq.push([‘_trackEvent’,’Download’,’PDF’,this.href]);setTimeout(function(){location.href=that.href;},200);return false;”>Chapter 1: Graphviz in a nutshell</a>** is an excerpt from Part 1 ("Getting Started").
 
- * **[Chapter 10: Using gvpr to style graphs](/files/gv-cookbook-chapter-10-sample-24343.pdf)** is an excerpt from Part 3 ("Techniques").
+ * **<a href="/files/gv-cookbook-chapter-06-sample-20343.pdf" onclick=”var that=this;_gaq.push([‘_trackEvent’,’Download’,’PDF’,this.href]);setTimeout(function(){location.href=that.href;},200);return false;”>Chapter 6: Section 7: patchwork</a>** is an excerpt from Part 2 ("Ingredients").
 
- * **[Chapter 26: A treemap of folder contents](/files/gv-cookbook-chapter-26-sample-40343.pdf)** is an excerpt from Part 4 ("Recipes").
+ * **<a href="/files/gv-cookbook-chapter-10-sample-24343.pdf" onclick=”var that=this;_gaq.push([‘_trackEvent’,’Download’,’PDF’,this.href]);setTimeout(function(){location.href=that.href;},200);return false;”>Chapter 10: Using gvpr to style graphs</a>** is an excerpt from Part 3 ("Techniques").
+
+ * **<a href="/files/gv-cookbook-chapter-26-sample-40343.pdf" onclick=”var that=this;_gaq.push([‘_trackEvent’,’Download’,’PDF’,this.href]);setTimeout(function(){location.href=that.href;},200);return false;”>Chapter 26: A treemap of folder contents</a>** is an excerpt from Part 4 ("Recipes").
