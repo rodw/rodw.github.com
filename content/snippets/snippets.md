@@ -6,6 +6,16 @@ context:
 ---
 ===============================================================================
 ---
+tags: [bookmark,graphviz,uml]
+slug: planttext
+date: 2014-1-1
+title: PlantText
+---
+
+[PlantText.com](http://www.planttext.com/planttext) - web-based text-to-image rendering with PlantUML, Graphviz and others.
+
+===============================================================================
+---
 tags: [git,backup,ops]
 slug: github-backup
 date: 2014-1-1
