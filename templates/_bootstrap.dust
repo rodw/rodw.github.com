@@ -46,9 +46,10 @@
            <br>&nbsp;
         </div>
       </div>
-      <script src="/js/bootstrap.min.js"></script>
-      <script src="/js/ugly.js"></script>
-      <script src="/js/highlight.min.js"></script>
+      <script type="text/javascript" src="/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/ugly.js"></script>
+      <script type="text/javascript" src="/js/highlight.min.js"></script>
+      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
       <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-34329491-1']);
