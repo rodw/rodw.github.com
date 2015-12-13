@@ -22,6 +22,7 @@ SNIPPET_INDEX_TEMPLATE    = "snippet-index.dust"
 class Scratch
   snippet_list: []
   snippets_by_tag: {}
+  url_list: []
   
   main:()=>
     start = Date.now()
@@ -39,17 +40,30 @@ class Scratch
                   console.error "ERROR while processing #{file} part #{i+1}.", pair[0]
                 else
                   console.log "Generated #{pair[1]} from #{file} part #{i+1}."
+                  @url_list.push @to_url(pair[1])
             else if dest?
               console.log "Generated #{dest} from #{file}."
+              @url_list.push @to_url(dest)
             else
               console.log "File #{file} processed. No file output (yet)."
           next()
       Util.for_each_async files, action, ()=>
         @process_snippets ()=>
-          finish = Date.now()
-          elapsed = (finish - start)/1000
-          console.log "DONE.\nElapsed time: #{elapsed} seconds."
+          @write_sitemap ()=>
+            finish = Date.now()
+            elapsed = (finish - start)/1000
+            console.log "DONE.\nElapsed time: #{elapsed} seconds."
       
+  write_sitemap:(callback)=>
+    content = @url_list.join("\n")
+    dest = path.join(SITE_DIR,"sitemap.txt")
+    fs.writeFile dest, content, (err)=>
+      if err?
+        console.error "ERROR while creating sitemap.txt",err
+      else
+        console.log "Generated sitemap at #{dest}."
+      callback()
+    
   process_snippets:(callback)=>
     unless @snippet_list?.length > 0
       callback()
@@ -62,6 +76,7 @@ class Scratch
             console.error "ERROR while processing snippet:",err
           else
             console.log "Generated #{dest} from collected snippet."
+            @url_list.push @to_url(dest)
           next()
       Util.for_each_async @snippet_list, action, ()=>
         # generate snippet tag pages
@@ -79,6 +94,7 @@ class Scratch
               console.error "ERROR while processing tag:",tag,err
             else
               console.log "Generated #{dest} from collected snippets for tag #{tag}."
+              @url_list.push @to_url(dest)
             next()
         Util.for_each_async tags, action, ()=>
           # generate tag index page
@@ -97,6 +113,7 @@ class Scratch
               console.error "ERROR while processing snippet index.",err
             else
               console.log "Generated #{dest} as tag index from collected snippets."
+              @url_list.push @to_url(dest)
             callback()
       
   handle_input_file:(file,base_context,callback)=>
@@ -271,6 +288,11 @@ class Scratch
     context.TIME_FORMATTED = @_format_time(context.NOW)
     return context
 
+  # returns the corresponding URL for the given file
+  to_url:(file)=>
+    path_part = path.relative(SITE_DIR,file)
+    return "http://heyrod.com/#{path_part}"
+    
   # determines the proper destination file for the given metadata
   to_dest:(context)=>
     if context?.slug?
