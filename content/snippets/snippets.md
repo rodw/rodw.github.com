@@ -16,6 +16,45 @@ title: PlantText
 
 ===============================================================================
 ---
+tags: [database,postgresql]
+slug: postgres-idle-connections
+date: 2015-12-14
+title: Finding and Closing Idle Connections in PostgreSQL
+---
+# Finding and Closing Idle Connections in PostgreSQL
+
+To enumerate all database connections that have been idle for at least 10 minutes:
+
+```sql
+SELECT
+  DATE_TRUNC('second',NOW()-query_start) AS age,
+  client_port,
+  current_query
+FROM
+  pg_stat_activity
+WHERE
+  current_query = '<IDLE>'
+  AND NOW() - query_start > '00:10:00'
+ORDER BY
+  age DESC;
+```
+
+To *close* all database connections that have been idle for at least 10 minutes:
+
+```sql
+SELECT
+  pg_terminate_backend(procpid)
+FROM
+  pg_stat_activity
+WHERE
+ current_query = '<IDLE>'
+ AND now() - query_start > '00:10:00';
+```
+
+**WARNING** Don't be fooled by the `SELECT` statement used here.  **The query above will drop database connections.**
+
+===============================================================================
+---
 tags: [git,backup,ops]
 slug: github-backup
 date: 2014-1-1
