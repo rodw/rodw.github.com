@@ -139,6 +139,7 @@ http://heyrod.com/snippets/ruby-argf-basics.html
 http://heyrod.com/snippets/split-ruby-array-in-half.html
 http://heyrod.com/snippets/split-ruby-array-equally.html
 http://heyrod.com/snippets/planttext.html
+http://heyrod.com/snippets/postgres-idle-connections.html
 http://heyrod.com/snippets/github-backup.html
 http://heyrod.com/snippets/sqlite-cheat-sheet.html
 http://heyrod.com/snippets/chrome-go-back-in-new-tab.html
@@ -202,6 +203,7 @@ http://heyrod.com/snippets/tag-pygments.html
 http://heyrod.com/snippets/tag-markdown.html
 http://heyrod.com/snippets/tag-bookmark.html
 http://heyrod.com/snippets/tag-uml.html
+http://heyrod.com/snippets/tag-postgresql.html
 http://heyrod.com/snippets/tag-git.html
 http://heyrod.com/snippets/tag-sqlite.html
 http://heyrod.com/snippets/tag-media.html
