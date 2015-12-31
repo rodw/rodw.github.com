@@ -150,6 +150,7 @@ http://heyrod.com/snippets/git-bundle.html
 http://heyrod.com/snippets/begin-with-the-end-in-mind.html
 http://heyrod.com/snippets/assume-success.html
 http://heyrod.com/snippets/channel-someone-else.html
+http://heyrod.com/snippets/file-upload-from-curl.html
 http://heyrod.com/snippets/brewer-colors-spectral11.html
 http://heyrod.com/snippets/brewer-colors-paired12.html
 http://heyrod.com/snippets/cross-browser-css-transitions.html
@@ -209,5 +210,6 @@ http://heyrod.com/snippets/tag-sqlite.html
 http://heyrod.com/snippets/tag-media.html
 http://heyrod.com/snippets/tag-cc.html
 http://heyrod.com/snippets/tag-mind-hack.html
+http://heyrod.com/snippets/tag-curl.html
 http://heyrod.com/snippets/tag-color-palette.html
 http://heyrod.com/snippets/index.html
