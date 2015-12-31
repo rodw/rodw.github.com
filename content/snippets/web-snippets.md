@@ -6,6 +6,34 @@ context:
 ---
 ===============================================================================
 ---
+tags: [curl,web,tool]
+slug: file-upload-from-curl
+date: 2015-12-31
+title: Uploading a file with curl
+---
+# Uploading a file with curl
+
+To submit the file at `foo` to a web service as multi-part form data using `curl`:
+
+```bash
+curl -X POST -F "file=@\"foo\"" 'https://127.0.0.1/example'
+```
+
+The `file` part is the name of the corresponding form field.
+
+Note that you can submit multiple files:
+
+```bash
+curl -X POST -F "f1=@\"foo\"&f2=@\"bar\"" 'https://127.0.0.1/example'
+```
+
+Or add additional body or query string parameters:
+
+```bash
+curl -X POST -F "f1=@\"foo\"&x=y" 'https://127.0.0.1/example?a=b'
+```
+===============================================================================
+---
 tags: [color-palette,design]
 slug: brewer-colors-spectral11
 date: 2014-2-15
