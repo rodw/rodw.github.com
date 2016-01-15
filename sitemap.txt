@@ -104,6 +104,7 @@ http://heyrod.com/snippets/latex-page-margins.html
 http://heyrod.com/snippets/latex-tab-align-hfill.html
 http://heyrod.com/snippets/latex-font-sizes.html
 http://heyrod.com/snippets/zero-width-space-char-in-html-and-latex.html
+http://heyrod.com/snippets/cursor-movement-keys-in-iterm2.html
 http://heyrod.com/snippets/cli-for-html-extraction.html
 http://heyrod.com/snippets/forever-service.html
 http://heyrod.com/snippets/download-website-with-wget.html
@@ -183,6 +184,8 @@ http://heyrod.com/snippets/tag-ops.html
 http://heyrod.com/snippets/tag-ruby.html
 http://heyrod.com/snippets/tag-tex-latex.html
 http://heyrod.com/snippets/tag-design.html
+http://heyrod.com/snippets/tag-osx.html
+http://heyrod.com/snippets/tag-iterm2.html
 http://heyrod.com/snippets/tag-tool.html
 http://heyrod.com/snippets/tag-xml.html
 http://heyrod.com/snippets/tag-css.html
