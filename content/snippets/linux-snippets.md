@@ -6,6 +6,32 @@ context:
 ---
 ===============================================================================
 ---
+tags: [osx,iterm2]
+slug: cursor-movement-keys-in-iterm2
+date: 2016-1-14
+title: Setting up the cursor movement keys in iTerm2 on OSX
+---
+
+# Setting up the cursor movement keys in iTerm2 on OSX
+
+[iTerm2](https://www.iterm2.com/) is a nice, customizable terminal emulator for OSX, but the typical cursor movement keys (such as `⌘⟵` (`Command-Left`) for "move to beginning of line and `⌥⟶` (`Option-Right`) for "move forward one word") never seem to work for me out of the box.
+
+Here's how to set them up (based on build 2.1.4):
+
+1) Clear out any per-existing bindings for these short-cuts.  There two different places to check--in the "global" keys and in the "profile" keys.
+    1) For the profile keys go to `Preferences` > `Profiles` > `Keys` and look for the `⌘⟵`, `⌘⟶`, `⌥⟵` and `⌥⟶` shortcuts (and delete them if found.)
+    2) For the global keys go to `Preferences` > `Keys` and look for the symbols in (and remove them from) the "Global Shortcut Keys".
+
+2) In either the profile or global shortcut settings (your choice) add the shortcuts back in, with the following bindings:
+    * Use `Send Escape Sequence` `f` for "move forward one word". On OSX, I bind this to `⌥⟶` (`Option-Right`) as that seems to be the convention other apps follow.
+    * Use `Send Escape Sequence` `b` for "move backward one word". On OSX, I bind this to `⌥⟵` (`Option-Left`).
+    * Use `Send Hex Code` `0x05` for "move to end of line". On OSX, I bind this to `⌘⟶` (`Command-Right`) as that seems to be the convention other apps follow.
+    * Use `Send Hex Code` `0x01` for "move to beginning of line". On OSX, I bind this to `⌘⟵` (`Command-Left`).
+
+Now these keys should work the way your muscle memory (or at least my muscle memory) expects them to.
+
+===============================================================================
+---
 tags: [linux,tool,xml,css,html,xpath,one-liner,ops]
 slug: cli-for-html-extraction
 date: 2014-2-11
@@ -391,7 +417,7 @@ Find files that have the same size and MD5 hash (and hence are likely to be exac
 ```bash
 find -not -empty -type f -printf "%s\n" | \         # line 1
   sort -rn | \                                      # line 2
-  uniq -d | \                                       # line 3   
+  uniq -d | \                                       # line 3
   xargs -I{} -n1 find -type f -size {}c -print0 | \ # line 4
   xargs -0 md5sum | \                               # line 5
   sort | \                                          # line 6
