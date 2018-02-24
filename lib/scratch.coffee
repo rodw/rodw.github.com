@@ -23,7 +23,7 @@ class Scratch
   snippet_list: []
   snippets_by_tag: {}
   url_list: []
-  
+
   main:()=>
     start = Date.now()
     @prep_site_dir ()=>
@@ -53,7 +53,7 @@ class Scratch
             finish = Date.now()
             elapsed = (finish - start)/1000
             console.log "DONE.\nElapsed time: #{elapsed} seconds."
-      
+
   write_sitemap:(callback)=>
     content = @url_list.join("\n")
     dest = path.join(SITE_DIR,"sitemap.txt")
@@ -63,7 +63,7 @@ class Scratch
       else
         console.log "Generated sitemap at #{dest}."
       callback()
-    
+
   process_snippets:(callback)=>
     unless @snippet_list?.length > 0
       callback()
@@ -105,7 +105,7 @@ class Scratch
           ctx = ObjectUtil.shallow_clone(@make_default_context())
           ctx.tags = tags
           ctx.active_tab = 'snippets'
-          ctx.slug = "site/snippets/index"
+          ctx.source_file = "site/snippets/index"
           ctx.snippet_count = @snippet_list.length
           ctx.tag_count = keys.length
           @render_dust_to_file SNIPPET_INDEX_TEMPLATE, ctx, (err, dest)=>
@@ -115,7 +115,7 @@ class Scratch
               console.log "Generated #{dest} as tag index from collected snippets."
               @url_list.push @to_url(dest)
             callback()
-      
+
   handle_input_file:(file,base_context,callback)=>
     base_context = @make_default_context(base_context)
     base_context = ObjectUtil.shallow_clone(base_context)
@@ -164,7 +164,7 @@ class Scratch
             @snippets_by_tag.untagged.push context
         console.log "Added #{contexts.length} snippets parsed from #{file}."
         callback()
-    
+
   generate_multiple_files_from_source:(file, base_context, raw_text, callback)=>
     base_context = @make_default_context(base_context)
     parts = @split_delimited_string_into_parts(raw_text)
@@ -190,7 +190,7 @@ class Scratch
               next()
       Util.for_each_async parts, action, ()=>
         callback first_error, results
-          
+
   generate_single_file_from_source:(file, base_context, markdown, callback)=>
     @generate_dust_context_from_parsed_markdown file, base_context, markdown, (err, context)=>
       if err?
@@ -209,7 +209,7 @@ class Scratch
             callback err, null
           else
             callback null, dest
-                
+
   generate_dust_context_from_parsed_markdown:(source_file,base_context,markdown,callback)=>
     base_context ?= {}
     base_context = ObjectUtil.shallow_clone base_context
@@ -219,7 +219,7 @@ class Scratch
     base_context.content ?= markdown.html if markdown?.html?
     base_context.source_file = source_file
     callback null, base_context
-            
+
   # clean and recreates default `site` directory based on contents of `web/public`
   prep_site_dir:(callback)=>
     console.log "Removing existing files from './site' directory."
@@ -231,7 +231,7 @@ class Scratch
   #############################################################################
   ## UTILITIES
   #############################################################################
-  
+
   _format_time:(dt)->
     dt ?= new Date()
     buf = ""
@@ -248,7 +248,7 @@ class Scratch
     else
       buf += "AM"
     return buf
-  
+
   _format_date:(dt)->
     dt ?= new Date()
     buf = "#{dt.getUTCDate()} "
@@ -279,7 +279,7 @@ class Scratch
         buf += "Dec"
     buf += " #{dt.getUTCFullYear()}"
     return buf
-    
+
   make_default_context:(context={})=>
     context.YEAR = (new Date()).getFullYear()
     context.NOW = (new Date())
@@ -292,7 +292,7 @@ class Scratch
   to_url:(file)=>
     path_part = path.relative(SITE_DIR,file)
     return "http://heyrod.com/#{path_part}"
-    
+
   # determines the proper destination file for the given metadata
   to_dest:(context)=>
     if context?.slug?
@@ -300,7 +300,7 @@ class Scratch
       return @_slug_to_dest(slug)
     else
       return @_src_to_dest(context.source_file)
-    
+
   # identifies the proper destination file for the given slug value
   _slug_to_dest:(slug)=>
     dest = path.join(SITE_DIR,path.relative(CONTENT_DIR,slug))
@@ -325,7 +325,7 @@ class Scratch
       else if /\.md$/.test file
         results.push file
     return results
-    
+
   split_delimited_string_into_parts:(raw_text)=>
     delimiter = /\n=====+\n/
     parts = raw_text.split delimiter
@@ -338,7 +338,7 @@ class Scratch
         callback(err)
       else
         @markdown_from_string buffer, callback
-  
+
   # returns a meta-markdown result object parsed from the given string or buffer
   markdown_from_string:(buffer,callback)=>
     source = buffer.toString()
@@ -371,4 +371,3 @@ class Scratch
 
 scratch = new Scratch()
 scratch.main()
-    
