@@ -664,3 +664,36 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 The environment variable `PROMPT_COMMAND` is executed when bash is about to display your prompt.
 
 The command `history -a` appends the current history to `~/.bash_history`.
+
+===============================================================================
+---
+tags: [linux,bash,data,text,awk]
+slug: simple-histogram-in-bash
+title: Create a simple histogram or bar-chart in bash
+date: 2018-02-28
+---
+# Create a simple histogram or bar-chart in bash
+
+The following script accepts (via stdin) input like this:
+
+```
+foo 10
+bar 21
+xyzzy 12
+```
+
+and generates (to stdout) a bar-chart like this:
+
+```
++-------+----+
+|   foo | 10 | ##########
+|   bar | 21 | #####################
+| xyzzy | 12 | ############
++-------+----+
+```
+
+where the width of the headings (category and count) is automatically determined by the input values and the width of the bar chart (the number of `#` characters) is automatically scaled to fit within the current terminal width.
+
+<script src="https://gist.github.com/rodw/06d0aeac30cfee504a0b602f4f44d258.js"></script>
+
+It also demonstrates a few intermediate level awk features such as passing variables (via the `-v` parameter) and variable-width `printf` statements (via `%*s`).
