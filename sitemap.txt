@@ -130,6 +130,7 @@ http://heyrod.com/snippets/some-awk-basics.html
 http://heyrod.com/snippets/skip-n-lines.html
 http://heyrod.com/snippets/list-fonts.html
 http://heyrod.com/snippets/always-append-bash-history.html
+http://heyrod.com/snippets/simple-histogram-in-bash.html
 http://heyrod.com/snippets/python-pretty-print-json-tool.html
 http://heyrod.com/snippets/python-csv-to-json-array.html
 http://heyrod.com/snippets/pygments-language-identifiers.html
@@ -201,6 +202,8 @@ http://heyrod.com/snippets/tag-gui.html
 http://heyrod.com/snippets/tag-bash.html
 http://heyrod.com/snippets/tag-awk.html
 http://heyrod.com/snippets/tag-sed.html
+http://heyrod.com/snippets/tag-data.html
+http://heyrod.com/snippets/tag-text.html
 http://heyrod.com/snippets/tag-python.html
 http://heyrod.com/snippets/tag-json.html
 http://heyrod.com/snippets/tag-pygments.html
