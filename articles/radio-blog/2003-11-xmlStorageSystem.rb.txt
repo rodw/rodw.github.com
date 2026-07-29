@@ -1,0 +1,219 @@
+#!/usr/bin/env ruby
+
+#
+# xmlStorageSystem.rb
+# Revision 1.0 - 21 Nov 2003
+#
+# Copyright (c) 2003, Rodney Waldhoff
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# * Redistributions of source code must retain the above copyright notice,
+#   this list of conditions and the following disclaimer.
+#
+# * Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+require 'net/http'
+require 'base64'
+
+# extend Dir with a mkdirs function
+class Dir
+  def Dir.mkdirs path, perm 
+    frags = path.split('/')
+    for i in 1...frags.length
+      path = File.join(frags[0...i])
+      Dir.mkdir(path,perm) unless File.exists?(path)
+    end
+  end
+end
+
+class XmlStorageSystem
+  # constructor
+  def initialize(
+    uname, 
+    passwd, 
+    basepath, 
+    host = 'radio.weblogs.com', 
+    port = 80, 
+    rpcpath = '/RPC2', 
+    rpchost = 'radio.xmlstoragesystem.com', 
+    rpcport = 80)
+    
+    @uname = uname
+    @passwd = passwd
+    @basepath = basepath
+    @host = host
+    @port = port
+    @rpcpath = rpcpath
+    @rpchost = rpchost
+    @rpcport = rpcport
+  end 
+    
+  # returns an array of relative paths  
+  def getMyDirectory
+
+    body = "<?xml version=\"1.0\"?>\n" +
+           "<methodCall>\n" +
+           "<methodName>xmlStorageSystem.getMyDirectory</methodName>\n" +
+           "<params>\n" +
+           unamePasswd +
+           "</params>\n" +
+           "</methodCall>"
+    resp, data= postRequest(body)
+    result = []
+    data.scan(/<name>relativePath<\/name>[^<]*<value>([^<]*)<\/value>/) { 
+      |match| 
+      result.push(match[0])
+    }
+    return result
+  end
+  
+  # downloads a copy of all files to the dest directory
+  def backupMyDirectory destdir
+    getMyDirectory.each do |f| 
+      client = Net::HTTP.new(@host,80)
+      resp, data = client.get(@basepath + f)
+      dest = File.join(destdir,f)
+      Dir.mkdirs(dest,0744)
+      File.open(dest, "w", 0644) do |file|
+        file.write(data)
+      end
+    end
+  end
+
+  # uploads the given list of files from basedir to the server
+  def saveMultipleFilesInBatches basedir, files, batchsize = 10
+     batch = []
+     files.each do |f| 
+        batch.push(f)
+        if batch.size == batchsize then
+          puts "Uploading the following #{batch.size} files:"
+          puts batch
+          saveMultipleFiles(basedir, batch)
+          puts "done."
+          batch = []
+        end        
+     end 
+     if batch.size != 0 then
+       puts "Uploading the following #{batch.size} files:"
+       puts batch
+       saveMultipleFiles(basedir, batch)
+       puts "done."
+     end        
+  end 
+
+  # uploads the given list of files from basedir to the server
+  def saveMultipleFiles basedir, files
+    body = "<?xml version=\"1.0\"?>\n"
+    body += "<methodCall>\n"
+    body += "<methodName>xmlStorageSystem.saveMultipleFiles</methodName>\n"
+    body += "<params>\n"
+    body += unamePasswd
+           
+    body += toRpcFileArray(files)
+
+    # file content
+    body += "<param><value><array><data>"
+    files.each do |f| 
+      body += "<value><base64>"
+      body += encode64(File.new(File.join(basedir,f)).read)
+      body += "</base64></value>"
+    end
+    body += "</data></array></value></param>"
+    
+    body += "</params>\n"
+    body += "</methodCall>"
+
+    postRequest(body)
+  end
+  
+  # deletes the given list of files from the server
+  def deleteMultipleFiles files 
+    body = "<?xml version=\"1.0\"?>\n"
+    body += "<methodCall>\n"
+    body += "<methodName>xmlStorageSystem.deleteMultipleFiles</methodName>\n"
+    body += "<params>\n"
+    body += unamePasswd
+    body += toRpcFileArray(files)
+    body += "</params>\n"
+    body += "</methodCall>"
+    postRequest(body)
+  end
+
+  def updateFromLocalDirectory dir
+     puts "Obtaining local listing from #{dir}..."
+     local = getLocalDirectory(dir)
+
+     puts "Obtaining remote listing from server..."
+     remote = getMyDirectory()
+
+     todel = remote - local
+     puts "Deleting the following #{todel.size} files from the server:"
+     puts todel
+     puts "Deleting..."
+     deleteMultipleFiles(todel)
+
+     puts "Uploading files..."
+     saveMultipleFilesInBatches(dir,local)
+
+     puts "Update compelete."     
+  end 
+
+  def getLocalDirectory basedir, dir = basedir
+    result = []
+    Dir.foreach(dir) { |f|
+      unless f.to_s == '.' or f.to_s == '..'
+        path = File.join(dir, f)
+        type = File.ftype(path)
+        if type == 'file'
+          result.push(path[basedir.length+1...path.length])
+        elsif type == 'directory'
+          result.concat(getLocalDirectory(basedir,path))
+        end
+      end
+    }
+    result
+  end 
+  
+  #--------------------------------------------------------------------
+
+  private  
+  
+  def toRpcFileArray files
+    body = "<param><value><array><data>"
+    files.each do |f| 
+      body += "<value>#{f}</value>"
+    end
+    body += "</data></array></value></param>"
+    return body
+  end
+
+  def unamePasswd 
+    "<param><value>#{@uname}</value></param>\n" +
+    "<param><value>#{@passwd}</value></param>\n"
+  end 
+  
+  # post the given XML-RPC request, returning the response
+  def postRequest body
+    client = Net::HTTP.new(@rpchost,@rpcport)
+    resp, data = client.post(@rpcpath, body, @rpcheaders )
+    return resp, data
+  end
+  
+end
